@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>大命题数据</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+        }
+
+        .module-header h4 {
+            border-bottom: 2px solid #eceff9;
+            padding-bottom: 16px;
+        }
+
+        .module-header h4 span {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        .module-header h4 .form {
+            display: inline;
+        }
+
+        .module-header h4 .form .slt {
+            width: 200px;
+        }
+
+        .font-blue a {
+            color: #5584FF;
+        }
+
+        .fz {
+            font-size: 16px;
+        }
+
+        #list tr th {
+            width: 33.3%;
+        }
+
+        a {
+            outline: none;
+        }
+
+        .nav_style li a {
+            background: #E7EEFF;
+            color: #5584FF;
+            border: 1px solid #E7EEFF;
+        }
+
+        .nav_style li a:hover {
+            border: 1px solid #4d7aeb;
+            background: #4d7aeb;
+            text-decoration: none;
+            color: #FFF;
+        }
+
+        .nav_style li.active a {
+            border: 1px solid #5584ff;
+            background: #5584ff;
+            text-align: center;
+            display: inline-block;
+            color: white;
+        }
+
+        h4.border {
+            border-bottom: 1px solid #E7EEFF;
+        }
+
+        .mr-2 {
+            margin-right: 1px;
+        }
+
+        .modal-dialog {
+            width: 70%;
+        }
+
+        .load {
+            width: 135px;
+        }
+
+        #list-three {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>业务数据</li>
+        <li>大命题数据</li>
+    </ol>
+    <div class="">
+        <div class="module-header">
+            <h4>数据范围
+                <span class="ml-10 icon-info"></span>
+                <form class="form ml-20" id="resume_form">
+                    <div class="form form-group">
+                        <select class="slt">
+                            <option value="">中移杭州信息技术有限公司</option>
+                            <option value="">用户组1</option>
+                            <option value="">用户组2</option>
+                        </select>
+                    </div>
+                </form>
+                <a class="btn-blue w80 pull-right download">下载数据</a>
+            </h4>
+        </div>
+        <div class="tile-content mt-20">
+            <p>当前数据:<span id="winDate"></span><span class="ml-20 font-blue"><a href="date_history.html">历史数据</a></span>
+            </p>
+            <div class="table-responsive">
+                <h5 class="fz mb-20">大命题数据总览</h5>
+                <table id="list" class="table table-indent text-center table-bordered-noheader">
+                    <thead>
+                    <tr>
+                        <th>中移杭州信息技术有限公司</th>
+                        <th>昨日数据</th>
+                        <th>累计</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr>
+                        <td>大命题发布数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>打榜总次数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>打榜总人数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>评审中项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>评审通过项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已入孵项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>远程入孵</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>入驻孵化器</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h5 class="fz mb-20">大命题详表</h5>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="all">
+                        <table id="list-one" class="table table-indent text-center table-bordered-noheader">
+                            <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>类型</th>
+                                <th>发布命题数</th>
+                                <th>打榜总次数</th>
+                                <th>打榜总人数</th>
+                                <th>评审中项目</th>
+                                <th>评审通过项目数</th>
+                                <th>已入孵项目数</th>
+                                <th>远程入孵</th>
+                                <th>入驻孵化器</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="itemContainer-one">
+                            <tr>
+                                <td>财务公司</td>
+                                <td>专业</td>
+                                <td>79</td>
+                                <td>1230丨1230</td>
+                                <td>1230丨1230</td>
+                                <td>1230丨1230</td>
+                                <td>1230丨1230</td>
+                                <td>1230丨1230</td>
+                                <td>1230丨1230</td>
+                                <td>1230丨1230</td>
+                                <td><a class="look" data-toggle="modal" href="">查看</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="data-page text-center page">
+                <div class="holder pagination" id="pagination"></div>
+            </div>
+
+            </di v>
+            <!--赋值弹窗      start-->
+            <div class="modal fade dialog-lg" id="myModal" data-backdrop="static">
+                <div class="modal-dialog width_480">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title text-left">大命题打榜详情</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center loaded">
+                                <img src="../../assets/imgs/load.gif" class="load"/>
+                                <p>检索中，请稍候.....</p>
+                            </div>
+                            <table id="list-three" class=" table table-indent text-center table-bordered-noheader">
+                                <thead>
+                                <tr>
+                                    <th>命题ID</th>
+                                    <th>命题名称</th>
+                                    <th>类型</th>
+                                    <th>领域</th>
+                                    <th>打榜ID</th>
+                                    <th>打榜人</th>
+                                    <th>公司</th>
+                                    <th>联系电话</th>
+                                    <th>打榜时间</th>
+                                    <th>成果提交</th>
+                                    <th>打榜状态</th>
+                                </tr>
+                                </thead>
+                                <tbody id="itemContainer-one">
+                                <tr>
+                                    <td>1</td>
+                                    <td>大镖师</td>
+                                    <td>创新</td>
+                                    <td>业务</td>
+                                    <td>79</td>
+                                    <td>刘松</td>
+                                    <td>北京</td>
+                                    <td>139-1234-1234</td>
+                                    <td>2016-07-08</td>
+                                    <td>是</td>
+                                    <td>正在打榜</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <button class="btn-blue w80" id="sure-one">数据下载</button>
+                                <button class="btn-default w80" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/lib/require.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script>
+        require(["common", "bootstrap", "jqPaginator", "MyDate"], function (c, b, j, m) {
+            //赋值时间
+            function getDateStr() {
+                new m.MyDate().show('winDate')
+            }
+
+            setInterval(getDateStr, 1000);
+            $('.look').on('click', function () {
+                $('#myModal').modal('show');
+                $.ajax({
+                    url: 'img.json',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('.loaded').fadeOut(function () {
+                            $("#list-three").fadeIn(1000);
+                        });
+                    }
+                });
+            })
+            //	分页  start
+            var totalPages = 4;
+            if (totalPages == 0) {
+                var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+                $('#itemContainer').append(html);
+            } else {
+                $.jqPaginator('#pagination', {
+                    totalPages: totalPages,
+                    visiblePages: 5,
+                    currentPage: 1,
+                    onPageChange: function (n) {
+                        /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                         +'&supportSort='+$("[name='supportSort'] :selected").val()
+                         +'&moneySort='+$("[name='moneySort'] :selected").val()
+                         +'&pageNum=' + n;  */
+                        //							$("[name='pageNum']").val(n);
+                        //							$("#search_form").submit();
+                    }
+                });
+            }
+            //	 分页   end
+        });
+    </script>
+
+</body>
+</html>

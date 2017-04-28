@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="83">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>中国移动双创平台-自发创意-查看详情</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .module-header h4 span {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        .module-header {
+            border-bottom: 2px solid #eceff9;
+        }
+
+        .module-header h4 {
+            border-bottom: none;
+        }
+
+        .proList li i {
+            display: inline-block;
+            padding-right: 10px;
+            font-style: normal;
+        }
+
+        .proList h4 {
+            font-weight: bold;
+            padding: 25px 0px;
+        }
+
+        .update-status select {
+            background: transparent;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2px;
+            padding: 3px 10px;
+            width: 120px;
+            height: 30px;
+        }
+
+        #editPro {
+            margin-bottom: 0;
+            height: 30px;
+            width: 80px;
+            line-height: 28px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>项目审批</li>
+        <li>自发式创意审批管理</li>
+        <li>查看详情</li>
+    </ol>
+    <div class="tile">
+        <div class="module-header clearfix">
+            <h4 class="pull-left">ID:12345654323</h4>
+            <a class="btn-default w80 pull-right" href="">返回</a>
+        </div>
+        <div class="tile-content">
+            <div>
+                <ul class="proList mt-40 con-detail">
+                    <li>
+                        <span>项目名称：</span>
+                        <span>大镖师</span>
+                    </li>
+                    <li>
+                        <span>项目简介：</span>
+                        <span>专属于快递员的派件神器，为快递员提供一键拨打多用户电话、发短信，并通过USSD发送名片提醒的智能服务工具。</span>
+                    </li>
+                    <li>
+                        <span>项目宣语：</span>
+                        <span>大家都喜欢的导师，博学多才，有很多独创性的见解</span>
+                    </li>
+                    <li>
+                        <span>项目类别：</span>
+                        <span>创新</span>
+                    </li>
+                    <li>
+                        <span>项目行业：</span>
+                        <span><i>网络</i><i>二级标签</i></span>
+                    </li>
+                    <li>
+                        <span>项目意向：</span>
+                        <span>入孵</span>
+                    </li>
+                    <li>
+                        <span>项目LOGO：</span>
+                        <span><img src="../../assets/imgs/project-logo.png"></span>
+                    </li>
+                    <h4>产品分析</h4>
+                    <li>
+                        <span>市场分析：</span>
+                        <span>真实的课程，真实展示到底什么事交互？如何称得上是合格的交互？交互设计师该有哪些产出？</span>
+                    </li>
+                    <li>
+                        <span>产品定位：</span>
+                        <span>大家都喜欢的导师，博学多才，有很多独创性的见解</span>
+                    </li>
+                    <li>
+                        <span>产品功能：</span>
+                        <span>真实的课程，真实展示到底什么事交互？如何称得上是合格的交互？交互设计师该有哪些产出？</span>
+                    </li>
+                    <li>
+                        <span>竞品分析：</span>
+                        <span>真实的课程，真实展示到底什么事交互？如何称得上是合格的交互？交互设计师该有哪些产出？</span>
+                    </li>
+                    <h4>团队构成：</h4>
+                    <li>
+                        <span>团队构成：</span>
+                        <span>团队名称</span>
+                    </li>
+                    <h4>资源申请：</h4>
+                    <li>
+                        <span>经费需求：</span>
+                        <span>大家都喜欢的导师，博学多才，有很多独创性的见解</span>
+                    </li>
+                    <h4>项目资料：</h4>
+                    <li>
+                        <span>项目资料：</span>
+                        <span>
+                				<a href="" class="jihuashu mr-20" title="山东移动开放大保镖项目商业计划书1_65版本.pdf">山东移动开放大保镖项目商业计划书1_65版本.pdf</a>
+                			</span>
+                    </li>
+                    <li>
+                        <span></span>
+                        <div>
+                            <span class="mr-15" id="editPro">项目修改</span>
+                            <button class="btn-orange w80 mr-15" id="examine">状态审批</button>
+                            <a href="downfile">下载附件</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--状态审批      start-->
+<div class="modal fade dialog-lg" role="dialog" id="examine-status" aria-labelledby="状态审批" aria-hidden="true">
+    <div class="modal-dialog width_480">
+        <div class="modal-content bd-muted">
+            <div class="modal-header bg-muted bd-muted">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title text-left">状态审批</h5>
+            </div>
+            <div class="modal-body">
+                <p class="text-left">是否确认对以下自发式创意进行状态变更：</p>
+                <div class="table-responsive">
+                    <table id="update-list" class="table table-bordered text-center">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th width="60%">名称</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group update-status text-left">
+                    <label for="updateStatus">状态变更为：</label>
+                    <select class="btn btn-sm" name="updateStatus" id="updateStatus">
+                    </select>
+                </div>
+                <p class="text-left">操作人员：XXX</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-blue w80" id="sure">确定</button>
+                <button class="btn-default w80" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!--状态审批     end-->
+<!--提示-->
+<div class="modal fade dialog-sm" id="tip" aria-labelledby="提示" aria-hidden="true">
+    <div class="modal-dialog width_480">
+        <div class="modal-content bd-muted">
+            <div class="modal-header bg-muted bd-muted">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span>
+                </button>
+                <h5 class="modal-title text-left">提示</h5>
+            </div>
+            <div class="modal-body text-center tipTxt">
+
+            </div>
+            <div class="modal-footer">
+                <a class="btn-blue w80" data-dismiss="modal">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+
+    require(["common", "bootstrap"], function (c, b) {
+        $('.downfile').click(function () {
+
+        })
+        //状态审批
+        $('#examine').on('click', function () {
+            $('#examine-status').modal('show');
+        });
+        //确定
+        $('#sure').click(function () {
+            $('#examine-status').modal('hide');
+            var id = '';
+            var checkStatus = $('#updateStatus').val();
+            $.ajax({
+                type: "",
+                url: "",
+                data: {
+                    idsArr: idsArr,
+                    checkStatus: checkStatus
+                }
+            }).then(function (data) {
+
+            }, function () {
+
+            });
+        })
+    });
+</script>
+</body>
+</html>

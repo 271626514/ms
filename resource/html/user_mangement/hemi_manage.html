@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="89">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>和米管理</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .red {
+            color: #ff5021;
+        }
+
+        .gray {
+            color: #999;
+        }
+
+        .gray:hover {
+            color: #999;
+        }
+
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        .resume label {
+            width: 40px;
+        }
+
+        .resume .choose span {
+            margin-right: 0;
+        }
+
+        .btn-default.w120 {
+            font-size: 14px;
+            width: 120px;
+            height: 30px;
+            line-height: 28px
+        }
+
+        .btns {
+            background-color: #fbfdfe;
+            border: 1px solid #e6e6e6;
+            border-top: none;
+            padding: 10px;
+        }
+
+        .btns button {
+            font-size: 14px;
+            height: 30px;
+            line-height: 17px;
+        }
+
+        .icon-info {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle
+        }
+
+        /*搜索框     start*/
+        input[type='text'].form-control {
+            display: inline-block;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2px;
+            padding: 3px 10px;
+            width: 513px;
+            height: 30px;
+        }
+
+        .resize {
+            font-size: 12px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .searchForm {
+            background: #f6f7fb;
+            padding: 15px 20px;
+        }
+
+        /*搜索框     end*/
+        /*弹窗   start*/
+        .dialog-sm .w560 {
+            width: 560px;
+        }
+
+        .modal-body > .table thead tr {
+            height: 37px;
+        }
+
+        .table > tbody > tr > td, .modal-body .table > thead > tr > td {
+            line-height: 20px;
+        }
+
+        .modal-body .many {
+            max-height: 250px;
+            overflow: auto;
+        }
+
+        input.hemihandle {
+            display: inline-block;
+        }
+
+        input.hemihandle.w120 {
+            width: 120px;
+        }
+
+        input.hemihandle.w270 {
+            width: 270px;
+        }
+
+        label.error {
+            margin-left: 70px;
+        }
+
+        /*弹窗     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>用户管理</li>
+        <li>和米管理</li>
+    </ol>
+    <div class="">
+        <div class="module-header"><h4>和米管理<span class="ml-10 icon-info"></span></h4></div>
+        <div class="tile-content mt-10">
+            <p class="red">仅提供对和创空间的用户管理，如需对管理平台的用户进行管理请通过超级管理员操作。</p>
+            <div class="form-group searchForm" id="search_space">
+                <input type="text" id="search_key" class="form-control" autocomplete="off" value=""
+                       placeholder="请输入需要检索的用户手机号码">
+                <a class="btn-blue w80" id="search_a" href="javascript:void(0);">检索</a>
+                <a class="resize ml-20" id="batcimport" href="">批量导入</a>
+            </div>
+            <!--<p class="gray-text" id="default_text">总计<span>XX</span>条记录，当前为您显示第<span>1-20</span>条</p>-->
+            <!--<p class="gray-text" id="search_text" style="display: none;">已为您找到<span>XXXXX</span>条记录</p>-->
+            <div class="table-responsive resume">
+                <table id="list" class="table text-center table-bordered-noheader mb-0">
+                    <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>账号ID</th>
+                        <th>姓名</th>
+                        <th>手机</th>
+                        <th>公司</th>
+                        <th>和米</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr data-id="1">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="2">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="3">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="4">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>17777777777</td>
+                        <td>张三和张四</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="5">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="6">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="7">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="8">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="9">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>1234</td>
+                    </tr>
+                    <tr data-id="10">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="11">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="12">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="13">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="14">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="15">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    <tr data-id="16">
+                        <td class="choose"><label><span></span></label></td>
+                        <td>21231412123</td>
+                        <td>张三和张四</td>
+                        <td>17777777777</td>
+                        <td>中国移动通信有限公司在线公司分公司</td>
+                        <td>12345678900</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btns mb-20">
+                    <a class="btn-default w80 mr-10 all" id="all">全选</a>
+                    <a class="btn-default w120" href="#" id="hemiadd" data-id="1">批量增加</a>
+                    <a class="btn-default w120" href="#" id="hemiminus" data-id="2">批量扣减</a>
+                    <span class="gray-text text-info" style="display: none;">已选中<span>xxx</span>条记录</span>
+                    <!--隐藏请加类名 hidden-->
+                </div>
+            </div>
+            <div class="data-page text-center page">
+                <div class="holder pagination" id="pagination1"></div>
+            </div>
+
+            <!--批量增加、扣减弹窗      start-->
+            <div class="modal fade dialog-sm" id="hemihandle-modal" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">和米管理</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="many">
+                                <table class="table text-center table-bordered-noheader mb-10">
+                                    <thead>
+                                    <tr>
+                                        <th>用户ID</th>
+                                        <th>手机</th>
+                                        <th>姓名</th>
+                                        <th>和米</th>
+                                        <th>经验值</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--<tr>-->
+                                    <!--<td>12345678</td>-->
+                                    <!--<td>17777777777</td>-->
+                                    <!--<td>张三</td>-->
+                                    <!--<td>100000</td>-->
+                                    <!--<td>122</td>-->
+                                    <!--</tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <form class="form" id="resume_form">
+                                <div class="text-left" style="position: relative"><span class="money">增加金额：</span><input
+                                        class="form-control hemihandle w120" id="money" name="money"
+                                        placeholder="请输入金额"/><span
+                                        style="position: absolute;top: 8px;left: 200px;"> 元</span></div>
+                                <div class="text-left mt-10"><span class="cause">增加原因：</span><input
+                                        class="form-control hemihandle w270" id="cause" name="cause"
+                                        placeholder="请输入原因"/></div>
+                                <p class="text-left">
+                                    操作人员：<span>sijiaqing001/司家庆</span>
+                                </p>
+                                <div class="mt-20">
+                                    <button class="btn-blue w80" id="hemihandle-sure">确定</button>
+                                    <button class="btn-default w80" data-dismiss="modal">取消</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--批量增加、扣减弹窗     end-->
+            <!--没有选择操作对象-->
+            <div class="modal fade dialog-sm" id="reMess" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">提示</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center" id="message-one">没有可操作的对象。</p>
+                            <p class="text-center">请先在列表中勾选需要操作的对象后再进行操作。</p>
+                            <div class="mt-20">
+                                <button class="btn-blue w80 reload" data-dismiss="modal">确定</button>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--没有选择操作对象 end-->
+            <!--操作成功 success     start-->
+            <div class="modal fade dialog-sm" id="change_success" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">提示</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="green mt-15 mb-20">操作成功！</h3>
+                            <div class="mt-20">
+                                <a class="btn-blue w80" data-dismiss="" id="success_sure">确定</a>
+                            </div>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--操作成功 success     end-->
+            <!--操作失败 error     start-->
+            <div class="modal fade dialog-sm" id="change_error" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">提示</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="green mt-15 mb-20">增加失败！</h3>
+                            <p>Error Code：XXXXXXXXXXXXXXXXX</p>
+                            <div class="mt-20">
+                                <a class="btn-blue w80" data-dismiss="" id="error_sure">确定</a>
+                            </div>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--操作失败 error     end-->
+        </div>
+    </div>
+</div>
+
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "jqPaginator", "validate"], function () {
+        //  分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>暂无大命题</p>";
+            $('#itemContainer').append(html);
+        } else {
+            $.jqPaginator('#pagination1', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+                    /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                     +'&supportSort='+$("[name='supportSort'] :selected").val()
+                     +'&moneySort='+$("[name='moneySort'] :selected").val()
+                     +'&pageNum=' + n;  */
+//						$("[name='pageNum']").val(n);
+//						$("#search_form").submit();
+                }
+            });
+        }
+        //	 分页   end
+        // 	搜索     start
+        // 	检索
+        $("#search_a").on("click", function () {
+//		$("#search_text").css("display","block");
+//		$("#default_text").css("display","none");
+            window.location.href = "";
+        })
+        $('#search_space').keydown(function (e) {
+            if (e.keyCode == 13) {
+//			$("#search_text").css("display","block");
+//			$("#default_text").css("display","none");
+                window.location.href = "";//处理事件
+            }
+        });
+
+        // 批量导入
+        $("#batcimport").on("click", function () {
+            $.ajax({
+                url: 'json.json',
+                type: 'post',
+                data: {},
+                dataType: '',
+                success: function (data, num, val, code) {
+                    if (data.msg == "success") {
+                        $("#search_key").val = val;
+                    } else {
+                        if (num > 100) {
+                            alert("单次最多检索100条记录");
+                        } else {
+                            $("#change_error").modal("show");
+                            $("#change_error h3").text("导入失败！");
+                            $("#change_error a").attr({
+                                "href": "",
+                                "data-dismiss": "modal"
+                            });
+                            $("#change_error p").text("Error Code：code");
+                        }
+                    }
+                },
+                error: function () {
+                    alert('操作失败：Error CodeXXXX');
+                    window.location.href = "";
+                }
+            })
+        })
+        //	搜索     end
+        //	全选、全不选   start
+        $("#all").click(function () {
+            if (isAllChecked($('tbody tr span'))) {
+                $('tbody tr span').removeAttr("class");
+                $('#all').text('全选');
+                showNum(0);
+            } else {
+                $('tbody tr span').attr('class', 'current');
+                $('#all').text('取消');
+                showNum($("tbody .current").length);
+            }
+        });
+        //	全选、全不选   end
+        //点击任意一条选择框，去掉或加上全选按钮
+        $('#itemContainer').delegate('.choose span', 'click', function () {
+            var status = $(this).attr('class');
+            if (status == undefined || status == '') {//如果为假
+                $(this).attr('class', 'current');
+                showNum($(this).parents("tbody").find(".current").length);
+                isAllChecked($('tbody tr span')) ? $('#all').text('取消') : $('#all').text('全选');
+            } else {
+                $(this).removeAttr("class");
+                $('#all').text('全选');
+                showNum($(this).parents("tbody").find(".current").length);
+            }
+        });
+        //是否全选
+        function isAllChecked($inputs) {
+            var result = 'current';
+            for (var i = 0, j = $inputs.length; i < j; i++) {
+                if (!$inputs.eq(i).attr('class')) {
+                    result = '';
+                    break;
+                }
+            }
+            return result;
+        }
+
+        //显示或隐藏选中的条目数
+        function showNum(num) {
+            if (num == 0) {
+                $('.text-info').css('display', 'none');
+            } else {
+                $('.text-info span').text(num);
+                $('.text-info').css('display', 'inline-block');
+            }
+        };
+        //点击批量增加、扣减按钮     start
+        $("#hemiadd,#hemiminus").on('click', function () {//批量操作
+            var conbox = $("#hemihandle-modal tbody");
+            var con = "";
+            var checknum = $('tbody').find(".current");
+            var dataID = $(this).attr("data-id");
+            if (checknum.length == 0) {      //未有选中
+                $("#reMess").modal('show');
+            } else {
+                modalContent(checknum, con, conbox, dataID);
+            }
+        });
+        //点击批量增加、扣减按钮     end
+        //  和米操作     start
+        $("#resume_form").validate(validateDate);
+        $("#hemihandle-sure").on("click", function () {
+            var validator = $("#resume_form").validate(validateDate);
+            var kinds = $(this).attr("data-id");
+            var arr = [];
+            var checknum = $('tbody').find(".current");
+            getIds(checknum, arr);//获取已选项的id
+            $("#hemihandle-modal").modal("hide");
+            if (validator.form()) {
+                alert("1234567");
+                $.ajax({
+                    url: 'json.json',
+                    type: 'post',
+                    data: {
+                        "handlemoney": $("#money").val(),
+                        "handlecause": $("#cause").val(),
+                        "id": arr,
+                        "type": kinds
+                    },
+                    dataType: '',
+                    success: function (data, code, kinds) {
+                        if (kinds == 1) {
+                            if (data.msg == "success") {
+                                $("#change_success").modal("show");
+                                $("#change_success a").attr({
+                                    "href": "hemi_manage.html",
+                                    "data-dismiss": ""
+                                });
+                            } else {
+                                $("#change_error").modal("show");
+                                $("#change_error h3").text("操作失败！");
+                                $("#change_error a").attr({
+                                    "href": "",
+                                    "data-dismiss": "modal"
+                                });
+                                $("#change_error p").text("Error Code：code");
+                            }
+                        } else {
+                            if (data.msg == "success") {
+                                $("#change_success").modal("show");
+                                $("#change_success a").attr({
+                                    "href": "hemi_manage.html",
+                                    "data-dismiss": ""
+                                });
+                            } else {
+                                $("#change_error").modal("show");
+                                $("#change_error h3").text("操作失败！");
+                                $("#change_error a").attr({
+                                    "href": "",
+                                    "data-dismiss": "modal"
+                                });
+                                $("#change_error p").text("Error Code：code");
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert('操作失败：Error CodeXXXX');
+                        window.location.href = "";
+                    }
+                })
+            }
+
+        });
+        //  和米操作     end
+    });
+
+    //弹框显示，并自动加载里面的内容
+    function modalContent(checknum, con, conbox, dataID) {//参数  （被选中的项  ，自动加载的内容   ，  加载到底位置 ）
+        if (dataID == 1) {
+
+            for (var i = 0; i < checknum.length; i++) {
+                con += "<tr><td>" + checknum.eq(i).parents("tr").children("td").eq(1).text() + "</td><td>" +
+                        checknum.eq(i).parents("tr").children("td").eq(3).text() + "</td><td>" +
+                        checknum.eq(i).parents("tr").children("td").eq(2).text() + "</td><td>" +
+                        checknum.eq(i).parents("tr").children("td").eq(5).text() + "</td><td>12341234</td></tr>"
+            }
+            $("#hemihandle-modal thead").html("<tr><td>用户ID</td><td>手机</td><td>姓名</td><td>和米</td><td>经验值</td></tr>");
+            $("#hemihandle-modal .money").text("增加金额：");
+            $("#hemihandle-modal .cause").text("增加原因：");
+        } else {
+            for (var i = 0; i < checknum.length; i++) {
+                con += "<tr><td>" + checknum.eq(i).parents("tr").children("td").eq(1).text() + "</td><td>" +
+                        checknum.eq(i).parents("tr").children("td").eq(3).text() + "</td><td>" +
+                        checknum.eq(i).parents("tr").children("td").eq(2).text() + "</td><td>" +
+                        checknum.eq(i).parents("tr").children("td").eq(5).text() + "</td></tr>"
+            }
+            $("#hemihandle-modal thead").html("<tr><td>用户ID</td><td>手机</td><td>姓名</td><td>和米</td></tr>");
+            $("#hemihandle-modal .money").text("扣减金额：");
+            $("#hemihandle-modal .cause").text("扣减原因：");
+        }
+        $("#hemihandle-modal #hemihandle-sure").attr("data-id", dataID);
+        conbox.html(con);//弹框内容自动加载
+        $("#hemihandle-modal").modal('show');//项目终审弹框隐藏
+    }
+    //获取已选项的id
+    function getIds(checknum, arr) {//参数  （被选中的项   ， id数组）
+        for (var i = 0; i < checknum.length; i++) {
+            var checkedId = checknum.eq(i).parents("tr").children("td").eq(1).text();
+            arr.push(checkedId);//每一个被选中的项   id加入数组
+        }
+    }
+    ;
+</script>
+</body>
+</html>

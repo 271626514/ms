@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="101">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>审批管理</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        .nav_style {
+            border-bottom: 1px solid #e7eeff;
+        }
+
+        .nav_style input {
+            width: 220px;
+            padding-left: 10px;
+            height: 30px;
+            font-size: 12px;
+            line-height: 28px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+
+        .table-indent th:first-child, .table-indent tr > td:first-child {
+            text-indent: 0;
+        }
+
+        .resume .choose span {
+            margin-right: 0;
+        }
+
+        .resume label {
+            width: auto;
+            display: inline;
+        }
+
+        .por {
+            position: relative;
+        }
+
+        .icon-search {
+            position: absolute;
+            display: inline-block;
+            right: 8px;
+            top: 7px;
+            width: 15px;
+            height: 15px;
+            background: url(../../assets/imgs/icon-search.png) 0 0 no-repeat;
+        }
+
+        .nav_style {
+            margin-bottom: 20px;
+        }
+
+        .nav_style > li {
+            width: 102px;
+            height: 36px;
+            text-align: center;
+            border: none;
+            background-color: #e7eeff;
+        }
+
+        .nav_style > li.active, .nav_style > li.active > a, .nav_style > li > a:focus, .nav_style > li > a:hover {
+            background-color: #5584ff;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /*.nav_style>li.active a{color: #fff;}*/
+        .nav_style > li:first-child {
+            margin-right: 2px;
+        }
+
+        .nav_style > li:last-child {
+            background-color: #fff;
+            width: auto;
+        }
+
+        .nav_style > li > a {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .searchTitle {
+            color: #999;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .table thead tr {
+            height: 40px;
+        }
+
+        .table > thead > tr > th {
+            line-height: 24px;
+        }
+
+        .table > tbody > tr > td.green {
+            color: #5dd599;
+        }
+
+        .table > tbody > tr > td.gray {
+            color: #999;
+        }
+
+        .btn-default {
+            color: #666;
+        }
+
+        .btn-default.w80 {
+            line-height: 17px;
+        }
+
+        .btn-default.active, .btn-default:active, .btn-default:hover {
+            color: #666;
+        }
+
+        .resume .choose span.check {
+            background: url(../../assets/imgs/checkbg.png) no-repeat 0 0;
+        }
+
+        .resume .choose span {
+            background: url(../../assets/imgs/checkbg.png) no-repeat 0 -15px;
+        }
+
+        .resume .choose span.checked {
+            background: url(../../assets/imgs/checkedbg.png) no-repeat 0 0;
+        }
+
+        /*弹窗   start*/
+        .dialog-sm .width_480 {
+            width: 480px;
+        }
+
+        .modal-body .content {
+            max-height: 150px;
+            overflow: auto;
+        }
+
+        .user-list p {
+            height: 28px;
+            line-height: 28px;
+            padding: 0 9px;
+            margin-right: 12px;
+            font-size: 12px;
+        }
+
+        .form-control {
+            display: inline-block;
+            width: 290px;
+        }
+
+        p .red {
+            font-size: 12px;
+            color: #ff5021;
+        }
+
+        h5.modal-title {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .modal-content p {
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .table {
+            border: 1px solid #eef2f5;
+        }
+
+        .table tbody > tr {
+            border-bottom: 1px solid #eef2f5;
+        }
+
+        .err {
+            text-align: left;
+            width: 100%;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .modal-body .content {
+            max-height: 240px;
+        }
+
+        .minH {
+            min-height: 162px;
+        }
+
+        .minH p {
+            margin-top: 60px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        /*弹窗     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>资源管理</li>
+        <li>审批管理</li>
+    </ol>
+    <div class="">
+        <div class="module-header">
+            <h4>审批管理</h4>
+        </div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav_style mt-20" role="tablist">
+            <li role="presentation" class="active radius_left pull-left">
+                <a href="#cfList" aria-controls="myself" role="tab" data-toggle="tab">全部</a>
+            </li>
+            <li role="presentation" class="radius_right pull-left">
+                <a href="#myList" aria-controls="myin" role="tab" data-toggle="tab">查看未审批</a>
+            </li>
+            <li class="pull-right por">
+                <input type="text" placeholder="按名称搜索"/>
+                <i class="icon-search"></i>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="cfList">
+                <div class="tile-content resume">
+                    <p class="searchTitle">总计 <span class="red">41</span> 条符合条件的纪录，本页显示 第 <span class="red">1-20</span>
+                        条条数据</p>
+                    <table id="list" class="table table-indent text-center table-bordered-noheader">
+                        <thead>
+                        <th><label class="choose"><span class="all"></span>全选</label></th>
+                        <th>申请工单号</th>
+                        <th>项目ID</th>
+                        <th>项目名称</th>
+                        <th>资源类别</th>
+                        <th>资源明细</th>
+                        <th>费用预估</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                        </thead>
+                        <tbody id="itemContainer">
+                        <tr data-id="1">
+                            <td class="choose"><label><span class="checked"></span>1</label></td>
+                            <td>201405268234</td>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td>1空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td>已审批</td>
+                            <td><a href="right_detail.html">查看</a></td>
+                        </tr>
+                        <tr data-id="2">
+                            <td class="choose"><label><span></span>2</label></td>
+                            <td>201405268234</td>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td>1空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="green">未审批</td>
+                            <td><a href="right_detail.html">查看</a><a class="examine" data-target="#examine-modal"
+                                                                     data-toggle="modal">审批</a></td>
+                        </tr>
+                        <tr data-id="3">
+                            <td class="choose"><label><span class="checked"></span>3</label></td>
+                            <td>201405268234</td>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td>1空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="gray">已开通</td>
+                            <td><a href="right_detail.html">查看</a></td>
+                        </tr>
+                        <tr data-id="4">
+                            <td class="choose"><label><span></span>4</label></td>
+                            <td>201405268234</td>
+                            <td>12313231</td>
+                            <td>dd大镖师</td>
+                            <td>空间服务</td>
+                            <td>工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="green">未审批</td>
+                            <td><a href="right_detail.html">查看</a><a class="examine" data-target="#examine-modal"
+                                                                     data-toggle="modal">审批</a></td>
+                        </tr>
+                        <tr data-id="5">
+                            <td class="choose"><label><span></span>5</label></td>
+                            <td>201405268234</td>
+                            <td>12313231</td>
+                            <td>qq大镖师</td>
+                            <td>空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="green">未审批</td>
+                            <td><a href="right_detail.html">查看</a><a class="examine" data-target="#examine-modal"
+                                                                     data-toggle="modal">审批</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <div class="examine_btn">
+                        <a class="btn btn-default w80 mr-15 examine disabled" data-target="#examine-modal"
+                           data-toggle="modal">批量审批</a><span class="gray-text">已选中 X条记录</span>
+                    </div>
+                </div>
+                <div class="data-page text-center page">
+                    <div class="holder pagination"></div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="myList">
+                <div class="tile-content resume">
+                    <p class="searchTitle">总计 <span class="red">41</span> 条符合条件的纪录，本页显示 第 <span class="red">1-20</span>
+                        条条数据</p>
+                    <table id="list" class="table table-indent text-center table-bordered-noheader">
+                        <thead>
+                        <th><label class="choose"><span class="all"></span>全选</label></th>
+                        <th>申请工单号</th>
+                        <th>项目ID</th>
+                        <th>项目名称</th>
+                        <th>资源类别</th>
+                        <th>资源明细</th>
+                        <th>费用预估</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                        </thead>
+                        <tbody id="itemContainer">
+                        <tr data-id="1">
+                            <td class="choose"><label><span class="checked"></span>1</label></td>
+                            <td>101405</td>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td>1空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td>已审批</td>
+                            <td><a href="right_detail.html">查看</a></td>
+                        </tr>
+                        <tr data-id="2">
+                            <td class="choose"><label><span></span>2</label></td>
+                            <td>201405268</td>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td>1空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="green">未审批</td>
+                            <td><a href="right_detail.html">查看</a><a class="examine" data-target="#examine-modal"
+                                                                     data-toggle="modal">审批</a></td>
+                        </tr>
+                        <tr data-id="3">
+                            <td class="choose"><label><span class="checked"></span>3</label></td>
+                            <td>301405268234</td>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td>1空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="gray">已开通</td>
+                            <td><a href="right_detail.html">查看</a></td>
+                        </tr>
+                        <tr data-id="4">
+                            <td class="choose"><label><span></span>4</label></td>
+                            <td>401405268234</td>
+                            <td>12313231</td>
+                            <td>dd大镖师</td>
+                            <td>空间服务</td>
+                            <td>工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="green">未审批</td>
+                            <td><a href="right_detail.html">查看</a><a class="examine" data-target="#examine-modal"
+                                                                     data-toggle="modal">审批</a></td>
+                        </tr>
+                        <tr data-id="5">
+                            <td class="choose"><label><span></span>5</label></td>
+                            <td>501405268234</td>
+                            <td>12313231</td>
+                            <td>qq大镖师</td>
+                            <td>空间服务</td>
+                            <td>1工位：5人；</td>
+                            <td>15000元</td>
+                            <td class="green">未审批</td>
+                            <td><a href="right_detail.html">查看</a><a class="examine" data-target="#examine-modal"
+                                                                     data-toggle="modal">审批</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <div class="examine_btn">
+                        <a class="btn btn-default w80 mr-15 examine disabled" data-target="#examine-modal"
+                           data-toggle="modal">批量审批</a><span class="gray-text">已选中 X条记录</span>
+                    </div>
+                </div>
+                <div class="data-page text-center page">
+                    <div class="holder pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile-content mt-10">
+        <!--赋值弹窗      start-->
+        <div class="modal fade dialog-sm" id="examine-modal" data-backdrop="static">
+            <div class="modal-dialog width_480">
+                <div class="modal-content bd-muted">
+                    <div class="modal-header bg-muted bd-muted">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title text-left">申请工单审批</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-left mb-10">请审批以下申请工单</p>
+                        <div class="form-group user-list text-left content">
+                            <table id="list" class="table table-indent text-center">
+                                <thead>
+                                <th>申请工单号</th>
+                                <th>项目名称</th>
+                                <th>资源明细</th>
+                                </thead>
+                                <tbody id="tableContainer">
+                                <!--<tr>
+                                    <td>201405268234</td>
+                                    <td>大镖师大镖师大镖师大镖师</td>
+                                    <td>1工位：5人；</td>
+                                </tr>-->
+                                </tbody>
+                            </table>
+                            <div class="form-group">
+                                <input type="radio" checked="checked" id="pass" name="pass"/>
+                                <label for="pass">
+                                    <span class="ml-10">审批通过</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" id="refuse" name="pass"/>
+                                <label for="refuse">
+                                    <span class="ml-10">拒绝申请</span>
+                                </label>
+                                <input type="text" placeholder="请输入审批意见"/>
+                            </div>
+                            <div class="err red">创建失败，Error Code：<span>XXXXX</span></div>
+                        </div>
+                        <p class="red text-left" id="warn1"></p>
+                        <p class="red text-align" id="return"></p>
+                        <div>
+                            <button class="btn-blue w80" id="sure" data-target="#done" data-toggle="modal">确定</button>
+                            <button class="btn-default w80" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <!--赋值弹窗     end-->
+        <div class="modal fade dialog-sm" id="done" data-backdrop="static">
+            <div class="modal-dialog width_480">
+                <div class="modal-content bd-muted">
+                    <div class="modal-header bg-muted bd-muted">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title text-left">提示</h5>
+                    </div>
+                    <div class="modal-body text-center minH">
+                        <p>审批已完成!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn-blue w80" data-dismiss='modal'>确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+
+<script>
+    require(["common", "bootstrap", "jqPaginator"], function () {
+        var s = $('thead span').attr('class');
+        checklis();
+        check();
+
+//	分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+            $('#itemContainer').append(html);
+        } else {
+            $.jqPaginator('.pagination', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+                    /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                     +'&supportSort='+$("[name='supportSort'] :selected").val()
+                     +'&moneySort='+$("[name='moneySort'] :selected").val()
+                     +'&pageNum=' + n;  */
+//							$("[name='pageNum']").val(n);
+//							$("#search_form").submit();
+                }
+            });
+        }
+//	 分页   end
+
+//   批量审批按钮
+        $('body').on('click', function () {
+            var hasCheck = $('.tab-pane.active').find('tbody tr span');
+            for (var i = 0, j = hasCheck.length; i < j; i++) {
+                if (hasCheck.eq(i).hasClass('check')) {
+                    $('.tab-pane.active').find('.examine_btn a').removeClass('disabled')
+                    break;
+                } else {
+                    $('.tab-pane.active').find('.examine_btn a').addClass('disabled')
+                }
+            }
+        });
+//		批量审批   start
+        $('.examines').click(function () {
+            var k = $(this).parents('.tab-pane').find('td span.check');
+            var con = $('#tableContainer');
+            var arr = [];
+            var num = [];
+            for (var j = 0; j < k.length; j++) {
+                arr.push(k.eq(j).parents('tr').data('id'));
+                num.push($(k[j]).parents('tr').find('td:eq(3)').html())
+            }
+            con.html('');
+            for (var i = 0; i < k.length; i++) {
+                var tr = "<tr><td>" + $(k[i]).parents('tr').find('td:eq(1)').html() + "</td><td>" + $(k[i]).parents('tr').find('td:eq(3)').html() + "</td><td>" + $(k[i]).parents('tr').find('td:eq(5)').html() + "</td></tr>"
+                $(con).append(tr);
+            }
+        });
+//	   批量审批    end
+//		单个审批   start
+        $('.examine').click(function () {
+            $(this).parents('tr').find('td span').addClass('check');
+            var k = $(this).parents('.tab-pane').find('td span.check');
+            var con = $('#tableContainer');
+            var arr = [];
+            var num = [];
+            for (var j = 0; j < k.length; j++) {
+                arr.push(k.eq(j).parents('tr').data('id'));
+                num.push($(k[j]).parents('tr').find('td:eq(3)').html())
+            }
+            con.html('');
+            for (var i = 0; i < k.length; i++) {
+                var tr = "<tr><td>" + $(k[i]).parents('tr').find('td:eq(1)').html() + "</td><td>" + $(k[i]).parents('tr').find('td:eq(3)').html() + "</td><td>" + $(k[i]).parents('tr').find('td:eq(5)').html() + "</td></tr>"
+                $(con).append(tr);
+            }
+        });
+//		单个审批   end
+        $("#sure").click(function () {
+            var id = $('.num').data('id');
+            var k = $('td .check');
+            var arr = [];
+            var dataObj = {};
+            for (var j = 0; j < k.length; j++) {
+                arr.push(k.eq(j).parents('tr').data('id'));
+            }
+            var checked = $("input[type=radio][name='pass']:checked");
+
+            if ($(checked).attr("id") == "pass") {
+                var text = $(checked).siblings("label").find("span").html();
+                dataObj = {
+                    arrObj: arr,
+                    text: text
+                }
+            } else {
+                var text = $(checked).siblings("label").find("span").html();
+                var val = $(checked).siblings("input").val();
+                dataObj = {
+                    arrObj: arr,
+                    text: text,
+                    val: val
+                }
+            }
+//  	console.log(dataObj)
+            sendId(dataObj);
+        })
+    });
+
+    //	全选 start
+    function checklis() {
+        $('.all').click(function () {
+            var status = $(this).hasClass('check');
+            var _this = $(this).parents('table').find('tbody tr span:not(.checked)');
+            if (!status) {
+                $(this).addClass('check');
+                _this.addClass('check');
+            } else {
+                $(this).removeClass('check');
+                _this.removeClass('check');
+            }
+        });
+        $('tbody').delegate('tr span', 'click', function () {
+            var status = $(this).hasClass('check');
+            var _this = $(this).parents('table').find('.all');
+            var _thisAll = $(this).parents('table').find('tbody tr span');
+            if (!status) {//如果为假，直接checkall勾去掉
+                _this.removeClass('check');
+            } else {
+                var allChecked = isAllChecked(_thisAll);
+                _this.addClass(allChecked);
+            }
+        });
+    }
+    function isAllChecked($inputs) {
+        var result = 'check';
+        for (var i = 0, j = $inputs.length; i < j; i++) {
+            if (!$inputs.eq(i).attr('class')) {
+                result = '';
+                break;
+            }
+        }
+        return result;
+    }
+    //	全选   end
+    //	显示选中条目   start
+    function check() {
+        var intLen = $('tbody span');
+        for (var i = 0; i < intLen.length; i++) {
+            $(intLen[i]).click(function () {
+                var k = $('tbody .check');
+                if ($(this).attr("class") == 'check') {
+                    $(this).removeClass('check');
+                } else {
+                    $(this).addClass('check');
+                }
+
+            })
+        }
+    }
+
+    function sendId(arr) {
+        $.ajax({
+            url: 'json.json',
+            type: 'post',
+            data: arr,
+            dataType: 'json',
+            success: function (data) {
+
+            },
+            error: function () {
+                console.log(arr);
+            }
+        });
+    }
+</script>
+</body>
+</html>

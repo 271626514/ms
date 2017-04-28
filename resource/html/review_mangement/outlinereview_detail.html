@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>查看详情</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /*打榜记录     start*/
+        .notes {
+            padding: 0 20px;
+        }
+
+        .notes h4 {
+            font-size: 16px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .notes .info {
+            font-size: 14px;
+        }
+
+        .btn-blue-nobg.w100 {
+            width: 100px;
+        }
+
+        a {
+            cursor: pointer
+        }
+
+        h4.db_ID {
+            background: #f6f7fd;
+            border-left: 4px solid #89acfc;
+            padding: 5px 0 7px 16px;
+            height: auto;
+        }
+
+        .db_detail {
+            border: 1px solid #eaecf5;
+            padding-top: 20px;
+        }
+
+        ul.proList li span.wid-at {
+            width: auto;
+        }
+
+        ul.proList li .teamer span {
+            margin-bottom: 0;
+        }
+
+        .is_pass {
+            margin-right: 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .title {
+            height: 30px;
+        }
+
+        .download {
+            color: #5584ff;
+            font-size: 14px;
+            width: 126px;
+        }
+
+        /*弹窗     start*/
+        .dialog-sm .w560 {
+            width: 560px;
+        }
+
+        .table-indent tr > td:first-child {
+            text-indent: 0;
+        }
+
+        .table > tbody > tr > td {
+            line-height: 20px;
+        }
+
+        .modal-body h4.conclusion {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form textarea.texeArea {
+            width: 586px;
+        }
+
+        .change label.error {
+            margin-left: 175px;
+        }
+
+        label.error {
+            margin-left: 0;
+        }
+
+        .change input[type=text] {
+            width: 270px;
+        }
+
+        .change input[type=tel] {
+            width: 270px;
+            border: 1px solid #ccc;
+            outline: 0;
+            border-radius: 2px;
+            padding: 3px 10px;
+            height: 30px;
+        }
+
+        .w270 {
+            width: 270px;
+            display: inline-block;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        .modal.in .modal-dialog.w655 {
+            width: 655px;
+        }
+
+        /*弹窗     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>评委管理</li>
+        <li>入孵线下评审</li>
+        <li>查看详情</li>
+    </ol>
+    <div class="tile mt-30">
+        <div class="module-header clearfix">
+            <h4>查看详情<a href="outlinereview_list.html" class="btn-default w80 pull-right">返回</a></h4>
+        </div>
+        <div class="tile-content">
+            <ul class="proList con-detail mt-40">
+                <li>
+                    <span>项目ID：</span>
+                    <div>
+                        123142141251251 <a href="outlineselfidea_detail.html">查看详情</a>
+                    </div>
+                </li>
+                <li>
+                    <span>命题名称：</span>
+                    <div>基于MRE和MRO数据联合分析的LTE邻区配置及切换性能分析与优化算法及工具</div>
+                </li>
+                <li>
+                    <span>命题类型：</span>
+                    <div>创业</div>
+                </li>
+                <li>
+                    <span>项目领域一：</span>
+                    <div>业务</div>
+                </li>
+                <li>
+                    <span>项目领域二：</span>
+                    <div>其它</div>
+                </li>
+                <li>
+                    <span>队长：</span>
+                    <div>张三</div>
+                </li>
+                <li>
+                    <span>所在公司：</span>
+                    <div>北京公司</div>
+                </li>
+                <li>
+                    <span>项目简介：</span>
+                    <div>
+                        提出背景：切换成功率、切换及时性、切换质量和切换性能直接或间接影响用户的LTE数据下载速率和VOLTE语音MOS值。现有的LTE邻区配置是基于地理位置、邻区对切换次数、或者单独基于MRO采样点进行，存在下列问题：1、地理位置不贴近终端实测，只能用于建网初期；2、邻区切换次数需要厂家私有counter支持且不支持对于邻区漏配的判断；3、基于MRO采样点并不能真实反映启测和切换事件情况且受限于5秒采样周期。而联合MRE数据进行联合分析，则可以有效解决上述问题，通过一揽子优化分析步骤，实现更准确的切换优化。
+                    </div>
+                </li>
+            </ul>
+            <div class="notes">
+                <h4 class="title">终审</h4>
+                <div class="mt-15">
+                    <h4 class="db_ID">终审结论：<span>暂无</span><span class="pull-right"><a class="is_pass" id="ending_pass">终审通过</a><a
+                            class="is_pass" id="ending_none">终审不通过</a></span></h4>
+                    <div class="db_detail mb-30">
+                        <ul class="proList con-detail">
+                            <li>
+                                <span>终审意见：</span>
+                                <div>切换成功率、切换及时性、切换质量和切换性能直接或间接影响用户</div>
+                            </li>
+                            <li>
+                                <span>操作人：</span>
+                                <div>si jia qing001/司家庆</div>
+                            </li>
+                            <li>
+                                <span>操作时间：</span>
+                                <div>2016.12.22 19:30</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <h4 class="title">终审<a class="btn-default pull-right download">下载评审意见表</a></h4>
+                <div class="mt-15">
+                    <h4 class="db_ID">专家1 ID：<span>123124123123</span><a
+                            class="is_pass pull-right change_review">变更评审</a></h4>
+                    <div class="db_detail mb-30">
+                        <ul class="proList con-detail">
+                            <li>
+                                <span>专家姓名：</span>
+                                <div>刘松</div>
+                            </li>
+                            <li>
+                                <span>所在公司：</span>
+                                <div>杭研</div>
+                            </li>
+                            <li>
+                                <span>手机号码：</span>
+                                <div>13812341234</div>
+                            </li>
+                            <li>
+                                <span>领域一：</span>
+                                <div>业务</div>
+                            </li>
+                            <li>
+                                <span>领域二：</span>
+                                <div>家庭</div>
+                            </li>
+                            <li>
+                                <span>评审结果：</span>
+                                <div>通过</div>
+                            </li>
+                            <li>
+                                <span>评审意见：</span>
+                                <div>
+                                    提出背景：切换成功率、切换及时性、切换质量和切换性能直接或间接影响用户的LTE数据下载速率和VOLTE语音MOS值。现有的LTE邻区配置是基于地理位置、邻区对切换次数、或者单独基于MRO采样点进行，存在下列问题：1、地理位置不贴近终端实测，只能用于建网初期；2、邻区切换次数需要厂家私有counter支持且不支持对于邻区漏配的判断；3、基于MRO采样点并不能真实反映启测和切换事件情况且受限于5秒采样周期。而联合MRE数据进行联合分析，则可以有效解决上述问题，通过一揽子优化分析步骤，实现更准确的切换优化。
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-15">
+                    <h4 class="db_ID">专家2 ID：<span>123124123123</span><a
+                            class="is_pass pull-right change_review">变更评审</a></h4>
+                    <div class="db_detail mb-30">
+                        <ul class="proList con-detail">
+                            <li>
+                                <span>专家姓名：</span>
+                                <div>刘松</div>
+                            </li>
+                            <li>
+                                <span>所在公司：</span>
+                                <div>杭研</div>
+                            </li>
+                            <li>
+                                <span>手机号码：</span>
+                                <div>13812341234</div>
+                            </li>
+                            <li>
+                                <span>领域一：</span>
+                                <div>业务</div>
+                            </li>
+                            <li>
+                                <span>领域二：</span>
+                                <div>家庭</div>
+                            </li>
+                            <li>
+                                <span>评审结果：</span>
+                                <div>未填写</div>
+                            </li>
+                            <li>
+                                <span>评审意见：</span>
+                                <div>未填写</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-15">
+                    <h4 class="db_ID">专家3 ID：<span>123124123123</span><a
+                            class="is_pass pull-right change_review">变更评审</a></h4>
+                    <div class="db_detail mb-30">
+                        <ul class="proList con-detail">
+                            <li>
+                                <span>专家姓名：</span>
+                                <div>刘松</div>
+                            </li>
+                            <li>
+                                <span>所在公司：</span>
+                                <div>杭研</div>
+                            </li>
+                            <li>
+                                <span>手机号码：</span>
+                                <div>13812341234</div>
+                            </li>
+                            <li>
+                                <span>领域一：</span>
+                                <div>业务</div>
+                            </li>
+                            <li>
+                                <span>领域二：</span>
+                                <div>家庭</div>
+                            </li>
+                            <li>
+                                <span>评审结果：</span>
+                                <div>未填写</div>
+                            </li>
+                            <li>
+                                <span>评审意见：</span>
+                                <div>未填写</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--页码-->
+            <div class="data-page text-center page mt-20">
+                <div class="holder pagination" id="pagination1"></div>
+            </div>
+        </div>
+        <!--项目终审弹框      start-->
+        <div class="modal fade dialog-lg" role="dialog" id="examine-status" aria-labelledby="项目终审" aria-hidden="true">
+            <div class="modal-dialog w655">
+                <div class="modal-content bd-muted">
+                    <div class="modal-header bg-muted bd-muted">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title text-left">项目终审</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-left mb-10">是否确认对以下自发式创意进行状态变更：</p>
+                        <div class="table-responsive">
+                            <table id="update-list" class="table table-bordered text-center table_modal">
+                                <thead>
+                                <tr>
+                                    <th>项目ID</th>
+                                    <th width="40%">项目名称</th>
+                                    <th>专家分配</th>
+                                    <th>完成评审</th>
+                                    <th>通过评审</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="theId">20150482</td>
+                                    <td>智能天线权值自动优化系统算法及工具</td>
+                                    <td>4</td>
+                                    <td>3</td>
+                                    <td>3</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h4 class="text-left conclusion">终审结论：<span id="isPass">通过/不通过</span></h4>
+                        <form class="form" id="resume_form">
+                            <div class="form-group">
+                                <textarea name="idea" placeholder="请输入终审意见，不超过300字" class="texeArea mt-15"
+                                          maxlength="300"></textarea>
+                                <p class="text-left">操作人员：XXX</p>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn-blue w80" id="sure">确定</button>
+                                <button class="btn-default w80" data-dismiss="modal">取消</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+        <!--项目终审     end-->
+        <!--变更评审弹框      start-->
+        <div class="modal fade dialog-lg" role="dialog" id="change" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bd-muted">
+                    <div class="modal-header bg-muted bd-muted">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title text-left">变更评审</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form change" id="change_form">
+                            <div class="form-group">
+                                <label for="changeName">评审姓名：</label>
+                                <input type="text" name="changeName" id="changeName" placeholder="请输入正确姓名"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="changeNum">手机号码：</label>
+                                <input type="tel" name="changeNum" id="changeNum" placeholder="请输入评审登录用手机号码"
+                                       maxlength="11"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="changeNum">操作人员：</label>
+                                <span class="w270">sijiaqing001 / 司家庆  </span>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn-blue w80" id="changeSure">确定</button>
+                                <button class="btn-default w80">取消</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+        <!--变更评审        end-->
+        <!--操作成功-->
+        <div class="modal fade dialog-sm" id="status_success" data-backdrop="static">
+            <div class="modal-dialog width_480">
+                <div class="modal-content bd-muted">
+                    <div class="modal-header bg-muted">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title text-left">操作成功</h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h3 class="green mt-20 mb-20">操作成功</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn-blue w80" id="reload">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--操作成功       end-->
+        <!--操作失败-->
+        <div class="modal fade dialog-sm" id="status_error" data-backdrop="static">
+            <div class="modal-dialog width_480">
+                <div class="modal-content bd-muted">
+                    <div class="modal-header bg-muted bd-muted">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title text-left">操作失败</h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h3 class="mt-20 mb-20">操作失败<span>Error Code／Message <a href="javascript:;">详情</a></span></h3>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn-blue w80" data-dismiss='modal'>确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--操作失败       end-->
+    </div>
+</div>
+
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "webtools", "validate", "jqPaginator"], function () {
+        var professorId;
+        //  分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>暂无打榜信息</p>";
+            $('#').append(html);
+        } else {
+            $.jqPaginator('#pagination1', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+
+                }
+            });
+        }
+        //	 分页   end
+
+        //通过按钮
+        $("#ending_pass").on('click', function () {//终审通过
+            $("#isPass").text('通过');//弹框中的终审结论
+            $('#examine-status').modal('show');//项目终审弹框显示
+        })
+        $("#ending_none").on("click", function () {//终审不通过
+            $("#isPass").text('不通过');
+            $('#examine-status').modal('show');
+        })
+        //校验
+        $("#resume_form").validate(validateDate);
+        $("#change_form").validate(validateDate);
+        $("#sure").on('click', function () {//项目终审弹框中的  确定
+            var dataObj = {};
+            var id = $("#theId").text();
+            var status = $("#isPass").text();//状态：通过/不通过
+            var texts = $(".texeArea").val();//终审意见
+            dataObj = {//需要发送的数据
+                id: id,
+                status: status,
+                texts: texts
+            }
+            var validator = $("#resume_form").validate(validateDate);//校验是否通过
+            if (validator.form()) {//校验通过
+                sendId(dataObj, 'json.json');//ajax发送id、终审状态和终审意见
+                $('#examine-status').modal('hide');
+            }
+        });
+        //变更评审
+        $(".change_review").on('click', function () {
+            professorId = $(this).prev().text();
+            $("#change").modal('show');
+        })
+        //变更评审  确定
+        $("#changeSure").on("click", function () {
+            var name = $("#changeName").val();
+            var num = $("#changeNum").val();
+            var dataObj = {};
+            dataObj = {//需要发送的数据
+                id: professorId,
+                name: name,
+                num: num
+            };
+            var validator = $("#resume_form").validate(validateDate);//校验是否通过
+            if (validator.form()) {//校验通过
+                sendId(dataObj, 'json.json');
+                $("#change").modal('hide');
+            }
+            ;
+        })
+        //操作成功 确定  刷新页面
+        $("#reload").on("click", function () {
+            location.reload();
+        });
+    })
+    //ajax发送已选项的id和终审意见
+    function sendId(dataObj, url) {//参数  （要传的数据 包括id、终审结论和终审意见   ， 发送地址）
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: dataObj,
+            success: function (data) {
+                if (data == 'ok') {
+                    //操作成功
+                    $("#status_success").modal('show');//成功弹框显示
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    //操作失败
+                    $("#status_error").modal('show');//失败弹框显示
+                    $('form')[0].reset();
+//				$('#change_form')[0].reset();
+//				$('#resume_form')[0].reset();
+                }
+            },
+            error: function () {
+                $("#status_success").modal('show');
+                $('form')[0].reset();
+//			setTimeout(function(){
+//				location.reload();
+//			},1500);
+                console.log(dataObj);
+            }
+        });
+    }
+</script>
+</body>
+</html>

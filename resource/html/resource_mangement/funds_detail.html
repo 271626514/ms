@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="102">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>经费管理</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .module-header h4 {
+            border-bottom: 2px solid #eceff9;
+            padding-bottom: 16px;
+        }
+
+        .searchTitle {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .table thead tr {
+            height: 40px;
+        }
+
+        .table > thead > tr > th {
+            line-height: 24px;
+        }
+
+        .table-indent th:first-child, .table-indent tr > td:first-child {
+            text-indent: 0;
+        }
+
+        .table > tbody > tr > td.green {
+            color: #5dd599;
+        }
+
+        .table > tbody > tr > td.gray {
+            color: #999;
+        }
+
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+        }
+
+        .module-header h4 {
+            border-bottom: 2px solid #eceff9;
+            padding-bottom: 16px;
+        }
+
+        .form-bg {
+            padding: 15px 0;
+            background: #f6f7fb;
+        }
+
+        .form input.white-bg[type=text] {
+            background: #fff;
+        }
+
+        .red {
+            color: #ff5021;
+        }
+
+        /*弹窗   start*/
+        .width_485 {
+            width: 485px;
+        }
+
+        .modal-body {
+            padding: 20px 50px;
+        }
+
+        .form {
+            text-align: left;
+        }
+
+        .form span.form-right {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 20px;
+            margin: 5px 0;
+        }
+
+        .form label {
+            font-weight: normal;
+            text-align: left;
+            width: 70px;
+        }
+
+        .form input[type=text].width_120 {
+            width: 120px;
+            margin-right: 8px;
+        }
+
+        .form input[type=text].width_270 {
+            width: 270px;
+        }
+
+        .modal-body p.red {
+            color: #ff5021;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form select.width_270 {
+            width: 270px;
+        }
+
+        .form span.gray-text {
+            color: #999;
+            font-size: 12px;
+        }
+
+        /*弹窗     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>资源管理</li>
+        <li>经费管理</li>
+    </ol>
+    <div class="">
+        <div class="module-header">
+            <h4>经费管理</h4>
+        </div>
+        <form class="form searchForm">
+            <div class="form-group mt-20 form-bg">
+                <input type="text" class="white-bg ml-20 mr-20" placeholder="支持按标题模糊搜索"/>
+                <button type="submit" class="btn-blue w80">搜索</button>
+                <a class="resetTitle">重置</a>
+            </div>
+            <p class="searchTitle">总计 <span class="red">41</span> 条符合条件的纪录，本页显示 第 <span class="red">1-20</span> 条条数据</p>
+            <div class="tile-content mt-20">
+                <div class="table-responsive">
+                    <table id="list" class="table table-indent text-center table-bordered-noheader">
+                        <thead>
+                        <tr>
+                            <th>项目ID</th>
+                            <th>项目名称</th>
+                            <th>项目状态</th>
+                            <th>经费限额</th>
+                            <th>经费余额</th>
+                            <th>费用流水</th>
+                        </tr>
+                        </thead>
+                        <tbody id="itemContainer">
+                        <tr>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td class="gray">已入孵</td>
+                            <td>800,000元 <a data-toggle="modal" data-dismiss='modal' data-target="#add">追加</a></td>
+                            <td>46,000元 <a data-toggle="modal" data-dismiss='modal' data-target="#cut">扣减</a></td>
+                            <td>
+                                <a href="funds_list.html">查看</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td>已出孵</td>
+                            <td>800,000元 <a data-toggle="modal" data-dismiss='modal' data-target="#add">追加</a></td>
+                            <td>46,000元 <a data-toggle="modal" data-dismiss='modal' data-target="#cut">扣减</a></td>
+                            <td>
+                                <a href="javascript:;">查看</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12313231</td>
+                            <td>大镖师</td>
+                            <td class="green">出孵评审中</td>
+                            <td>800,000元 <a data-toggle="modal" data-dismiss='modal' data-target="#add">追加</a></td>
+                            <td>46,000元 <a data-toggle="modal" data-dismiss='modal' data-target="#cut">扣减</a></td>
+                            <td>
+                                <a href="javascript:;">查看</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="data-page text-center page">
+                    <div class="holder pagination" id="pagination"></div>
+                </div>
+                <!--追加-->
+                <div class="modal fade" id="add" data-backdrop="static">
+                    <div class="modal-dialog width_485">
+                        <div class="modal-content bd-muted">
+                            <div class="modal-header bg-muted bd-muted">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h5 class="modal-title text-left">经费管理</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form">
+                                    <div class="form-group">
+                                        <label>项目 ID：</label>
+                                        <span class="form-right">123456</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>项目名称：</label>
+                                        <span class="form-right">大镖师</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>追加金额：</label>
+                                        <input type="text" placeholder="请输入金额" class="width_120"/>元
+                                    </div>
+                                    <div class="form-group">
+                                        <label>追加原因：</label>
+                                        <input type="text" placeholder="请输入金额" class="width_270"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>操作人员：</label>
+                                        <span class="form-right">sijiaqing001 / 司家庆</span>
+                                    </div>
+                                </div>
+                                <p class="red text-left">操作失败：error code／ error message</p>
+                                <div>
+                                    <button class="btn-blue w80" id="sure">确定</button>
+                                    <button class="btn-default w80 ml-15" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+                <!--扣减-->
+                <div class="modal fade" id="cut" data-backdrop="static">
+                    <div class="modal-dialog width_485">
+                        <div class="modal-content bd-muted">
+                            <div class="modal-header bg-muted bd-muted">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h5 class="modal-title text-left">经费管理</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form">
+                                    <div class="form-group">
+                                        <label>项目 ID：</label>
+                                        <span class="form-right">123456</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>项目名称：</label>
+                                        <span class="form-right">大镖师</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>扣减金额：</label>
+                                        <input type="text" placeholder="请输入金额" class="width_120"/>元
+                                    </div>
+                                    <div class="form-group">
+                                        <label>扣减类别：</label>
+                                        <select class="width_270">
+                                            <option>空间服务</option>
+                                            <option>空间服务2</option>
+                                            <option>其他</option>
+                                        </select><br/>
+                                        <label></label>
+                                        <span class="form-right gray-text">不能归类的团队费用请选择其他</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>费用详情：</label>
+                                        <input type="text" placeholder="请输入费用明细或费用产生原因" class="width_270"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>操作人员：</label>
+                                        <span class="form-right">sijiaqing001 / 司家庆</span>
+                                    </div>
+                                </div>
+                                <p class="red text-left">操作失败：error code／ error message</p>
+                                <div>
+                                    <button class="btn-blue w80" id="sure">确定</button>
+                                    <button class="btn-default w80 ml-15" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "jqPaginator"], function () {
+
+        //  分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+            $('#itemContainer').append(html);
+        } else {
+            $.jqPaginator('#pagination1', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+                    /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                     +'&supportSort='+$("[name='supportSort'] :selected").val()
+                     +'&moneySort='+$("[name='moneySort'] :selected").val()
+                     +'&pageNum=' + n;  */
+//						$("[name='pageNum']").val(n);
+//						$("#search_form").submit();
+                }
+            });
+        }
+//	 分页   end
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="86">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>公告管理-新建公告</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .modal-body p {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .modal-body .con {
+            max-width: 80%;
+            margin: 0 auto;
+            margin-top: 25px;
+        }
+
+        .dialog-sm .modal-dialog {
+            width: 670px;
+        }
+
+        h5.text_info_red {
+            color: #fda68a;
+            font-size: 14px;
+        }
+
+        h5.text_info {
+            font-size: 14px;
+        }
+
+        :-ms-input-placeholder {
+            color: #CCCCCC;
+        }
+
+        .upload .remove {
+            background: url(../../../assets/imgs/bigtopic-delete.png) no-repeat 5px 13px;
+            width: 20px;
+            height: 41px;
+            float: left;
+        }
+
+        .failfile {
+            background: url(../../../assets/imgs/bigtopic-error.png) no-repeat;
+            color: #ccc;
+        }
+
+        .failupload {
+            color: #fc6a3c;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .failfile:hover {
+            background: url(../../../assets/imgs/bigtopic-error.png) no-repeat;
+            color: #ccc;
+        }
+
+        .upload img {
+            width: 41px;
+            height: 41px;
+        }
+
+        .form-control {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>web内容管理</li>
+        <li>公告管理</li>
+        <li>新建公告</li>
+    </ol>
+    <div class="tile">
+        <div class="module-header"><h4>新建公告</h4></div>
+        <div class="tile-content mt-40">
+            <div class="form">
+                <form id='addProject' acion='xxx.action'>
+                    <div class="col-md-12 mt-5">
+                        <div class="form-group">
+                            <label for="activity_name">标题：</label>
+                            <input class="form-control" type="text" id="activity_name" name="activity_name"
+                                   placeholder="不超过50字" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project_con" style="vertical-align: top;">内容：</label>
+                            <textarea class="form-control" name="project_con" id="project_con" placeholder="不超过200个字符"
+                                      required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="">状态：</label>
+                            <lable><input type="checkbox" value="" class="check"/>定时发布</lable>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <button class="btn-green w80 ml-100" data-toggle="modal" id="project-save-btn">发布</button>
+        <button class="btn-blue ml-10 w80" data-toggle="modal" id="project-add-btn">取消</button>
+        <p class="info-green ml-100 mt-10">保存为草稿</p>
+        </form>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

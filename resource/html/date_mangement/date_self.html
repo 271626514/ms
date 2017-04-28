@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="72">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>自发创意</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+        }
+
+        .module-header h4 {
+            border-bottom: 2px solid #eceff9;
+            padding-bottom: 16px;
+        }
+
+        .module-header h4 span {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        .module-header h4 .form {
+            display: inline;
+        }
+
+        .module-header h4 .form .slt {
+            width: 200px;
+        }
+
+        .font-blue a {
+            color: #5584FF;
+        }
+
+        .fz {
+            font-size: 16px;
+        }
+
+        #list tr th {
+            width: 33.3%;
+        }
+
+        .btn-my {
+            border-radius: 0;
+        }
+
+        .btn-gy {
+            background: #E7EEFF;
+            color: #5584FF;
+            border: 1px solid #E7EEFF;
+        }
+
+        h4.border {
+            border-bottom: 1px solid #E7EEFF;
+        }
+
+        .mr-2 {
+            margin-right: 2px;
+        }
+
+        .row {
+            margin-bottom: 12px;
+            font-size: 14px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .row ul li {
+            float: left;
+            background-color: #fff;
+            line-height: 20px;
+            color: #333;
+            padding: 0 8px 0;
+            margin-right: 2px;
+            border: 1px solid #fff;
+        }
+
+        .row ul li.active {
+            border-color: #5584ff;
+            color: #5584ff;
+        }
+
+        .row h6 {
+            color: #666;
+            line-height: 22px;
+        }
+
+        .row ul.pull-left li {
+            cursor: pointer;
+        }
+
+        .table-all .table-date tbody > tr:last-child td {
+            color: #333;
+            font-weight: 800;
+        }
+
+        /*必填和叹号     start*/
+        .icon-info {
+            margin-left: 8px;
+            vertical-align: top;
+        }
+
+        .tooltip-inner {
+            background: #FFF;
+            color: #666;
+            border: 1px solid #cccccc;
+            max-width: 440px;
+            text-align: left;
+            padding: 10px;
+        }
+
+        .tooltip {
+            background: transparent;
+        }
+
+        .tooltip.right .tooltip-arrow {
+            border-right-color: #ccc;
+        }
+
+        /*必填和叹号     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>业务数据</li>
+        <li>自发创意</li>
+    </ol>
+    <div class="">
+        <div class="module-header">
+            <h4>数据范围
+                <!--<span class="ml-10 icon-info"></span>-->
+                <form class="form ml-20" id="resume_form">
+                    <div class="form form-group">
+                        <select class="slt">
+                            <option value="">省公司2</option>
+                            <option value="">用户组1</option>
+                            <option value="">用户组2</option>
+                        </select>
+                    </div>
+                </form>
+                <a href="javascript:;" class="btn-blue w80 pull-right">下载数据</a>
+            </h4>
+        </div>
+        <div class="tile-content mt-20">
+            <p class="mb-30 now_date">当前数据:<span id="winDate"></span><span class="ml-20 font-blue"><a
+                    href="date_history.html">历史数据</a></span></p>
+
+            <div class="table-all">
+                <div class="totle">
+                    <h5 class="fz mb-20">自发创意总量<span class="icon-info" data-toggle="tooltip" data-placement="right"
+                                                     id="point"
+                                                     title='本期数据：仅统计最新一期的双创活动数据</br>全部数据：从第一期双创活动到目前的全部累计数据</br>本期数据的时间起止点，以底层数据库规定为准</br>总表中展示本期数据和全部数据概要及对比'></span>
+                    </h5>
+                    <div class="row clearfix">
+                        <h6 class="pull-left">项目类型：</h6>
+                        <ul class="pull-left">
+                            <li class="active">全部</li>
+                            <li>创新</li>
+                            <li>创业</li>
+                        </ul>
+                    </div>
+                    <div class="row clearfix">
+                        <h6 class="pull-left">项目领域：</h6>
+                        <ul class="pull-left">
+                            <li class="active">全部</li>
+                            <li>业务</li>
+                            <li>网络</li>
+                            <li>IT</li>
+                        </ul>
+                    </div>
+                </div>
+                <table id="list" class="table table-indent text-center table-bordered-noheader table-date">
+                    <thead>
+                    <tr>
+                        <th>全国数据</th>
+                        <th>昨日数据</th>
+                        <th>累计</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr>
+                        <td>已创建项目</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已提交项目</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>众筹中项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已筹满金额项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已众筹成功项目数(筹满+单位支持)</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>评审中项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>评审通过项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已入孵项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>远程入孵项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>入驻和创空间项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>项目总数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-all">
+                <div class="totle">
+                    <h5 class="fz mb-20">自发创意分布详表<span class="icon-info" data-toggle="tooltip" data-placement="right"
+                                                       id="point"
+                                                       title='本期数据：仅统计最新一期的双创活动数据</br>全部数据：从第一期双创活动到目前的全部累计数据</br>本期数据的时间起止点，以底层数据库规定为准</br>详表只展示本期数据，往期数据请在系统管理员界面中进行自定义查询'></span>
+                    </h5>
+                    <div class="row clearfix">
+                        <h6 class="pull-left">项目类型：</h6>
+                        <ul class="pull-left">
+                            <li class="active">全部</li>
+                            <li>创新</li>
+                            <li>创业</li>
+                        </ul>
+                    </div>
+                    <div class="row clearfix">
+                        <h6 class="pull-left">项目领域：</h6>
+                        <ul class="pull-left">
+                            <li class="active">全部</li>
+                            <li>业务</li>
+                            <li>网络</li>
+                            <li>IT</li>
+                        </ul>
+                    </div>
+                </div>
+                <table id="list-one" class="table table-indent text-center table-bordered-noheader">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>已创建</th>
+                        <th>已提交</th>
+                        <th>众筹中</th>
+                        <th>众筹满额</th>
+                        <th>众筹成功</th>
+                        <th>评审中</th>
+                        <th>评审通过</th>
+                        <th>已入孵</th>
+                        <th>远程入孵</th>
+                        <th>入驻孵化器</th>
+                        <th>总数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer-one">
+                    <tr>
+                        <td>财务公司</td>
+                        <td>专业</td>
+                        <td>79</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td><a href="javascript:;">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td>财务公司</td>
+                        <td>专业</td>
+                        <td>79</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td><a href="javascript:;">查看</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="data-page text-center page">
+                <div class="holder pagination" id="pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/lib/require.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script>
+        require(["common", "bootstrap", "jqPaginator", "MyDate"], function (c, b, j, m) {
+            // 说明信息     start
+            $('.icon-info').tooltip({
+                html: true
+            });
+            // 说明信息     end
+            //获取时间
+            function getDateStr() {
+                new m.MyDate().show('winDate')
+            }
+
+            setInterval(getDateStr, 1000);
+            var onLi = $('ul.pull-left li');
+            onLi.on('click', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            })
+            //	分页  start
+            var totalPages = 4;
+            if (totalPages == 0) {
+                var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+                $('#itemContainer').append(html);
+            } else {
+                $.jqPaginator('#pagination', {
+                    totalPages: totalPages,
+                    visiblePages: 5,
+                    currentPage: 1,
+                    onPageChange: function (n) {
+                        /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                         +'&supportSort='+$("[name='supportSort'] :selected").val()
+                         +'&moneySort='+$("[name='moneySort'] :selected").val()
+                         +'&pageNum=' + n;  */
+                        //							$("[name='pageNum']").val(n);
+                        //							$("#search_form").submit();
+                    }
+                });
+            }
+            //	 分页   end
+        });
+    </script>
+
+</body>
+</html>

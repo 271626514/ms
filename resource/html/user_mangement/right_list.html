@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>权限列表</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        /*弹窗   start*/
+        .dialog-sm .width_480 {
+            width: 480px;
+        }
+
+        .dialog-sm .width_350 {
+            width: 350px;
+        }
+
+        .modal-body .content {
+            max-height: 150px;
+            overflow: auto;
+        }
+
+        .user-list p {
+            height: 28px;
+            line-height: 28px;
+            padding: 0 9px;
+            margin-right: 12px;
+            font-size: 12px;
+        }
+
+        .form-control {
+            display: inline-block;
+            width: 290px;
+        }
+
+        p.red {
+            font-size: 12px;
+            color: #ff5021;
+        }
+
+        h5.modal-title {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /*弹窗     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>用户管理</li>
+        <li>权限列表</li>
+    </ol>
+    <div class="">
+        <div class="module-header">
+            <h4>权限列表<a href="right_new.html" class="btn-blue w80 pull-right">创建新权限</a></h4>
+        </div>
+        <div class="tile-content mt-10">
+            <div class="table-responsive">
+                <table id="list" class="table table-indent text-center table-bordered-noheader">
+                    <thead>
+                    <tr>
+                        <th><label><input id="all" type="checkbox" value="">全选</label></th>
+                        <th>权限名称</th>
+                        <th width="40%">权限详情</th>
+                        <th>用户数量</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr data-id="1">
+                        <td><label><input type="checkbox" value="">1</label></td>
+                        <td>1用户组1</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>1</td>
+                        <td><a href="right_detail.html">查看</a><a href="right_edit.html">修改</a><a href="#"
+                                                                                                 class="delete">删除</a>
+                        </td>
+                    </tr>
+                    <tr data-id="2">
+                        <td><label><input type="checkbox" value="">2</label></td>
+                        <td>2用户组2</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>5</td>
+                        <td><a href="right_detail.html">查看</a><a href="right_edit.html">修改</a><a class="delete">删除</a>
+                        </td>
+                    </tr>
+                    <tr data-id="3">
+                        <td><label><input type="checkbox" value="">3</label></td>
+                        <td>3未分配</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="right_detail.html">查看</a><a href="right_edit.html">修改</a><a class="delete">删除</a>
+                        </td>
+                    </tr>
+                    <tr data-id="4">
+                        <td><label><input type="checkbox" value="">4</label></td>
+                        <td>4用户组3</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="right_detail.html">查看</a><a href="right_edit.html">修改</a><a class="delete">查看</a>
+                        </td>
+                    </tr>
+                    <tr data-id="5">
+                        <td><label><input type="checkbox" value="">1</label></td>
+                        <td>5用户组1</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>1</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">删除</a></td>
+                    </tr>
+                    <tr data-id="6">
+                        <td><label><input type="checkbox" value="">2</label></td>
+                        <td>6用户组2</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>5</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">删除</a></td>
+                    </tr>
+                    <tr data-id="7">
+                        <td><label><input type="checkbox" value="">3</label></td>
+                        <td>7未分配</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">修改</a></td>
+                    </tr>
+                    <tr data-id="8">
+                        <td><label><input type="checkbox" value="">4</label></td>
+                        <td>8用户组3</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">查看</a></td>
+                    </tr>
+                    <tr data-id="9">
+                        <td><label><input type="checkbox" value="">1</label></td>
+                        <td>9用户组1</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>1</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">删除</a></td>
+                    </tr>
+                    <tr data-id="10">
+                        <td><label><input type="checkbox" value="">2</label></td>
+                        <td>10用户组2</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>5</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">删除</a></td>
+                    </tr>
+                    <tr data-id="11">
+                        <td><label><input type="checkbox" value="">3</label></td>
+                        <td>11未分配</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">修改</a></td>
+                    </tr>
+                    <tr data-id="12">
+                        <td><label><input type="checkbox" value="">4</label></td>
+                        <td>12用户组3</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">查看</a></td>
+                    </tr>
+                    <tr data-id="13">
+                        <td><label><input type="checkbox" value="">1</label></td>
+                        <td>13用户组1</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>1</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">删除</a></td>
+                    </tr>
+                    <tr data-id="14">
+                        <td><label><input type="checkbox" value="">2</label></td>
+                        <td>14用户组2</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>5</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">删除</a></td>
+                    </tr>
+                    <tr data-id="15">
+                        <td><label><input type="checkbox" value="">3</label></td>
+                        <td>15未分配</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">修改</a></td>
+                    </tr>
+                    <tr data-id="16">
+                        <td><label><input type="checkbox" value="">4</label></td>
+                        <td>16用户组3</td>
+                        <td>数据前线： 业务数据：全国；APP数据：全国；网站数据：全国；内容发布：未选择；业务审批：未选择；资源管理：未选择；XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        </td>
+                        <td>0</td>
+                        <td><a href="#">查看</a><a href="#">修改</a><a href="#">查看</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="text-info" style="display: none;">以选中<span>xxx</span>条记录</p>
+                <div>
+                    <a class="btn btn-info" id="deletes">批量删除</a>
+                </div>
+            </div>
+            <div class="data-page text-center page">
+                <div class="holder pagination" id="pagination"></div>
+            </div>
+            <!--赋值弹窗      start-->
+            <div class="modal fade dialog-sm" id="delete" data-backdrop="static">
+                <div class="modal-dialog width_480">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">删除权限</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-left">是否确认删除下述权限？</p>
+                            <div class="form-group user-list text-left content">
+
+                            </div>
+                            <p class="red text-left" id="warn1"></p>
+                            <p class="red text-align" id="return"></p>
+                            <!--<p class="red text-align" id="return">设置成功!</p>-->
+                            <div>
+                                <button class="btn-blue w80" id="sure">确定</button>
+                                <button class="btn-default w80" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <div class="modal fade dialog-sm" id="delete-one" data-backdrop="static">
+                <div class="modal-dialog width_480">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">删除权限</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-left">是否确认删除下述权限？</p>
+                            <div class="form-group user-list text-left content">
+
+                            </div>
+                            <p class="red text-align" id="return-one"></p>
+                            <div>
+                                <button class="btn-blue w80" id="sure-one">确定</button>
+                                <button class="btn-default w80" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <div class="modal fade dialog-sm" id="reMess" data-backdrop="static">
+                <div class="modal-dialog width_350">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">删除成功</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p class="red text-center" id="return-one">删除成功</p>
+                            <div>
+                                <button class="btn-blue w80" id="" data-dismiss="modal">确定</button>
+                            </div>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--赋值弹窗     end-->
+        </div>
+    </div>
+</div>
+
+
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+
+<script>
+    require(["common", "bootstrap", "jqPaginator"], function () {
+        var s = $('thead input').prop('checked');
+        checklis();
+        check();
+
+//	分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+            $('#itemContainer').append(html);
+        } else {
+            $.jqPaginator('#pagination', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+                    /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                     +'&supportSort='+$("[name='supportSort'] :selected").val()
+                     +'&moneySort='+$("[name='moneySort'] :selected").val()
+                     +'&pageNum=' + n;  */
+//							$("[name='pageNum']").val(n);
+//							$("#search_form").submit();
+                }
+            });
+        }
+//	 分页   end
+
+        //	批量删除   start
+        $('#deletes').click(function () {
+            var k = $('.check');
+            var con = $('.content');
+            var arr = [];
+            var num = [];
+            $('#return').html('');
+            for (var j = 0; j < k.length; j++) {
+                arr.push(k.eq(j).parents('tr').data('id'));
+                num.push($(k[j]).parents('tr').find('td:eq(3)').html())
+            }
+            con.html('');
+            $('#warn').html('');
+            if (k.length) {
+                for (var i = 0; i < k.length; i++) {
+                    var p = "<p>权限名称：" + $(k[i]).parents('tr').find('td:eq(1)').html() + "</p>";
+                    $(con).append(p);
+                }
+                if (checkArray(0, num)) {
+                    $('#warn1').html('');
+                    $('#sure').attr('disabled', false)
+                    $('#sure').removeClass('btn-default');
+                } else {
+                    $('#warn1').html('当一个权限下已分配了有效的用户时，该权限不可被删除。')
+                    $('#sure').attr('disabled', true);
+                    $('#sure').addClass('btn-default');
+                }
+                $('#delete').modal('show');
+            } else {
+                alert('请至少选中一项')
+            }
+        });
+        //   批量删除    end
+
+        $("#sure").click(function () {
+            var id = $('.num').data('id');
+            var k = $('.check');
+            var arrId = [];
+            var arr = [];
+            for (var j = 0; j < k.length; j++) {
+                arrId.push($(k[j]).parents('tr').find('td:eq(3)').html());
+                arr.push(k.eq(j).parents('tr').data('id'));
+            }
+            sendId(arr, $('#return'));
+        })
+        //   单个删除      start
+        $('.delete').click(function () {
+            var id = $(this).parents('tr').data('id');
+            var con = $('.content');
+            con.html('');
+            var p = "<p class='num' data-id='" + id + "'>权限名称：" + $(this).parents('tr').find('td:eq(1)').html() + "</p>";
+            $(con).append(p);
+            $('#delete-one').modal('show');
+        })
+        //   单个删除     end
+
+        //	单个删除确认
+        $("#sure-one").click(function () {
+            $('#reMess').modal('show');
+//  	var id=$('.num').data('id');
+//  	var arr=[];
+//  	arr.push(id);
+//  	sendId(arr,$('#return-one'));
+        })
+    });
+
+    //	显示选中条目   start
+    function check() {
+        var intLen = $('tbody input');
+        for (var i = 0; i < intLen.length; i++) {
+            $(intLen[i]).click(function () {
+                var k = $('.check');
+                if ($(this).attr("class") == 'check') {
+                    $(this).removeClass('check');
+                    if (k.length > 1) {
+                        $('.text-info span').html(k.length - 1)
+                    } else {
+                        $('.text-info').css('display', 'none')
+                    }
+                } else {
+                    $(this).addClass('check');
+                    $('.text-info').css('display', 'block')
+                    $('.text-info span').html(k.length + 1)
+                }
+
+            })
+        }
+    }
+    function checklis() {
+        $('#all').click(function () {
+            var status = $(this).prop('checked');
+            if (status) {
+                $('tbody tr input').prop('checked', status).addClass('check');
+                $('.text-info').css('display', 'block');
+                $('.text-info span').html($('tbody tr input').length);
+            } else {
+                $('tbody tr input').prop('checked', status).removeClass('check');
+                $('.text-info').css('display', 'none');
+            }
+        });
+
+
+        $('tbody').delegate('tr input', 'click', function () {
+            var status = $(this).prop('checked');
+            if (!status) {//如果为假，直接checkall勾去掉
+                $('#all').prop('checked', status);
+            } else {
+                var allChecked = isAllChecked($('tbody tr input'));
+                $('#all').prop('checked', allChecked);
+            }
+        });
+    }
+    function isAllChecked($inputs) {
+        var result = true;
+
+        for (var i = 0, j = $inputs.length; i < j; i++) {
+            if (!$inputs.eq(i).prop('checked')) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+    //	全选   end
+    function checkArray(value, array) {
+        var n = 0;
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                n++;
+            }
+        }
+        if (n == array.length) {
+            return true
+        } else {
+            return false;
+        }
+    }
+    function sendId(arr, obj) {
+        $.ajax({
+            url: 'json.json',
+            type: 'post',
+            data: {deleteIds: arr},
+            dataType: 'json',
+            success: function (data) {
+                console.log(arr);
+                if (data.flag) {
+                    obj.html('删除成功');
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 500)
+                } else {
+                    obj.html('删除失败，Error Code：XXXXX');
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

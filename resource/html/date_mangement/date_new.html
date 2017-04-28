@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-identity="6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>数据查询</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+        }
+
+        .module-header h4 {
+            border-bottom: 2px solid #eceff9;
+            padding-bottom: 16px;
+        }
+
+        .refer h4 {
+            font-size: 16px;
+            color: #333;
+            padding: 0 0 20px 0;
+        }
+
+        .btn-blue.w120 {
+            font-size: 14px;
+            height: 30px;
+            line-height: 28px;
+        }
+
+        .form label {
+            text-align: left;
+        }
+
+        .dialog-sm .width_450 {
+            width: 450px;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>数据管理</li>
+        <li>自定义查询</li>
+    </ol>
+    <div class="">
+        <div class="module-header"><h4>数据查询</h4></div>
+        <div class="tile-content mt-20">
+            <div class="refer">
+                <h4 id="1">新建一个查询</h4>
+                <form>
+                    <div class="form">
+                        <div class="">
+                            <div class="form-group">
+                                <label class="text-left" for="refer_name">查询名称：</label>
+                                <input type="text" id="refer_name" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-left" for="refer_statement">检索语句：</label>
+                                <textarea name="name" id="refer_statement"
+                                          placeholder="请输入检索用的SQL语句，仅支持select"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <a class="computer btn-blue w120 ml-90" data-id="0">保存语句并计算</a>
+                <a class="computer btn-orange ml-10 w80" data-id="1">立即计算</a>
+            </div>
+            <div class="refer">
+                <h4>历史查询</h4>
+                <div class="table-responsive">
+                    <table id="list" class="table table-indent text-center table-bordered-noheader">
+                        <thead>
+                        <tr>
+                            <th>查询名称</th>
+                            <th>SQL语句详情</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="itemContainer">
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>11111select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td class="copy"><a href="javascript:;">复制</a></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>22222222select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>3333333select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td class="copy"><a href="javascript:;">复制</a></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>4444444select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>5555555select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td class="copy"><a href="javascript:;">复制</a></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>6666666select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>7777777select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td class="copy"><a href="">复制</a></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>8888888select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>9999999select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td class="copy"><a href="">复制</a></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>运营月报需求表1</td>
+                            <td>select project id from project where status=true and
+                                team_leader='shandong' group by category
+                            </td>
+                            <td>2016年7月1日</td>
+                            <td class="copy"><a href="">复制</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="data-page text-center page">
+                    <div class="holder pagination" id="pagination"></div>
+                </div>
+            </div>
+
+
+            <!--弹窗——保存并计算-->
+            <div class="modal fade dialog-sm" id="save-calculate" data-backdrop="static">
+                <div class="modal-dialog width_450">
+                    <div class="modal-content bd-muted save hide">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h5 class="modal-title">计算结果</h5>
+                        </div>
+                        <div class="modal-body">
+                            <button class="btn-save">确定</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                    <div class="modal-content bd-muted notsave hide">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h5 class="modal-title">计算结果</h5>
+                        </div>
+                        <div class="modal-body">
+                            <button class="btn-notsave">确定</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                    <div class="modal-content bd-muted failure hide">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h5 class="modal-title">计算结果</h5>
+                        </div>
+                        <div class="modal-body">
+                            <button class="btn-failure">出错</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                    <div class="modal-content bd-muted loading hide">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h5 class="modal-title">加载中</h5>
+                        </div>
+                        <div class="modal-body">
+                            <!--此处为计算结果-->
+                            <p>loading</p>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "jqPaginator"], function () {
+        var queryName = '';//查询名称
+        var querySql = '';//查询SQL
+        var saveOrNot = "not"; //默认不保存
+
+        //	分页 start
+//		var totalPages = 4;
+//		if(totalPages==0){
+//			var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+//			$('#itemContainer').append(html);
+//		}else{
+//			$.jqPaginator('#pagination', {
+//				totalPages: totalPages,
+//				visiblePages: 5,
+//				currentPage: 1 ,
+//				onPageChange: function (n) {
+//					window.location.href="${ctx}/export/customQueryList.do?"+"&pageNum=" + n + "&pageSize="+5;
+//					$("[name='pageNum']").val(n);
+//				}
+//			});
+//		}
+        //	分页 end
+
+        //		复制   start
+        $(function () {
+
+            $("#itemContainer .copy").click(function () {
+                // 当前按钮的值
+                var btn_val = $(this).parent().children('td:eq(1)').text();
+                // 赋值给文本框
+                $('#refer_statement').val(btn_val);
+            });
+
+        });
+        //		复制   end
+
+        //计算并保存与计算
+        $('.compute').on('click', function () {
+            var type = $(this).data('id');
+            queryName = $("#refer_name").val();
+            //把回车替换成空格符号
+            querySql = $("#refer_statement").val().replace(/[\r\n]/g, " ");
+            //防止sql语句中+变成空格
+            querySql = encodeURIComponent(querySql);
+
+            if (type == 0) {
+                //保存并计算
+                saveOrNot = "save";
+            }
+            sendToEnd(queryName, querySql, saveOrNot);
+        });
+
+        //保存弹框中确定
+        $('.btn-save').on('click', function () {
+            window.location.href = "${ctx}/export/exportForsuperManager?queryName="
+                    + queryName
+                    + "&querySql="
+                    + querySql
+                    + "&saveOrNot="
+                    + saveOrNot;
+            $('#save-calculate').modal('hide');
+            setTimeout(function () {
+                window.location.reload();
+            }, 1000)
+        });
+
+//			//保存弹框中关闭
+//			$('.save .close').on('click',function () {
+//				window.location.reload();
+//			});
+    });
+
+
+    function sendToEnd(queryName, querySql, saveOrNot) {
+        $.ajax({
+            url: "#",
+            type: "GET",
+            data: "queryName=" + queryName + "&querySql=" + querySql,
+            dataType: "text",
+            beforeSend: function () {
+                $('#save-calculate .modal-content').addClass('hide');
+                $('#save-calculate .loading').removeClass('hide');
+                $('#save-calculate').modal('show');
+            },
+            success: function (d) {
+                if (d == 'ok') {
+                    if (saveOrNot == 'save') {
+                        $('#save-calculate .modal-content').addClass('hide');
+                        $('#save-calculate .save').removeClass('hide');
+                    } else if (saveOrNot == 'not') {
+                        $('#save-calculate .modal-content').addClass('hide');
+                        $('#save-calculate .notsave').removeClass('hide');
+                    }
+                } else {
+                    $('#save-calculate .modal-content').addClass('hide');
+                    $('#save-calculate .failure').removeClass('hide');
+                }
+                $('#save-calculate').modal('show');
+            },
+            error: function () {
+
+            }
+        });
+    }
+    //处理URL中特殊符号 +
+    function urlencode(sstr) {
+        return escape(sstr).replace(/\+/g, '%2B').replace(/\"/g, '%22').replace(/\'/g, '%27').replace(/\//g, '%2f');
+    }
+
+</script>
+</body>
+</html>

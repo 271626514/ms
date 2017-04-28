@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="95">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>创新出孵评审</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /*搜索栏*/
+        .resume .searchForm select {
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2px;
+            padding: 0 0 0 10px;
+            width: 100px;
+            height: 30px;
+        }
+
+        input[type='text'].form-control {
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2px;
+            padding: 3px 10px;
+            width: 242px;
+            height: 30px;
+        }
+
+        .pos_r {
+            position: relative;
+        }
+
+        .pos_a {
+            position: absolute;
+        }
+
+        .wan {
+            left: 290px;
+            top: 2px;
+        }
+
+        .icon-search {
+            position: absolute;
+            top: 7px;
+            right: 10px;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: url(../../assets/imgs/icon-search.png) 0 0 no-repeat;
+            cursor: pointer;
+        }
+
+        .resize {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 30px;
+        }
+
+        .resume label {
+            width: auto;
+            display: inline;
+        }
+
+        .w55 {
+            font-size: 14px;
+            width: 55px;
+            height: 30px;
+            line-height: 28px;
+        }
+
+        /*搜索栏*/
+        .tools {
+            padding: 15px 20px;
+            background-color: #f6f7fb;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        .table thead tr {
+            height: 40px;
+        }
+
+        .table-indent th:first-child, .table-indent tr > td:first-child {
+            text-indent: 10px;
+        }
+
+        .table > tr > td:last-child {
+            min-width: 55px;
+        }
+
+        .btn-default {
+            color: #666;
+        }
+
+        .btn-default.w80 {
+            line-height: 17px;
+        }
+
+        .btn-default.active, .btn-default:active, .btn-default:hover {
+            color: #666;
+        }
+
+        .resume .choose span.check {
+            background: url(../../assets/imgs/checkbg.png) no-repeat 0 0;
+        }
+
+        .resume .choose span {
+            background: url(../../assets/imgs/checkbg.png) no-repeat 0 -15px;
+            margin-right: 0px;
+        }
+
+        .resume .choose span.checked {
+            background: url(../../assets/imgs/checkedbg.png) no-repeat 0 0;
+        }
+
+        .btns button, .btns a {
+            font-size: 14px;
+            height: 30px;
+            line-height: 17px;
+        }
+
+        .btn-default.w120 {
+            width: 120px;
+        }
+
+        .btns {
+            background-color: #fbfdfe;
+            border: 1px solid #e6e6e6;
+            border-top: none;
+            padding: 10px;
+        }
+
+        /*弹窗   start*/
+        .width_480 {
+            width: 480px;
+        }
+
+        .table_modal td {
+            min-width: 88px;
+        }
+
+        .table_modal > tbody > tr > td {
+            line-height: 20px;
+        }
+
+        p .red {
+            font-size: 12px;
+            color: #ff5021;
+        }
+
+        h5.modal-title {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .modal-content p {
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .table {
+            border: 1px solid #eef2f5;
+        }
+
+        .table tbody > tr {
+            border-bottom: 1px solid #eef2f5;
+        }
+
+        .err {
+            text-align: left;
+            width: 100%;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .minH {
+            min-height: 162px;
+        }
+
+        .minH p {
+            margin-top: 60px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .modal-body h4.conclusion {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form textarea.texeArea {
+            width: 586px;
+        }
+
+        label.error {
+            margin-left: 0;
+        }
+
+        .modal.in .modal-dialog.w655 {
+            width: 655px;
+        }
+
+        .form .wages input[type=text] {
+            width: 157px;
+            height: 24px;
+        }
+
+        /*弹窗     end*/
+        /*叹号     start*/
+        .module-header h4 span {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        .tooltip-inner {
+            background: #FFF;
+            color: #666;
+            border: 1px solid #cccccc;
+            max-width: 440px;
+            text-align: left;
+            padding: 10px;
+        }
+
+        .tooltip {
+            background: transparent;
+        }
+
+        .tooltip.right .tooltip-arrow {
+            border-right-color: #ccc;
+        }
+
+        /*叹号     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>评审管理</li>
+        <li>创新出孵评审</li>
+    </ol>
+    <div class="module-header">
+        <h4>创新出孵评审</h4>
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active">
+            <div class="tile-content resume">
+                <!--搜索栏-->
+                <div class="tools mb-20 mt-20 clearfix">
+                    <form class="form-inline searchForm pull-left">
+                        <div class="form-group">
+                            <label for="rTime">期数：</label>
+                            <select class="btn btn-sm" name="rTime">
+                                <option value="">第二期</option>
+                                <option value="">第一期</option>
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                        <div class="form-group ml-20">
+                            <label for="industry">评审结果：</label>
+                            <select class="btn btn-sm" name="doneNum" id="doneNum">
+                                <option value="0">全部</option>
+                                <option value="1">通过</option>
+                                <option value="1">不通过</option>
+                            </select>
+                        </div>
+                        <div class="form-group ml-20">
+                            <button type="submit" class="btn-blue w80">确定</button>
+                            <a class="resize ml-20 resetTitle" id="reset" href="javascript:;">清空</a>
+                        </div>
+                    </form>
+                    <div class="ml-20 pull-right">
+                        <div class="pos_r pull-left">
+                            <input type="text" class="form-control" autocomplete="off" maxlength="255"
+                                   placeholder="按名称搜索">
+                            <i class="icon-search"></i>
+                        </div>
+                        <a class="resize ml-20 pull-left" id="clear" href="#">重置</a>
+                    </div>
+                </div>
+                <!--搜索栏-->
+                <p class="searchTitle">总计 <span class="red">41</span> 条记录，当前为您显示 第 <span class="red">1-20</span> 条</p>
+                <table id="list" class="table table-indent text-center table-bordered-noheader">
+                    <thead>
+                    <th>选择</th>
+                    <th>项目ID</th>
+                    <th width="25%">名称</th>
+                    <th>队长</th>
+                    <th>手机</th>
+                    <th>出孵申请</th>
+                    <th>团队材料</th>
+                    <th>管理材料</th>
+                    <th>出孵评审</th>
+                    <th>奖金</th>
+                    <th></th>
+                    <th class="hide"></th>
+                    <th class="hide"></th>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr data-id="1">
+                        <td class="choose"><label><span class=""></span></label></td>
+                        <td>11231412123</td>
+                        <td>基于数字内容的网络爬虫</td>
+                        <td>李四</td>
+                        <td>13812341234</td>
+                        <td>申请创新</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>通过</td>
+                        <td>50万元</td>
+                        <td><a href="#">查看</a></td>
+                        <td class="hide">领域1</td>
+                        <td class="hide">领域2</td>
+                    </tr>
+                    <tr data-id="2">
+                        <td class="choose"><label><span class=""></span></label></td>
+                        <td>21231412123</td>
+                        <td>咪咕勤工与营业厅系统打通</td>
+                        <td>李四</td>
+                        <td>13812341234</td>
+                        <td>申请创新</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>不通过</td>
+                        <td>未分配</td>
+                        <td><a>查看</a></td>
+                        <td class="hide">领域3</td>
+                        <td class="hide">领域4</td>
+                    </tr>
+                    <tr data-id="3">
+                        <td class="choose"><label><span class=""></span></label></td>
+                        <td>21231412123</td>
+                        <td>咪咕勤工与营业厅系统打通</td>
+                        <td>李四</td>
+                        <td>13812341234</td>
+                        <td>申请创新</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>不通过</td>
+                        <td>未分配</td>
+                        <td><a>查看</a></td>
+                        <td class="hide">领域5</td>
+                        <td class="hide">领域6</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <div class="btns mb-20">
+                    <button class="btn btn-default w80 mr-10 all" id="all">全选</button>
+                    <button class="btn btn-default w80 mr-10" id="ending_pass">评审通过</button>
+                    <button class="btn btn-default mr-10" id="ending_none">评审不通过</button>
+                    <span class="gray-text text-info" style="display: none;">已选中<span>xxx</span>条记录</span>
+                    <!--隐藏请加类名 hidden-->
+                </div>
+            </div>
+            <div class="data-page text-center page">
+                <div class="holder pagination"></div>
+            </div>
+        </div>
+    </div>
+    <!--创新评审弹框      start-->
+    <div class="modal fade dialog-lg" role="dialog" id="examine-status" aria-labelledby="项目终审" aria-hidden="true">
+        <div class="modal-dialog w655">
+            <div class="modal-content bd-muted">
+                <div class="modal-header bg-muted bd-muted">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title text-left">评审<span class="isPass"></span></h5>
+                </div>
+                <div class="modal-body">
+                    <p class="text-left mb-10">是否确定将以下项目评审设置为<span class="isPass"></span>？</p>
+                    <div class="table-responsive">
+                        <table id="update-list" class="table table-bordered text-center table_modal">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th width="40%">名称</th>
+                                <th>领域一</th>
+                                <th>领域二</th>
+                                <th>队长</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--<tr>
+                                <td>1</td>
+                                <td>ss</td>
+                                <td>dd</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>ss</td>
+                                <td>dd</td>
+                            </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <form class="form" id="resume_form">
+                        <div class="form-group" id="Wage">
+                            <!--<div class="text-left mt-20 wages pos_r"><span>项目奖金（必填）：</span><span class="pos_a wan">万元</span><input type="text" class="mr-15" placeholder="只能输入数字" name="wages"/></div>-->
+                        </div>
+                        <div class="form-group">
+                            <div class="text-left conclusion">终审结论（选填）</div>
+                            <textarea placeholder="请输入评审结论或意见，不超过300字" class="texeArea" maxlength="300"></textarea>
+                            <p class="text-left">操作人员：XXX</p>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn-blue w80" id="sure">确定</button>
+                            <button class="btn-default w80" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+    </div>
+    <!--创新评审     end-->
+    <!--没有选择操作对象-->
+    <div class="modal fade dialog-sm" id="reMess" data-backdrop="static">
+        <div class="modal-dialog w470">
+            <div class="modal-content bd-muted">
+                <div class="modal-header bg-muted">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title text-left">操作提示</h5>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center" id="message-one">没有可操作的对象。</p>
+                    <p class="text-center">请先在列表中勾选需要操作的对象后再进行操作。</p>
+                    <div>
+                        <button class="btn-blue w80 reload" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--没有选择操作对象 end-->
+    <!--操作成功-->
+    <div class="modal fade dialog-sm" id="status_success" data-backdrop="static">
+        <div class="modal-dialog width_480">
+            <div class="modal-content bd-muted">
+                <div class="modal-header bg-muted">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title text-left">操作成功</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <h3 class="green mt-20 mb-20">操作成功</h3>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn-blue w80" id="reload">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--操作成功-->
+    <!--操作失败-->
+    <div class="modal fade dialog-sm" id="status_error" data-backdrop="static">
+        <div class="modal-dialog width_480">
+            <div class="modal-content bd-muted">
+                <div class="modal-header bg-muted bd-muted">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title text-left">操作失败</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <h3 class="mt-20 mb-20">操作失败<span>Error Code／Message <a href="javascript:;">详情</a></span></h3>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn-blue w80" data-dismiss='modal'>确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+
+<script>
+    require(["common", "bootstrap", "webtools", "validate", "jqPaginator"], function () {
+        var checknum;
+        // 说明信息     start
+        $('#point').tooltip({
+            html: true
+        });
+        // 说明信息     end
+//	分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+            $('#itemContainer').append(html);
+        } else {
+            $.jqPaginator('.pagination', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+                    /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                     +'&supportSort='+$("[name='supportSort'] :selected").val()
+                     +'&moneySort='+$("[name='moneySort'] :selected").val()
+                     +'&pageNum=' + n;  */
+//							$("[name='pageNum']").val(n);
+//							$("#search_form").submit();
+                }
+            });
+        }
+//	 分页   end
+        //  重置
+        $('#reset').on('click', function () {
+            $('.searchForm')[0].reset();
+        });
+        //全选、全不选
+        $("#all").click(function () {
+            if (isAllChecked($('tbody tr span'))) {
+                $('tbody tr span').removeAttr("class");
+                $('#all').text('全选');
+                showNum(0);
+            } else {
+                $('tbody tr span').attr('class', 'current');
+                $('#all').text('取消');
+                showNum($("tbody .current").length);
+            }
+        });
+        //点击任意一条选择框，去掉或加上全选按钮
+        $('#itemContainer').delegate('.choose span', 'click', function () {
+            var status = $(this).attr('class');
+            if (status == undefined || status == '') {//如果为假
+                $(this).attr('class', 'current');
+                showNum($(this).parents("tbody").find(".current").length);
+                isAllChecked($('tbody tr span')) ? $('#all').text('取消全选') : $('#all').text('全选');
+            } else {
+                $(this).removeAttr("class");
+                $('#all').text('全选');
+                showNum($(this).parents("tbody").find(".current").length);
+            }
+        });
+        //是否全选
+        function isAllChecked($inputs) {
+            var result = true;
+            for (var i = 0, j = $inputs.length; i < j; i++) {
+                if (!$inputs.eq(i).attr('class')) {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        };
+        //显示或隐藏选中的条目数
+        function showNum(num) {
+            if (num == 0) {
+                $('.text-info').css('display', 'none');
+            } else {
+                $('.text-info span').text(num);
+                $('.text-info').css('display', 'inline-block');
+            }
+        };
+
+        //通过按钮
+        $("#ending_pass").on('click', function () {//评审通过
+            var conbox = $("#update-list tbody");
+            var con = "";
+            checknum = $('tbody').find(".current");
+            if (checknum.length == 0) {
+                $("#reMess").modal('show');
+            } else {
+//			var arrid = [];
+//			getIds(checknum,arrid);//获取已选项的id
+                $(".isPass").text('通过');
+                modalContent(checknum, con, conbox)//参数  （被选中的项  ，自动加载的内容   ，  加载到底位置 ）
+                $("#Wage").html('<div class="text-left mt-20 wages pos_r"><span>项目奖金（必填）：</span><span class="pos_a wan">万元</span><input type="text" class="mr-15" placeholder="只能输入数字" name="wages"/></div>');
+//			$.ajax({
+//				url:'json.json',
+//				type: 'post',
+//				data: arrid,
+//				success: function (data) {
+//					modalContent(data,con,conbox);
+//					$("#Wage").html('<div class="text-left mt-20 wages pos_r"><span>项目奖金（必填）：</span><span class="pos_a wan">万元</span><input type="text" class="mr-15" placeholder="只能输入数字" name="wages"/></div>');
+//				},
+//				error: function(data){
+////					modalContent(data,con,conbox);
+////					$("#Wage").html('<div class="text-left mt-20 wages pos_r"><span>项目奖金（必填）：</span><span class="pos_a wan">万元</span><input type="text" class="mr-15" placeholder="只能输入数字" name="wages"/></div>');
+//					alert('数据传输失败');
+//				}
+//			});
+            }
+        })
+        $("#ending_none").on("click", function () {//评审不通过
+            var conbox = $("#update-list tbody");
+            var con = "";
+            checknum = $('tbody').find(".current");//被选中的项
+            if (checknum.length == 0) {
+                $("#reMess").modal('show');//没有选中项  显示弹框
+            } else {
+//			var arrid = [];
+//			getIds(checknum,arrid);//获取已选项的id
+                $(".isPass").text('不通过');
+                modalContent(checknum, con, conbox);
+
+//			$.ajax({
+//				url:'json.json',
+//				type: 'post',
+//				data: arrid,
+//				success: function (data) {
+//					modalContent(data,con,conbox);
+//				},
+//				error: function(data){
+//					modalContent(data,con,conbox);
+//					alert('数据传输失败');
+//				}
+//			});
+            }
+        })
+        //校验
+        $("#resume_form").validate(validateDate);
+        $("#sure").on('click', function () {//评审弹框中的  确定
+            var arr = [];
+            var dataObj = {};
+            var wages = $(".wages input").val();
+            var status = $(".isPass").eq(0).text();//状态：通过/不通过
+            var texts = $(".texeArea").val();//评审意见
+            getIds(checknum, arr);//获取已选项的id
+            if (wages) {
+                dataObj = {//需要发送的数据
+                    arrObj: arr,
+                    status: status,
+                    wages: wages,
+                    texts: texts
+                }
+            } else {
+                dataObj = {//需要发送的数据
+                    arrObj: arr,
+                    status: status,
+                    texts: texts
+                }
+            }
+            var validator = $("#resume_form").validate(validateDate);//校验是否通过
+            if (validator.form()) {//校验通过
+                sendId(dataObj, checknum);//ajax发送已选项的id、评审状态和评审意见
+                $('#examine-status').modal('hide');//项目终审弹框隐藏
+            }
+        });
+        //操作成功 确定  刷新页面
+        $("#reload").on("click", function () {
+            location.reload();
+        });
+    })
+    ////弹框显示，并自动加载里面的内容
+    //function modalContent(data,con,conbox){//参数  （回传数据  ，自动加载的内容   ，  加载到的位置 ）
+    //	for(var i=0;i<data.length;i++){
+    //		var con = '';
+    //		con += "<tr><td>"+data[i].id+"</td><td>"+data[i].name+"</td><td>"+data[i].one+"</td><td>"+data[i].two+"</td><td>"+data[i].order+"</td></tr>"
+    //	}
+    //	conbox.html(con);//弹框内容自动加载
+    //	$('#examine-status').modal('show');//项目终审弹框显示
+    //}
+
+    //弹框显示，并自动加载里面的内容
+    function modalContent(checknum, con, conbox) {//参数  （被选中的项  ，自动加载的内容   ，  加载到底位置 ）
+        for (var i = 0; i < checknum.length; i++) {
+            con += "<tr><td>" + checknum.eq(i).parents("tr").children("td").eq(1).text() + "</td><td>" +
+                    checknum.eq(i).parents("tr").children("td").eq(2).text() + "</td><td>" +
+                    checknum.eq(i).parents("tr").children("td").eq(11).text() + "</td><td>" +
+                    checknum.eq(i).parents("tr").children("td").eq(12).text() + "</td><td>" +
+                    checknum.eq(i).parents("tr").children("td").eq(3).text() + "</td></tr>"
+        }
+        conbox.html(con);//弹框内容自动加载
+        $('#examine-status').modal('show');//项目终审弹框显示
+    }
+    //获取已选项的id
+    function getIds(checknum, arr) {//参数  （被选中的项   ， id数组）
+        for (var i = 0; i < checknum.length; i++) {
+            var checkedId = checknum.eq(i).parents("tr").children("td").eq(1).text();
+            arr.push(checkedId);//每一个被选中的项   id加入数组
+        }
+    }
+    ;
+    //ajax发送已选项的id和终审意见
+    function sendId(dataObj, checknum) {//参数  （要传的数据 包括id数组和评审意见   ，被选中的项）
+        $.ajax({
+            url: 'json.json',
+            type: 'post',
+            data: dataObj,
+            success: function (data) {
+                if (data == 'ok') {
+                    //操作成功
+                    $("#status_success").modal('show');//成功弹框显示
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+//				$('#examine-status').modal('hide');//评审弹框隐藏
+//				checknum.parents('tr').children('td').eq(9).text($(".isPass").text());//表格中的  被选中的项  的终审意见  显示变更 
+//				$(".texeArea").val('');//清除弹框中textarea（终审意见）的内容
+                } else {
+                    //操作失败
+                    $("#status_error").modal('show');//失败弹框显示
+                    $('#resume_form')[0].reset();
+//				$('#examine-status').modal('hide');//评审弹框隐藏
+//				$(".texeArea").val('');
+                }
+            },
+            error: function () {
+                console.log(dataObj);
+                $("#status_success").modal('show');
+                setTimeout(function () {
+//				location.reload();
+                }, 1500);
+            }
+        });
+    }
+</script>
+</body>
+</html>

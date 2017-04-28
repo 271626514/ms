@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="Zh-cn" data-identity='92'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>资源申请记录</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+    <link rel="stylesheet" href="../../assets/lib/jedate/jedate.css"/>
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .form {
+            background-color: #f2f5fb;
+            padding: 15px 20px;
+        }
+
+        .line {
+            color: #ccc;
+        }
+
+        .table thead tr {
+            background-color: #f2f5fb;
+        }
+
+        .table thead tr, .table tbody tr {
+            border-color: #ebf0f9;
+            height: 40px;
+        }
+
+        .table > thead > tr > th, .table > tbody > tr > td {
+            line-height: 24px;
+        }
+
+        .apply > tbody tr:last-child {
+            background-color: #fbfdfe;
+            font-weight: 600;
+        }
+
+        .gray {
+            color: #999;
+        }
+
+        .ml-85 {
+            margin-left: 85px;
+        }
+
+        /*弹框*/
+        .modal-body {
+            text-align: left;
+        }
+
+        .dialog-sm .modal-dialog {
+            width: 1054px;
+        }
+
+        .modal-body p {
+            color: #999;
+            margin: 16px 0;
+        }
+
+        /*时间控件     start*/
+        .jedateblue .jedatebot .jedatebtn .jedateok {
+            display: none;
+        }
+
+        .dateChange {
+            position: relative;
+        }
+
+        .main-container {
+            height: auto;
+        }
+
+        .dateChange input[type='text'] {
+            line-height: 28px;
+            width: 200px;
+            height: 30px;
+            background: url(../../assets/imgs/date_icon.png) 170px 3px no-repeat #fff;
+            outline: none;
+            padding: 0 12px;
+            text-align: left;
+            font-size: 14px;
+            outline: none;
+            border-color: rgb(169, 169, 169);
+        }
+
+        /*时间控件    end*/
+        #ctlBtn {
+            width: 56px;
+            height: 30px;
+        }
+
+        #have_add_list {
+            height: 105px;
+            width: 710px;
+            padding: 3px 10px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>资源管理</li>
+        <li>资源申请记录</li>
+    </ol>
+    <div class="module-header mb-20">
+        <h4>资源申请记录</h4>
+    </div>
+    <div class="tile">
+        <div class="tile-content">
+            <form class="form mb-20" id="resume_form">
+                <div class="form-group clearfix">
+                    <label class="pull-left">起始时间：</label>
+                    <!--此处为时间控件预留位置   start-->
+                    <div class="dateChange mr-10 pull-left">
+                        <input class="workinput" id="date01" type="text" readonly="">
+                    </div>
+                    <!--<span class="line mr-10 pull-left">—截止时间</span>-->
+                    <label class="pull-left">截止时间：</label>
+                    <div class="dateChange mr-10 pull-left">
+                        <input class="workinput" id="date02" type="text" readonly="">
+                    </div>
+                    <!--此处为时间控件预留位置   end-->
+                </div>
+                <div class="form-group">
+                    <label>资源类型：</label>
+                    <select id="resourceType">
+                        <option>全部类型</option>
+                        <option>空间服务</option>
+                        <option>本地资源</option>
+                    </select>
+                </div>
+                <div class="form-group mb-0">
+                    <button class="btn-blue w80 mr-10 ml-85" id="ok">确定</button>
+                    <a href="#" id="clear">清空</a>
+                </div>
+            </form>
+            <p class="mb-15">查询时间：2016.12.31－2016.12.31</p>
+            <p class="mb-15">查询结果：总计 1240条记录</p>
+            <table class="table text-center table-bordered-noheader apply">
+                <thead>
+                <tr>
+                    <th>资源类别</th>
+                    <th>申请数量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>空间服务</td>
+                    <td>35</td>
+                    <td><a href="#" class="detail mr-10" data-toggle="modal" data-target="#applyRecord">查看</a><a
+                            class="download" href="javascript:void (0)">下载</a></td>
+                </tr>
+                <tr>
+                    <td>本地资源</td>
+                    <td>34</td>
+                    <td><a href="#" class="detail mr-10">查看</a><a class="download" href="javascript:void (0)">下载</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>能力资源</td>
+                    <td>34</td>
+                    <td><a href="#" class="detail mr-10">查看</a><a class="download" href="javascript:void (0)">下载</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>研发云资源</td>
+                    <td>0</td>
+                    <td><a class="detail mr-10 gray">查看</a><a class="download gray">下载</a></td>
+                    <!--当申请数量是0时 a标签加类gray 并去掉href-->
+                </tr>
+                <tr>
+                    <td>总计</td>
+                    <td>34434</td>
+                    <td><a class="download" href="javascript:void (0)">汇总下载</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade dialog-sm" id="applyRecord" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content bd-muted">
+                <div class="modal-header bg-muted">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title text-left">资源申请工单</h5>
+                </div>
+                <div class="modal-body">
+                    <span class="mr-30">时间：2016.12.30</span><span>类别：<span id="srctype"></span></span>
+                    <p>说明： 仅展示部分关键信息供核对需求、开通账号用（ jira等工具链资源 弹窗中直接展示待开通账号信息），详细申请信息请下载附件查看</p>
+                    <table class="table text-center table-bordered-noheader">
+                        <thead>
+                        <tr>
+                            <th width="25%">名称</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>申请人</th>
+                            <th>手机</th>
+                            <th width="20%">邮箱</th>
+                            <th width="20%">项目名称</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>域名申请</td>
+                            <td>0元</td>
+                            <td>-</td>
+                            <td>林宇</td>
+                            <td>13812345600</td>
+                            <td>13812345600@chinamobile.com</td>
+                            <td>家庭高清视频通话创业项目</td>
+                        </tr>
+                        <tr>
+                            <td>域名申请</td>
+                            <td>0元</td>
+                            <td>-</td>
+                            <td>林宇</td>
+                            <td>13812345600</td>
+                            <td>13812345600@chinamobile.com</td>
+                            <td>家庭高清视频通话创业项目</td>
+                        </tr>
+                        <tr>
+                            <td>域名申请</td>
+                            <td>0元</td>
+                            <td>-</td>
+                            <td>林宇</td>
+                            <td>13812345600</td>
+                            <td>13812345600@chinamobile.com</td>
+                            <td>家庭高清视频通话创业项目</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-20 text-center">
+                        <button class="btn-blue w80 reload" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+</div>
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "webtools", "validate", "jedate"], function (c, b, w, v, j) {
+        var start = {
+            format: 'YYYY-MM-DD',
+            minDate: '2016-01-01', //设定最小日期为当前日期
+            isTime: false,
+            festival: false,
+            maxDate: $.nowDate(0), //最大日期
+            choosefun: function (elem, datas) {
+                end.minDate = datas; //开始日选好后，重置结束日的最小日期
+                end.maxDate = addDay(90, datas);//设定start时间后，end最晚推后90天
+            }
+        };
+        var end = {
+            format: 'YYYY-MM-DD',
+            minDate: '2016-01-01', //设定最小日期为当前日期
+            festival: false,
+            maxDate: $.nowDate(0), //最大日期
+            choosefun: function (elem, datas) {
+                start.minDate = addDay(-90, datas);//设定end时间后，start最早提前90天
+                start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+            }
+        };
+
+        $("#date01").jeDate(start);
+        $("#date02").jeDate(end);
+
+        //点击确定提交
+        $("#ok").on('click', function () {
+            var date1 = $("#date01").val();
+            var date2 = $("#date02").val();
+            var resource = $("#resourceType").val();
+            var type = resourceType(resource);
+            if (date1 && date2) {
+                var dataObj = {
+                    datestart: date1,
+                    dateend: date2,
+                    resourcetype: type
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "",
+                    dataType: "json",
+                    data: dataObj,
+                    success: function (data) {
+                        window.location.href = '';
+                    },
+                    error: function () {
+                        alert("提交出错！");
+                    }
+                });
+            } else {
+                alert('请选择时间');
+            }
+        });
+        //清空
+        $('#clear').on('click', function () {
+            $('#resume_form')[0].reset();
+            window.location.reload();
+        });
+        //查看
+        $('.detail').on('click', function () {
+            var date1 = $("#date01").val();
+            var date2 = $("#date02").val();
+            var resource = $(this).parents('tr').children('td:first-child').html();
+            var type = resourceType(resource);
+            var dataObj = {
+                datestart: date1,
+                dateend: date2,
+                resourcetype: type
+            };
+            console.log(dataObj)
+            $.ajax({
+                type: "POST",
+                url: "",
+                dataType: "json",
+                data: dataObj,
+                success: function (data) {
+                    $('#srctype').html(resource);
+                    for (var j = 0; j < data.length; j++) {
+                        var tbody_con = '';
+                        tbody_con += '<tr><td>' + data[j].name + '</td><td>' + data[j].price + '</td><td>' + data[j].num + '</td><td>' + data[j].porson + '</td><td>' + data[j].phone + '</td><td>' + data[j].mail + '</td><td>' + data[j].objname + '</td></tr>';
+                        $('#applyRecord table tbody').html(tbody_con);
+                    }
+                },
+                error: function (data) {
+
+//						for(var j=0;j<data.length;j++){
+//							var tbody_con = '';
+//							tbody_con += '<tr><td>'+data[j].name+'</td><td>'+data[j].price+'</td><td>'+data[j].num+'</td><td>'+data[j].porson+'</td><td>'+data[j].phone+'</td><td>'+data[j].mail+'</td><td>'+data[j].objname+'</td></tr>';
+//							$('#applyRecord table tbody').html(tbody_con);
+//						}
+                }
+            });
+        });
+        //下载
+        $('.download').on('click', function () {
+            var date1 = $("#date01").val();
+            var date2 = $("#date02").val();
+            var resource = $(this).parents('tr').children('td:first-child').html();
+            var type = resourceType(resource);
+            var dataObj = {
+                datestart: date1,
+                dateend: date2,
+                resourcetype: type
+            };
+            $.ajax({
+                type: "POST",
+                url: "",
+                dataType: "json",
+                data: dataObj,
+                success: function (data) {
+                    window.location.href = '';
+                },
+                error: function () {
+                }
+            });
+        });
+    });
+    function addDay(dayNumber, date) {
+        var ms = dayNumber * (1000 * 60 * 60 * 24);
+        var dates = new Date(date).getTime();
+        var newDate = new Date(dates + ms);
+        var year = newDate.getFullYear();
+        console.log(year);
+        var month = newDate.getMonth() + 1;
+        if (month.toString().length == 1) {
+            month = "0" + month;
+        }
+        console.log(month);
+        var day = newDate.getDate();
+        if (day.toString().length == 1) {
+            day = "0" + day;
+        }
+        console.log(day);
+        console.log(year + "-" + month + "-" + day);
+        return year + "-" + month + "-" + day;
+    }
+    ;
+
+    function resourceType(str) {
+        if (str === '全部类型') {
+            return 0;
+        } else if (str === '空间服务') {
+            return 1;
+        } else if (str === '本地资源') {
+            return 2;
+        } else if (str === '能力资源') {
+            return 3;
+        } else if (str === '研发云资源') {
+            return 4;
+        } else if (str === '总计') {
+            return 5;
+        }
+    }
+</script>
+</body>
+</html>

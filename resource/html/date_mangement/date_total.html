@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="70">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>数据总览</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+        }
+
+        .module-header h4 {
+            border-bottom: 2px solid #eceff9;
+            padding-bottom: 16px;
+        }
+
+        .module-header h4 span {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        .module-header h4 .form {
+            display: inline;
+        }
+
+        .module-header h4 .form .slt {
+            width: 200px;
+        }
+
+        .font-blue a {
+            color: #5584FF;
+        }
+
+        .fz {
+            font-size: 16px;
+        }
+
+        #list tr th {
+            width: 33.3%;
+        }
+
+        .btn-my {
+            border-radius: 0;
+        }
+
+        .btn-gy {
+            background: #E7EEFF;
+            color: #5584FF;
+            border: 1px solid #E7EEFF;
+        }
+
+        h4.border {
+            border-bottom: 1px solid #E7EEFF;
+        }
+
+        .mr-2 {
+            margin-right: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>业务数据管理</li>
+        <li>数据总览</li>
+    </ol>
+    <div class="">
+        <div class="module-header">
+            <h4>数据范围
+                <span class="ml-10 icon-info"></span>
+                <form class="form ml-20" id="resume_form">
+                    <div class="form form-group">
+                        <select class="slt">
+                            <option value="">中移杭州信息技术有限公司</option>
+                            <option value="">用户组1</option>
+                            <option value="">用户组2</option>
+                        </select>
+                    </div>
+                </form>
+                <a href="javascript:;" class="btn-blue w80 pull-right">下载数据</a>
+            </h4>
+        </div>
+        <div class="tile-content mt-20">
+            <p>当前数据:<span id="winDate"></span><span class="ml-20 font-blue"><a href="date_history.html">历史数据</a></span>
+            </p>
+            <div class="table-responsive">
+                <h3 class="mb-15">用户参与</h3>
+                <table id="list" class="table table-indent text-center table-bordered-noheader">
+                    <thead>
+                    <tr>
+                        <th>全国数据</th>
+                        <th>昨日新增</th>
+                        <th>累计总量</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr>
+                        <td>注册用户数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>自发创意参与人数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>参与众筹人数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <h3 class="mb-15">自发创意</h3>
+                <table id="list" class="table table-indent text-center table-bordered-noheader">
+                    <thead>
+                    <tr>
+                        <th>全国数据</th>
+                        <th>昨日新增</th>
+                        <th>累计总量</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr>
+                        <td>自发创意总数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>众筹中项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已筹满金额项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>众筹成功项目人数（队长+队员）</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已众筹成功项目数（筹满+单位支持）</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>各单位支持项目数（筹满+未筹满）</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>评审中项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>评审通过项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>已入孵项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>远程入孵项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>入驻和创空间项目数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>应用单位试用数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <h3 class="mb-15">大小命题</h3>
+                <table id="list" class="table table-indent text-center table-bordered-noheader">
+                    <thead>
+                    <tr>
+                        <th>全国数据</th>
+                        <th>昨日新增</th>
+                        <th>累计总量</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr>
+                        <td>大命题发布总量</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>大命题打榜总数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>小命题发布总量</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    <tr>
+                        <td>小命题打榜总数</td>
+                        <td>12314</td>
+                        <td>12314</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="data-page text-center page">
+            	<div class="holder pagination" id="pagination"></div>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "jqPaginator", "MyDate"], function (c, b, j, m) {
+        //获取时间
+        function getDateStr() {
+            new m.MyDate().show('winDate')
+        }
+
+        setInterval(getDateStr, 1000);
+        //	分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>没有搜到符合的项目</p>";
+            $('#itemContainer').append(html);
+        } else {
+            $.jqPaginator('#pagination', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+                    /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                     +'&supportSort='+$("[name='supportSort'] :selected").val()
+                     +'&moneySort='+$("[name='moneySort'] :selected").val()
+                     +'&pageNum=' + n;  */
+                    //							$("[name='pageNum']").val(n);
+                    //							$("#search_form").submit();
+                }
+            });
+        }
+        //	 分页   end
+    });
+</script>
+
+</body>
+</html>

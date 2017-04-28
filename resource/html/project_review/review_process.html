@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="84">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>中国移动双创平台-自发创意-查看详情</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../assets/lib/jedate/jedate.css"/>
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .main-container {
+            height: auto;
+        }
+
+        ul.proList li span:first-child {
+            text-align: left;
+            width: 70px;
+            margin-top: 5px;
+        }
+
+        .module-header h4 span {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        .manageList select {
+            background: transparent;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2px;
+            padding: 3px 10px;
+            width: 120px;
+            height: 30px;
+        }
+
+        .proList li {
+            line-height: 30px;
+        }
+
+        .proList h4 {
+            font-weight: 700;
+            padding: 10px 0px 20px 0px;
+        }
+
+        .proList li input {
+            color: #404040;
+            font-weight: 600;
+            font-size: 14px;
+            width: 180px;
+            margin-right: 20px;
+            text-indent: 10px;
+            background: #fff;
+        }
+
+        .proList li .noline input {
+            width: 200px;
+            margin-right: 0;
+            text-indent: 0;
+            border: 0px;
+        }
+
+        .proList li p {
+            font-size: 12px;
+            margin: 0;
+            color: #a6a6a6;
+            padding-top: 5px;
+        }
+
+        .setting.glay, .setting.glay:hover, .setting.glay:active {
+            color: #ddd;
+            width: 60px;
+            background: none;
+            border: 1px solid #adadad;
+            cursor: default;
+        }
+
+        .globk .btn-default {
+            color: #759bff;
+            width: 60px;
+        }
+
+        #supportStart {
+            font-weight: 600;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #404040;
+        }
+
+        .databox {
+            position: relative;
+        }
+
+        ul.proList li {
+            overflow: initial;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>项目审批</li>
+        <li>自发创意流程管理</li>
+    </ol>
+    <div class="tile">
+        <div class="module-header clearfix">
+            <h4>流程管理
+                <span class="icon-info"></span>
+            </h4>
+        </div>
+        <div class="tile-content">
+            <div>
+                <ul class="proList manageList mt-10">
+                    <li>
+                        <span>申报批次：</span>
+                        <span>
+                				<select class="btn btn-sm" name="reportNum" id="reportNum">
+		                            <option value="2">第二期</option>
+		                            <option value="1">第一期</option>
+		                        </select>
+                			</span>
+                    </li>
+                    <h4>众筹管理</h4>
+                    <li>
+                        <span class="globk">众筹开始：</span>
+                        <span class="globk">
+                				<div class="noline databox" data-num="1">
+	                            		<input type="text" name="fundingStart" id="fundingStart" readonly=""/>
+	                            		<a href="javascript:void(0);" class="btn-default setting">设置</a>
+                				</div>
+                				<p>请前台产品补充说明具体内容，以下文案仅供参考 所有已审核通过的项目在此时刻后自动进入众筹。</p>
+                			</span>
+                    </li>
+                    <li>
+                        <span class="globk">众筹结束：</span>
+                        <span class="globk">
+                				<div class="noline databox" data-num="2">
+                					<input type="text" name="fundingEnd" id="fundingEnd" readonly=""/>
+                					<a href="javascript:void(0);" class="btn-default setting">设置</a>
+                				</div>
+                				<p>所有未筹满目标金额的项目超时后自动变为众筹失败。文案待确定</p>
+                			</span>
+                    </li>
+                    <h4>应用单位支持</h4>
+                    <li>
+                        <span class="globk">支持开始：</span>
+                        <span class="globk" data-num="3">
+                				<div id="supportStart"></div>
+                				<p>所有已审核通过的项目在此时刻后自动进入众筹。</p>
+                			</span>
+                    </li>
+                    <li>
+                        <span class="globk">支持结束：</span>
+                        <span class="globk">
+                				<div class="noline databox" data-num="4">
+                					<input type="text" name="supportEnd" id="supportEnd" readonly=""/>
+                					<a href="javascript:void(0);" class="btn-default setting">设置</a>
+                				</div>
+                				<p>所有已审核通过的项目在此时刻后自动进入众筹。</p>
+                			</span>
+                    </li>
+
+                    <h4>评审管理</h4>
+                    <li>
+                        <span class="globk">评审开始：</span>
+                        <span class="globk">
+                				<div class="noline databox" data-num="5">
+                					<input type="text" name="reviewStart" id="reviewStart" readonly=""/>
+                					<a href="javascript:void(0);" class="btn-default setting">设置</a>
+                				</div>
+                				<p>所有已审核通过的项目在此时刻后自动进入众筹。</p>
+                			</span>
+                    </li>
+                    <li>
+                        <span class="globk">评审结束：</span>
+                        <span class="globk">
+                				<div class="noline databox" data-num="6">
+                					<input type="text" name="reviewEnd" id="reviewEnd" readonly=""/>
+                					<a href="javascript:void(0);" class="btn-default setting">设置</a>
+                				</div>
+                				<p>所有已审核通过的项目在此时刻后自动进入众筹。</p>
+                			</span>
+                    </li>
+                    <h4>孵化管理</h4>
+                    <li>
+                        <span class="globk">孵化开始：</span>
+                        <span class="globk">
+                				<div class="noline databox" data-num="7">
+                					<input type="text" name="hatchStart" id="hatchStart" readonly=""/>
+                					<a href="javascript:void(0);" class="btn-default setting">设置</a>
+                				</div>
+                				<p>所有已审核通过的项目在此时刻后自动进入众筹。</p>
+                			</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "moment", "jedate"], function (c, b, mm) {
+        function dateChange(oBtn) {
+            $(oBtn).prev().attr("disabled", false);
+            var fundingStart = {
+                        festival: true,
+                        format: "YYYY-MM-DD",
+                        minDate: $.nowDate(0),
+                        choosefun: function (elem, val) {
+                            elem.next().text('确认');
+                            fundingEnd.minDate = val;
+                            supportEnd.minDate = val;
+                        }
+                    },
+                    fundingEnd = {
+                        festival: true,
+                        format: "YYYY-MM-DD",
+                        choosefun: function (elem, val) {
+                            elem.next().text('确认');
+                            fundingStart.maxDate = val
+                        }
+                    },
+                    supportEnd = {
+                        festival: true,
+                        format: "YYYY-MM-DD",
+                        choosefun: function (elem, val) {
+                            elem.next().text('确认');
+                        }
+                    },
+                    reviewStart = {
+                        festival: true,
+                        format: "YYYY-MM-DD",
+                        minDate: $.nowDate(0),
+                        choosefun: function (elem, val) {
+                            elem.next().text('确认');
+                            reviewEnd.minDate = val;
+                        }
+                    },
+                    reviewEnd = {
+                        festival: true,
+                        format: "YYYY-MM-DD",
+                        minDate: $.nowDate(0),
+                        choosefun: function (elem, val) {
+                            elem.next().text('确认');
+                            reviewStart.maxDate = val;
+                        }
+                    },
+                    hatchStart = {
+                        festival: true,
+                        format: "YYYY-MM-DD",
+                        minDate: $.nowDate(0),
+                        choosefun: function (elem, val) {
+                            elem.next().text('确认');
+                        }
+                    }
+            $('#fundingStart').jeDate(fundingStart);
+            $('#fundingEnd').jeDate(fundingEnd);
+            $('#supportEnd').jeDate(supportEnd);
+            $('#reviewStart').jeDate(reviewStart);
+            $('#reviewEnd').jeDate(reviewEnd);
+            $('#hatchStart').jeDate(hatchStart);
+        }
+
+        $('.proList').on('click', 'a', function () {
+            if ($(this).hasClass('setting')) {
+                $(this).removeClass('setting').addClass('sure');
+                $(this).parent().removeClass('noline');
+                dateChange($(this));
+            } else {
+                $(this).prev().attr("disabled", true);
+                $(this).parent().addClass('noline');
+                $(this).text("设置").removeClass('sure').addClass('setting');
+                if ($(this).parent().data('num') == 1) {
+                    $('#supportStart').text($(this).prev().val());
+                }
+                var datanum = $(this).parent().data('num'), dataTime = $(this).prev().val();
+//	        		referData(datanum,dataTime);
+            }
+        })
+    });
+
+    function referData(datanum, dataTime) {
+        $.ajax({
+            url: "",
+            data: {
+                datanum: datanum,
+                dataTime: dataTime
+            },
+            dataType: "json"
+        }.then(function () {
+
+        }, function () {
+
+        }))
+    }
+
+</script>
+</body>
+</html>

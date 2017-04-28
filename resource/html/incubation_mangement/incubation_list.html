@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ZH-cn" data-identity="94">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>出孵管理列表</title>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/cmui.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/innerbase.min.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/lib/html5shiv.js"></script>
+    <script src="../../assets/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .gray {
+            color: #999;
+        }
+
+        .gray:hover {
+            color: #999;
+        }
+
+        .table td a {
+            padding: 0 3px;
+        }
+
+        .table label {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        .resume label {
+            width: 40px;
+        }
+
+        .resume .choose span {
+            margin-right: 0;
+        }
+
+        .btn-default.w120 {
+            font-size: 14px;
+            width: 120px;
+            height: 30px;
+            line-height: 28px
+        }
+
+        .btns {
+            background-color: #fbfdfe;
+            border: 1px solid #e6e6e6;
+            border-top: none;
+            padding: 10px;
+        }
+
+        .btns button {
+            font-size: 14px;
+            height: 30px;
+            line-height: 17px;
+        }
+
+        /*搜索框     start*/
+        .tools {
+            padding: 15px 20px;
+            background-color: #f6f7fb;
+        }
+
+        .search, .form-control {
+            display: inline-block
+        }
+
+        select.form-control {
+            background: transparent;
+            font-size: 12px;
+        }
+
+        .pos_r {
+            position: relative;
+        }
+
+        input[type='text'].form-control, .form-control {
+            display: inline-block;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2px;
+            padding: 3px 10px;
+            width: 242px;
+            height: 30px;
+        }
+
+        .icon-search {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: url(../../assets/imgs/icon-search.png) 0 0 no-repeat;
+            cursor: pointer;
+        }
+
+        .resize {
+            font-size: 12px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        /*搜索框     end*/
+        /*弹窗   start*/
+        .dialog-sm .w560 {
+            width: 560px;
+        }
+
+        .modal-body > .table thead tr {
+            height: 37px;
+        }
+
+        .table > tbody > tr > td, .modal-body .table > thead > tr > td {
+            line-height: 20px;
+        }
+
+        .modal-body .many {
+            max-height: 250px;
+            overflow: auto;
+        }
+
+        /*弹窗     end*/
+        /*必填和叹号     start*/
+        .module-header h4 span {
+            background: url(../../assets/imgs/icon-question.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        .icon-info {
+            margin-left: 8px;
+            vertical-align: top;
+        }
+
+        .tooltip-inner {
+            background: #FFF;
+            color: #666;
+            border: 1px solid #cccccc;
+            max-width: 440px;
+            text-align: left;
+            padding: 10px;
+        }
+
+        .tooltip {
+            background: transparent;
+        }
+
+        .tooltip.right .tooltip-arrow {
+            border-right-color: #ccc;
+        }
+
+        /*必填和叹号     end*/
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <ol class="breadcrumb">
+        <li>孵化管理</li>
+        <li>出孵管理</li>
+    </ol>
+    <div class="">
+        <div class="module-header"><h4>出孵管理<span class="icon-info" data-toggle="tooltip" data-placement="right"
+                                                 id="point"
+                                                 title='审核说明：</br>如团队上传材料完整合规，请点击 上传材料，上传出孵所需各项管理材料</br>如团队上传材料存在问题，请点击 审核退回，系统将通知团队重新修改提交</br>对多个团队申请进行批量审核退回，请通过复选框操作'></span>
+        </h4></div>
+        <div class="tile-content mt-10">
+            <!--搜索栏-->
+            <div class="tools mb-20 mt-20 clearfix" id="search_space">
+                <form class="form-inline searchForm pull-left">
+                    <div class="form-group">
+                        <label for="rTime">期数：</label>
+                        <select class="form-control" name="periods">
+                            <option value="">全部</option>
+                            <option value="">第二期</option>
+                            <option value="">第一期</option>
+                        </select>
+                    </div>
+                    <div class="form-group ml-20">
+                        <label for="industry">类型：</label>
+                        <select class="form-control" name="doneNum" id="doneNum">
+                            <option value="0">全部</option>
+                            <option value="1">申请创业</option>
+                            <option value="1">申请创新</option>
+                        </select>
+                    </div>
+                    <div class="form-group ml-20">
+                        <button type="submit" class="btn-blue w80" id="search_a">确定</button>
+                        <a class="resize ml-20 resetTitle" id="reset" href="javascript:;">清空</a>
+                    </div>
+                </form>
+                <div class="ml-20 pull-right">
+                    <div class="pos_r pull-left">
+                        <input id="projectName" type="text" class="form-control" autocomplete="off" maxlength="255"
+                               placeholder="按名称搜索">
+                        <a class="icon-search" id="search_b" href="javascript:void(0);"></a>
+                    </div>
+                    <a class="resize ml-20 pull-left" id="clear" href="#">重置</a>
+                </div>
+            </div>
+            <!--搜索栏-->
+
+            <p class="gray-text" id="default_text">总计<span>XX</span>条记录，当前为您显示第<span>1-20</span>条</p>
+            <p class="gray-text" id="search_text" style="display: none;">已为您找到<span>XXXXX</span>条记录</p>
+            <div class="table-responsive resume">
+                <table id="list" class="table text-center table-bordered-noheader mb-0">
+                    <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>项目ID</th>
+                        <th>名称</th>
+                        <th>队长</th>
+                        <th>手机</th>
+                        <th>类型</th>
+                        <th>团队提交材料</th>
+                        <th>管理材料上传</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemContainer">
+                    <tr data-id="1">
+                        <td class="choose"><label><span></span>1</label></td>
+                        <td>21231412123</td>
+                        <td>智能天线权值自动优化系统算法及工具</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="2">
+                        <td class="choose"><label><span></span>2</label></td>
+                        <td>21231412123</td>
+                        <td>智能天线权值自动优化系统算法及工具</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="3">
+                        <td class="choose"><label><span></span>3</label></td>
+                        <td>21231412123</td>
+                        <td>智能天线权值自动优化系统算法及工具</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="4">
+                        <td class="choose"><label><span></span>4</label></td>
+                        <td>21231412123</td>
+                        <td>运营集团</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="5">
+                        <td class="choose"><label><span></span>1</label></td>
+                        <td>21231412123</td>
+                        <td>智能天线权值自动优化系统算法及工具</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="6">
+                        <td class="choose"><label><span></span>2</label></td>
+                        <td>21231412123</td>
+                        <td>未填写</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="7">
+                        <td class="choose"><label><span></span>3</label></td>
+                        <td>21231412123</td>
+                        <td>智能天线权值自动优化系统算法及工具</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="8">
+                        <td class="choose"><label><span></span>4</label></td>
+                        <td>21231412123</td>
+                        <td>运营集团</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="9">
+                        <td class="choose"><label><span></span>1</label></td>
+                        <td>21231412123</td>
+                        <td>北京</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="10">
+                        <td class="choose"><label><span></span>2</label></td>
+                        <td>21231412123</td>
+                        <td>未填写</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="11">
+                        <td class="choose"><label><span></span>3</label></td>
+                        <td>21231412123</td>
+                        <td>山东</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="12">
+                        <td class="choose"><label><span></span>4</label></td>
+                        <td>21231412123</td>
+                        <td>运营集团</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="13">
+                        <td class="choose"><label><span></span>1</label></td>
+                        <td>21231412123</td>
+                        <td>北京</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="14">
+                        <td class="choose"><label><span></span>2</label></td>
+                        <td>21231412123</td>
+                        <td>未填写</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="15">
+                        <td class="choose"><label><span></span>3</label></td>
+                        <td>21231412123</td>
+                        <td>山东</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    <tr data-id="16">
+                        <td class="choose"><label><span></span>4</label></td>
+                        <td>21231412123</td>
+                        <td>运营集团</td>
+                        <td>张三三</td>
+                        <td>17777777777</td>
+                        <td>申请创业</td>
+                        <td>未上传</td>
+                        <td>未上传</td>
+                        <td><a href="incubation_detail.html">查看</a><a href="incubation_edit.html">材料上传</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btns mb-20">
+                    <a class="btn-default w80 mr-10 all" id="all">全选</a>
+                    <a class="btn-default w120" href="#" id="batchchange">退回申请</a>
+                    <span class="gray-text text-info" style="display: none;">已选中<span>xxx</span>条记录</span>
+                    <!--隐藏请加类名 hidden-->
+                </div>
+            </div>
+            <div class="data-page text-center page">
+                <div class="holder pagination" id="pagination1"></div>
+            </div>
+
+            <!--申请退出弹窗      start-->
+            <div class="modal fade dialog-sm" id="assignment" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">出孵申请退回</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-left">是否退回以下项目的出孵申请：</p>
+                            <div class="many">
+                                <table class="table text-center table-bordered-noheader mb-10">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>名称</th>
+                                        <th>队长</th>
+                                        <th>手机</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--<tr>-->
+                                    <!--<td>12345678</td>-->
+                                    <!--<td>基于wifi方式的室内定位方法及产品研发</td>-->
+                                    <!--<td>张三三</td>-->
+                                    <!--<td>17777777777</td>-->
+                                    <!--</tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-left">系统将自动下发消息通知团队及时修改申请材料。</p>
+                            <div class="text-left">
+                                <p>审批意见（选填）：</p>
+                                <textarea class="form-control" style="width: 100%;"></textarea>
+                            </div>
+                            <p class="text-left">
+                                操作人员：<span>sijiaqing001/司家庆</span>
+                            </p>
+                            <div class="mt-20">
+                                <button class="btn-blue w80" id="statechange">确定</button>
+                                <button class="btn-default w80" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--申请退出弹窗     end-->
+            <!--没有选择操作对象-->
+            <div class="modal fade dialog-sm" id="reMess" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">提示</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center" id="message-one">没有可操作的对象。</p>
+                            <p class="text-center">请先在列表中勾选需要操作的对象后再进行操作。</p>
+                            <div class="mt-20">
+                                <button class="btn-blue w80 reload" data-dismiss="modal">确定</button>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--没有选择操作对象 end-->
+            <!--操作成功 success     start-->
+            <div class="modal fade dialog-sm" id="change_success" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">提示</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="green mt-15 mb-20">操作成功！</h3>
+                            <div class="mt-20">
+                                <a class="btn-blue w80" data-dismiss="" id="success_sure">确定</a>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--操作成功 success     end-->
+            <!--操作失败 error     start-->
+            <div class="modal fade dialog-sm" id="change_error" data-backdrop="static">
+                <div class="modal-dialog w560">
+                    <div class="modal-content bd-muted">
+                        <div class="modal-header bg-muted bd-muted">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title text-left">提示</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="green mt-15 mb-20">操作失败！</h3>
+                            <p>Error Code：XXXXXXXXXXXXXXXXX</p>
+                            <div class="mt-20">
+                                <a class="btn-blue w80" data-dismiss="" id="error_sure">确定</a>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!--操作失败 error     end-->
+        </div>
+    </div>
+</div>
+
+<script src="../../assets/lib/require.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script>
+    require(["common", "bootstrap", "jqPaginator"], function () {
+        // 说明信息     start
+        $('.icon-info').tooltip({
+            html: true
+        });
+        // 说明信息     end
+        //  分页  start
+        var totalPages = 4;
+        if (totalPages == 0) {
+            var html = "<p class='no-show mt-20'>暂无大命题</p>";
+            $('#itemContainer').append(html);
+        } else {
+            $.jqPaginator('#pagination1', {
+                totalPages: totalPages,
+                visiblePages: 5,
+                currentPage: 1,
+                onPageChange: function (n) {
+                    /* location.href = '${ctx}/raisestRaiseProject?industry='+$("[name='industry'] :selected").val()
+                     +'&supportSort='+$("[name='supportSort'] :selected").val()
+                     +'&moneySort='+$("[name='moneySort'] :selected").val()
+                     +'&pageNum=' + n;  */
+//						$("[name='pageNum']").val(n);
+//						$("#search_form").submit();
+                }
+            });
+        }
+        //	 分页   end
+        // 	搜索     start
+        $("#search_a,#search_b").on("click", function () {
+            $("#search_text").css("display", "block");
+            $("#default_text").css("display", "none");
+            // window.location.href="";
+        });
+        $('#search_space').keydown(function (e) {
+            if (e.keyCode == 13) {
+                $("#search_text").css("display", "block");
+                $("#default_text").css("display", "none");
+                // window.location.href="";//处理事件
+            }
+        });
+        //  重置
+        $('#reset').on('click', function () {
+            $('.searchForm')[0].reset();
+        });
+        $("#clear").on("click", function () {
+            window.location.href = "incubation_list.html";
+        });
+        //	搜索     end
+        //	全选、全不选   start
+        $("#all").click(function () {
+            if (isAllChecked($('tbody tr span'))) {
+                $('tbody tr span').removeAttr("class");
+                $('#all').text('全选');
+                showNum(0);
+            } else {
+                $('tbody tr span').attr('class', 'current');
+                $('#all').text('取消');
+                showNum($("tbody .current").length);
+            }
+        });
+        //	全选、全不选   end
+        //点击任意一条选择框，去掉或加上全选按钮
+        $('#itemContainer').delegate('.choose span', 'click', function () {
+            var status = $(this).attr('class');
+            if (status == undefined || status == '') {//如果为假
+                $(this).attr('class', 'current');
+                showNum($(this).parents("tbody").find(".current").length);
+                isAllChecked($('tbody tr span')) ? $('#all').text('取消') : $('#all').text('全选');
+            } else {
+                $(this).removeAttr("class");
+                $('#all').text('全选');
+                showNum($(this).parents("tbody").find(".current").length);
+            }
+        });
+        //是否全选
+        function isAllChecked($inputs) {
+            var result = 'current';
+            for (var i = 0, j = $inputs.length; i < j; i++) {
+                if (!$inputs.eq(i).attr('class')) {
+                    result = '';
+                    break;
+                }
+            }
+            return result;
+        }
+
+        //显示或隐藏选中的条目数
+        function showNum(num) {
+            if (num == 0) {
+                $('.text-info').css('display', 'none');
+            } else {
+                $('.text-info span').text(num);
+                $('.text-info').css('display', 'inline-block');
+            }
+        };
+        //点击申请退回按钮
+        $("#batchchange").on('click', function () {//批量变更状态
+            var conbox = $("#assignment tbody");
+            var con = "";
+            var checknum = $('tbody').find(".current");
+            if (checknum.length == 0) {      //未有选中
+                $("#reMess").modal('show');
+            } else {
+                modalContent(checknum, con, conbox);
+            }
+        })
+        //  出孵申请退回     start
+        $("#statechange").on("click", function () {
+            var arr = [];
+            var checknum = $('tbody').find(".current");
+            var selval = $('#assignment').find("textarea").val();
+            getIds(checknum, arr);//获取已选项的id
+            $("#assignment").modal("hide");
+            $.ajax({
+                url: 'json.json',
+                type: 'post',
+                data: {"id": arr, "val": selval},
+                dataType: '',
+                success: function (data, code) {
+                    if (data.msg == "success") {
+                        $("#change_success").modal("show");
+                        $("#change_success h3").text("变更成功！");
+                        $("#change_success a").attr({
+                            "href": "bigtopic_list.html",
+                            "data-dismiss": ""
+                        });
+                    } else {
+                        $("#change_error").modal("show");
+                        $("#change_error h3").text("变更失败！");
+                        $("#change_error a").attr({
+                            "href": "",
+                            "data-dismiss": "modal"
+                        });
+                        $("#change_error p").text("Error Code：code");
+                    }
+                },
+                error: function () {
+                    alert('操作失败：Error CodeXXXX');
+                    window.location.href = "";
+                }
+            })
+        });
+        //  出孵申请退回     end
+
+    });
+
+    //弹框显示，并自动加载里面的内容
+    function modalContent(checknum, con, conbox) {//参数  （被选中的项  ，自动加载的内容   ，  加载到底位置 ）
+        for (var i = 0; i < checknum.length; i++) {
+            con += "<tr><td>" + checknum.eq(i).parents("tr").children("td").eq(1).text() + "</td><td>" +
+                    checknum.eq(i).parents("tr").children("td").eq(2).text() + "</td><td>" +
+                    checknum.eq(i).parents("tr").children("td").eq(3).text() + "</td><td>" +
+                    checknum.eq(i).parents("tr").children("td").eq(4).text() + "</td></tr>"
+        }
+        conbox.html(con);//弹框内容自动加载
+        $("#assignment").modal('show');//项目终审弹框隐藏
+    }
+    //获取已选项的id
+    function getIds(checknum, arr) {//参数  （被选中的项   ， id数组）
+        for (var i = 0; i < checknum.length; i++) {
+            var checkedId = checknum.eq(i).parents("tr").children("td").eq(1).text();
+            arr.push(checkedId);//每一个被选中的项   id加入数组
+        }
+    }
+</script>
+</body>
+</html>

@@ -4,6 +4,49 @@
 export const navlist = {
     user: [
         {
+            tag: '用户管理',
+            id: 'm1',
+            route: 'user',
+            content: [
+                {
+                    tag: '用户列表',
+                    route: 'usersShow'
+                },
+                {
+                    tag: '权限列表',
+                    route: 'rolesShow'
+                }
+            ]
+        },
+        {
+            tag: '业务数据管理',
+            id: 'm4',
+            route: 'export',
+            content: [
+                {
+                    tag: '历史数据',
+                    route: 'adminHistoryData'
+                },
+                {
+                    tag: '自定义查询',
+                    route: 'customQueryList'
+                }
+            ]
+        },
+        {
+            tag: '系统管理',
+            id: 'm7',
+            route:'operateLog',
+            content: [
+                {
+                    tag: '日志管理',
+                    route: 'showLogList'
+                }
+            ]
+        }
+    ],
+    data: [
+        {
             tag: '数据管理',
             id: 'm69',
             route: 'dataview',
@@ -13,127 +56,29 @@ export const navlist = {
                     route: 'showDataSum'
                 },
                 {
-                    tag: '用户数据',
-                    route: 'showUserData'
-                },
-                {
-                    tag: '自发创意',
-                    route: 'showSelfIdea'
-                },
-                {
-                    tag: '众筹数据',
-                    route: 'showRaiseData'
-                },
-                {
-                    tag: '应用单位',
-                    route: 'showAppUnit'
+                    tag: '历史数据下载',
+                    route: 'download'
                 }
             ]
         },
         {
-            tag: 'WEB内容发布',
-            id: 'm75',
-            route: 'dataview',
-            content: [
-                {
-                    tag: 'Banner管理',
-                    route: 'showWebBanner'
-                },
-                {
-                    tag: '资讯管理',
-                    route: 'newsShow'
-                }
-            ]
-        },
-        {
-            tag: 'APP内容发布',
-            id: 'm78',
-            content: [
-                {
-                    tag: 'Banner管理',
-                    route: 'showAdvertising'
-                }
-            ]
-        },
-        {
-            tag: '用户管理',
-            id: 'm80',
-            content: [
-                {
-                    tag: '群发列表',
-                    route: 'batchMsgList'
-                }
-            ]
-        },
-        {
-            tag: '项目审批',
-            id: 'm82',
-            content: [
-                {
-                    tag: '自发式创意审批',
-                    route: 'showProject'
-                }
-            ]
-        },
-        {
-            tag: '评审管理',
-            id: 'm84',
-            content: [
-                {
-                    tag: '评审专家管理',
-                    route: 'showReviewMan'
-                },
-                {
-                    tag: '入孵线上评审',
-                    route: 'selectReviewAll'
-                },
-                {
-                    tag: '创新出孵评审',
-                    route: 'innovateReviewList'
-                },
-                {
-                    tag: '创业出孵评审',
-                    route: 'reviewList'
-                }
-            ]
-        },
-        {
-            tag: '命题管理',
+            tag: '设备管理',
             id: 'm87',
+            route: 'device',
             content: [
                 {
-                    tag: '小命题管理',
-                    route: 'showSmallRequirement'
+                    tag: '设备列表',
+                    route: 'deviceList'
                 },
                 {
-                    tag: '大命题管理',
-                    route: 'bigRequirement'
+                    tag: '设备导入',
+                    route: 'deviceImport'
                 },
                 {
-                    tag: '推广式大命题管理',
-                    route: 'extendReqList'
+                    tag: '设备同步',
+                    route: 'deviceConcat'
                 }
             ]
         },
-        {
-            tag: '资源管理',
-            id: 'm91',
-            content: [
-                {
-                    tag: '资源申请',
-                    route: 'resourceList'
-                }
-            ]
-        },
-        {
-            tag: '孵化管理',
-            id: 'm93',
-            content: [
-                {
-                    tag: '出孵管理',
-                    route: 'hatchedList'
-                }
-            ]
-        }
     ]
 }

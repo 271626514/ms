@@ -30,7 +30,7 @@
     export default{
         data(){
             return {
-                navList:navlist.user,
+                navList:navlist.data,
                 state: 0
             }
         },

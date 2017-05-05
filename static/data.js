@@ -1,6 +1,152 @@
 /**
  * Created by syzx9801@163.com on 2017/4/26.
  */
+//前台展现数据
+export const showDataSelection = {
+    dataList:[
+        {
+            value: 'all',
+            label: '全国数据'
+        },
+        {
+            value: 'hy',
+            label: '中移杭州信息技术有限公司'
+        },
+        {
+            value: 'zhejiang',
+            label: '浙江省移动公司'
+        }
+    ],
+    dataTypeList: [
+        {
+            value:'all',
+            label: '全部数据'
+        },
+        {
+            value: 'user',
+            label: '用户数据'
+        },
+        {
+            value: 'show',
+            label: '数据总览'
+        }
+    ],
+    dataProvenceList:[
+        {
+            value: 'all',
+            label: '全国'
+        },
+        {
+            value: 'zhejiang',
+            label: '浙江'
+        },
+        {
+            value: 'beijing',
+            label: '北京'
+        },
+        {
+            value: 'shanghai',
+            label: '上海'
+        }
+    ],
+    deviceTypeList: [
+        {
+            value: 'all',
+            label: '全部'
+        },
+        {
+            value: 'provenceDevice',
+            label: '省网设备'
+        },
+        {
+            value: 'cityDevice',
+            label: '城网设备'
+        },
+        {
+            value: 'IDCCoreDevice',
+            label: 'IDC核心设备'
+        },
+        {
+            value: 'IDCToDevice',
+            label: 'IDC汇聚设备'
+        },
+        {
+            value: 'IDCNetDevice',
+            label: 'IDC接入设备'
+        },
+        {
+            value: 'CDNDevice',
+            label: 'Cache/CDN设备'
+        },
+        {
+            value: 'PBDevice',
+            label: 'PB设备-省网核心'
+        },
+        {
+            value: 'PCDevice',
+            label: 'PC设备-省网汇入'
+        }
+    ],
+    SMNPList: [
+        {
+            value: 'all',
+            label: '全部'
+        },
+        {
+            value: 'V1',
+            label: 'V1'
+        },
+        {
+            value: 'V2C',
+            label: 'V2C'
+        },
+        {
+            value: 'V3',
+            label: 'V3'
+        }
+    ],
+    portList: [
+        {
+            value: 'all',
+            label: '全部'
+        },
+        {
+            value: 'V1',
+            label: 'V1'
+        },
+        {
+            value: 'V2C',
+            label: 'V2C'
+        },
+        {
+            value: 'V3',
+            label: 'V3'
+        }
+    ]
+}
+export const showDataList = {
+    deviceList: [
+        {
+            title:'已导入数据',
+            yesterday: '10355',
+            all: '33546'
+        }
+    ],
+    portList: [
+        {
+            title:'已导入数据',
+            yesterday: '10355',
+            all: '33546'
+        }
+    ],
+    dataUsageList: [
+        {
+            title:'已导入数据',
+            yesterday: '10355',
+            all: '33546'
+        }
+    ]
+}
 export const devicetables = {
     columns: [
         {
@@ -10,21 +156,15 @@ export const devicetables = {
             width: 100
         },
         {
-            type: 'index',
-            align: 'center',
-            title: '序号',
-            fixed: 'left',
-            width: 100
-        },
-        {
-            title: '上传时间',
-            key: 'uploadDate',
+            title: '省份',
+            key: 'province',
             align: 'center',
             width: 200
         },
         {
             title: '设备名称',
             key: 'deviceName',
+            align: 'center',
             width: 200
         },
         {
@@ -82,6 +222,12 @@ export const devicetables = {
             filterMethod (value, row) {
                 return row.deviceType.indexOf(value) > -1;
             }
+        },
+        {
+            title: '上传时间',
+            key: 'uploadDate',
+            align: 'center',
+            width: 200
         },
         {
             title: 'snmp版本',
@@ -153,7 +299,12 @@ export const devicetables = {
                 const text = row.deviceState == 0 ? '导入未采集':'导入已采集';
                 return `${text}`;
             }
-        }
+        },
+        {
+            title: '备注',
+            key: 'description',
+            width:200
+        },
     ],
     deviceData: [
         {
@@ -243,6 +394,7 @@ export const devicetables = {
         }
     ]
 }
+
 export const porttables = {
     columns: [
         {
@@ -830,5 +982,245 @@ export const userinfotables = {
         {"username":"13146779142","province":"jiangsu","userPermission":"1","label":"江苏省"},
         {"username":"中国移动杭州研发中心-洪承畴","province":"heilongjiang","userPermission":"1","label":"黑龙江省"},
         {"username":"syzx9801@163.com","userPermission":"0","province":""}
+    ],
+}
+
+//管理后台数据
+export const userlisttables = {
+    columns:[
+        {
+            type: 'selection',
+            align: 'center',
+            width: 100
+        },
+        {
+            type: 'index',
+            align: 'center',
+            title: '序号',
+            width: 100
+        },
+        {
+            title: '账户名称',
+            key: 'username',
+            align: 'center',
+        },
+        {
+            title: '公司',
+            key: 'companyName',
+            align: 'center',
+        },
+        {
+            title: '权限分配',
+            key: 'userPermission',
+            align: 'center',
+
+        },
+        {
+            title: '状态',
+            key: 'state',
+            align: 'center',
+            width: 170,
+            render (row,column,index){
+                let text = "";
+                if(row.state==1){
+                    text = '已启用'
+                }else if(row.state==2){
+                    text = '已禁用'
+                }else if(row.state==99){
+                    text = ''
+                }
+                return `${text}`
+            }
+        },
+        {
+            title: '最近在线',
+            key: 'delayDate',
+            align: 'center',
+            width: 170,
+        },
+        {
+            title: '操作',
+            key: 'action',
+            width: 160,
+            align: 'center',
+            render (row, column, index) {
+                if(row.userPermission==99){
+                    return ``
+                }else{
+                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="remove(${index})">修改</a>`;
+                }
+            }
+        }
+    ],
+    userList:[
+        {
+            "username": "18867102619",
+            "companyName": "杭研",
+            "userPermission": "cmcciw用户权限",
+            "state": "1",
+            "delayDate": "当前在线",
+            "addDate": "2017.05.01"
+        },
+    ],
+}
+export const roleslisttables = {
+    columns:[
+        {
+            type: 'selection',
+            align: 'center',
+            width: 100
+        },
+        {
+            type: 'index',
+            align: 'center',
+            title: '序号',
+            width: 100
+        },
+        {
+            title: '权限名称',
+            key: 'rolesName',
+            align: 'center',
+        },
+        {
+            title: '权限详情',
+            key: 'rolesDetail',
+            align: 'center',
+        },
+        {
+            title: '用户数量',
+            key: 'rolesNumber',
+            align: 'center',
+
+        },
+        {
+            title: '操作',
+            key: 'action',
+            width: 240,
+            align: 'center',
+            render (row, column, index) {
+                if(row.userPermission==99){
+                    return ``
+                }else{
+                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="remove(${index})">修改</a> <a @click="detail(${index})">删除</a>`;
+                }
+            }
+        }
+    ],
+    roleslist:[
+        {
+            rolesName: "河南省",
+            rolesDetail: "设备管理：河南， 端口管理：河南，数据管理：河南，其他：未选择",
+            rolesNumber: "1"
+        },
+    ],
+}
+export const datahistorytables = {
+    columns:[
+        {
+            title: '数据名称',
+            key: 'dataName',
+            align: 'center',
+        },
+        {
+            title: '更新时间',
+            key: 'updateDate',
+            align: 'center',
+        },
+        {
+            title: '数据下载',
+            key: 'downloadData',
+            align: 'center',
+            render (row, column, index) {
+                return `<a>立即下载</a>`;
+            }
+
+        }
+    ],
+    datalist:[
+        {
+            dataName: "2017年04月01日-2017年04月30日",
+            updateDate: "2017年05月01日"
+        }
+    ],
+}
+export const customquerytables = {
+    columns:[
+        {
+            title: '查询名称',
+            key: 'queryName',
+            align: 'center',
+            width: 200
+        },
+        {
+            title: 'SQL语句详情',
+            key: 'SQLDetail',
+            align: 'center',
+        },
+        {
+            title: '创建时间',
+            key: 'addDate',
+            align: 'center',
+            width: 200
+        },
+        {
+            title: '操作',
+            key: 'action',
+            align: 'center',
+            width: 200,
+            render (row, column, index) {
+                return `<a @click="copythis(${index})">复制</a>`;
+            }
+
+        }
+    ],
+    datalist:[
+        {
+            queryName: "测试",
+            SQLDetail: `select * from project where (projectId ＜= 143 and projectId ＞= 143) or name="＜a href='http://www.baidu.com'＞点我1＜/a＞";`,
+            addDate: '2017年05月03日'
+        }
+    ],
+}
+export const loglisttables = {
+    columns:[
+        {
+            title: '用户名',
+            key: 'userName',
+            align: 'center',
+            width: 200
+        },
+        {
+            title: 'IP地址',
+            key: 'IP',
+            align: 'center',
+            width: 200
+        },
+        {
+            title: '浏览器',
+            key: 'browser',
+            align: 'center',
+            width: 400
+        },
+        {
+            title: '操作内容',
+            key: 'actionDetail',
+            align: 'center',
+
+        },
+        {
+            title: '操作时间',
+            key: 'actionDate',
+            align: 'center',
+            width: 200
+        }
+    ],
+    datalist:[
+        {
+            userName: "admin",
+            IP: `172.23.11.56`,
+            browser: 'Mozilla/5.0 （Windows NT 6.3; WOW64） AppleWebKit/537.36 （KHTML, like Gecko） Chrome/45.0.2454.101 Safari/537.36',
+            actionDetail: 'xijianjun4: 修改项目 ID:[8846] 名称:[测试返场]的原始状态:[1300] 当前状态[100]',
+            actionDate: '2017-05-03 11:14:12'
+        }
     ],
 }

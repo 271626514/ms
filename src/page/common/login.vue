@@ -183,8 +183,11 @@ export default {
         handleSubmit() {
             this.$Message.success('登陆成功，欢迎您!');
             this.$store.dispatch('loginSet',{'user_name':this.user.user_name,'user_permission':1,'logStatus':true});
-            this.$router.push('/dataview');
-
+            if(this.user.user_name=='admin'){
+                this.$router.push('/user');
+            }else{
+                this.$router.push('/dataview');
+            }
         }
     }
 }

@@ -3,6 +3,20 @@
  */
 export const LOGIN = require('../page/common/login.vue');
 export const LAYOUT = require('../page/common/layout.vue');
+export const LAYOUT_SHOW = require('../page/common/layoutShow.vue');
+
 //业务数据
 export const SHOW_DATA_SUM = require('../page/dataview/showdatasum.vue')
+export const DOWNLOAD = require('../page/dataview/download.vue')
+export const DEVICE_LIST = require('../page/device/deviceList.vue')
+export const DEVICE_IMPORT = require('../page/device/deviceImport.vue')
+export const DEVICE_CONCAT = require('../page/device/deviceConcat.vue')
 
+//权限系统
+export const USERS_SHOW = require('../page/user/usersShow.vue')
+export const ROLES_SHOW = require('../page/user/rolesShow.vue')
+export const USERS_ADD = require('../page/user/usersAdd.vue')
+export const USERS_DETAIL = require('../page/user/usersDetail.vue')
+export const ADMIN_HISTORY_DATA = require('../page/export/adminHistoryData.vue')
+export const CUSTOM_QUERY_LIST = require('../page/export/customQueryList.vue')
+export const SHOW_LOG_LIST = require('../page/operateLog/showLogList.vue')

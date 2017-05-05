@@ -1,11 +1,13 @@
 <template>
-    <Breadcrumb class="bread">
-        <Breadcrumb-item v-for="(v,k) in bread">{{v}}</Breadcrumb-item>
-    </Breadcrumb>
+    <ol class="breadcrumb">
+        <li v-for="(v,k) in bread">{{v}}</li>
+    </ol>
 </template>
 <style lang="less">
-.bread{
-    margin: 20px 20px 20px 250px;
+.breadcrumb{
+    position: absolute;
+    top:20px;
+    left: 230px;
 }
 </style>
 <script type="text/ecmascript-6">

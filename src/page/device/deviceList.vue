@@ -79,14 +79,6 @@
             <button class="btn-blue w120" @click="searchSubmit">立即检索</button>
             <a class="ml-20" @click="reset">清空检索条件</a>
             </Col>
-        <Row style="margin-top: 20px" v-if="">
-            <Col span="2">
-            <span class="datelabel">检索条件：</span>
-            </Col>
-            <Col span="22">
-            <Tag type="dot" color="blue">所有数据</Tag>
-            </Col>
-        </Row>
         <Row style="margin-top: 20px">
             <Col span="2">
             <span class="datelabel">检索结果：</span>
@@ -100,9 +92,9 @@
         <div class="tableContent">
             {{device}}
             <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="deviceData" style="margin-bottom: 20px"></Table>
-
-            <button class="btn-blue w80">下载所选</button>
-            <button class="btn-blue w80 ml-20">批量删除</button>
+            <Button type="info" :disabled="BtnDisabled">下载所选</Button>
+            <Button type="error" :disabled="BtnDisabled" style="margin-left: 20px">批量删除</Button>
+            <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
         </div>
         <!--<div class="deviceTable">
             <Row style="width: auto; padding: 0 50px; background: #f5f7f9; height: 60px; line-height: 60px">
@@ -206,7 +198,8 @@
                     deviceType: 'all',
                     SMNP: 'all',
                     port: 'all',
-                }
+                },
+                selection: []
             }
         },
         methods:{
@@ -244,11 +237,21 @@
             },
             selectPort(v) {         //切换端口
                 this.device.port = v.value
-            }
+            },
+            con(selection){
+                this.selection = selection;
+            },
         },
         computed:{
             defaultDate(){
                return new Date();
+            },
+            BtnDisabled(){
+                if(this.selection.length){
+                    return false;
+                }else{
+                    return true;
+                }
             }
         }
     }

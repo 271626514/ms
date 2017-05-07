@@ -147,6 +147,34 @@ export default new Router({
                     component: path.DEVICE_CONCAT
                 }
             ]
+        },
+        {
+            name: '端口管理',
+            path: '/port',
+            component: path.LAYOUT_SHOW,
+            children: [
+                {
+                    path: '',
+                    redirect: ()=>{
+                        return 'portList'
+                    }
+                },
+                {
+                    path: 'portList',
+                    name: '端口列表',
+                    component: path.PORT_LIST
+                },
+                {
+                    path: 'portImport',
+                    name: '端口导入',
+                    component: path.PORT_IMPORT
+                },
+                {
+                    path: 'portConcat',
+                    name: '设备同步',
+                    component: path.PORT_CONCAT
+                }
+            ]
         }
     ]
 })

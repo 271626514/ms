@@ -11,6 +11,9 @@ export const DOWNLOAD = require('../page/dataview/download.vue')
 export const DEVICE_LIST = require('../page/device/deviceList.vue')
 export const DEVICE_IMPORT = require('../page/device/deviceImport.vue')
 export const DEVICE_CONCAT = require('../page/device/deviceConcat.vue')
+export const PORT_LIST = require('../page/port/portList.vue')
+export const PORT_IMPORT = require('../page/port/portImport.vue')
+export const PORT_CONCAT = require('../page/port/portConcat.vue')
 
 //权限系统
 export const USERS_SHOW = require('../page/user/usersShow.vue')

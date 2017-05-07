@@ -74,10 +74,29 @@ export const navlist = {
                     tag: '设备导入',
                     route: 'deviceImport'
                 },
-                {
+                /*{
                     tag: '设备同步',
                     route: 'deviceConcat'
-                }
+                }*/
+            ]
+        },
+        {
+            tag: '端口管理',
+            id: 'm87',
+            route: 'port',
+            content: [
+                {
+                    tag: '端口列表',
+                    route: 'portList'
+                },
+                {
+                    tag: '端口导入',
+                    route: 'portImport'
+                },
+                /*{
+                 tag: '端口同步',
+                 route: 'portConcat'
+                 }*/
             ]
         },
     ]

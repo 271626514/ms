@@ -3,7 +3,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url("../../assets/imgs/login-bg.png") left top no-repeat;
+    /*background: url("../../assets/imgs/login-bg.png") left top no-repeat;*/
     background-size: cover;
 }
 .content {
@@ -127,7 +127,10 @@
 <div class="wrapper">
     <div class="content">
         <div class="login-logo text-center">
-            <img src="../../assets/imgs/login-logo.png">
+            <!--<img src="../../assets/imgs/login-logo.png">-->
+            中国移动全网资源管理平台<br />
+            管理员登陆 账号 admin 密码随意6位数<br />
+            用户登陆 账号 随意，密码6位数
         </div>
         <div class="main-container">
             <div class="login-box text-center">
@@ -147,7 +150,7 @@
                     </div>
 
                     <div class="form-group form-relative">
-                        <input id="code-static" class="form-control" type="tel" name="code-static" maxlength="4"
+                        <input id="code-static" class="form-control" type="tel" name="code-static" maxlength="4" style="margin-left:-110px"
                                placeholder="验证码">
                         <img id="get-img" src="" alt="4f9r" title="换一换"/>
                         <div class="input-error" id="code-static-error"></div>
@@ -159,7 +162,6 @@
                         <p class="font-blue">申请注册？</p>
                     <span class="mr-10 icon-info point" data-toggle="tooltip" data-placement="bottom" title=""
                           data-original-title="双创系统管理平台仅向特定用户开通。<br/>如您无法登录，请与管理员联系确认授权。<br/>已授权用户可使用和创空间账号密码登录。"></span>
-
                     </div>
                 </div>
             </div>

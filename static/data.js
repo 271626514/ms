@@ -651,25 +651,47 @@ export const snmp2tables = {
             width: 100
         },
         {
-            title: '设备名称',
-            key: 'deviceName',
+            title: '校验',
+            align: 'center',
+            key: 'check',
             width: 200
         },
         {
-            title: 'IP地址',
+            title: '设备状态',
+            align: 'center',
+            key: 'deviceState',
+            width: 100
+        },
+        {
+            title: '省份',
+            align: 'center',
+            key: 'province',
+            width: 100
+        },
+        {
+            title: '设备名称',
+            key: 'deviceName',
+            align: 'center',
+            width: 200
+        },
+        {
+            title: '设备IP',
             key: 'IP',
+            align: 'center',
             width: 200
         },
         {
             title: '所属机房',
             key: 'labs',
+            align: 'center',
             width: 250
         },
         {
             title: '设备类型',
             key: 'deviceType',
+            align: 'center',
             width: 200,
-            filters: [
+            /*filters: [
                 {
                     label: 'IDC核心设备',
                     value: 'IDC核心设备'
@@ -709,13 +731,14 @@ export const snmp2tables = {
             ],
             filterMethod (value, row) {
                 return row.deviceType.indexOf(value) > -1;
-            }
+            }*/
         },
         {
             title: 'snmp版本',
             key: 'snmpVersion',
+            align: 'center',
             width: 200,
-            filters: [
+            /*filters: [
                 {
                     label: 'V1',
                     value: 'V1'
@@ -731,7 +754,7 @@ export const snmp2tables = {
             ],
             filterMethod (value, row) {
                 return row.snmpVersion.indexOf(value) > -1;
-            }
+            }*/
         },
         {
             title: 'snmp端口',

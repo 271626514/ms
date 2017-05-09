@@ -28,11 +28,11 @@
                         <h4>待添加设备列表</h4>
                     </div>
                     <div class="snmptabs">
-                        <div>
+                        <div class="clearfix">
                             <span v-if="snmp2DataLength">已导入{{snmp2Data.length}}条设备信息</span>
                             <span v-if="!snmp2DataLength">尚未导入设备信息</span>
-                            <span><Button type="primary" :disabled="!snmp2DataLength">确认添加</Button></span>
-                            <span><Button type="ghost" :disabled="!snmp2DataLength">取消添加</Button></span>
+                            <span class="pull-right ml-20"><Button type="ghost" :disabled="!snmp2DataLength" @click="cancelUpload">取消添加</Button></span>
+                            <span class="pull-right"><Button type="primary" :disabled="!snmp2DataLength" @click="confirmUpload">确认添加</Button></span>
                         </div>
                         <Table width="auto" stripe border :columns="columns2" :data="snmp2Data" style="margin-top: 10px"></Table>
                     </div>
@@ -41,8 +41,31 @@
             <!--snmp v3 设备区域-->
             <Tab-pane label="批量添加snmp v3 设备">
                 <div class="usermanage">
+                    <div class="step">
+                        <p>
+                            step 1 下载设备添加模版， 点此<a class="download-text">下载</a>
+                        </p>
+                        <p>
+                            step 2 正确填写设备添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a>
+                            <!--<Upload action="//jsonplaceholder.typicode.com/posts/" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess">
+                                上传文件
+                            </Upload>-->
+                        </p>
+                        <p>
+                            step 3 在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作
+                        </p>
+                    </div>
+                    <div class="module-header mt-20">
+                        <h4>待添加设备列表</h4>
+                    </div>
                     <div class="snmptabs">
-                        <Table width="auto" stripe height="600" border :columns="columns3" :data="snmp3"></Table>
+                        <div class="clearfix">
+                            <span v-if="snmp3DataLength">已导入{{snmp3Data.length}}条设备信息</span>
+                            <span v-if="!snmp3DataLength">尚未导入设备信息</span>
+                            <span class="pull-right ml-20"><Button type="ghost" :disabled="!snmp3DataLength" @click="cancelUpload">取消添加</Button></span>
+                            <span class="pull-right"><Button type="primary" :disabled="!snmp3DataLength" @click="confirmUpload">确认添加</Button></span>
+                        </div>
+                        <Table width="auto" stripe border :columns="columns3" :data="snmp3Data" style="margin-top: 10px"></Table>
                     </div>
                 </div>
             </Tab-pane>
@@ -142,7 +165,7 @@
                 },
                 snmp2Data:[],
                 columns2:snmp2tables.columns,
-                snmp3: snmp3tables.snmp3,
+                snmp3Data: [],
                 columns3:snmp3tables.columns,
                 defaultData:{
                     data: {
@@ -186,12 +209,13 @@
                 this.dialog.upload = false;
                 this.uploadData.name = '';
                 this.uploadData.state = 0;
-                this.$Modal.info({
-                    content: '<div class="mt_15"><p>信息保存成功！</p><p>请前往 设备信息列表 中查看</p></div>',
-                    onOk: () => {
-                        this.snmp2Data = snmp2tables.snmp2;
-                    },
-                });
+                this.snmp2Data = snmp2tables.snmp2;
+            },
+            cancelUpload() {
+                this.snmp2Data = [];
+            },
+            confirmUpload() {
+
             },
             error() {
                 this.dialog.waitting = false;
@@ -234,3 +258,7 @@
         }
     }
 </script>
+
+<!--this.$Modal.info({
+content: '<div class="mt_15"><p>信息保存成功！</p><p>请前往 设备信息列表 中查看</p></div>',
+});-->

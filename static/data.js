@@ -394,7 +394,6 @@ export const devicetables = {
         }
     ]
 }
-
 export const porttables = {
     columns: [
         {
@@ -404,17 +403,9 @@ export const porttables = {
             width: 100
         },
         {
-            type: 'index',
             align: 'center',
-            title: '序号',
-            fixed: 'left',
+            title: '省份',
             width: 100
-        },
-        {
-            title: '上传时间',
-            key: 'uploadDate',
-            align: 'center',
-            width: 200
         },
         {
             title: '设备名称',
@@ -422,14 +413,14 @@ export const porttables = {
             width: 200
         },
         {
-            title: 'IP地址',
+            title: '设备IP',
             key: 'IP',
             width: 200
         },
         {
-            title: '端口名称',
-            key: 'portName',
-            width: 250
+            title: '所属机房',
+            key: 'libs',
+            width: 200
         },
         {
             title: '端口类型',
@@ -456,6 +447,17 @@ export const porttables = {
             filterMethod (value, row) {
                 return row.deviceType.indexOf(value) > -1;
             }
+        },
+        {
+            title: '上传时间',
+            key: 'uploadDate',
+            align: 'center',
+            width: 200
+        },
+        {
+            title: '端口名称',
+            key: 'portName',
+            width: 250
         },
         {
             title: '业务大类',
@@ -617,28 +619,6 @@ export const porttables = {
             "snmpv3EncrypCode": "4297f44b13955235245b2497399d7a93",
             "deviceState": "0"
         }
-    ]
-}
-export const logtables = {
-    columns:[
-        {
-            title: '日期',
-            key: 'dateTime',
-            width: 200
-        },
-        {
-            title: '操作',
-            key: 'action',
-        }
-    ],
-    logdata:[
-        {"dateTime":"2016-10-22 17:00:00","action":"新用户登陆"},
-        {"dateTime":"2016-10-22 17:00:00","action":"用户操作数据库"},
-        {"dateTime":"2016-10-22 17:00:00","action":"用户修改密码"},
-        {"dateTime":"2016-10-22 17:00:00","action":"用户删除了数据"},
-        {"dateTime":"2016-10-22 17:00:00","action":"用户操作数据库"},
-        {"dateTime":"2016-10-22 17:00:00","action":"用户操作数据库"},
-        {"dateTime":"2016-10-22 17:00:00","action":"用户操作数据库"}
     ]
 }
 export const snmp2tables = {
@@ -825,12 +805,30 @@ export const snmp3tables = {
             width: 100
         },
         {
+            title: '校验',
+            align: 'center',
+            key: 'check',
+            width: 200
+        },
+        {
+            title: '设备状态',
+            align: 'center',
+            key: 'deviceState',
+            width: 100
+        },
+        {
+            title: '省份',
+            align: 'center',
+            key: 'province',
+            width: 100
+        },
+        {
             title: '设备名称',
             key: 'deviceName',
             width: 200
         },
         {
-            title: 'IP地址',
+            title: '设备IP',
             key: 'IP',
             width: 200
         },
@@ -843,7 +841,7 @@ export const snmp3tables = {
             title: '设备类型',
             key: 'deviceType',
             width: 200,
-            filters: [
+            /*filters: [
                 {
                     label: 'IDC核心设备',
                     value: 'IDC核心设备'
@@ -883,13 +881,13 @@ export const snmp3tables = {
             ],
             filterMethod (value, row) {
                 return row.deviceType.indexOf(value) > -1;
-            }
+            }*/
         },
         {
             title: 'snmp版本',
             key: 'snmpVersion',
             width: 200,
-            filters: [
+            /*filters: [
                 {
                     label: 'V1',
                     value: 'V1'
@@ -905,16 +903,41 @@ export const snmp3tables = {
             ],
             filterMethod (value, row) {
                 return row.snmpVersion.indexOf(value) > -1;
-            }
+            }*/
         },
         {
-            title: 'snmp端口',
-            key: 'snmpPort',
+            title: 'SNMPv3安全名称',
+            key: 'snmpSaveName',
             width: 200
         },
         {
-            title: 'snmp团体字',
-            key: 'snmpRaid',
+            title: 'SNMPv3安全级别',
+            key: 'snmpv3SaveLevel',
+            width: 200
+        },
+        {
+            title: 'SNMPv3认证协议',
+            key: 'snmpv3Protocol',
+            width: 200
+        },
+        {
+            title: 'SNMPv3认证口令',
+            key: 'snmpv3Command',
+            width: 200
+        },
+        {
+            title: 'SNMPv3加密协议',
+            key: 'snmpv3Encryp',
+            width: 200
+        },
+        {
+            title: 'SNMPv3私有密钥',
+            key: 'snmpv3EncrypCode',
+            width: 200
+        },
+        {
+            title: '备注',
+            key: 'description',
             width: 200
         }
     ],
@@ -966,7 +989,7 @@ export const snmp3tables = {
         }
     ]
 }
-export const userinfotables = {
+/*export const userinfotables = {
     columns:[
         {
             title: '成员用户名',
@@ -1006,7 +1029,7 @@ export const userinfotables = {
         {"username":"中国移动杭州研发中心-洪承畴","province":"heilongjiang","userPermission":"1","label":"黑龙江省"},
         {"username":"syzx9801@163.com","userPermission":"0","province":""}
     ],
-}
+}*/
 
 //管理后台数据
 export const userlisttables = {

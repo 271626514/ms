@@ -29,7 +29,7 @@
         <br />
         <Row>
             <Col span="2">
-            <span class="datelabel">按设备属性：</span>
+            <span class="datelabel">按端口属性：</span>
             </Col>
             <Col span="22">
             <div class="search-label">
@@ -41,7 +41,7 @@
                 </Select>
             </div>
             <div class="search-label ml-20">
-                设备类型
+                端口类型
             </div>
             <div class="search-item short">
                 <Select v-model="defaultData.deviceType.value" :label-in-value="true" @on-change="selectDevice">
@@ -49,19 +49,11 @@
                 </Select>
             </div>
             <div class="search-label ml-20">
-                SMNP版本
+                业务大类
             </div>
             <div class="search-item short">
                 <Select v-model="defaultData.SMNP.value" :label-in-value="true" @on-change="selectSMNP">
                     <Option v-for="item in SMNPList" :value="item.value" :key="item">{{ item.label }}</Option>
-                </Select>
-            </div>
-            <div class="search-label ml-20">
-                端口
-            </div>
-            <div class="search-item short">
-                <Select v-model="defaultData.port.value" :label-in-value="true" @on-change="selectPort">
-                    <Option v-for="item in portList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </div>
             </Col>

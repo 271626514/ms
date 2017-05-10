@@ -122,7 +122,8 @@ export const showDataSelection = {
             value: 'V3',
             label: 'V3'
         }
-    ]
+    ],
+
 }
 export const showDataList = {
     deviceList: [
@@ -418,9 +419,9 @@ export const porttables = {
             width: 200
         },
         {
-            title: '所属机房',
-            key: 'libs',
-            width: 200
+            title: '端口名称',
+            key: 'portName',
+            width: 250
         },
         {
             title: '端口类型',
@@ -453,11 +454,6 @@ export const porttables = {
             key: 'uploadDate',
             align: 'center',
             width: 200
-        },
-        {
-            title: '端口名称',
-            key: 'portName',
-            width: 250
         },
         {
             title: '业务大类',
@@ -531,7 +527,12 @@ export const porttables = {
                 const text = row.deviceState == 0 ? '导入未采集':'导入已采集';
                 return `${text}`;
             }
-        }
+        },
+        {
+            title: '备注',
+            key: 'description',
+            width: 200
+        },
     ],
     deviceData: [
         {
@@ -986,6 +987,240 @@ export const snmp3tables = {
             "snmpVersion": "XML-1515",
             "snmpPort": "8080",
             "snmpRaid": "5BB3CDN"
+        }
+    ]
+}
+export const portCheckTables = {
+    columns: [
+        {
+            type: 'index',
+            align: 'center',
+            title: '序号',
+            fixed: 'left',
+            width: 100
+        },
+        {
+            title: '校验',
+            align: 'center',
+            key: 'check',
+            width: 200
+        },
+        {
+            title: '端口状态',
+            align: 'center',
+            key: 'portState',
+            width: 100
+        },
+        {
+            align: 'center',
+            title: '省份',
+            width: 100
+        },
+        {
+            title: '设备名称',
+            key: 'deviceName',
+            width: 200
+        },
+        {
+            title: '设备IP',
+            key: 'IP',
+            width: 200
+        },
+        {
+            title: '端口名称',
+            key: 'portName',
+            width: 250
+        },
+        {
+            title: '端口类型',
+            key: 'portType',
+            width: 200,
+            /*filters: [
+                {
+                    label: '上联',
+                    value: '上联'
+                },
+                {
+                    label: '下联',
+                    value: '下联'
+                },
+                {
+                    label: '级联',
+                    value: '级联'
+                },
+                {
+                    label: '其他',
+                    value: '其他'
+                }
+            ],*/
+            /*filterMethod (value, row) {
+                return row.deviceType.indexOf(value) > -1;
+            }*/
+        },
+        {
+            title: '业务大类',
+            key: 'service',
+            width: 200,
+            /*filters: [
+                {
+                    label: '集团出口',
+                    value: '集团出口'
+                },
+                {
+                    label: '他省直连',
+                    value: '他省直连'
+                },
+                {
+                    label: '三方出口',
+                    value: '三方出口'
+                },
+                {
+                    label: 'IDC',
+                    value: 'IDC'
+                },
+                {
+                    label: '统建CDN-IDC',
+                    value: '统建CDN-IDC'
+                },
+                {
+                    label: '统建CDN-省网',
+                    value: '统建CDN-省网'
+                },
+                {
+                    label: '统建CDN-地市',
+                    value: '统建CDN-地市'
+                },
+                {
+                    label: '省建Cache',
+                    value: '省建Cache'
+                },
+                {
+                    label: '第三方CDN',
+                    value: '第三方CDN'
+                },
+                {
+                    label: '手机用户',
+                    value: '手机用户'
+                },
+                {
+                    label: '固网用户',
+                    value: '固网用户'
+                }
+            ],
+            filterMethod (value, row) {
+                return row.snmpVersion.indexOf(value) > -1;
+            }*/
+        },
+        {
+            title: '业务小类',
+            key: 'serviceSuper',
+            width: 200
+        },
+        {
+            title: '对端设备',
+            key: 'snmpRaid',
+            width: 200
+        },
+        /*{
+            title: '端口状态',
+            key: 'portState',
+            width: 200,
+            render (row, column, index) {
+                const text = row.deviceState == 0 ? '导入未采集':'导入已采集';
+                return `${text}`;
+            }
+        },*/
+        {
+            title: '备注',
+            key: 'description',
+            width: 200
+        },
+    ],
+    deviceData: [
+        {
+            "uploadDate": "2017-03-29 18:39:52",
+            "deviceName": "服务器",
+            "IP": "192.168.0.131",
+            "labs": "杭研海创园3#",
+            "deviceType": "城域网设备",
+            "snmpVersion": "XML-1515",
+            "snmpPort": "8080",
+            "snmpRaid": "5BB3CDN",
+            "snmpv3Name": "root",
+            "snmpv3SaveLevel": "AAA",
+            "snmpv3Code": "EUurie@804k",
+            "snmpv3Protocol": "https",
+            "snmpv3Encryp": "ftp",
+            "snmpv3EncrypCode": "4297f44b13955235245b2497399d7a93",
+            "deviceState": "0"
+        },
+        {
+            "uploadDate": "2017-03-29 18:39:52",
+            "deviceName": "服务器",
+            "IP": "192.168.0.131",
+            "labs": "杭研海创园3#",
+            "deviceType": "城域网设备",
+            "snmpVersion": "XML-1515",
+            "snmpPort": "8080",
+            "snmpRaid": "5BB3CDN",
+            "snmpv3Name": "root",
+            "snmpv3SaveLevel": "AAA",
+            "snmpv3Code": "EUurie@804k",
+            "snmpv3Protocol": "https",
+            "snmpv3Encryp": "ftp",
+            "snmpv3EncrypCode": "4297f44b13955235245b2497399d7a93",
+            "deviceState": "0"
+        },
+        {
+            "uploadDate": "2017-03-29 18:39:52",
+            "deviceName": "服务器",
+            "IP": "192.168.0.131",
+            "labs": "杭研海创园3#",
+            "deviceType": "centos 6.5",
+            "snmpVersion": "XML-1515",
+            "snmpPort": "8080",
+            "snmpRaid": "5BB3CDN",
+            "snmpv3Name": "root",
+            "snmpv3SaveLevel": "AAA",
+            "snmpv3Code": "EUurie@804k",
+            "snmpv3Protocol": "https",
+            "snmpv3Encryp": "ftp",
+            "snmpv3EncrypCode": "4297f44b13955235245b2497399d7a93",
+            "deviceState": "0"
+        },
+        {
+            "uploadDate": "2017-03-29 18:39:52",
+            "deviceName": "服务器",
+            "IP": "192.168.0.131",
+            "labs": "杭研海创园3#",
+            "deviceType": "centos 7.1",
+            "snmpVersion": "XML-1515",
+            "snmpPort": "8080",
+            "snmpRaid": "5BB3CDN",
+            "snmpv3Name": "root",
+            "snmpv3SaveLevel": "AAA",
+            "snmpv3Code": "EUurie@804k",
+            "snmpv3Protocol": "https",
+            "snmpv3Encryp": "ftp",
+            "snmpv3EncrypCode": "4297f44b13955235245b2497399d7a93",
+            "deviceState": "0"
+        },
+        {
+            "uploadDate": "2017-03-29 18:39:52",
+            "deviceName": "服务器",
+            "IP": "192.168.0.131",
+            "labs": "杭研海创园3#",
+            "deviceType": "window xp",
+            "snmpVersion": "XML-1515",
+            "snmpPort": "8080",
+            "snmpRaid": "5BB3CDN",
+            "snmpv3Name": "root",
+            "snmpv3SaveLevel": "AAA",
+            "snmpv3Code": "EUurie@804k",
+            "snmpv3Protocol": "https",
+            "snmpv3Encryp": "ftp",
+            "snmpv3EncrypCode": "4297f44b13955235245b2497399d7a93",
+            "deviceState": "0"
         }
     ]
 }

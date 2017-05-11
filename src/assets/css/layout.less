@@ -1,0 +1,81 @@
+#main{
+  position: relative;
+  top:67px;
+}
+.main{
+  padding: 50px 30px 80px 230px;
+}
+.module-header{
+  margin-bottom: 20px;
+  h4 {
+    border-bottom: 2px solid #eceff9;
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: #666;
+    font-weight: normal;
+    .ivu-select-selection{
+      border:1px solid #ccc;
+      color: #333;
+    }
+  }
+}
+.module-search{
+  width: 100%;
+  background: #f6f7fb;
+  padding: 15px 20px;
+  position: relative;
+  .item{
+    overflow: hidden;
+    height: 50px;
+    .datelabel{
+      font-size: 14px;
+      height: 30px;
+      line-height: 30px;
+      color: #666;
+      width: 90px;
+      float: left;
+    }
+    .search-item,.search-label,.line{
+      float: left;
+    }
+    .line{
+      width: 20px;
+      height: 2px;
+      margin: 15px 10px 0 10px;
+      background: #ccc;
+    }
+    .search-label{
+      height: 30px;
+      line-height: 30px;
+      padding-right: 10px;
+    }
+  }
+  .search-ctrl{
+    position: absolute;
+    top:25px;
+    right:0px;
+    width: 140px;
+    height: 130px;
+    border-left:1px solid #ededed;
+  }
+}
+.search-result{
+  margin-top: 15px;
+  position: relative;
+  font-size: 14px;
+  color: #999;
+  line-height: 1.7;
+  .search-label{}
+  .search-content{
+    span{
+      color: #ff5021;
+      padding: 0 3px;
+    }
+  }
+  .search-download{
+    color: @base-color-blue;
+    position: absolute;
+    right: 0;
+    bottom:0;
+  }
+}

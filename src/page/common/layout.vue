@@ -12,12 +12,6 @@
     </div>
 </template>
 <style lang="less">
-#main{
-    position: relative;
-}
-.main{
-    padding: 60px 30px 80px 230px;
-}
 </style>
 <script type="text/ecmascript-6">
 import myHead from   '../../components/common/header'

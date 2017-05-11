@@ -2,7 +2,7 @@
     <div>
         <div class="module-header">
             <h4>请选择数据
-                <Select v-model="defaultData.value" :label-in-value="true" @on-change="checkup" style="width:200px;margin-left: 15px">
+                <Select v-model="defaultData.value" :label-in-value="true" @on-change="checkup" style="width:200px;margin-left: 20px" class="selction">
                     <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
                 <a class="btn-blue w80 ml-20">下载数据</a>
@@ -81,11 +81,6 @@
     }
     .table label {
         font-weight: 400;
-    }
-
-    .module-header h4 {
-        border-bottom: 2px solid #eceff9;
-        padding-bottom: 16px;
     }
 
     .module-header h4 span {

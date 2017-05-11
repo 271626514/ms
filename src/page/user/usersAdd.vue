@@ -43,16 +43,7 @@
     </div>
 </template>
 <style lang="less">
-.ivu-form .ivu-form-item-label{
-    font-weight: normal;
-    font-size: 14px !important;
-}
-.ivu-input{
-    width: 320px !important;
-}
-.module-header {
-    margin-bottom: 29px;
-}
+
 label{
     font-weight: normal !important;
 }

@@ -32,7 +32,7 @@
     span{
         font-size: 18px;
         color: #666;
-        padding: 8px 16px;
+        padding: 4px 16px;
         border-left: 1px solid #ccc;
         margin-left: 16px;
     }

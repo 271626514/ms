@@ -91,43 +91,6 @@
     </div>
 </template>
 <style lang="less">
-    .datelabel{
-        font-size: 14px;
-        height: 30px;
-        line-height: 30px;
-    }
-    .search-item,.search-label{
-        float: left;
-    }
-    .search-label{
-        width: 80px;
-        height: 30px;
-        line-height: 30px;
-    }
-    .search-item{
-        width: 220px;
-    input{
-        width: 215px !important;
-    }
-    }
-    .search-item.short{
-        width: 150px;
-    input{
-        width: 150px !important;
-    }
-    }
-    .search-result{
-        height: 30px;
-        line-height: 30px;
-    }
-    .tableContent{
-        padding-top: 10px;
-        margin-top: 10px;
-        border-top:2px solid #eceff9;
-    tr{
-        height: 66px;
-    }
-    }
 </style>
 <script type="text/ecmascript-6">
     import {showDataSelection,porttables} from '../../../static/data'

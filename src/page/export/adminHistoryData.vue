@@ -47,10 +47,6 @@
         border: 1px solid #ccc;
     }
 
-    .module-header {
-        margin-bottom: 29px;
-    }
-
     .date-picker-wrapper .footer {
         display: none;
     }

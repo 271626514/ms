@@ -15,14 +15,6 @@
     .resume .choose span {
         margin-right: 0;
     }
-    .ivu-table-header tr{
-        height: 60px;
-        line-height: 60px;
-        background: @table-bg !important;
-        font-size: 14px;
-        color:#666;
-        font-weight: normal !important;
-    }
     .text-info{
         margin: 20px 0;
     }

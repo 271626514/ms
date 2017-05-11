@@ -41,12 +41,6 @@
     display: inline-block;
     margin-left: 15px;
     width: 300px;
-    input.ivu-input{
-        border: 1px solid #d7dde4 !important;
-        width: 300px !important;
-        height: 32px !important;
-        border-radius: 4px;
-    }
 }
 </style>
 <script type="text/ecmascript-6">

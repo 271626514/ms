@@ -96,20 +96,6 @@
             <Button type="error" :disabled="BtnDisabled" style="margin-left: 20px">批量删除</Button>
             <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
         </div>
-        <!--<div class="deviceTable">
-            <Row style="width: auto; padding: 0 50px; background: #f5f7f9; height: 60px; line-height: 60px">
-                <Col span="3">
-                <Button type="info" icon="loop" @click="sync" :disabled="BtnDisabled">同步信息</Button>
-                </Col>
-                <Col span="3">
-                <Button type="success" icon="upload" @click="routeto">批量添加</Button>
-                </Col>
-                <Col span="3">
-                <Button type="error" icon="trash-a" :disabled="BtnDisabled" @click="remove">删除信息</Button>
-                </Col>
-            </Row>
-            <Table width="auto" stripe height="600" border :columns="columns" @on-selection-change="con" :data="deviceData"></Table>
-        </div>-->
     </div>
 </template>
 <style lang="less">

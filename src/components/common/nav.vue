@@ -1,6 +1,6 @@
 <template>
-    <div id="accordion" class="cm-accordion-menu black">
-        <ul id="accordion-list" class="accordion text-center clearfix">
+    <div class="cm-accordion-menu">
+        <ul class="accordion clearfix">
             <li class="level-1" v-for="(item,index) in navList" :class="{open:state==index}" @click="state=index">
                 <div class="link" :id="item.id"><i></i>{{item.tag}}<i class="fa fa-plus"></i></div>
                 <ul class="submenu clearfix" v-show="state==index">
@@ -13,16 +13,12 @@
     </div>
 </template>
 <style lang="less">
-#nav{
-    background: #eef1f6;
+.cm-accordion-menu{
     width: 200px;
-    margin-bottom:-3000px;
-    padding-bottom:3000px;
-    position: absolute;
-    left: 0;
-}
-.router-link-active{
-    color:#4276fe !important;
+    border-right:1px solid #d2d9e7;
+    bottom: 50px;
+    box-shadow: none;
+    overflow-y: auto
 }
 </style>
 <script type="text/ecmascript-6">

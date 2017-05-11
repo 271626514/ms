@@ -1,7 +1,7 @@
 <template>
     <div class="tile-content mt-10">
         <div class="module-header">
-            <h4>权限列表<a href="right_new.html" class="btn-blue w80 pull-right">创建新权限</a></h4>
+            <h4>权限列表<a @click="$router.push('/user/rolesAdd')" class="btn-blue w80 pull-right">创建新权限</a></h4>
         </div>
         <div class="table-responsive">
             <Table width="auto" stripe height="600" style="margin-top: 20px;font-size:14px;" border :columns="columns" @on-selection-change="con" :data="data"></Table>

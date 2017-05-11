@@ -44,16 +44,16 @@
                 端口类型
             </div>
             <div class="search-item short">
-                <Select v-model="defaultData.deviceType.value" :label-in-value="true" @on-change="selectDevice">
-                    <Option v-for="item in deviceTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
+                <Select v-model="defaultData.portType.value" :label-in-value="true" @on-change="selectPortType">
+                    <Option v-for="item in portTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </div>
             <div class="search-label ml-20">
                 业务大类
             </div>
             <div class="search-item short">
-                <Select v-model="defaultData.SMNP.value" :label-in-value="true" @on-change="selectSMNP">
-                    <Option v-for="item in SMNPList" :value="item.value" :key="item">{{ item.label }}</Option>
+                <Select v-model="defaultData.service.value" :label-in-value="true" @on-change="selectService">
+                    <Option v-for="item in serviceList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </div>
             </Col>
@@ -136,9 +136,8 @@
             return {
                 selectionList: showDataSelection.dataList,
                 selectionProvence: showDataSelection.dataProvenceList,
-                deviceTypeList: showDataSelection.deviceTypeList,
-                SMNPList: showDataSelection.SMNPList,
-                portList: showDataSelection.portList,
+                portTypeList: showDataSelection.portType,
+                serviceList: showDataSelection.serviceList,
                 portData: porttables.deviceData,
                 columns: porttables.columns,
                 defaultData:{
@@ -150,15 +149,11 @@
                         value: 'all',
                         label: '全国数据'
                     },
-                    deviceType: {
+                    portType: {
                         value: 'all',
                         label: '全部'
                     },
-                    SMNP: {
-                        value: 'all',
-                        label: '全部'
-                    },
-                    port: {
+                    service: {
                         value: 'all',
                         label: '全部'
                     }
@@ -173,9 +168,8 @@
                     startDate:'',
                     finDate: '',
                     province: 'all',
-                    deviceType: 'all',
-                    SMNP: 'all',
-                    port: 'all',
+                    portType: 'all',
+                    service: 'all'
                 },
                 selection: []
             }
@@ -204,17 +198,14 @@
             checkData(value) {      //切换数据来源
 
             },
-            selectDevice(value) {   //切换设备类型
-                this.device.deviceType = value.value
-            },
-            selectSMNP(v) {         //切换smnp
-                this.device.SMNP = v.value
-            },
             selectProvince(v) {     //切换归属省份
                 this.device.province = v.value
             },
-            selectPort(v) {         //切换端口
-                this.device.port = v.value
+            selectPortType(value) {   //切换端口类型
+                this.device.portType = value.value
+            },
+            selectService(v) {         //切换业务大类
+                this.device.service = v.value
             },
             con(selection){
                 this.selection = selection;

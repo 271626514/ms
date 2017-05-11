@@ -123,6 +123,78 @@ export const showDataSelection = {
             label: 'V3'
         }
     ],
+    portType:[
+        {
+            label: '全部',
+            value: 'all'
+        },
+        {
+            label: '上联',
+            value: 'top'
+        },
+        {
+            label: '下联',
+            value: 'bottom'
+        },
+        {
+            label: '级联',
+            value: 'concat'
+        },
+        {
+            label: '其他',
+            value: 'other'
+        }
+    ],
+    serviceList: [
+        {
+            label: '全部',
+            value: 'all'
+        },
+        {
+            label: '集团出口',
+            value: '集团出口'
+        },
+        {
+            label: '他省直连',
+            value: '他省直连'
+        },
+        {
+            label: '三方出口',
+            value: '三方出口'
+        },
+        {
+            label: 'IDC',
+            value: 'IDC'
+        },
+        {
+            label: '统建CDN-IDC',
+            value: '统建CDN-IDC'
+        },
+        {
+            label: '统建CDN-省网',
+            value: '统建CDN-省网'
+        },
+        {
+            label: '统建CDN-地市',
+            value: '统建CDN-地市'
+        },
+        {
+            label: '省建Cache',
+            value: '省建Cache'
+        },
+        {
+            label: '第三方CDN',
+            value: '第三方CDN'
+        },
+        {
+            label: '手机用户',
+            value: '手机用户'
+        },
+        {
+            label: '固网用户',
+            value: '固网用户'
+        }
+    ]
 
 }
 export const showDataList = {

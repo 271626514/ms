@@ -14,7 +14,6 @@
 <style lang="less">
 #main{
     position: relative;
-    margin-top: 80px;
 }
 .main{
     padding: 60px 30px 80px 230px;

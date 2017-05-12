@@ -31,7 +31,6 @@
                             <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
                         </h4>
-
                     </div>
                     <div class="tableContent">
                         <Table width="auto" stripe border :columns="columns2" :data="snmp2Data" style="margin-top: 10px"></Table>

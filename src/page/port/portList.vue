@@ -7,91 +7,69 @@
                 </Select>
             </h4>
         </div>
-        <Row>
-            <Col span="2">
-            <span class="datelabel">按上传时间：</span>
-            </Col>
-            <Col span="22">
-            <div class="search-label">
-                起始时间
+        <div class="module-search">
+            <div class="item">
+                <span class="datelabel">上传时间</span>
+                <div class="search-item">
+                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
+                </div>
+                <div class="line"></div>
+                <div class="search-item">
+                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
+                </div>
             </div>
-            <div class="search-item">
-                <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 215px"></Date-picker>
+            <div class="item">
+                <span class="datelabel">端口属性</span>
+                <div class="search-label">
+                    省份：
+                </div>
+                <div class="search-item">
+                    <Select v-model="defaultData.province.value" :label-in-value="true" @on-change="selectProvince" style="width:88px;">
+                        <Option v-for="item in selectionProvence" :value="item.value" :key="item">{{ item.label }}</Option>
+                    </Select>
+                </div>
+                <div class="search-label ml-20">
+                    端口类型：
+                </div>
+                <div class="search-item">
+                    <Select v-model="defaultData.portType.value" :label-in-value="true" @on-change="selectPortType">
+                        <Option v-for="item in portTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
+                    </Select>
+                </div>
+                <div class="search-label ml-20">
+                    业务大类：
+                </div>
+                <div class="search-item">
+                    <Select v-model="defaultData.service.value" :label-in-value="true" @on-change="selectService">
+                        <Option v-for="item in serviceList" :value="item.value" :key="item">{{ item.label }}</Option>
+                    </Select>
+                </div>
             </div>
-            <div class="search-label ml-20">
-                截止时间
+            <div class="item">
+                <span class="datelabel">设备IP检索</span>
+                <Input v-model="device.IP" style="width: 350px"></Input>
             </div>
-            <div class="search-item">
-                <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 215px"></Date-picker>
+            <div class="search-ctrl">
+                <Button type="primary" class="btn-search ml-20 mt-40" @click="searchSubmit">立即检索</Button>
+                <a class="text-blue" @click="reset">清空</a>
             </div>
-            </Col>
-        </Row>
-        <br />
-        <Row>
-            <Col span="2">
-            <span class="datelabel">按端口属性：</span>
-            </Col>
-            <Col span="22">
-            <div class="search-label">
-                归属省份
-            </div>
-            <div class="search-item short">
-                <Select v-model="defaultData.province.value" :label-in-value="true" @on-change="selectProvince">
-                    <Option v-for="item in selectionProvence" :value="item.value" :key="item">{{ item.label }}</Option>
-                </Select>
-            </div>
-            <div class="search-label ml-20">
-                端口类型
-            </div>
-            <div class="search-item short">
-                <Select v-model="defaultData.portType.value" :label-in-value="true" @on-change="selectPortType">
-                    <Option v-for="item in portTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
-                </Select>
-            </div>
-            <div class="search-label ml-20">
-                业务大类
-            </div>
-            <div class="search-item short">
-                <Select v-model="defaultData.service.value" :label-in-value="true" @on-change="selectService">
-                    <Option v-for="item in serviceList" :value="item.value" :key="item">{{ item.label }}</Option>
-                </Select>
-            </div>
-            </Col>
-        </Row>
-        <br />
-        <Row>
-            <Col span="2">
-            <span class="datelabel">按设备IP检索：</span>
-            </Col>
-            <Col span="22">
-            <Input v-model="device.IP" placeholder="请输入设备IP" style="width: 300px"></Input>
-            </Col>
-        </Row>
-        <Col offset="2" style="margin-top: 20px">
-        <button class="btn-blue w120" @click="searchSubmit">立即检索</button>
-        <a class="ml-20" @click="reset">清空检索条件</a>
-        </Col>
-        <Row style="margin-top: 20px">
-            <Col span="2">
-            <span class="datelabel">检索结果：</span>
-            </Col>
-            <Col span="22">
-            <span class="search-result">总共找到1230条记录，当前为您显示第 1-50条</span>
-            <br />
-            <span class="search-result"><a>点击下载</a> 检索结果文件</span>
-            </Col>
-        </Row>
+        </div>
+        <div class="search-result">
+            <p class="search-label">检索条件：</p>
+            <p class="search-content">已查找到<span>1161</span>条数据</p>
+            <a class="search-download">下载检索结果文件</a>
+        </div>
         <div class="tableContent">
-            {{device}}
-            <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="portData" style="margin-bottom: 20px"></Table>
-            <Button type="info" :disabled="BtnDisabled">下载所选</Button>
-            <Button type="error" :disabled="BtnDisabled" style="margin-left: 20px">批量删除</Button>
-            <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
+            <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="portData" style="margin-top: 10px"></Table>
+            <div class="table-set">
+                <Button type="ghost" :disabled="BtnDisabled">下载所选</Button>
+                <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px">批量删除</Button>
+                <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
+            </div>
         </div>
     </div>
 </template>
-<style lang="less">
-</style>
+<style lang="less"></style>
 <script type="text/ecmascript-6">
     import {showDataSelection,porttables} from '../../../static/data'
     export default{

@@ -2,36 +2,37 @@
     <div>
         <div class="module-header">
             <h4>端口导入
-                <span style="width: 30px"></span>
-                <i>权限选择<Select v-model="defaultData.data.value" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
+                <Tooltip placement="bottom-start">
+                    <span class="info-question"></span>
+                    <div slot="content">
+                        <p>1、批量添加操作仅支持公网地址设备，私网地址设备信息的填报导入工作请联系集团负责人，联系电话：52686688-1062；</p>
+                        <p>2、请开通设备SNMP采集权限，总部采集设备地址为117.136.187.8-15、117.136.191.38</p>
+                    </div>
+                </Tooltip>
+                <span class="role-text ml-20">权限选择</span>
+                <Select v-model="defaultData.data.value" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
                     <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
-                </Select></i>
+                </Select>
             </h4>
         </div>
         <Tabs type="card">
             <Tab-pane label="批量添加端口信息">
                 <div class="usermanage">
-                    <div class="step">
-                        <p>
-                            step 1 下载端口添加模版， 点此<a class="download-text">下载</a>
-                        </p>
-                        <p>
-                            step 2 正确填写端口添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a>
-                        </p>
-                        <p>
-                            step 3 在待添加端口列表中核对设备信息无误后，点击确定添加 完成操作
-                        </p>
+                    <div class="module-search">
+                        <div class="step">
+                            <p><span class="step-label">Step 1</span>下载端口添加模版， 点此 <a class="download-text">下载</a></p>
+                            <p><span class="step-label">Step 2</span>正确填写端口添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a></p>
+                            <p><span class="step-label">Step 3</span>在待添加端口列表中核对设备信息无误后，点击确定添加 完成操作</p>
+                        </div>
                     </div>
                     <div class="module-header mt-20">
-                        <h4>待添加端口列表</h4>
+                        <h4>待添加端口列表
+                            <span class="info-text ml-20">已导入<i class="red"> {{portData.length}} </i>条端口信息</span>
+                            <Button type="text"  @click="cancelUpload" :disabled="!portDataLength" class="right blue f14">取消添加</Button>
+                            <Button type="primary" @click="confirmUpload" :disabled="!portDataLength" class="btn-search right f14">确定添加</Button>
+                        </h4>
                     </div>
                     <div class="snmptabs">
-                        <div class="clearfix">
-                            <span v-if="portDataLength">已导入{{snmp2Data.length}}条端口信息</span>
-                            <span v-if="!portDataLength">尚未导入端口信息</span>
-                            <span class="pull-right ml-20"><Button type="ghost" :disabled="!portDataLength" @click="cancelUpload">取消添加</Button></span>
-                            <span class="pull-right"><Button type="primary" :disabled="!portDataLength" @click="confirmUpload">确认添加</Button></span>
-                        </div>
                         <Table width="auto" stripe border :columns="columns" :data="portData" style="margin-top: 10px"></Table>
                     </div>
                 </div>

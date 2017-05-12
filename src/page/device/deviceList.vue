@@ -68,11 +68,12 @@
             <a class="search-download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
-            {{device}}
-            <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="deviceData" style="margin-bottom: 20px"></Table>
-            <Button type="info" :disabled="BtnDisabled">下载所选</Button>
-            <Button type="error" :disabled="BtnDisabled" style="margin-left: 20px">批量删除</Button>
-            <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
+            <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="deviceData" style="margin-top: 10px"></Table>
+            <div class="table-set">
+                <Button type="ghost" :disabled="BtnDisabled">下载所选</Button>
+                <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px">批量删除</Button>
+                <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
+            </div>
         </div>
     </div>
 </template>

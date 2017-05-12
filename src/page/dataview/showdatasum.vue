@@ -83,18 +83,6 @@
         font-weight: 400;
     }
 
-    .module-header h4 span {
-        background: url(../../assets/imgs/icon-question.png) no-repeat;
-        vertical-align: middle;
-    }
-
-    .module-header h4 .form {
-        display: inline;
-    }
-
-    .module-header h4 .form .slt {
-        width: 200px;
-    }
 
     .fz {
         font-size: 16px;

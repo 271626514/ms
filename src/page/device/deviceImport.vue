@@ -2,69 +2,60 @@
     <div>
         <div class="module-header">
             <h4>设备导入
+                <Tooltip placement="bottom-start">
+                    <span class="info-question"></span>
+                    <div slot="content">
+                        <p>1、批量添加操作仅支持公网地址设备，私网地址设备信息的填报导入工作请联系集团负责人，联系电话：52686688-1062；</p>
+                        <p>2、请开通设备SNMP采集权限，总部采集设备地址为117.136.187.8-15、117.136.191.38</p>
+                    </div>
+                </Tooltip>
+                <span class="role-text ml-20">权限选择</span>
                 <Select v-model="defaultData.data.value" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
                     <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </h4>
         </div>
         <Tabs type="card">
-            <Tab-pane label="批量添加snmp v2 设备">
+            <Tab-pane label="批量添加snmp V2设备">
                 <div class="usermanage">
-                    <div class="step">
-                        <p>
-                            step 1 下载设备添加模版， 点此<a class="download-text">下载</a>
-                        </p>
-                        <p>
-                            step 2 正确填写设备添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a>
-                            <!--<Upload action="//jsonplaceholder.typicode.com/posts/" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess">
-                                上传文件
-                            </Upload>-->
-                        </p>
-                        <p>
-                            step 3 在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作
-                        </p>
+                    <div class="module-search">
+                        <div class="step">
+                            <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text">下载</a></p>
+                            <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a></p>
+                            <p><span class="step-label">Step 3</span>在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作</p>
+                        </div>
                     </div>
                     <div class="module-header mt-20">
-                        <h4>待添加设备列表</h4>
+                        <h4>待添加设备列表
+                            <span class="info-text ml-20">已导入<i class="red"> 1161 </i>条设备信息</span>
+                            <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
+                            <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
+                        </h4>
+
                     </div>
-                    <div class="snmptabs">
-                        <div class="clearfix">
-                            <span v-if="snmp2DataLength">已导入{{snmp2Data.length}}条设备信息</span>
-                            <span v-if="!snmp2DataLength">尚未导入设备信息</span>
-                            <span class="pull-right ml-20"><Button type="ghost" :disabled="!snmp2DataLength" @click="cancelUpload">取消添加</Button></span>
-                            <span class="pull-right"><Button type="primary" :disabled="!snmp2DataLength" @click="confirmUpload">确认添加</Button></span>
-                        </div>
+                    <div class="tableContent">
                         <Table width="auto" stripe border :columns="columns2" :data="snmp2Data" style="margin-top: 10px"></Table>
                     </div>
                 </div>
             </Tab-pane>
             <!--snmp v3 设备区域-->
-            <Tab-pane label="批量添加snmp v3 设备">
+            <Tab-pane label="批量添加snmp V3设备">
                 <div class="usermanage">
-                    <div class="step">
-                        <p>
-                            step 1 下载设备添加模版， 点此<a class="download-text">下载</a>
-                        </p>
-                        <p>
-                            step 2 正确填写设备添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a>
-                            <!--<Upload action="//jsonplaceholder.typicode.com/posts/" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess">
-                                上传文件
-                            </Upload>-->
-                        </p>
-                        <p>
-                            step 3 在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作
-                        </p>
+                    <div class="module-search">
+                        <div class="step">
+                            <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text">下载</a></p>
+                            <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a></p>
+                            <p><span class="step-label">Step 3</span>在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作</p>
+                        </div>
                     </div>
                     <div class="module-header mt-20">
-                        <h4>待添加设备列表</h4>
+                        <h4>待添加设备列表
+                            <span class="info-text ml-20">已导入<i class="red"> 1161 </i>条设备信息</span>
+                            <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
+                            <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
+                        </h4>
                     </div>
-                    <div class="snmptabs">
-                        <div class="clearfix">
-                            <span v-if="snmp3DataLength">已导入{{snmp3Data.length}}条设备信息</span>
-                            <span v-if="!snmp3DataLength">尚未导入设备信息</span>
-                            <span class="pull-right ml-20"><Button type="ghost" :disabled="!snmp3DataLength" @click="cancelUpload">取消添加</Button></span>
-                            <span class="pull-right"><Button type="primary" :disabled="!snmp3DataLength" @click="confirmUpload">确认添加</Button></span>
-                        </div>
+                    <div class="tableContent">
                         <Table width="auto" stripe border :columns="columns3" :data="snmp3Data" style="margin-top: 10px"></Table>
                     </div>
                 </div>
@@ -89,43 +80,22 @@
                 <Button type="ghost" @click="close">取消</Button>
             </div>
         </Modal>
-        <!--弹窗-->
-        <!--<Modal v-model="dialog.waitting" :mask-closable="false" :closable="false">
-            <Row style="height:180px">
-                <Col span="4" align="center">
-                <i class="demo-spin-icon-load ivu-icon ivu-icon-load-c" style="font-size: 30px; color:#2db7f5;"></i>
-                </Col>
-                <Col span="12">
-                <p>您的文件提交成功</p>
-                <p>信息正在验证中，请稍后……</p>
-                </Col>
-            </Row>
-            <div slot="footer">
-                <Button type="success" @click="success">成功回传</Button>
-                <Button type="error" @click="error">失败回传</Button>
-            </div>
-        </Modal>-->
     </div>
 </template>
 <style lang="less">
-.usermanage{
-    padding: 20px;
-    border:1px solid #d7dde4;
-    border-top:0;
-}
 .step{
     font-size: 14px;
     p{
-        margin: 5px 0;
+        margin-bottom: 10px;
+    }
+    .step-label{
+        color:#3694f2;
+        width: 60px;
+        display: inline-block;
     }
 }
 .uploadModalContent{
     padding: 30px 0;
-}
-.snmptabs{
-    tr{
-        height: 61px;
-    }
 }
 .x-input{
     border:1px solid #d7dde4;

@@ -29,11 +29,6 @@
         font-weight: 400;
     }
 
-    .module-header h4 {
-        border-bottom: 2px solid #eceff9;
-        padding-bottom: 16px;
-    }
-
     .form-bg {
         padding: 12px 0;
         background: #f6f7fb;

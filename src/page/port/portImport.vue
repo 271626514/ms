@@ -75,44 +75,6 @@
     </div>
 </template>
 <style lang="less">
-    .usermanage{
-        padding: 20px;
-        border:1px solid #d7dde4;
-        border-top:0;
-    }
-    .step{
-        font-size: 14px;
-        p{
-            margin: 5px 0;
-        }
-    }
-    .uploadModalContent{
-        padding: 30px 0;
-    }
-    .snmptabs{
-    tr{
-        height: 61px;
-    }
-    }
-    .x-input{
-        border:1px solid #d7dde4;
-        display: inline-block;
-        float: left;
-        width: 300px;
-        height: 32px;
-        line-height: 32px;
-        padding: 0 10px;
-    }
-    .x-label{
-        height: 32px;
-        line-height: 32px;
-        display: inline-block;
-        float: left;
-    }
-    .x-button{
-        float: left;
-        margin-left: 10px;
-    }
 </style>
 <script type="text/ecmascript-6">
     import {showDataSelection,portCheckTables} from '../../../static/data'

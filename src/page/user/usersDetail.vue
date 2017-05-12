@@ -113,10 +113,6 @@
         border: none;
     }
 
-    .module-header {
-        margin-bottom: 29px;
-    }
-
     .form .form-group a.btn-blue {
         vertical-align: middle;
     }

@@ -11,8 +11,7 @@
         <my-foot></my-foot>
     </div>
 </template>
-<style lang="less">
-</style>
+<style lang="less"></style>
 <script type="text/ecmascript-6">
 import myHead from   '../../components/common/header'
 import myFoot from '../../components/common/foot'

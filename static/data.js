@@ -224,37 +224,34 @@ export const devicetables = {
     columns: [
         {
             type: 'selection',
-            align: 'center',
             fixed: 'left',
-            width: 100
+            width: 50
         },
         {
             title: '省份',
             key: 'province',
-            align: 'center',
-            width: 200
+            width: 75
         },
         {
             title: '设备名称',
             key: 'deviceName',
-            align: 'center',
-            width: 200
+            width: 185
         },
         {
-            title: 'IP地址',
+            title: '设备IP',
             key: 'IP',
-            width: 200
+            width: 180
         },
         {
             title: '所属机房',
             key: 'labs',
-            width: 250
+            width: 280
         },
         {
             title: '设备类型',
             key: 'deviceType',
             width: 200,
-            filters: [
+            /*filters: [
                 {
                     label: 'IDC核心设备',
                     value: 'IDC核心设备'
@@ -294,7 +291,7 @@ export const devicetables = {
             ],
             filterMethod (value, row) {
                 return row.deviceType.indexOf(value) > -1;
-            }
+            }*/
         },
         {
             title: '上传时间',
@@ -305,8 +302,8 @@ export const devicetables = {
         {
             title: 'snmp版本',
             key: 'snmpVersion',
-            width: 200,
-            filters: [
+            width: 140,
+            /*filters: [
                 {
                     label: 'V1',
                     value: 'V1'
@@ -322,12 +319,12 @@ export const devicetables = {
             ],
             filterMethod (value, row) {
                 return row.snmpVersion.indexOf(value) > -1;
-            }
+            }*/
         },
         {
             title: 'snmp端口',
             key: 'snmpPort',
-            width: 200
+            width: 140
         },
         {
             title: 'snmp团体字',
@@ -385,7 +382,7 @@ export const devicetables = {
             "deviceName": "服务器",
             "IP": "192.168.0.131",
             "labs": "杭研海创园3#",
-            "deviceType": "城域网设备",
+            "deviceType": "PB设备－省网接入层",
             "snmpVersion": "XML-1515",
             "snmpPort": "8080",
             "snmpRaid": "5BB3CDN",

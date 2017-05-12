@@ -40,11 +40,6 @@
         font-weight: 400;
     }
 
-    .module-header h4 {
-        border-bottom: 2px solid #eceff9;
-        padding-bottom: 16px;
-    }
-
     .refer h4 {
         font-size: 16px;
         color: #333;

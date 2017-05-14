@@ -194,8 +194,57 @@ export const showDataSelection = {
             label: '固网用户',
             value: '固网用户'
         }
+    ],
+    logTypeList: [
+        {
+            label: '全部',
+            value: 'all'
+        },
+        {
+            label: '新增设备',
+            value: 'add'
+        },
+        {
+            label: '修改设备',
+            value: 'modify'
+        },
+        {
+            label: '删除设备',
+            value: 'delete'
+        }
+    ],
+    sourceList: [
+        {
+            label: '全部来源',
+            value: 'all'
+        },
+        {
+            label: '用户操作',
+            value: 'user'
+        },
+        {
+            label: '后台同步',
+            value: 'computer'
+        }
+    ],
+    resultList: [
+        {
+            label: '全部',
+            value: 'all'
+        },
+        {
+            label: '成功',
+            value: 'success'
+        },
+        {
+            label: '失败',
+            value: 'faild'
+        },
+        {
+            label: '异常',
+            value: 'error'
+        },
     ]
-
 }
 export const showDataList = {
     deviceList: [
@@ -1534,43 +1583,49 @@ export const customquerytables = {
 export const loglisttables = {
     columns:[
         {
-            title: '用户名',
+            title: 'ID',
+            key: 'Id',
+            width: 200
+        },
+        {
+            title: '操作类型',
+            key: 'logType',
+            width: 100
+        },
+        {
+            title: '来源',
+            key: 'source',
+            width: 100
+        },
+        {
+            title: '用户姓名',
             key: 'userName',
-            align: 'center',
-            width: 200
+            width: 200,
         },
         {
-            title: 'IP地址',
-            key: 'IP',
-            align: 'center',
-            width: 200
-        },
-        {
-            title: '浏览器',
-            key: 'browser',
-            align: 'center',
-            width: 400
-        },
-        {
-            title: '操作内容',
-            key: 'actionDetail',
-            align: 'center',
-
+            title: '操作详情',
+            key: 'actionDetail'
         },
         {
             title: '操作时间',
             key: 'actionDate',
-            align: 'center',
             width: 200
+        },
+        {
+            title: '结果',
+            key: 'result',
+            width: 100
         }
     ],
     datalist:[
         {
+            Id: "18123124121231",
+            logType: "add",
             userName: "admin",
-            IP: `172.23.11.56`,
-            browser: 'Mozilla/5.0 （Windows NT 6.3; WOW64） AppleWebKit/537.36 （KHTML, like Gecko） Chrome/45.0.2454.101 Safari/537.36',
+            source: "用户操作",
             actionDetail: 'xijianjun4: 修改项目 ID:[8846] 名称:[测试返场]的原始状态:[1300] 当前状态[100]',
-            actionDate: '2017-05-03 11:14:12'
+            actionDate: '2017-05-03 11:14:12',
+            result: 'success'
         }
     ],
 }

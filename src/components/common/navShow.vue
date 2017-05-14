@@ -88,7 +88,7 @@
     transform: rotate(45deg)
 }
 .accordion li .link:hover,.accordion li.open .link{
-    color: #4276fe;
+    color: #3694f2;
     background-color: #f0f5fd;
 }
 

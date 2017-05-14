@@ -53,73 +53,7 @@
     </div>
 </template>
 <style lang="less">
-    .form input {
-        border: none !important;
-        font-size: 14px !important;
-    }
 
-    .form input[type='password'] {
-        background: transparent;
-        border: 1px solid #ccc;
-        outline: none;
-        border-radius: 2px;
-        padding: 3px 10px;
-        width: 710px;
-        height: 30px;
-    }
-
-    label.error {
-        margin-left: 116px;
-    }
-
-    .form .form-group {
-        margin-bottom: 20px;
-    }
-
-    .form .form-group.mb-30 {
-        margin-bottom: 30px;
-    }
-
-    .form .form-group label {
-        text-align: left;
-    }
-
-    .form .form-group label.label {
-        display: inline-block;
-        width: 113px;
-        text-align: right;
-        color: #666;
-        font-size: 14px;
-    }
-
-    .form .form-group input[type='password'], .form .form-group input[type='text'], .form .form-group select {
-        width: 300px;
-    }
-
-    .form .form-group select {
-        border: 1px solid #ccc;
-    }
-
-    .err {
-        text-align: center;
-        width: 100%;
-    }
-
-    .red {
-        color: red;
-    }
-
-    .no_border {
-        border: none;
-    }
-
-    .form .form-group a.btn-blue {
-        vertical-align: middle;
-    }
-
-    .form .form-group a.btn-default {
-        vertical-align: middle;
-    }
 </style>
 <script type="text/ecmascript-6">
     import {userlisttables} from '../../../static/data'

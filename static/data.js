@@ -1629,3 +1629,16 @@ export const loglisttables = {
         }
     ],
 }
+
+//用户详情
+export const userDetail = {
+    user_name: 'zhejiangyidong001',
+    name: '龙傲天',
+    tel: '13146779111',
+    email: 'syzx9801@163.com',
+    compony: '中国移动杭州研发公司',
+    addDate: '2016.09.12',
+    user_role: '用户组1',
+    user_state: '1',
+    login_yet: '2016.09.18'
+}

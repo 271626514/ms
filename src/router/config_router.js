@@ -50,6 +50,11 @@ export default new Router({
                     component: path.USERS_ADD
                 },
                 {
+                    path: 'usersEdit',
+                    name: '修改用户信息',
+                    component: path.USERS_EDIT
+                },
+                {
                     path: 'usersDetail',
                     name: '查看详情',
                     component: path.USERS_DETAIL

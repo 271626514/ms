@@ -34,6 +34,9 @@
             },
             detail(index){
                 this.$router.push('/user/usersDetail')
+            },
+            remove(index){
+                this.$router.push('/user/usersEdit')
             }
         },
         computed: {

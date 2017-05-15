@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="module-header">
-            <h4>创建一个新用户</h4>
+            <h4>用户信息修改</h4>
         </div>
         <Form :model="formItem" :label-width="120" :rules="userAdd" ref="add">
             <Form-item label="账号：" prop="username">
-                <Input v-model="formItem.username" placeholder="6-50位字母或数字" style="width:320px;"></Input>
+                <Input v-model="formItem.username" placeholder="6-50位字母或数字" disabled style="width:320px;"></Input>
             </Form-item>
             <Form-item label="密码：" prop="password">
                 <Input v-model="formItem.password" placeholder="8-20位大小写字母或数字组合" type="password" style="width:320px;"></Input>
@@ -36,7 +36,7 @@
                 </Radio-group>
             </Form-item>
             <Form-item>
-                <Button type="primary" class="f16" style="width: 90px;height:36px" @click="handleSubmit('add')">创建</Button>
+                <Button type="primary" class="f16" style="width: 90px;height:36px" @click="handleSubmit('add')">确定</Button>
                 <Button type="ghost" class="f16" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
             </Form-item>
         </Form>
@@ -60,10 +60,6 @@
                     state: '1',
                 },
                 userAdd: {
-                    username:[
-                        { required: true, message: '请填写用户名', trigger: 'blur' },
-                        { type: 'string', min: 6, message: '账号不能少于6位', trigger: 'blur' }
-                    ],
                     password: [
                         { required: true, message: '请填写密码', trigger: 'blur' },
                         { validator: validatePass,trigger: 'blur'}

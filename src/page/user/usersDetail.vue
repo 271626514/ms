@@ -3,76 +3,76 @@
         <div class="module-header">
             <h4>用户账户详情</h4>
         </div>
-        <form class="form" id="resume_form">
-            <div class="form-group">
-                <label for="user_num" class="label"> 帐号:</label>
-                <input type="text" class="mr-20" readonly v-model="formItem.username"/>
+        <div class="userDetail">
+            <div class="item">
+                <div class="label">账号：</div>
+                <div class="desc">{{userDetail.user_name}}</div>
             </div>
-            <div class="form-group">
-                <label for="name" class="label"> 姓名:</label>
-                <input type="text" v-model="formItem.name" readonly/>
+            <div class="item">
+                <div class="label">姓名：</div>
+                <div class="desc">{{userDetail.name}}</div>
             </div>
-            <div class="form-group">
-                <label for="phone_num" class="label">手机号码:</label>
-                <input type="text" v-model="formItem.tel" readonly/>
+            <div class="item">
+                <div class="label">手机号码：</div>
+                <div class="desc">{{userDetail.tel}}</div>
             </div>
-            <div class="form-group">
-                <label for="email" class="label"> 邮箱地址:</label>
-                <input type="text" class="mr-20" v-model="formItem.email" readonly/>
+            <div class="item">
+                <div class="label">邮箱地址：</div>
+                <div class="desc">{{userDetail.email}}</div>
             </div>
-            <div class="form-group">
-                <label for="company" class="label">公司:</label>
-                <input type="text" v-model="formItem.company" readonly/>
+            <div class="item">
+                <div class="label">公司：</div>
+                <div class="desc">{{userDetail.compony}}</div>
             </div>
-            <div class="form-group">
-                <label for="company" class="label">创建时间:</label>
-                <input type="text" v-model="addDate" readonly/>
+            <div class="item">
+                <div class="label">创建时间：</div>
+                <div class="desc">{{userDetail.addDate}}</div>
             </div>
-            <div class="form-group">
-                <label class="label">权限分配:</label>
-                <input type="text" v-model="formItem.permission" readonly/>
-
+            <div class="item">
+                <div class="label">权限分配：</div>
+                <div class="desc">{{userDetail.user_role}}</div>
             </div>
-            <div class="form-group">
-                <label class="label">账号状态:</label>
-                <Radio-group v-model="formItem.state">
-                    <Radio label="1" disabled>已启用</Radio>
-                    <Radio label="2" disabled>已禁用</Radio>
-                </Radio-group>
+            <div class="item">
+                <div class="label">账户状态：</div>
+                <div class="desc">{{userDetail.user_state}}</div>
             </div>
-            <div class="form-group">
-                <label for="company" class="label">最近登录:</label>
-                <input type="text" v-model="formItem.delayDate" readonly/>
+            <div class="item">
+                <div class="label">最近登陆：</div>
+                <div class="desc">{{userDetail.login_yet}}</div>
             </div>
-            <div class="form-group">
-                <label for="company" class="label"></label>
-                <a class="btn-blue w80 mr-15" href="user_edit.html">修改信息</a>
-                <a class="btn-default w80" @click="$router.push('/user')">返回</a>
-            </div>
-        </form>
+        </div>
+        <Button type="primary" class="f16" style="width:90px; margin-left:110px">修改信息</Button>
+        <Button type="ghost" class="f16 ml-10" style="width:90px;" @click="">返回</Button>
     </div>
 </template>
 <style lang="less">
-
+.userDetail{
+    font-size: 14px;
+    padding: 25px 0;
+    .item{
+        overflow: hidden;
+        height: 50px;
+    }
+    .label{
+        color: #666;
+        float: left;
+        width: 110px;
+        text-align: right;
+    }
+    .desc{
+        color: #333;
+        float: left;
+        margin-left: 10px;
+    }
+}
 </style>
 <script type="text/ecmascript-6">
-    import {userlisttables} from '../../../static/data'
-    export default{
-        data(){
-            return {
-                formItem: {
-                    username: '',
-                    password: '',
-                    name: '',
-                    tel: '',
-                    email: '',
-                    company: '',
-                    permission: '',
-                    state: '1',
-                    addDate: '',
-                    delayDate: ''
-                }
-            }
+import {userDetail} from '../../../static/data'
+export default{
+    data() {
+        return {
+            userDetail:userDetail
         }
     }
+}
 </script>

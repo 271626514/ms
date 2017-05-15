@@ -6,7 +6,7 @@
         <div class="userDetail">
             <div class="item">
                 <div class="label">账号：</div>
-                <div class="desc">{{userDetail.user_name}}</div>
+                <div class="desc">{{userDetail.username}}</div>
             </div>
             <div class="item">
                 <div class="label">姓名：</div>
@@ -22,7 +22,7 @@
             </div>
             <div class="item">
                 <div class="label">公司：</div>
-                <div class="desc">{{userDetail.compony}}</div>
+                <div class="desc">{{userDetail.companyName}}</div>
             </div>
             <div class="item">
                 <div class="label">创建时间：</div>
@@ -30,15 +30,15 @@
             </div>
             <div class="item">
                 <div class="label">权限分配：</div>
-                <div class="desc">{{userDetail.user_role}}</div>
+                <div class="desc">{{userDetail.userPermission}}</div>
             </div>
             <div class="item">
                 <div class="label">账户状态：</div>
-                <div class="desc">{{userDetail.user_state}}</div>
+                <div class="desc">{{userDetail.state}}</div>
             </div>
             <div class="item">
                 <div class="label">最近登陆：</div>
-                <div class="desc">{{userDetail.login_yet}}</div>
+                <div class="desc">{{userDetail.delayDate}}</div>
             </div>
         </div>
         <Button type="primary" class="f16" style="width:90px; margin-left:110px">修改信息</Button>

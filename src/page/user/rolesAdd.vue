@@ -1,52 +1,46 @@
 <template>
     <div class="tile">
         <div class="module-header"><h4>创建新权限</h4></div>
-        <div class="tile-content">
-            <form action="">
-                <div class="name">
-                    <label>权限名称：</label>
-                    <input type="text" name="roleName" id="roleName" value=""/>
-                </div>
-                <div class="power-title mt-30">
-                    <strong>设备管理</strong>
-                    <p class="power-list">未选择</p>
-                    <em class="czicon"></em>
-                </div>
-                <div class="power-tree on">
-                    <Tree :data="baseData" show-checkbox></Tree>
-                </div>
-                <div class="power-title mt-30">
-                    <strong>端口管理</strong>
-                    <p class="power-list">未选择</p>
-                    <em class="czicon"></em>
-                </div>
-                <div class="power-tree">
-                    <ul id="contentTree" class="ztree"></ul>
-                </div>
-                <div class="power-title mt-30">
-                    <strong>数据管理</strong>
-                    <p class="power-list">未选择</p>
-                    <em class="czicon"></em>
-                </div>
-                <div class="power-tree">
-                    <ul id="businessTree" class="ztree"></ul>
-                </div>
-                <div class="caozuo mt-40 clearfix">
-                    <a class="creat btn-blue w80" id="creatRight">创建</a>
-                    <a class="cancel btn-default w80" href="./right_list.html">取消</a>
-                </div>
-            </form>
+        <div class="module-roles">
+            <div class="name">
+                <label>权限名称：</label>
+                <Input v-model="roles.name" style="width: 300px;height:30px"></Input>
+            </div>
+            <div class="power-title mt-20">
+                <strong>设备管理</strong>
+                <p class="power-list">未选择</p>
+                <em class="czicon"></em>
+            </div>
+            <div class="power-tree on">
+                <Tree :data="baseData" show-checkbox></Tree>
+            </div>
+            <div class="power-title mt-30">
+                <strong>端口管理</strong>
+                <p class="power-list">未选择</p>
+                <em class="czicon"></em>
+            </div>
+            <div class="power-tree">
+                <ul id="contentTree" class="ztree"></ul>
+            </div>
+            <div class="power-title mt-30">
+                <strong>数据管理</strong>
+                <p class="power-list">未选择</p>
+                <em class="czicon"></em>
+            </div>
+            <div class="power-tree">
+                <ul id="businessTree" class="ztree"></ul>
+            </div>
+            <div class="caozuo mt-40 clearfix">
+                <a class="creat btn-blue w80" id="creatRight">创建</a>
+                <a class="cancel btn-default w80" href="./right_list.html">取消</a>
+            </div>
         </div>
     </div>
 </template>
 <style lang="less">
-    .main-container {
-        background: #fff;
-    }
-
-    .title {
-        padding: 0;
-    }
+.module-roles{
+    padding: 10px 35px;
+}
 
     h4 {
         color: #666;
@@ -56,11 +50,6 @@
 
     .tile-content {
         padding: 30px;
-    }
-
-    form .name {
-        overflow: hidden;
-        height: 30px;
     }
 
     .name label {
@@ -104,6 +93,7 @@
         display: table-cell;
         width: 120px;
         color: #333;
+        font-weight: normal;
     }
 
     .power-list {
@@ -147,9 +137,12 @@
     }
 </style>
 <script type="text/ecmascript-6">
-    export default{
-        data() {
+    export default {
+        data () {
             return {
+                roles:{
+                    name: ''
+                },
                 baseData: [{
                     expand: true,
                     title: 'parent 1',

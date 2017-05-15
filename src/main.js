@@ -3,10 +3,13 @@ import App from './App'
 import router from './router/config_router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
-import store from './store/store';
+import store from './store/store'
 import axios from 'axios'
+import {Tree} from 'element-ui'
 
 Vue.use(iView)
+Vue.use(Tree)
+
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false

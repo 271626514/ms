@@ -3,7 +3,7 @@
  * 表单校验规则
  */
 export const validatePass = (rule,value,callback) => {
-    let regex = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)[0-9A-Za-z]{8,20}$/
+    let regex = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)[0-9A-Za-z]{6,20}$/
     if(!regex.test(value)){
         callback(new Error('密码格式不正确'));
     }

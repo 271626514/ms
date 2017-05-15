@@ -43,7 +43,6 @@
     </div>
 </template>
 <style lang="less">
-
 label{
     font-weight: normal !important;
 }

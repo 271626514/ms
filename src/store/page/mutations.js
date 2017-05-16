@@ -11,5 +11,13 @@ export default{
     [types.REMOVE_USER_ID] (state){
         window.localStorage.removeItem('userid');
         state.users_id= "";
+    },
+    [types.SET_USER_ROLE] (state,val) {
+        window.localStorage.setItem('userrole',val)
+        state.roles_id=val;
+    },
+    [types.REMOVE_USER_ROLE] (state){
+        window.localStorage.removeItem('userrole');
+        state.roles_id= "";
     }
 }

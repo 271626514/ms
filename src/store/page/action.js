@@ -9,5 +9,11 @@ export default{
     },
     removeuserid({commit}){
         commit(types.REMOVE_USER_ID);
+    },
+    setuserrole({commit},val){
+        commit(types.SET_USER_ROLE,val);
+    },
+    removeuserrole({commit}){
+        commit(types.REMOVE_USER_ROLE);
     }
 }

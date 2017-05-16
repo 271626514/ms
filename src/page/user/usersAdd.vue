@@ -19,11 +19,11 @@
             <Form-item label="邮箱地址：" prop="email">
                 <Input v-model="formItem.email" placeholder="邮箱是找回密码的重要依据，请务必填写正确" style="width:320px;"></Input>
             </Form-item>
-            <Form-item label="公司：" prop="company">
-                <Input v-model="formItem.company" style="width:320px;"></Input>
+            <Form-item label="公司：" prop="companyName">
+                <Input v-model="formItem.companyName" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="权限分配：">
-                <Select v-model="formItem.permission" placeholder="请选择" style="width: 320px">
+                <Select v-model="formItem.userPermission" placeholder="请选择" style="width: 320px">
                     <Option value="beijing">北京市</Option>
                     <Option value="shanghai">上海市</Option>
                     <Option value="shenzhen">深圳市</Option>
@@ -55,8 +55,8 @@
                     name: '',
                     tel: '',
                     email: '',
-                    company: '',
-                    permission: '',
+                    companyName: '',
+                    userPermission: '',
                     state: '1',
                 },
                 userAdd: {
@@ -80,7 +80,7 @@
                         { required: true, message: '请填写邮箱', trigger: 'blur' },
                         { type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
                     ],
-                    company: [
+                    companyName: [
                         {required: true, message: '请填写公司名称', trigger: 'blur'},
                     ]
                 }
@@ -90,7 +90,7 @@
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        alert('123123')
+                        console.log(this.formItem);
                     }
                 })
             }

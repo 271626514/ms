@@ -5,5 +5,9 @@ export default{
     getuserid :function(state){
         let userid = state.users_id || JSON.parse(localStorage.getItem('userid'));
         return userid;
+    },
+    getuserrole :function(state){
+        let userid = state.roles_id || JSON.parse(localStorage.getItem('userrole'));
+        return userid;
     }
 }

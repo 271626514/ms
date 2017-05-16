@@ -30,6 +30,15 @@
         methods:{
             con(selection){
                 this.selection = selection;
+            },
+            detail(index){
+                this.$router.push('/user/rolesDetail')
+            },
+            edit(index){
+
+            },
+            remove(index){
+
             }
         }
     }

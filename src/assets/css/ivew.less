@@ -20,6 +20,9 @@
   color: #666;
 }
 .main{
+  .tableContent a{
+    font-size: 14px;
+  }
   .ivu-tabs-bar{
     border-bottom:1px solid #e6f2fd;
   }
@@ -75,6 +78,47 @@
   }
   .ivu-btn{
     border-radius: 2px;
+  }
+  .ivu-tree{
+    margin: 20px;
+  }
+}
+.module-roles{
+  .ivu-tree-arrow i{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+  }
+  .ivu-icon-arrow-right-b:before{
+    content: ""
+  }
+  .ivu-icon-arrow-right-b{
+    background: url("../imgs/ive-uncheck.png") no-repeat bottom;
+  }
+  .ivu-tree-arrow-open i{
+    background: url("../imgs/ive-check.png") no-repeat bottom;
+    transform: none;
+  }
+  .ivu-tree-arrow-hidden .ivu-icon-arrow-right-b{
+    background: none;
+  }
+  .ivu-tree-arrow-hidden .ivu-tree-arrow-open i{
+    background: none;
+  }
+/*  .ivu-checkbox:hover .ivu-checkbox-inner{
+    border:1px solid #ccc;
+  }
+  .ivu-checkbox-checked .ivu-checkbox-inner{
+    border:1px solid #ccc;
+    background: #FFF;
+  }*/
+  .ivu-tree-title{
+    color: #333;
+    font-size: 16px;
+  }
+  .ivu-checkbox-wrapper{
+    margin-left: 20px;
+    margin-top: 5px;
   }
 }
 

@@ -1446,13 +1446,14 @@ export const userlisttables = {
                 if(row.userPermission==99){
                     return ``
                 }else{
-                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="remove(${index})">修改</a>`;
+                    return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="remove(${row.id})">修改</a>`;
                 }
             }
         }
     ],
     userList:[
         {
+            id: "3309",
             "username": "18867102619",
             "companyName": "杭研",
             "userPermission": "cmcciw用户权限",
@@ -1500,7 +1501,7 @@ export const roleslisttables = {
                 if(row.userPermission==99){
                     return ``
                 }else{
-                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="remove(${index})">修改</a> <a @click="detail(${index})">删除</a>`;
+                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="edit(${index})">修改</a> <a style="margin-left: 10px" @click="remove(${index})">删除</a>`;
                 }
             }
         }
@@ -1634,11 +1635,25 @@ export const loglisttables = {
 export const userDetail = {
     username: 'zhejiangyidong001',
     name: '龙傲天',
+    password: '123456789a',
     tel: '13146779111',
     email: 'syzx9801@163.com',
     companyName: '中国移动杭州研发公司',
     addDate: '2016.09.12',
     userPermission: '用户组1',
-    state: '1',
+    state: '2',
     delayDate: '2016.09.18'
+}
+
+//权限详情
+export const rolesDetail = {
+    name: '管理员',
+    addDate: '2016.09.12',
+    updateDate: '2016.09.18',
+    containUser: [
+        {
+            username: 'sijiaqing001',
+            delayDate: '2016.09.13'
+        }
+    ]
 }

@@ -41,8 +41,8 @@
                 <div class="desc">{{userDetail.delayDate}}</div>
             </div>
         </div>
-        <Button type="primary" class="f16" style="width:90px; margin-left:110px">修改信息</Button>
-        <Button type="ghost" class="f16 ml-10" style="width:90px;" @click="">返回</Button>
+        <Button type="primary" class="f16" style="width:90px; margin-left:110px" @click="toEdit(userID)">修改信息</Button>
+        <Button type="ghost" class="f16 ml-10" style="width:90px;" @click="$router.push('/user')">返回</Button>
     </div>
 </template>
 <style lang="less">
@@ -51,7 +51,7 @@
     padding: 25px 0;
     .item{
         overflow: hidden;
-        height: 50px;
+        margin-bottom: 20px;
     }
     .label{
         color: #666;
@@ -68,11 +68,30 @@
 </style>
 <script type="text/ecmascript-6">
 import {userDetail} from '../../../static/data'
+import {BASEURL} from '../../../static/const'
 export default{
     data() {
         return {
-            userDetail:userDetail
+            userDetail:{},
+            userID: this.$store.getters.getuserid
         }
+    },
+    methods:{
+        getUserDetail:function(){
+            this.$http.post(BASEURL+'/admin',{userid:this.userID})
+                    .then((res) => {
+                        this.userDetail = res;
+                    })
+                    .catch((res)=>{
+                        this.userDetail = userDetail
+                    })
+        },
+        toEdit: function(index){
+            this.$router.push('/user/usersEdit')
+        }
+    },
+    mounted(){
+        this.getUserDetail();
     }
 }
 </script>

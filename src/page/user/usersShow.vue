@@ -33,9 +33,11 @@
                 this.selection = selection;
             },
             detail(index){
+                this.$store.dispatch('setuserid',index);
                 this.$router.push('/user/usersDetail')
             },
             remove(index){
+                this.$store.dispatch('setuserid',index);
                 this.$router.push('/user/usersEdit')
             }
         },

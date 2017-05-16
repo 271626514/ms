@@ -4,7 +4,7 @@
         <div class="module-roles">
             <div class="name">
                 <label>权限名称：</label>
-                <Input v-model="roles.name" style="width: 300px;height:30px"></Input>
+                <Input v-model="roles.name" style="width: 300px;"></Input>
             </div>
             <div class="power-title mt-20">
                 <strong>设备管理</strong>
@@ -14,7 +14,7 @@
             <div class="power-tree on">
                 <Tree :data="baseData" show-checkbox></Tree>
             </div>
-            <div class="power-title mt-30">
+            <div class="power-title mt-20">
                 <strong>端口管理</strong>
                 <p class="power-list">未选择</p>
                 <em class="czicon"></em>
@@ -22,7 +22,7 @@
             <div class="power-tree">
                 <ul id="contentTree" class="ztree"></ul>
             </div>
-            <div class="power-title mt-30">
+            <div class="power-title mt-20">
                 <strong>数据管理</strong>
                 <p class="power-list">未选择</p>
                 <em class="czicon"></em>
@@ -30,10 +30,8 @@
             <div class="power-tree">
                 <ul id="businessTree" class="ztree"></ul>
             </div>
-            <div class="caozuo mt-40 clearfix">
-                <a class="creat btn-blue w80" id="creatRight">创建</a>
-                <a class="cancel btn-default w80" href="./right_list.html">取消</a>
-            </div>
+            <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px">创建</Button>
+            <Button type="ghost" class="f16 mt-20" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
         </div>
     </div>
 </template>
@@ -124,12 +122,13 @@
         height: 0;
         width: 100%;
         box-sizing: border-box;
+        border:1px solid #eaecf5;
         overflow: hidden;
-        transition: all 3s ease;
-        -webkit-transition: all 3s ease;
-        -moz-transition: all 3s ease;
-        -o-transition: all 3s ease;
-        -ms-transition: all 3s ease;
+        transition: all 1s ease;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
     }
 
     .power-tree.on {
@@ -143,28 +142,39 @@
                 roles:{
                     name: ''
                 },
-                baseData: [{
-                    expand: true,
-                    title: 'parent 1',
-                    children: [{
-                        title: 'parent 1-0',
-                        expand: true,
-                        disabled: true,
-                        children: [{
-                            title: 'leaf',
-                            disableCheckbox: true
-                        }, {
-                            title: 'leaf',
+                baseData: [
+                    {
+                        expand: false,
+                        title: '设备列表',
+                        children: [
+                            {
+                                title: '全国',
+                                expand: false,
+                                children: [
+                                    {
+                                        title: '北京',
+                                        checked: true
+                                    },
+                                    {
+                                        title: '浙江',
+                                    }
+                                ]
                         }]
-                    }, {
-                        title: 'parent 1-1',
-                        expand: true,
-                        checked: true,
+                    },
+                    {
+                        expand: false,
+                        title: '设备导入',
                         children: [{
-                            title: '<span style="color: red">leaf</span>',
+                            title: '全国',
+                            expand: false,
+                            children: [{
+                                title: '北京',
+                            }, {
+                                title: '浙江',
+                            }]
                         }]
-                    }]
-                }]
+                    }
+                ]
             }
         }
     }

@@ -19,12 +19,12 @@
             <Form-item label="邮箱地址：" prop="email">
                 <Input v-model="formItem.email" placeholder="邮箱是找回密码的重要依据，请务必填写正确" style="width:320px;"></Input>
             </Form-item>
-            <Form-item label="公司：" prop="company">
-                <Input v-model="formItem.company" style="width:320px;"></Input>
+            <Form-item label="公司：" prop="companyName">
+                <Input v-model="formItem.companyName" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="权限分配：">
-                <Select v-model="formItem.permission" placeholder="请选择" style="width: 320px">
-                    <Option value="beijing">北京市</Option>
+                <Select v-model="formItem.userPermission" placeholder="请选择" style="width: 320px">
+                    <Option value="用户组1">用户组1</Option>
                     <Option value="shanghai">上海市</Option>
                     <Option value="shenzhen">深圳市</Option>
                 </Select>
@@ -45,51 +45,65 @@
 <style lang="less">
 </style>
 <script type="text/ecmascript-6">
-    import { validatePass,validateTel } from '../../../static/formrule'
-    export default{
-        data () {
-            return {
-                formItem: {
-                    username: '',
-                    password: '',
-                    name: '',
-                    tel: '',
-                    email: '',
-                    company: '',
-                    permission: '',
-                    state: '1',
-                },
-                userAdd: {
-                    password: [
-                        { required: true, message: '请填写密码', trigger: 'blur' },
-                        { validator: validatePass,trigger: 'blur'}
-                    ],
-                    name: [
-                        { required: true, message: '请填写姓名', trigger: 'blur' },
-                        { type: 'string', max: 20, message: '姓名不能超过20个字符', trigger: 'blur' }
-                    ],
-                    tel: [
-                        { required: true, message: '请填写手机号', trigger: 'blur' },
-                        { validator: validateTel, trigger: 'blur' }
-                    ],
-                    email: [
-                        { required: true, message: '请填写邮箱', trigger: 'blur' },
-                        { type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
-                    ],
-                    company: [
-                        {required: true, message: '请填写公司名称', trigger: 'blur'},
-                    ]
-                }
-            }
-        },
-        methods:{
-            handleSubmit(name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        alert('123123')
-                    }
-                })
+import { validatePass,validateTel } from '../../../static/formrule'
+import {userDetail} from '../../../static/data'
+import {BASEURL} from '../../../static/const'
+export default{
+    data () {
+        return {
+            formItem: {
+                username: '',
+                password: '',
+                name: '',
+                tel: '',
+                email: '',
+                companyName: '',
+                userPermission: '',
+                state: '1',
+            },
+            userAdd: {
+                password: [
+                    { required: true, message: '请填写密码', trigger: 'blur' },
+                    { validator: validatePass,trigger: 'blur'}
+                ],
+                name: [
+                    { required: true, message: '请填写姓名', trigger: 'blur' },
+                    { type: 'string', max: 20, message: '姓名不能超过20个字符', trigger: 'blur' }
+                ],
+                tel: [
+                    { required: true, message: '请填写手机号', trigger: 'blur' },
+                    { validator: validateTel, trigger: 'blur' }
+                ],
+                email: [
+                    { required: true, message: '请填写邮箱', trigger: 'blur' },
+                    { type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
+                ],
+                companyName: [
+                    {required: true, message: '请填写公司名称', trigger: 'blur'},
+                ]
             }
         }
+    },
+    methods:{
+        handleSubmit(name) {
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    alert('123123')
+                }
+            })
+        },
+        getUserDetail:function(){
+            this.$http.post(BASEURL+'/admin',{userid:this.userID})
+                    .then((res) => {
+                        this.userDetail = res;
+                    })
+                    .catch((res)=>{
+                        this.formItem = userDetail
+                    })
+        },
+    },
+    mounted(){
+        this.getUserDetail();
     }
+}
 </script>

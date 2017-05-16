@@ -129,6 +129,11 @@ export default {
             this.$refs['login'].validate((valid) => {
                 if(valid){
                     this.$http.post('http:localhost:8080/admin',{user_name:this.user.user_name,password:this.user.password,code:this.user.code})
+                            /*.then((res)=>{
+                                console.log(res);
+                            }).catch((res) => {
+                                console.log('error')
+                            });*/
                     this.$Message.success('登陆成功，欢迎您!');
                     this.$store.dispatch('loginSet',{'user_name':this.user.user_name,'user_permission':1,'logStatus':true});
                     if(this.user.user_name=='admin'){

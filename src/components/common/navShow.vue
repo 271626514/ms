@@ -97,6 +97,27 @@
     top: 18px;
     right: 10px
 }
+#m1 {
+    background-image: url(../../assets/imgs/icon-user.png)
+}
+
+.accordion li #m1:hover,.accordion li.open #m1 {
+    background-image: url(../../assets/imgs/icon-user-p.png)
+}
+#m4 {
+    background-image: url(../../assets/imgs/icon-date.png)
+}
+
+.accordion li #m4:hover,.accordion li.open #m4 {
+    background-image: url(../../assets/imgs/icon-date-p.png)
+}
+#m7 {
+    background-image: url(../../assets/imgs/icon-system.png)
+}
+
+.accordion li #m7:hover,.accordion li.open #m7 {
+    background-image: url(../../assets/imgs/icon-system-p.png)
+}
 #m69{
     background-image: url(../../assets/imgs/icon-data2.png);
 }

@@ -227,7 +227,3 @@
         }
     }
 </script>
-
-<!--this.$Modal.info({
-content: '<div class="mt_15"><p>信息保存成功！</p><p>请前往 设备信息列表 中查看</p></div>',
-});-->

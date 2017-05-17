@@ -12,13 +12,17 @@ export default new Router({
             redirect: function(){
                 let loginStatus = JSON.parse(window.localStorage.getItem('user')) || null;
                 if(loginStatus===null){
-                    return '/login'
+                    return '/home'
                 }else if(loginStatus.user_name=='admin'){
                     return '/user'
                 }else{
                     return '/dataview'
                 }
             }
+        },
+        {
+            path: '/home',
+            component: path.HOME
         },
         {
             path: '/login',

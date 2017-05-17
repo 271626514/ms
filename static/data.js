@@ -1487,7 +1487,10 @@ export const roleslisttables = {
             title: '用户数量',
             key: 'rolesNumber',
             align: 'center',
-            width: 100
+            width: 100,
+            render (row,colum,index){
+                return `${row.containUser.length}`
+            }
         },
         {
             title: '操作',
@@ -1495,24 +1498,35 @@ export const roleslisttables = {
             width: 240,
             align: 'center',
             render (row, column, index) {
-                if(row.rolesNumber>0){
-                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="edit(${index})">修改</a> <a style="margin-left: 10px" @click="remove(${index})">删除</a>`;
+                if(row.containUser.length>0){
+                    return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a> <a style="margin-left: 10px" @click="remove(${index})">删除</a>`;
                 }else{
-                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="edit(${index})">修改</a>`
+                    return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a>`
                 }
             }
         }
     ],
     roleslist:[
         {
+            id: 0,
             rolesName: "河南省",
             rolesDetail: "设备管理：河南， 端口管理：河南，数据管理：河南，其他：未选择",
-            rolesNumber: "1"
+            addDate: '2016.09.12',
+            updateDate: '2016.09.18',
+            containUser: [
+                {
+                    username: 'sijiaqing001',
+                    delayDate: '2016.09.13'
+                }
+            ],
         },
         {
+            id:1,
             rolesName: "高级权限",
             rolesDetail: "设备管理：全国， 端口管理：全国，数据管理：全国，其他：未选择",
-            rolesNumber: "0"
+            addDate: '2016.09.12',
+            updateDate: '2016.09.18',
+            containUser: [],
         }
     ],
 }
@@ -1649,7 +1663,7 @@ export const userDetail = {
 
 //权限详情
 export const rolesDetail = {
-    name: '管理员',
+    rolesName: '管理员',
     addDate: '2016.09.12',
     updateDate: '2016.09.18',
     containUser: [
@@ -1659,3 +1673,5 @@ export const rolesDetail = {
         }
     ]
 }
+
+export const BASEURL = 'http://localhost:8080'

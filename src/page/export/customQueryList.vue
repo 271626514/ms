@@ -14,8 +14,8 @@
                 <Input v-model="query.sql" type="textarea" :rows="4" style="width:650px;" placeholder="请输入检索用的SQL语句，仅支持select"></Input>
             </div>
             <div class="query-item">
-                <Button type="primary" class="btn-search f16 ml-80" style="width:150px">保存语句并计算</Button>
-                <Button type="primary" class="btn-search f16 ml-10" style="background:#ff9e40;border:0;">立即计算</Button>
+                <Button type="primary" class="btn-search f16 ml-80" style="width:150px" @click="setSearch('save')" :disabled="btnDefault">保存语句并计算</Button>
+                <Button type="primary" class="btn-search f16 ml-10 orange" @click="setSearch('get')" :disabled="btnDefault">立即计算</Button>
             </div>
         </div>
         <div class="module-header f16 mt-20">
@@ -27,6 +27,14 @@
     </div>
 </template>
 <style lang="less">
+.orange{
+    border-color:#ff9e40 !important;
+    background-color: #ff9e40 !important;
+    &[disabled]{
+         border-color:#d7dde4 !important;
+         background-color: #f7f7f7 !important;
+     }
+}
 </style>
 <script type="text/ecmascript-6">
     import {customquerytables} from '../../../static/data'
@@ -41,5 +49,20 @@
                 }
             }
         },
+        methods:{
+            setSearch(type){
+
+            },
+            copythis(index){
+                this.query.sql = this.data[index].SQLDetail;
+            }
+        },
+        computed: {
+            btnDefault(){
+                if(this.query.name==""||this.query.sql==""){
+                    return true;
+                }
+            }
+        }
     }
 </script>

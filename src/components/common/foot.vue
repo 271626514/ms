@@ -14,7 +14,7 @@
     background: #3694f2;
     width: 100%;
     position: fixed;
-    z-index: 999;
+    z-index: 500;
     bottom: 0;
     height: 47px;
     line-height: 47px;

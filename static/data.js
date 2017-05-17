@@ -1467,30 +1467,27 @@ export const roleslisttables = {
     columns:[
         {
             type: 'selection',
-            align: 'center',
             width: 100
         },
         {
             type: 'index',
-            align: 'center',
             title: '序号',
             width: 100
         },
         {
             title: '权限名称',
             key: 'rolesName',
-            align: 'center',
+            width: 200
         },
         {
             title: '权限详情',
             key: 'rolesDetail',
-            align: 'center',
         },
         {
             title: '用户数量',
             key: 'rolesNumber',
             align: 'center',
-
+            width: 100
         },
         {
             title: '操作',
@@ -1498,10 +1495,10 @@ export const roleslisttables = {
             width: 240,
             align: 'center',
             render (row, column, index) {
-                if(row.userPermission==99){
-                    return ``
-                }else{
+                if(row.rolesNumber>0){
                     return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="edit(${index})">修改</a> <a style="margin-left: 10px" @click="remove(${index})">删除</a>`;
+                }else{
+                    return `<a @click="detail(${index})">查看</a> <a style="margin-left: 10px" @click="edit(${index})">修改</a>`
                 }
             }
         }
@@ -1512,6 +1509,11 @@ export const roleslisttables = {
             rolesDetail: "设备管理：河南， 端口管理：河南，数据管理：河南，其他：未选择",
             rolesNumber: "1"
         },
+        {
+            rolesName: "高级权限",
+            rolesDetail: "设备管理：全国， 端口管理：全国，数据管理：全国，其他：未选择",
+            rolesNumber: "0"
+        }
     ],
 }
 export const datahistorytables = {

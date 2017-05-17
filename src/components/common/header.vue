@@ -20,7 +20,7 @@
     border-bottom: 2px solid #3694f2;
     position: fixed;
     top:0;
-    z-index:999;
+    z-index:500;
 }
 .pull-left{
     float: left;

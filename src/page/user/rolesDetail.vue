@@ -82,7 +82,8 @@
     export default{
         data() {
             return {
-                rolesDetail:rolesDetail
+                rolesDetail:rolesDetail,
+                rolesId: this.$store.getters.getuserrole
             }
         }
     }

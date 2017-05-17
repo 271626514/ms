@@ -32,13 +32,23 @@
                 this.selection = selection;
             },
             detail(index){
+                this.$store.dispatch('setuserrole',index);
                 this.$router.push('/user/rolesDetail')
             },
             edit(index){
-
+                this.$store.dispatch('setuserrole',index);
             },
             remove(index){
 
+            }
+        },
+        computed: {
+            BtnDisabled(){
+                if(this.selection.length){
+                    return false;
+                }else{
+                    return true;
+                }
             }
         }
     }

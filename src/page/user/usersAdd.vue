@@ -40,6 +40,13 @@
                 <Button type="ghost" class="f16" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
             </Form-item>
         </Form>
+        <!---->
+        <Modal v-model="dialog.userstate" :mask-closable="false" title="提示" class="userstate">
+            <div class="clearfix dialog-body" v-html="dialog.content"></div>
+            <div slot="footer">
+                <Button type="primary" style="width:90px" class="align" @click="userstate_con">确定</Button>
+            </div>
+        </Modal>
     </div>
 </template>
 <style lang="less">
@@ -90,7 +97,7 @@
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        console.log(this.formItem);
+
                     }
                 })
             }

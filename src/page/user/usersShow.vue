@@ -22,9 +22,25 @@
             </div>
         </Modal>
         <!--赋权-->
-        <Modal v-model="dialog.userrole" :mask-closable="false" title="权限分配" class="userstate">
+        <Modal v-model="dialog.userrole" :mask-closable="false" title="权限分配" class="userRole">
             <div class="clearfix dialog-body">
-
+                <div class="roleList">
+                    <p class="mb-10">已选择{{selection.length}}个用户：</p>
+                    <span class="role-item" v-for="i in selection">{{i.username}}</span>
+                </div>
+                <div class="mt-10">
+                    <span class="role-text">批量设置权限：</span>
+                    <Select v-model="defaultData.data.value" :label-in-value="true" @on-change="checkRole" style="width:300px;margin-left: 15px">
+                        <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
+                    </Select>
+                </div>
+                <p class="red mt-20">如果您发现没有合适的权限，请先去创建权限再批量进行批量操作。</p>
+                <p class="red mt-20 text-center f14" v-if="roleState==1">设置成功！</p>
+                <p class="red mt-20 text-center f14" v-if="roleState==2">设置失败！Error Code：XXXXX</p>
+            </div>
+            <div slot="footer">
+                <Button type="primary" style="width:80px" class="align f14" @click="userrole_con">确定</Button>
+                <Button type="ghost" style="width:80px" class="align f14" @click="dialog.userrole=!dialog.userrole">取消</Button>
             </div>
         </Modal>
     </div>
@@ -42,21 +58,58 @@
         color: #ff5021;
         text-align: center;
     }
+    .roleList{
+        max-height: 150px;
+        overflow: auto;
+        color: #666;
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
+    .role-item{
+        display: inline-block;
+        border: 1px solid #3694f2;
+        padding: 0 9px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 12px;
+        margin-right: 12px;
+    }
+    .role-text{
+        font-size: 14px;
+        color: #666;
+    }
 }
 .userstate{
     .ivu-modal-footer{
         text-align: center;
     }
+    .ivu-modal-wrap{
+        z-index: 1000;
+    }
+}
+.userRole{
+    .ivu-modal-wrap{
+        z-index: 900;
+    }
 }
 </style>
 <script type="text/ecmascript-6">
-    import {userlisttables} from '../../../static/data'
+    import {userlisttables,showDataSelection} from '../../../static/data'
     export default{
         data(){
             return {
                 columns: userlisttables.columns,
                 data: userlisttables.userList,
+                selectionList:showDataSelection.dataList,
                 selection: [],
+                defaultData:{
+                    data:{
+                        value: 'all',
+                        label: '全国数据'
+                    }
+                },
+                roleState: 0,
+                userRole: {},   //选择的权限 OBJ
                 dialog:{
                     userstate: false,
                     userrole: false,
@@ -91,8 +144,21 @@
                 this.dialog.userstate = false;
                 //重定向
             },
+            userrole_con(){
+                this.$http.post('http://localhost:8080/admin',{data:this.selection,role:this.userRole.value})
+                        .then((res)=>{
+                            this.roleState = 1;
+                            //定时器开启关闭对话框，回归roleState
+                        })
+                        .catch((res)=>{
+                            this.roleState = 2;
+                        })
+            },
             setUserRoles(){
                 this.dialog.userrole = true;
+            },
+            checkRole(value){
+                this.userRole = value
             }
         },
         computed: {
@@ -103,6 +169,9 @@
                     return true;
                 }
             }
+        },
+        watch(){
+            //监听对话框状态重置标志符
         }
     }
 </script>

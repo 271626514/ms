@@ -24,6 +24,21 @@
         <div class="tableContent">
             <Table width="auto" stripe height="600" style="margin-top: 10px;" border :columns="columns" :data="data"></Table>
         </div>
+        <Modal v-model="dialog.search" :mask-closable="false" title="数据检索" class="userRole">
+            <div class="clearfix dialog-body">
+                <div class="search-item" v-if="!searchResult">
+                    <p >查询名称：{{query.name}}</p>
+                    <p class="mt-20">计算完成，请点击下载结果</p>
+                </div>
+                <Spin fix>
+                    <Icon type="load-c" size=30 class="demo-spin-icon-load" v-if="searchResult"></Icon>
+                    <div v-if="searchResult">正在检索，请稍后...</div>
+                </Spin>
+            </div>
+            <div slot="footer">
+                <a type="primary" style="width:85px" class="align f14" :src="searchUrl"  @click="download_con" :disabled="searchResult">下载文件</a>
+            </div>
+        </Modal>
     </div>
 </template>
 <style lang="less">
@@ -35,6 +50,19 @@
          background-color: #f7f7f7 !important;
      }
 }
+.dialog-body{
+    .ivu-spin-fix{
+        position: relative;
+    }
+}
+.demo-spin-icon-load{
+    animation: ani-demo-spin 1s linear infinite;
+}
+@keyframes ani-demo-spin {
+    from { transform: rotate(0deg);}
+    50%  { transform: rotate(180deg);}
+    to   { transform: rotate(360deg);}
+}
 </style>
 <script type="text/ecmascript-6">
     import {customquerytables} from '../../../static/data'
@@ -43,6 +71,11 @@
             return {
                 columns: customquerytables.columns,
                 data: customquerytables.datalist,
+                dialog: {
+                    search: false
+                },
+                searchResult:true,
+                searchUrl: '',
                 query:{
                     name: '',
                     sql: ''
@@ -51,10 +84,21 @@
         },
         methods:{
             setSearch(type){
-
+                this.dialog.search = true;
+                this.$http.post('http://localhost:8080/admin',this.query)
+                        .then((res)=>{
+                            console.log(res)
+                        })
+                        .catch((res)=>{
+                            this.searchResult = false;
+                        //    this.searchUrl = res.url;
+                        })
             },
             copythis(index){
                 this.query.sql = this.data[index].SQLDetail;
+            },
+            download_con(){
+
             }
         },
         computed: {

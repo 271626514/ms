@@ -41,12 +41,12 @@
                 <Input v-model="log.user" style="width: 350px"></Input>
             </div>
             <div class="search-ctrl">
-                <Button type="primary" class="btn-search ml-20 mt-10" @click="searchSubmit">立即检索</Button>
+                <Button type="primary" class="btn-search ml-20 mt-10" @click="getLogData">立即检索</Button>
                 <a class="text-blue" @click="reset">清空</a>
             </div>
         </div>
         <div class="search-result">
-            <p class="search-content">已查找到<span>1161</span>条数据</p>
+            <p class="search-content">已查找到<span>{{data.length}}</span>条数据</p>
             <a class="search-download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
@@ -68,34 +68,80 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {loglisttables,showDataSelection} from '../../../static/data'
+    import {loglisttables,showDataSelection,dateOptions} from '../../../static/data'
+    import * as types from '../../assets/js/const'
     export default{
         data(){
             return {
                 columns: loglisttables.columns,
-                data: loglisttables.datalist,
+                data: [],
                 logTypeList:showDataSelection.logTypeList,
                 sourceList: showDataSelection.sourceList,
                 resultList: showDataSelection.resultList,
+                defaultDate:dateOptions.defaultDate,
+                options: dateOptions.options,
                 log:{
-                    user: ''
+                    user: '',
+                    logType: 'all',
+                    source: 'all',
+                    result: 'all',
+                    startDate:new Date(),
+                    finDate: new Date()
                 },
                 defaultData:{
-                    logType:{
-                        label: '全部',
-                        value: 'all'
-                    },
-                    source:{
-                        label: '全部来源',
-                        value: 'all'
-                    },
-                    result: {
-                        label: '全部',
-                        value: 'all'
-                    }
-                },
-                selection: [],
+                    logType:types.logType,
+                    source: types.source,
+                    result: types.result
+                }
             }
         },
+        methods:{
+            getLogData(){
+                this.$http.post('http://localhost:8080/user',this.log)
+                        .then(()=>{
+
+                        })
+                        .catch((res)=>{
+                            this.data = loglisttables.datalist
+                        })
+            },
+            selectLog(value){
+                this.log.logType = value.value
+            },
+            selectSource(value){
+                this.log.source = value.value
+            },
+            selectResult(value){
+                this.log.result = value.value
+            },
+            reset(){
+                this.log.user = '';
+                this.log.logType = 'all';
+                this.log.source = 'all';
+                this.log.result = 'all';
+                this.log.startDate = new Date();
+                this.log.finDate = new Date();
+            },
+            setStart(date) {
+                this.log.startDate = date;
+                if(this.log.finDate && this.log.startDate>this.log.startDate){
+                    alert('起始时间不能晚于结束时间！');
+                    return false;
+                }
+            },
+            setFin(date) {
+                this.log.finDate = date;
+                if(this.log.startDate<this.log.startDate){
+                    alert('结束时间不能早于起始时间！');
+                    return false;
+                }
+            },
+        },
+        computed:{
+
+        },
+        mounted(){
+            this.getLogData()
+        }
     }
 </script>

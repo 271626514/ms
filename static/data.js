@@ -1674,4 +1674,17 @@ export const rolesDetail = {
     ]
 }
 
-export const BASEURL = 'http://localhost:8080'
+export const BASEURL = 'http://localhost:8080'  //路径
+
+export const dateOptions = {
+    defaultDate:new Date(),
+    options: {
+        disabledDate (date) {
+            return date && date.valueOf() > Date.now();
+        }
+    },
+}
+//数据处理
+export const defaultSelection = {
+
+}

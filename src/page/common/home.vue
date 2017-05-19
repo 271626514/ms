@@ -5,7 +5,7 @@
                 <img src="../../assets/imgs/logo_home.png">
                 <span>全网流量资源管理平台</span>
                 <div class="pull-right">
-                    <a>数据视图</a>
+                    <a @click="$router.push('/map')">数据视图</a>
                     <a>在线文档</a>
                     <a>关于我们</a>
                 </div>

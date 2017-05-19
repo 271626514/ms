@@ -2,10 +2,10 @@
     <div class="cm-accordion-menu">
         <ul class="accordion clearfix">
             <li class="level-1" v-for="(item,index) in navList" :class="{open:state==index}" @click="state=index">
-                <div class="link" :id="item.id"><i></i>{{item.tag}}<Icon type="plus"></Icon></div>
+                <div class="link" :id="M+''+item.id"><i></i>{{item.name}}<Icon type="plus"></Icon></div>
                 <ul class="submenu clearfix" v-show="state==index">
-                    <li class="level-2" v-for="i in item.content">
-                        <router-link :to="'/'+ item.route +'/' + i.route">{{i.tag}}</router-link>
+                    <li class="level-2" v-for="i in item.children">
+                        <router-link :to="item.resouce + i.resouce">{{i.name}}</router-link>
                     </li>
                 </ul>
             </li>
@@ -138,16 +138,20 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {navlist} from './navlist'
-    export default{
-        data(){
-            return {
-                navList:navlist.data,
-                state: 0
-            }
-        },
-        mounted(){
-
+import {navlist} from './navlist'
+export default{
+    data(){
+        return {
+            navList:[],
+            state: 0,
         }
+    },
+    mounted(){
+        this.$http.get('/demoms/main').then((res)=>{
+            this.navList = res.data.children
+        }).catch(()=>{
+            this.navList = navlist.url.children
+        })
     }
+}
 </script>

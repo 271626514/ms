@@ -99,5 +99,99 @@ export const navlist = {
                  }*/
             ]
         },
-    ]
+    ],
+    url:{
+        "checked": false,
+        "children": [
+            {
+                "checked": false,
+                "children": [
+                    {
+                        "checked": false,
+                        "children": [],
+                        "depth": "",
+                        "id": 2,
+                        "name": "用户列表",
+                        "parent": false,
+                        "parentId": "1",
+                        "resouce": "/usersShow"
+                    },
+                    {
+                        "checked": false,
+                        "children": [],
+                        "depth": "",
+                        "id": 3,
+                        "name": "权限列表",
+                        "parent": false,
+                        "parentId": "1",
+                        "resouce": "/rolesShow"
+                    }
+                ],
+                "depth": "",
+                "id": 1,
+                "name": "用户管理",
+                "parent": true,
+                "parentId": "0",
+                "resouce": "/user"
+            },
+            {
+                "checked": false,
+                "children": [
+                    {
+                        "checked": false,
+                        "children": [],
+                        "depth": "",
+                        "id": 5,
+                        "name": "历史数据",
+                        "parent": false,
+                        "parentId": "4",
+                        "resouce": "/adminHistoryData"
+                    },
+                    {
+                        "checked": false,
+                        "children": [],
+                        "depth": "",
+                        "id": 6,
+                        "name": "自定义查询",
+                        "parent": false,
+                        "parentId": "4",
+                        "resouce": "/customQueryList"
+                    }
+                ],
+                "depth": "",
+                "id": 4,
+                "name": "业务数据管理",
+                "parent": true,
+                "parentId": "0",
+                "resouce": "/export"
+            },
+            {
+                "checked": false,
+                "children": [
+                    {
+                        "checked": false,
+                        "children": [],
+                        "depth": "",
+                        "id": 8,
+                        "name": "日志管理",
+                        "parent": false,
+                        "parentId": "7",
+                        "resouce": "/showLogList"
+                    }
+                ],
+                "depth": "",
+                "id": 7,
+                "name": "系统管理",
+                "parent": true,
+                "parentId": "0",
+                "resouce": "/operateLog"
+            }
+        ],
+        "depth": "",
+        "id": 0,
+        "name": "root",
+        "parent": false,
+        "parentId": "",
+        "resouce": ""
+    }
 }

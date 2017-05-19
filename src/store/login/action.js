@@ -9,5 +9,11 @@ export default{
     },
     loginout({commit}){
         commit(types.LOGIN_OUT);
+    },
+    setuserrolelist({commit},val){
+        commit(types.USER_ROLE_NAVLIST)
+    },
+    removeuserrolelist({commit}){
+        commit(types.REMOVE_USER_ROLE_NAVLIST);
     }
 }

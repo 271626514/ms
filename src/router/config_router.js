@@ -29,6 +29,10 @@ export default new Router({
             component: path.LOGIN
         },
         {
+            path: '/map',
+            component: path.MAP
+        },
+        {
             path: '/user',
             name: '用户管理',
             component: path.LAYOUT,

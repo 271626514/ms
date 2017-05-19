@@ -5,6 +5,7 @@ export const LOGIN = require('../page/common/login.vue');
 export const LAYOUT = require('../page/common/layout.vue');
 export const LAYOUT_SHOW = require('../page/common/layoutShow.vue');
 export const HOME = require('../page/common/home.vue');
+export const MAP = require('../page/common/map.vue');
 
 //业务数据
 export const SHOW_DATA_SUM = require('../page/dataview/showdatasum.vue')

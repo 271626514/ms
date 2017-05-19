@@ -15,5 +15,13 @@ export default{
         state.logStatus = false;
         state.user_name= "";
         state.user_permission= "";
-    }
+    },
+    [types.USER_ROLE_NAVLIST] (state,val) {
+        window.localStorage.setItem('userrolenavlist',JSON.stringify(val))
+        state.user_role_navlist=val;
+    },
+    [types.REMOVE_USER_ROLE_NAVLIST] (state) {
+        window.localStorage.removeItem('userrolenavlist');
+        state.user_role_navlist={};
+    },
 }

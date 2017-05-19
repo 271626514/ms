@@ -86,7 +86,7 @@
                 <Form-item prop="code">
                     <Input v-model="user.code" placeholder="输入验证码" :maxlength="4" style="width:240px;"></Input>
                     <span class="code-item" @click="getCode">
-                        <img :src="user.imgSrc">
+                        <img :src="imgSrc">
                     </span>
                 </Form-item>
                 <Form-item>
@@ -100,15 +100,16 @@
 
 <script>
 import { validatePass,validateTel } from '../../../static/formrule'
+const data1 = {"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"depth":"","id":2,"name":"用户列表","parent":false,"parentId":"1","resouce":"/usersShow"},{"checked":false,"children":[],"depth":"","id":3,"name":"权限列表","parent":false,"parentId":"1","resouce":"/rolesShow"}],"depth":"","id":1,"name":"用户管理","parent":true,"parentId":"0","resouce":"/user"},{"checked":false,"children":[{"checked":false,"children":[],"depth":"","id":5,"name":"历史数据","parent":false,"parentId":"4","resouce":"/adminHistoryData"},{"checked":false,"children":[],"depth":"","id":6,"name":"自定义查询","parent":false,"parentId":"4","resouce":"/customQueryList"}],"depth":"","id":4,"name":"业务数据管理","parent":true,"parentId":"0","resouce":"/export"},{"checked":false,"children":[{"checked":false,"children":[],"depth":"","id":8,"name":"日志管理","parent":false,"parentId":"7","resouce":"/showLogList"}],"depth":"","id":7,"name":"系统管理","parent":true,"parentId":"0","resouce":"/operateLog"}],"depth":"","id":0,"name":"root","parent":false,"parentId":"","resouce":""}
 export default {
     data() {
         return {
             user: {
                 user_name: '',
                 password: '',
-                code: '',
-                imgSrc: ''
+                code: ''
             },
+            imgSrc: '',
             login: {
                 user_name:[
                     { required: true, message: '请填写用户名', trigger: 'blur' },
@@ -128,19 +129,24 @@ export default {
         handleSubmit() {
             this.$refs['login'].validate((valid) => {
                 if(valid){
-                    this.$http.post('http:localhost:8080/admin',{user_name:this.user.user_name,password:this.user.password,code:this.user.code})
-                            /*.then((res)=>{
-                                console.log(res);
-                            }).catch((res) => {
-                                console.log('error')
-                            });*/
-                    this.$Message.success('登陆成功，欢迎您!');
-                    this.$store.dispatch('loginSet',{'user_name':this.user.user_name,'user_permission':1,'logStatus':true});
-                    if(this.user.user_name=='admin'){
-                        this.$router.push('/user');
-                    }else{
-                        this.$router.push('/dataview');
-                    }
+                //    this.$http.post('/demoms/main',{user_name:this.user.user_name,password:this.user.password,code:this.user.code})
+                    this.$http.get('/demoms/main').then((res)=>{
+
+                    }).catch((res)=>{
+                        this.$Message.success('登陆成功，欢迎您!');
+                        console.log(data1);
+                        this.$store.dispatch('loginSet',{'user_name':this.user.user_name,'user_permission':1,'logStatus':true});
+                        if(this.user.user_name=='admin'){
+                            this.$router.push('/user');
+                        }else{
+                            this.$router.push('/dataview');
+                        }
+                    })
+                    /*.then((res)=>{
+                        console.log(res);
+                    }).catch((res) => {
+                        console.log('error')
+                    });*/
                 }
             })
         },

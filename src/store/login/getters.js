@@ -9,5 +9,8 @@ export default{
     getLogStatus: function(state){
         let status = state.logStatus || JSON.parse(localStorage.getItem('user')).logStatus;
         return status;
+    },
+    getuserrolenavlist: function(state){
+        let _temp = state.user_role_navlist || JSON.parse(localStorage.getItem('userrolenavlist'))
     }
 }

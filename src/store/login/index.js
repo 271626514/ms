@@ -10,7 +10,8 @@ export default {
     state: {
         user_name: "",
         user_permission: "",
-        logStatus: false
+        logStatus: false,
+        user_role_navlist:{}
     },
     actions: actions,
     mutations: mutations,

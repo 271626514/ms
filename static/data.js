@@ -1498,7 +1498,7 @@ export const roleslisttables = {
             width: 240,
             align: 'center',
             render (row, column, index) {
-                if(row.containUser.length>0){
+                if(row.containUser.length<1){
                     return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a> <a style="margin-left: 10px" @click="remove(${index})">删除</a>`;
                 }else{
                     return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a>`

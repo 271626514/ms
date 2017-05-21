@@ -9,26 +9,30 @@
             <div class="power-title mt-20">
                 <strong>设备管理</strong>
                 <p class="power-list">未选择</p>
-                <em class="czicon"></em>
+                <em class="czicon" :class="{on:treeShow==1}" @click="treeShow=1"></em>
             </div>
-            <div class="power-tree on">
+            <div class="power-tree" :class="{on:treeShow==1}">
                 <Tree :data="baseData" show-checkbox></Tree>
             </div>
             <div class="power-title mt-20">
                 <strong>端口管理</strong>
                 <p class="power-list">未选择</p>
-                <em class="czicon"></em>
+                <em class="czicon" :class="{on:treeShow==2}" @click="treeShow=2"></em>
             </div>
-            <div class="power-tree">
-                <ul id="contentTree" class="ztree"></ul>
+            <div class="power-tree" :class="{'on':treeShow==2}">
+                <ul id="contentTree" class="ztree">
+                    <Tree :data="baseData" show-checkbox></Tree>
+                </ul>
             </div>
             <div class="power-title mt-20">
                 <strong>数据管理</strong>
                 <p class="power-list">未选择</p>
-                <em class="czicon"></em>
+                <em class="czicon" :class="{on:treeShow==3}" @click="treeShow=3"></em>
             </div>
-            <div class="power-tree">
-                <ul id="businessTree" class="ztree"></ul>
+            <div class="power-tree" :class="{'on':treeShow==3}">
+                <ul id="businessTree" class="ztree">
+                    <Tree :data="baseData" show-checkbox></Tree>
+                </ul>
             </div>
             <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px">创建</Button>
             <Button type="ghost" class="f16 mt-20" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
@@ -140,8 +144,9 @@
         data () {
             return {
                 roles:{
-                    name: ''
+                    name: '',
                 },
+                treeShow:1,
                 baseData: [
                     {
                         expand: false,

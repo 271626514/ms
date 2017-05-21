@@ -81,7 +81,7 @@
             edit(index){
                 this.$store.dispatch('setuserrole',index);
             },
-            remove(){
+            remove(index){
 
             },
             userrole_con(){

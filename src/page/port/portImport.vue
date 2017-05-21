@@ -57,22 +57,6 @@
                 <Button type="ghost" @click="close">取消</Button>
             </div>
         </Modal>
-        <!--弹窗-->
-        <!--<Modal v-model="dialog.waitting" :mask-closable="false" :closable="false">
-            <Row style="height:180px">
-                <Col span="4" align="center">
-                <i class="demo-spin-icon-load ivu-icon ivu-icon-load-c" style="font-size: 30px; color:#2db7f5;"></i>
-                </Col>
-                <Col span="12">
-                <p>您的文件提交成功</p>
-                <p>信息正在验证中，请稍后……</p>
-                </Col>
-            </Row>
-            <div slot="footer">
-                <Button type="success" @click="success">成功回传</Button>
-                <Button type="error" @click="error">失败回传</Button>
-            </div>
-        </Modal>-->
     </div>
 </template>
 <style lang="less">

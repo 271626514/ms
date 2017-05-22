@@ -1674,7 +1674,7 @@ export const rolesDetail = {
     ]
 }
 
-export const BASEURL = 'http://localhost:8080'  //路径
+export const BASEURL = '/demoms'  //路径
 
 export const dateOptions = {
     defaultDate:new Date(),

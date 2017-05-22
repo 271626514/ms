@@ -2,7 +2,7 @@
     <div class="cm-accordion-menu">
         <ul class="accordion clearfix">
             <li class="level-1" v-for="(item,index) in navList" :class="{open:state==index}" @click="state=index">
-                <div class="link" :id="M+''+item.id"><i></i>{{item.name}}<Icon type="plus"></Icon></div>
+                <div class="link" :id="'M'+item.id"><i></i>{{item.name}}<Icon type="plus"></Icon></div>
                 <ul class="submenu clearfix" v-show="state==index">
                     <li class="level-2" v-for="i in item.children">
                         <router-link :to="item.resouce + i.resouce">{{i.name}}</router-link>

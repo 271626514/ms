@@ -76,11 +76,11 @@
         </div>
         <div class="main-container login">
             <Form :model="user" :rules="login" ref="login">
-                <Form-item prop="user_name">
-                    <Input v-model="user.user_name" placeholder="用户名" :maxlength="50"></Input>
+                <Form-item prop="userName">
+                    <Input v-model="user.userName" placeholder="用户名" :maxlength="50"></Input>
                 </Form-item>
-                <Form-item prop="password" class="input-item">
-                    <Input type="password" v-model="user.password" placeholder="密码" :maxlength="20"></Input>
+                <Form-item prop="userPassword" class="input-item">
+                    <Input type="password" v-model="user.userPassword" placeholder="密码" :maxlength="20"></Input>
                     <a class="point" @click="">忘记密码？</a>
                 </Form-item>
                 <Form-item prop="code">
@@ -100,24 +100,25 @@
 
 <script>
 import { validatePass,validateTel } from '../../../static/formrule'
-const data1 = {"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"depth":"","id":2,"name":"用户列表","parent":false,"parentId":"1","resouce":"/usersShow"},{"checked":false,"children":[],"depth":"","id":3,"name":"权限列表","parent":false,"parentId":"1","resouce":"/rolesShow"}],"depth":"","id":1,"name":"用户管理","parent":true,"parentId":"0","resouce":"/user"},{"checked":false,"children":[{"checked":false,"children":[],"depth":"","id":5,"name":"历史数据","parent":false,"parentId":"4","resouce":"/adminHistoryData"},{"checked":false,"children":[],"depth":"","id":6,"name":"自定义查询","parent":false,"parentId":"4","resouce":"/customQueryList"}],"depth":"","id":4,"name":"业务数据管理","parent":true,"parentId":"0","resouce":"/export"},{"checked":false,"children":[{"checked":false,"children":[],"depth":"","id":8,"name":"日志管理","parent":false,"parentId":"7","resouce":"/showLogList"}],"depth":"","id":7,"name":"系统管理","parent":true,"parentId":"0","resouce":"/operateLog"}],"depth":"","id":0,"name":"root","parent":false,"parentId":"","resouce":""}
+import md5 from 'md5'
+import BASEURL from '../../../static/data'
 export default {
     data() {
         return {
             user: {
-                user_name: '',
-                password: '',
+                userName: '',
+                userPassword: '',
                 code: ''
             },
-            imgSrc: '',
+            imgSrc: '/img/checkImg?a='+Math.random()+100,
             login: {
-                user_name:[
+                userName:[
                     { required: true, message: '请填写用户名', trigger: 'blur' },
                     { type: 'string', min: 5, message: '账号不能少于5位', trigger: 'blur' }
                 ],
-                password: [
-                    { required: true, message: '请填写密码', trigger: 'blur' },
-                    { validator: validatePass,trigger: 'blur'}
+                userPassword: [
+                    { required: true, message: '请填写密码', trigger: 'blur' }
+                //    { validator: validatePass,trigger: 'blur'}
                 ],
                 code: [
                     { required: true, message: '请填写验证码', trigger: 'blur' }
@@ -129,29 +130,30 @@ export default {
         handleSubmit() {
             this.$refs['login'].validate((valid) => {
                 if(valid){
-                //    this.$http.post('/demoms/main',{user_name:this.user.user_name,password:this.user.password,code:this.user.code})
-                    this.$http.get('/demoms/main').then((res)=>{
+                    this.$http.post('/login',{'userName':this.user.userName,'userPassword':md5(this.user.userPassword),'code':this.user.code})
+                    .then((res) => {
+                        if(res.data.code==0){
+                            this.$store.dispatch('loginSet',{'user_name':this.user.userName,'logStatus':true});
+                            this.$router.push('')
+                        }else if(res.data.code == 1){
 
+                        }else if(res.data.code == 2){
+
+                        }
                     }).catch((res)=>{
-                        this.$Message.success('登陆成功，欢迎您!');
-                        console.log(data1);
+                    /*    this.$Message.success('登陆成功，欢迎您!');
                         this.$store.dispatch('loginSet',{'user_name':this.user.user_name,'user_permission':1,'logStatus':true});
                         if(this.user.user_name=='admin'){
                             this.$router.push('/user');
                         }else{
                             this.$router.push('/dataview');
-                        }
+                        }*/
                     })
-                    /*.then((res)=>{
-                        console.log(res);
-                    }).catch((res) => {
-                        console.log('error')
-                    });*/
                 }
             })
         },
         getCode() {
-            console.log(123)
+            this.imgSrc = '/img/checkImg?a='+Math.random()+100
         }
     }
 }

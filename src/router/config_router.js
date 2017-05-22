@@ -35,7 +35,7 @@ export default new Router({
         {
             path: '/user',
             name: '用户管理',
-            component: path.LAYOUT,
+            component: path.LAYOUT_SHOW,
             children: [
                 {
                     path: '',

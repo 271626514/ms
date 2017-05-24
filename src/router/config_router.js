@@ -74,6 +74,11 @@ export default new Router({
                     component: path.ROLES_ADD
                 },
                 {
+                    path: 'rolesEdit',
+                    name: '修改权限',
+                    component: path.ROLES_EDIT
+                },
+                {
                     path: 'rolesDetail',
                     name: '权限详情',
                     component: path.ROLES_DETAIL

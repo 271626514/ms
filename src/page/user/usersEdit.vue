@@ -4,14 +4,14 @@
             <h4>用户信息修改</h4>
         </div>
         <Form :model="formItem" :label-width="120" :rules="userAdd" ref="add">
-            <Form-item label="账号：" prop="username">
-                <Input v-model="formItem.username" placeholder="6-50位字母或数字" disabled style="width:320px;"></Input>
+            <Form-item label="账号：" prop="userName">
+                <Input v-model="formItem.userName" placeholder="6-50位字母或数字" disabled style="width:320px;"></Input>
             </Form-item>
             <Form-item label="密码：" prop="password">
                 <Input v-model="formItem.password" placeholder="8-20位大小写字母或数字组合" type="password" style="width:320px;"></Input>
             </Form-item>
-            <Form-item label="姓名：" prop="name">
-                <Input v-model="formItem.name" style="width:320px;"></Input>
+            <Form-item label="姓名：" prop="userRelname">
+                <Input v-model="formItem.userRelname" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="手机号码：" prop="tel">
                 <Input v-model="formItem.tel" style="width:320px;"></Input>
@@ -19,8 +19,8 @@
             <Form-item label="邮箱地址：" prop="email">
                 <Input v-model="formItem.email" placeholder="邮箱是找回密码的重要依据，请务必填写正确" style="width:320px;"></Input>
             </Form-item>
-            <Form-item label="公司：" prop="companyName">
-                <Input v-model="formItem.companyName" style="width:320px;"></Input>
+            <Form-item label="公司：" prop="company">
+                <Input v-model="formItem.company" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="权限分配：">
                 <Select v-model="formItem.userPermission" placeholder="请选择" style="width: 320px">
@@ -31,8 +31,8 @@
             </Form-item>
             <Form-item label="账号状态：">
                 <Radio-group v-model="formItem.state">
-                    <Radio label="1">已启用</Radio>
-                    <Radio label="2" style="margin-left: 20px;">已禁用</Radio>
+                    <Radio label="已启用">已启用</Radio>
+                    <Radio label="已禁用" style="margin-left: 20px;">已禁用</Radio>
                 </Radio-group>
             </Form-item>
             <Form-item>
@@ -53,21 +53,21 @@ export default{
         return {
             userID: this.$store.getters.getuserid,
             formItem: {
-                username: '',
+                userName: '',
                 password: '',
-                name: '',
+                userRelname: '',
                 tel: '',
                 email: '',
-                companyName: '',
-                userPermission: '',
-                state: '1',
+                company: '',
+                roleId: '',
+                state: '已启用',
             },
             userAdd: {
                 password: [
                     { required: true, message: '请填写密码', trigger: 'blur' },
-                    { validator: validatePass,trigger: 'blur'}
+                    /*{ validator: validatePass,trigger: 'blur'}*/
                 ],
-                name: [
+                userRelname: [
                     { required: true, message: '请填写姓名', trigger: 'blur' },
                     { type: 'string', max: 20, message: '姓名不能超过20个字符', trigger: 'blur' }
                 ],
@@ -79,7 +79,7 @@ export default{
                     { required: true, message: '请填写邮箱', trigger: 'blur' },
                     { type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
                 ],
-                companyName: [
+                company: [
                     {required: true, message: '请填写公司名称', trigger: 'blur'},
                 ]
             }
@@ -96,7 +96,7 @@ export default{
         getUserDetail:function(){
             this.$http.get('/user/userTail/'+this.userID)
                     .then((res) => {
-                        this.userDetail = res.data.user;
+                        this.formItem = res.data.user;
                     })
                     .catch((res)=>{
                         this.formItem = userDetail

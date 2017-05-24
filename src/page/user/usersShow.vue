@@ -150,7 +150,7 @@
             userstate_con(){
                 window.location.reload();
             },
-            userrole_con(){
+            userrole_con(){     //批量修改用户权限
                 let data = '';
                 for(let i=0;i<this.selection.length;i++){
                     data+= 'userIds[]='+this.selection[i].userId+'&';
@@ -168,7 +168,7 @@
                         .catch((res)=>{
                         })
             },
-            setUserRoles(){     //批量修改用户权限
+            setUserRoles(){
                 this.dialog.userrole = true;
             },
             checkRole(value){

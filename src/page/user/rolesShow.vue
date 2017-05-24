@@ -80,6 +80,7 @@
             },
             edit(index){
                 this.$store.dispatch('setuserrole',index);
+                this.$router.push('/user/rolesEdit')
             },
             remove(index){
 

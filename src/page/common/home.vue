@@ -71,7 +71,7 @@
             position: absolute;
             cursor: pointer;
             border-radius: 3px;
-            top:60%;
+            top:50%;
             left: 50%;
             margin-left: -78px;
         }

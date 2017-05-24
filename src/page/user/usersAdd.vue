@@ -65,7 +65,7 @@
                     tel: '',
                     email: '',
                     company: '',
-                    roleName: '',
+                    roldId: '',
                     state: '已禁用',
                 },
                 dialog:{

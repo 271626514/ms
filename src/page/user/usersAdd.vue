@@ -103,7 +103,7 @@
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         let data = 'userName='+this.formItem.userName+'&password='+md5(this.formItem.userPassword)+'&userRelname='+this.formItem.userRelname+'&tel='+this.formItem.tel+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state
-                        this.$http.post('',data,config).then(()=>{
+                        this.$http.post('/user/users/add',data,config).then((res)=>{
 
                         }).catch()
                     }

@@ -33,23 +33,23 @@
                 <div class="desc">{{userDetail.roleName}}</div>
             </div>
             <div class="item">
-                <div class="label">账户状态：</div>
-                <div class="desc" v-if="userDetail.state==1">已启用</div>
-                <div class="desc" v-if="userDetail.state==2">已禁用</div>
-            </div>
-            <div class="item">
-                <div class="label">最近登陆：</div>
-                <div class="desc">{{userDetail.lastwrotime.time | DATE}}</div>
-            </div>
-        </div>
-        <Button type="primary" class="f16" style="width:90px; margin-left:110px" @click="toEdit(userID)">修改信息</Button>
-        <Button type="ghost" class="f16 ml-10" style="width:90px;" @click="$router.push('/user')">返回</Button>
-    </div>
+<div class="label">账户状态：</div>
+<div class="desc" v-if="userDetail.state==1">已启用</div>
+<div class="desc" v-if="userDetail.state==2">已禁用</div>
+</div>
+<div class="item">
+    <div class="label">最近登陆：</div>
+    <div class="desc">{{userDetail.lastwrotime.time | DATE}}</div>
+</div>
+</div>
+<Button type="primary" class="f16" style="width:90px; margin-left:110px" @click="toEdit(userID)">修改信息</Button>
+<Button type="ghost" class="f16 ml-10" style="width:90px;" @click="$router.push('/user')">返回</Button>
+</div>
 </template>
 <style lang="less">
-.userDetail{
-    font-size: 14px;
-    padding: 25px 0;
+    .userDetail{
+        font-size: 14px;
+        padding: 25px 0;
     .item{
         overflow: hidden;
         margin-bottom: 20px;
@@ -65,7 +65,7 @@
         float: left;
         margin-left: 10px;
     }
-}
+    }
 </style>
 <script type="text/ecmascript-6">
 import {userDetail,BASEURL} from '../../../static/data'

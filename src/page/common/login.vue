@@ -101,7 +101,7 @@
 <script>
 import { validatePass,validateTel } from '../../../static/formrule'
 import md5 from 'md5'
-import BASEURL from '../../../static/data'
+import {BASEURL,config} from '../../../static/data'
 export default {
     data() {
         return {
@@ -130,24 +130,26 @@ export default {
         handleSubmit() {
             this.$refs['login'].validate((valid) => {
                 if(valid){
-                    this.$http.post('/login',{'userName':this.user.userName,'userPassword':md5(this.user.userPassword),'code':this.user.code})
+                    let data = 'userName='+this.user.userName+'&userPassword='+md5(this.user.userPassword)+'&code='+this.user.code;
+                    this.$http.post('/login',data,config)
                     .then((res) => {
                         if(res.data.code==0){
+                            let path = res.data.tree.children[0].resouce;
                             this.$store.dispatch('loginSet',{'user_name':this.user.userName,'logStatus':true});
-                            this.$router.push('')
+                            this.$router.push(path);
                         }else if(res.data.code == 1){
-
+                            alert('用户名或密码错误')
                         }else if(res.data.code == 2){
-
+                            alert('验证码不正确')
                         }
                     }).catch((res)=>{
-                    /*    this.$Message.success('登陆成功，欢迎您!');
-                        this.$store.dispatch('loginSet',{'user_name':this.user.user_name,'user_permission':1,'logStatus':true});
+                        this.$Message.success('登陆成功，欢迎您!');
+                        this.$store.dispatch('loginSet',{'user_name':this.user.userName,'user_permission':1,'logStatus':true});
                         if(this.user.user_name=='admin'){
                             this.$router.push('/user');
                         }else{
                             this.$router.push('/dataview');
-                        }*/
+                        }
                     })
                 }
             })

@@ -1383,7 +1383,25 @@ export const portCheckTables = {
         {"username":"syzx9801@163.com","userPermission":"0","province":""}
     ],
 }*/
-
+//时间日期
+function getLocalTime(nS) {
+    return  new Date(nS).Format("yyyy-MM-dd hh:mm");
+}
+Date.prototype.Format = function (fmt) { //author: meizz
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
 //管理后台数据
 export const userlisttables = {
     columns:[
@@ -1400,17 +1418,17 @@ export const userlisttables = {
         },
         {
             title: '账户名称',
-            key: 'username',
+            key: 'userName',
             align: 'center',
         },
         {
             title: '公司',
-            key: 'companyName',
+            key: 'company',
             align: 'center',
         },
         {
             title: '权限分配',
-            key: 'userPermission',
+            key: 'roleName',
             align: 'center',
 
         },
@@ -1418,24 +1436,20 @@ export const userlisttables = {
             title: '状态',
             key: 'state',
             align: 'center',
-            width: 170,
-            render (row,column,index){
-                let text = "";
-                if(row.state==1){
-                    text = '已启用'
-                }else if(row.state==2){
-                    text = '已禁用'
-                }else if(row.state==99){
-                    text = ''
-                }
-                return `${text}`
-            }
+            width: 170
         },
         {
             title: '最近在线',
             key: 'delayDate',
             align: 'center',
             width: 170,
+            render (row,column,index){
+                if(row.loginStatus){
+                    return `当前在线`
+                }else{
+                    return `getLocalTime(${row.lastwrotime.time})`
+                }
+            }
         },
         {
             title: '操作',
@@ -1443,18 +1457,14 @@ export const userlisttables = {
             width: 160,
             align: 'center',
             render (row, column, index) {
-                if(row.userPermission==99){
-                    return ``
-                }else{
-                    return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="remove(${row.id})">修改</a>`;
-                }
+                return `<a @click="detail(${row.userId})">查看</a> <a style="margin-left: 10px" @click="remove(${row.userId})">修改</a>`;
             }
         }
     ],
     userList:[
         {
-            id: "3309",
-            "username": "18867102619",
+            "userId": "3309",
+            "roleName": "18867102619",
             "companyName": "杭研",
             "userPermission": "cmcciw用户权限",
             "state": "1",
@@ -1508,8 +1518,8 @@ export const roleslisttables = {
     ],
     roleslist:[
         {
-            id: 0,
-            rolesName: "河南省",
+            roleId: 3,
+            roleName: "河南省",
             rolesDetail: "设备管理：河南， 端口管理：河南，数据管理：河南，其他：未选择",
             addDate: '2016.09.12',
             updateDate: '2016.09.18',
@@ -1521,8 +1531,8 @@ export const roleslisttables = {
             ],
         },
         {
-            id:1,
-            rolesName: "高级权限",
+            roleId:1,
+            roleName: "高级权限",
             rolesDetail: "设备管理：全国， 端口管理：全国，数据管理：全国，其他：未选择",
             addDate: '2016.09.12',
             updateDate: '2016.09.18',
@@ -1675,6 +1685,11 @@ export const rolesDetail = {
 }
 
 export const BASEURL = '/demoms'  //路径
+export const config = {
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    },
+}
 
 export const dateOptions = {
     defaultDate:new Date(),

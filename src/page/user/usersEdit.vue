@@ -45,12 +45,13 @@
 <style lang="less">
 </style>
 <script type="text/ecmascript-6">
-import { validatePass,validateTel } from '../../../static/formrule'
-import {userDetail} from '../../../static/data'
+import { validatePass,validateTel} from '../../../static/formrule'
+import {userDetail,config} from '../../../static/data'
 import {BASEURL} from '../../../static/const'
 export default{
     data () {
         return {
+            userID: this.$store.getters.getuserid,
             formItem: {
                 username: '',
                 password: '',
@@ -88,14 +89,14 @@ export default{
         handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    alert('123123')
+
                 }
             })
         },
         getUserDetail:function(){
-            this.$http.post(BASEURL+'/admin',{userid:this.userID})
+            this.$http.get('/user/userTail/'+this.userID)
                     .then((res) => {
-                        this.userDetail = res;
+                        this.userDetail = res.data.user;
                     })
                     .catch((res)=>{
                         this.formItem = userDetail

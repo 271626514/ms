@@ -10,6 +10,7 @@ import {Tree} from 'element-ui'
 Vue.use(iView)
 Vue.use(Tree)
 
+
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false

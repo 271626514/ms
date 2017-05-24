@@ -8,8 +8,8 @@
         <div class="tableContent">
             <Table width="auto" stripe height="600" style="margin-top: 10px;" border :columns="columns" @on-selection-change="con" :data="data"></Table>
             <div class="table-set" style="border-top: 0">
-                <Button type="ghost" style="width: 50px" :disabled="BtnDisabled" @click="setUserState(1)">启用</Button>
-                <Button type="ghost" class="ml-10" style="width: 50px" :disabled="BtnDisabled" @click="setUserState(2)">禁用</Button>
+                <Button type="ghost" style="width: 50px" :disabled="BtnDisabled" @click="setUserState('on')">启用</Button>
+                <Button type="ghost" class="ml-10" style="width: 50px" :disabled="BtnDisabled" @click="setUserState('off')">禁用</Button>
                 <Button type="ghost" class="ml-10" style="width: 50px" :disabled="BtnDisabled" @click="setUserRoles">赋权</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
@@ -26,11 +26,11 @@
             <div class="clearfix dialog-body">
                 <div class="roleList">
                     <p class="mb-10">已选择{{selection.length}}个用户：</p>
-                    <span class="role-item" v-for="i in selection">{{i.username}}</span>
+                    <span class="role-item" v-for="i in selection">{{i.userName}}</span>
                 </div>
                 <div class="mt-10">
                     <span class="role-text">批量设置权限：</span>
-                    <Select v-model="defaultData.data.value" :label-in-value="true" @on-change="checkRole" style="width:300px;margin-left: 15px">
+                    <Select v-model="defaultData.data.roleId" :label-in-value="true" @on-change="checkRole" style="width:300px;margin-left: 15px">
                         <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -94,22 +94,19 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {userlisttables,showDataSelection} from '../../../static/data'
+    import {userlisttables,showDataSelection,config,roleslisttables} from '../../../static/data'
     export default{
         data(){
             return {
                 columns: userlisttables.columns,
-                data: userlisttables.userList,
-                selectionList:showDataSelection.dataList,
-                selection: [],
-                defaultData:{
-                    data:{
-                        value: 'all',
-                        label: '全国数据'
-                    }
+                data: [],
+                selectionList:[],   //批量修改用户权限的下拉数据组
+                selection: [],      //多选组
+                defaultData:{       //批量修改用户权限的下拉选择默认数据展示
+                    data:{}
                 },
                 roleState: 0,
-                userRole: {},   //选择的权限 OBJ
+                roleId: '',
                 dialog:{
                     userstate: false,
                     userrole: false,
@@ -129,11 +126,21 @@
                 this.$store.dispatch('setuserid',index);
                 this.$router.push('/user/usersEdit')
             },
-            setUserState(flag){
-                this.$http.post('http://localhost:8080/admin',{data:this.selection,state:flag})
+            setUserState(flag){     //修改账户状态
+                let data = '';
+                for(let i=0;i<this.selection.length;i++){
+                    data+= 'userIds[]='+this.selection[i].userId+'&';
+                }
+                let _data = data+'flag='+flag;
+                this.$http.post('/user/users/del',_data,config)
                         .then((res)=>{
-                            this.dialog.userstate = true;
-                            this.dialog.content = `<h1>操作成功</h1>`
+                            if(res.data.msg=='success'){
+                                this.dialog.userstate = true;
+                                this.dialog.content = `<h1>操作成功</h1>`
+                            }else if(res.data.msg=='error'){
+                                this.dialog.userstate = true
+                                this.dialog.content = `<h1>操作失败</h1><p class="errorInfo">${res.data.message}</p>`
+                            }
                         })
                         .catch((res)=>{
                             this.dialog.userstate = true
@@ -141,24 +148,41 @@
                         })
             },
             userstate_con(){
-                this.dialog.userstate = false;
-                //重定向
+                window.location.reload();
             },
             userrole_con(){
-                this.$http.post('http://localhost:8080/admin',{data:this.selection,role:this.userRole.value})
+                let data = '';
+                for(let i=0;i<this.selection.length;i++){
+                    data+= 'userIds[]='+this.selection[i].userId+'&';
+                }
+                let _data = data+'subGroup='+this.roleId;
+                this.$http.post('/user/users/usersGetRight',_data,config)
                         .then((res)=>{
-                            this.roleState = 1;
-                            //定时器开启关闭对话框，回归roleState
+                            if(res.data.msg=='success'){
+                                this.roleState = 1;
+                                setTimeout(window.location.reload(),3000)
+                            }else{
+                                this.roleState = 2;
+                            }
                         })
                         .catch((res)=>{
-                            this.roleState = 2;
                         })
             },
-            setUserRoles(){
+            setUserRoles(){     //批量修改用户权限
                 this.dialog.userrole = true;
             },
             checkRole(value){
-                this.userRole = value
+                this.roleId = value.value;
+            },
+            getSelect(arr){
+                let _array = [];
+                for(let i=0;i<arr.length;i++){
+                    let obj = new Object;
+                    obj.value = arr[i].roleId;
+                    obj.label = arr[i].roleName;
+                    _array.push(obj);
+                }
+                return _array;
             }
         },
         computed: {
@@ -170,8 +194,17 @@
                 }
             }
         },
-        watch(){
-            //监听对话框状态重置标志符
+        mounted(){
+            this.$http.get('/user/usersShow')
+                .then((res)=>{
+                    this.data = res.data.users;
+                    this.selectionList = this.getSelect(res.data.roles);    //处理
+                    this.defaultData.data = res.data.roles[0];
+                }).catch((res)=>{
+                    this.data = userlisttables.userList;
+                    this.selectionList = roleslisttables.roleslist;
+                    this.defaultData.data = roleslisttables.roleslist[0]
+            })
         }
     }
 </script>

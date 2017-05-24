@@ -6,11 +6,11 @@
         <div class="userDetail">
             <div class="item">
                 <div class="label">账号：</div>
-                <div class="desc">{{userDetail.username}}</div>
+                <div class="desc">{{userDetail.userName}}</div>
             </div>
             <div class="item">
                 <div class="label">姓名：</div>
-                <div class="desc">{{userDetail.name}}</div>
+                <div class="desc">{{userDetail.userRelname}}</div>
             </div>
             <div class="item">
                 <div class="label">手机号码：</div>
@@ -22,23 +22,24 @@
             </div>
             <div class="item">
                 <div class="label">公司：</div>
-                <div class="desc">{{userDetail.companyName}}</div>
+                <div class="desc">{{userDetail.company}}</div>
             </div>
             <div class="item">
                 <div class="label">创建时间：</div>
-                <div class="desc">{{userDetail.addDate}}</div>
+                <div class="desc">{{userDetail.createDate.time | DATE}}</div>
             </div>
             <div class="item">
                 <div class="label">权限分配：</div>
-                <div class="desc">{{userDetail.userPermission}}</div>
+                <div class="desc">{{userDetail.roleName}}</div>
             </div>
             <div class="item">
                 <div class="label">账户状态：</div>
-                <div class="desc">{{userDetail.state}}</div>
+                <div class="desc" v-if="userDetail.state==1">已启用</div>
+                <div class="desc" v-if="userDetail.state==2">已禁用</div>
             </div>
             <div class="item">
                 <div class="label">最近登陆：</div>
-                <div class="desc">{{userDetail.delayDate}}</div>
+                <div class="desc">{{userDetail.lastwrotime.time | DATE}}</div>
             </div>
         </div>
         <Button type="primary" class="f16" style="width:90px; margin-left:110px" @click="toEdit(userID)">修改信息</Button>
@@ -77,9 +78,9 @@ export default{
     },
     methods:{
         getUserDetail:function(){
-            this.$http.post(BASEURL+'/admin',{userid:this.userID})
+            this.$http.get('/user/userTail/'+this.userID)
                     .then((res) => {
-                        this.userDetail = res;
+                        this.userDetail = res.data.user;
                     })
                     .catch((res)=>{
                         this.userDetail = userDetail

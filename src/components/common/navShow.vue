@@ -2,7 +2,7 @@
     <div class="cm-accordion-menu">
         <ul class="accordion clearfix">
             <li class="level-1" v-for="(item,index) in navList" :class="{open:state==index}" @click="state=index">
-                <div class="link" :id="'M'+item.id"><i></i>{{item.name}}<Icon type="plus"></Icon></div>
+                <div class="link" :id="'m'+item.id"><i></i>{{item.name}}<Icon type="plus"></Icon></div>
                 <ul class="submenu clearfix" v-show="state==index">
                     <li class="level-2" v-for="i in item.children">
                         <router-link :to="item.resouce + i.resouce">{{i.name}}</router-link>
@@ -118,22 +118,22 @@
 .accordion li #m7:hover,.accordion li.open #m7 {
     background-image: url(../../assets/imgs/icon-system-p.png)
 }
-#m69{
+#m9{
     background-image: url(../../assets/imgs/icon-data2.png);
 }
-.accordion li #m69:hover, .accordion li.open #m69{
+.accordion li #m9:hover, .accordion li.open #m9{
     background-image: url(../../assets/imgs/icon-data2-p.png);
 }
-#m87{
+#m12{
     background-image: url(../../assets/imgs/icon-device.png);
 }
-.accordion li #m87:hover, .accordion li.open #m87{
+.accordion li #m12:hover, .accordion li.open #m12{
     background-image: url(../../assets/imgs/icon-device-p.png);
 }
-#m88{
+#m15{
     background-image: url(../../assets/imgs/icon-port.png);
 }
-.accordion li #m88:hover, .accordion li.open #m88{
+.accordion li #m15:hover, .accordion li.open #m15{
     background-image: url(../../assets/imgs/icon-port-p.png);
 }
 </style>
@@ -147,7 +147,7 @@ export default{
         }
     },
     mounted(){
-        this.$http.get('/demoms/main').then((res)=>{
+        this.$http.get('/main').then((res)=>{
             this.navList = res.data.children
         }).catch(()=>{
             this.navList = navlist.url.children

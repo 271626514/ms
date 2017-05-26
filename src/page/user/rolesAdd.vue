@@ -501,20 +501,20 @@
                         return e
                     }
                 })
-            },
-
+            }
         },
         mounted(){
             this.$http.get('/role/roles/menus').then((res)=>{
-                this.data.deviceImport = this.copyArr(data);
-                this.data.deviceList = this.copyArr(data);
-                this.data.portImport = this.copyArr(data);
-                this.data.portList = this.copyArr(data);
+                let deviceImport = JSON.parse(JSON.stringify(data));
+                let deviceList = JSON.parse(JSON.stringify(data));
+                let portImport = JSON.parse(JSON.stringify(data));
+                let portList = JSON.parse(JSON.stringify(data));
+                this.data.deviceImport = deviceImport
+                this.data.deviceList = deviceList
+                this.data.portImport = portImport
+                this.data.portList = portList
             }).catch((res)=>{
-                this.data.deviceImport = this.copyArr(data);
-                this.data.deviceList = this.copyArr(data);
-                this.data.portImport = this.copyArr(data);
-                this.data.portList = this.copyArr(data);
+
             })
         }
     }

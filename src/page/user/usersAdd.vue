@@ -8,13 +8,13 @@
                 <Input v-model="formItem.userName" placeholder="6-50位字母或数字" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="密码：" prop="password">
-                <Input v-model="formItem.password" placeholder="8-20位大小写字母或数字组合" type="password" style="width:320px;"></Input>
+                <Input v-model="formItem.password" placeholder="6-20位大小写字母或数字组合" type="password" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="姓名：" prop="userRelname">
                 <Input v-model="formItem.userRelname" style="width:320px;"></Input>
             </Form-item>
-            <Form-item label="手机号码：" prop="tel">
-                <Input v-model="formItem.tel" style="width:320px;"></Input>
+            <Form-item label="手机号码：" prop="phone">
+                <Input v-model="formItem.phone" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="邮箱地址：" prop="email">
                 <Input v-model="formItem.email" placeholder="邮箱是找回密码的重要依据，请务必填写正确" style="width:320px;"></Input>
@@ -23,16 +23,14 @@
                 <Input v-model="formItem.company" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="权限分配：">
-                <Select v-model="formItem.userPermission" placeholder="请选择" style="width: 320px">
-                    <Option value="beijing">北京市</Option>
-                    <Option value="shanghai">上海市</Option>
-                    <Option value="shenzhen">深圳市</Option>
+                <Select placeholder="请选择" style="width: 320px" :label-in-value="true" @on-change="checkRole">
+                    <Option v-for="item in roleData" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </Form-item>
             <Form-item label="账号状态：">
                 <Radio-group v-model="formItem.state">
-                    <Radio label="已启用">已启用</Radio>
-                    <Radio label="已禁用" style="margin-left: 20px;">已禁用</Radio>
+                    <Radio label="1">已启用</Radio>
+                    <Radio label="2" style="margin-left: 20px;">已禁用</Radio>
                 </Radio-group>
             </Form-item>
             <Form-item>
@@ -62,15 +60,17 @@
                     userName: '',
                     password: '',
                     userRelname: '',
-                    tel: '',
+                    phone: '',
                     email: '',
                     company: '',
                     roldId: '',
-                    state: '已禁用',
+                    state: '1',
                 },
                 dialog:{
                     userstate:false,
+                    content:''
                 },
+                roleData:[],
                 userAdd: {
                     userName:[
                         { required: true, message: '请填写用户名', trigger: 'blur' },
@@ -84,7 +84,7 @@
                         { required: true, message: '请填写姓名', trigger: 'blur' },
                         { type: 'string', max: 20, message: '姓名不能超过20个字符', trigger: 'blur' }
                     ],
-                    tel: [
+                    phone: [
                         { required: true, message: '请填写手机号', trigger: 'blur' },
                         { validator: validateTel, trigger: 'blur' }
                     ],
@@ -102,13 +102,46 @@
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        let data = 'userName='+this.formItem.userName+'&password='+md5(this.formItem.userPassword)+'&userRelname='+this.formItem.userRelname+'&tel='+this.formItem.tel+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state
-                        this.$http.post('/user/users/add',data,config).then((res)=>{
-
-                        }).catch()
+                        let data = 'userName='+this.formItem.userName+'&userPassword='+this.formItem.password+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
+                        this.$http.post('/user/users/add',data,config)
+                            .then((res)=>{
+                                if(res=='success'){
+                                    this.dialog.userstate = true;
+                                    this.dialog.content = `<h1>操作成功</h1>`
+                                }else if(res=='same'){
+                                    alert('存在相同的用户名，请修改用户名后再次提交')
+                                }
+                            }).catch((res)=>{
+                                this.dialog.userstate = true;
+                                this.dialog.content = `<h1>操作成功</h1>`
+                        })
                     }
                 })
-            }
+            },
+            getSelect(arr){
+                let _array = [];
+                for(let i=0;i<arr.length;i++){
+                    let obj = new Object;
+                    obj.value = arr[i].roleId;
+                    obj.label = arr[i].roleName;
+                    _array.push(obj);
+                }
+                return _array;
+            },
+            userstate_con(){
+                this.$router.push("/user")
+            },
+            checkRole(value){
+                this.formItem.roleId = value.value;
+                console.log(this.formItem.roleId)
+            },
+        },
+        mounted(){
+            this.$http.get('/user/users/add').then((res)=>{
+                this.roleData = this.getSelect(res.data.roles);
+            }).catch((res)=>{
+
+            })
         }
     }
 </script>

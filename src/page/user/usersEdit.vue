@@ -13,8 +13,8 @@
             <Form-item label="姓名：" prop="userRelname">
                 <Input v-model="formItem.userRelname" style="width:320px;"></Input>
             </Form-item>
-            <Form-item label="手机号码：" prop="tel">
-                <Input v-model="formItem.tel" style="width:320px;"></Input>
+            <Form-item label="手机号码：" prop="phone">
+                <Input v-model="formItem.phone" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="邮箱地址：" prop="email">
                 <Input v-model="formItem.email" placeholder="邮箱是找回密码的重要依据，请务必填写正确" style="width:320px;"></Input>
@@ -23,16 +23,14 @@
                 <Input v-model="formItem.company" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="权限分配：">
-                <Select v-model="formItem.userPermission" placeholder="请选择" style="width: 320px">
-                    <Option value="用户组1">用户组1</Option>
-                    <Option value="shanghai">上海市</Option>
-                    <Option value="shenzhen">深圳市</Option>
+                <Select v-model="formItem.roleId" placeholder="请选择" style="width: 320px" :label-in-value="true" @on-change="checkRole">
+                    <Option v-for="item in rolesList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </Form-item>
             <Form-item label="账号状态：">
                 <Radio-group v-model="formItem.state">
-                    <Radio label="已启用">已启用</Radio>
-                    <Radio label="已禁用" style="margin-left: 20px;">已禁用</Radio>
+                    <Radio label="1">已启用</Radio>
+                    <Radio label="2" style="margin-left: 20px;">已禁用</Radio>
                 </Radio-group>
             </Form-item>
             <Form-item>
@@ -40,6 +38,13 @@
                 <Button type="ghost" class="f16" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
             </Form-item>
         </Form>
+        <!---->
+        <Modal v-model="dialog.userstate" :mask-closable="false" title="提示" class="userstate">
+            <div class="clearfix dialog-body" v-html="dialog.content"></div>
+            <div slot="footer">
+                <Button type="primary" style="width:90px" class="align" @click="userstate_con">确定</Button>
+            </div>
+        </Modal>
     </div>
 </template>
 <style lang="less">
@@ -56,22 +61,22 @@ export default{
                 userName: '',
                 password: '',
                 userRelname: '',
-                tel: '',
+                phone: '',
                 email: '',
                 company: '',
                 roleId: '',
-                state: '已启用',
+                state: '1',
             },
             userAdd: {
                 password: [
                     { required: true, message: '请填写密码', trigger: 'blur' },
-                    /*{ validator: validatePass,trigger: 'blur'}*/
+                    { validator: validatePass,trigger: 'blur'}
                 ],
                 userRelname: [
                     { required: true, message: '请填写姓名', trigger: 'blur' },
                     { type: 'string', max: 20, message: '姓名不能超过20个字符', trigger: 'blur' }
                 ],
-                tel: [
+                phone: [
                     { required: true, message: '请填写手机号', trigger: 'blur' },
                     { validator: validateTel, trigger: 'blur' }
                 ],
@@ -82,14 +87,26 @@ export default{
                 company: [
                     {required: true, message: '请填写公司名称', trigger: 'blur'},
                 ]
-            }
+            },
+            rolesList:[],
+            dialog:{
+                userstate:false,
+                content:''
+            },
         }
     },
     methods:{
         handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-
+                    let data = 'userId='+this.userID+'userName='+this.formItem.userName+'&userPassword='+this.formItem.userPassword+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
+                    this.$http.post('/user/users/update',data,config).then((res)=>{
+                        this.dialog.userstate = true;
+                        this.dialog.content = `<h1>操作成功</h1>`
+                    }).catch((res)=>{
+                        this.dialog.userstate = true;
+                        this.dialog.content = `<h1>操作成功</h1>`
+                    })
                 }
             })
         },
@@ -97,10 +114,27 @@ export default{
             this.$http.get('/user/userTail/'+this.userID)
                     .then((res) => {
                         this.formItem = res.data.user;
+                        this.rolesList = this.getSelect(res.data.roles);
                     })
                     .catch((res)=>{
                         this.formItem = userDetail
                     })
+        },
+        getSelect(arr){
+            let _array = [];
+            for(let i=0;i<arr.length;i++){
+                let obj = new Object;
+                obj.value = arr[i].roleId;
+                obj.label = arr[i].roleName;
+                _array.push(obj);
+            }
+            return _array;
+        },
+        userstate_con(){
+            this.$router.push("/user")
+        },
+        checkRole(value){
+            this.formItem.roleId = value.value;
         },
     },
     mounted(){

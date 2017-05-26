@@ -21,13 +21,13 @@
                     <div class="module-search">
                         <div class="step">
                             <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text">下载</a></p>
-                            <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a></p>
+                            <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="modal('device_v2')">上传</a></p>
                             <p><span class="step-label">Step 3</span>在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作</p>
                         </div>
                     </div>
                     <div class="module-header mt-20">
                         <h4>待添加设备列表
-                            <span class="info-text ml-20">已导入<i class="red"> 1161 </i>条设备信息</span>
+                            <span class="info-text ml-20">已导入<i class="red"> {{snmp2Data.length}} </i>条设备信息</span>
                             <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
                         </h4>
@@ -43,13 +43,13 @@
                     <div class="module-search">
                         <div class="step">
                             <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text">下载</a></p>
-                            <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="dialog.upload=!dialog.upload">上传</a></p>
+                            <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="modal('device_v3')">上传</a></p>
                             <p><span class="step-label">Step 3</span>在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作</p>
                         </div>
                     </div>
                     <div class="module-header mt-20">
                         <h4>待添加设备列表
-                            <span class="info-text ml-20">已导入<i class="red"> 1161 </i>条设备信息</span>
+                            <span class="info-text ml-20">已导入<i class="red"> {{snmp3Data.length}} </i>条设备信息</span>
                             <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
                         </h4>
@@ -66,7 +66,7 @@
                 <span class="x-label">上传文件：</span>
                 <span class="x-input">{{uploadData.name}}</span>
                 <span class="x-button">
-                    <Upload action="//jsonplaceholder.typicode.com/posts/" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :show-upload-list="false">
+                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :show-upload-list="false">
                         <Button type="primary">上传文件</Button>
                     </Upload>
                 </span>
@@ -124,7 +124,10 @@
                 selectionList: showDataSelection.dataList,
                 uploadData: {
                     name: '',
-                    state: ''
+                    state: '',
+                    data:{
+                        type:''
+                    }
                 },
                 dialog:{
                     success: false,
@@ -163,6 +166,10 @@
             checkData(value) {      //切换数据来源
 
             },
+            modal(type){
+                this.dialog.upload = true;
+                this.uploadData.data.type = type;
+            },
             handleFormatError (file) {      //上传格式校验
                 this.$Notice.warning({
                     title: '文件格式不正确',
@@ -173,15 +180,20 @@
                 //请求
                 this.uploadData.name = file.name;
                 this.uploadData.state = 1;
+                if(this.uploadData.data.type=='device_v2'){
+                    this.snmp2Data = response.data
+                }else if(this.uploadData.data.type=='device_v3'){
+                    this.snmp3Data = response.data
+                }
             },
             success() {                     //点击上传对话框
                 this.dialog.upload = false;
                 this.uploadData.name = '';
                 this.uploadData.state = 0;
-                this.snmp2Data = snmp2tables.snmp2;
             },
             cancelUpload() {
                 this.snmp2Data = [];
+                this.snmp3Data = [];
             },
             confirmUpload() {
 
@@ -201,6 +213,8 @@
                 setTimeout(msg, 1500);
             },
             close() {
+                this.uploadData.name = '';
+                this.dialog.upload = false;
 
             }
         },

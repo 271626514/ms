@@ -62,7 +62,8 @@
         data() {
             return {
                 columns: roleslisttables.columns,
-                data: roleslisttables.roleslist,
+            //    data: roleslisttables.roleslist,
+                data: [],
                 selection: [],
                 removeState: 0,
                 dialog:{
@@ -103,6 +104,11 @@
                     })
                 return flag;
             }
+        },
+        mounted(){
+            this.$http.get('/role/rolesShow').then((res)=>{
+                this.data = res.data.rolesList;
+            })
         }
     }
 </script>

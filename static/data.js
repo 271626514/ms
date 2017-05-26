@@ -1383,25 +1383,7 @@ export const portCheckTables = {
         {"username":"syzx9801@163.com","userPermission":"0","province":""}
     ],
 }*/
-//时间日期
-function getLocalTime(nS) {
-    return  new Date(nS).Format("yyyy-MM-dd hh:mm");
-}
-Date.prototype.Format = function (fmt) { //author: meizz
-    var o = {
-        "M+": this.getMonth() + 1, //月份
-        "d+": this.getDate(), //日
-        "h+": this.getHours(), //小时
-        "m+": this.getMinutes(), //分
-        "s+": this.getSeconds(), //秒
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-        "S": this.getMilliseconds() //毫秒
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-}
+
 //管理后台数据
 export const userlisttables = {
     columns:[
@@ -1447,7 +1429,7 @@ export const userlisttables = {
                 if(row.loginStatus){
                     return `当前在线`
                 }else{
-                    return `getLocalTime(${row.lastwrotime.time})`
+                    return `${row.lastTime}`
                 }
             }
         },
@@ -1486,21 +1468,18 @@ export const roleslisttables = {
         },
         {
             title: '权限名称',
-            key: 'rolesName',
+            key: 'roleName',
             width: 200
         },
         {
             title: '权限详情',
-            key: 'rolesDetail',
+            key: 'roleDesc',
         },
         {
             title: '用户数量',
-            key: 'rolesNumber',
+            key: 'usersCount',
             align: 'center',
-            width: 100,
-            render (row,colum,index){
-                return `${row.containUser.length}`
-            }
+            width: 100
         },
         {
             title: '操作',
@@ -1508,7 +1487,7 @@ export const roleslisttables = {
             width: 240,
             align: 'center',
             render (row, column, index) {
-                if(row.containUser.length<1){
+                if(row.usersCount<1){
                     return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a> <a style="margin-left: 10px" @click="remove(${index})">删除</a>`;
                 }else{
                     return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a>`

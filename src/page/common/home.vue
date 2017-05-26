@@ -46,7 +46,7 @@
         width: 100%;
         position: fixed;
         text-align: center;
-        min-height: 1000px;
+        min-height: 1100px;
         .map{
             background: url("../../assets/imgs/map.png") no-repeat;
             width: 1200px;

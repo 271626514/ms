@@ -299,48 +299,7 @@ export const devicetables = {
         {
             title: '设备类型',
             key: 'deviceType',
-            width: 200,
-            /*filters: [
-                {
-                    label: 'IDC核心设备',
-                    value: 'IDC核心设备'
-                },
-                {
-                    label: 'IDC汇聚设备',
-                    value: 'IDC汇聚设备'
-                },
-                {
-                    label: 'IDC接入设备',
-                    value: 'IDC接入设备'
-                },
-                {
-                    label: 'Cache/CDN设备',
-                    value: 'Cache/CDN设备'
-                },
-                {
-                    label: 'PB设备－省网核心层',
-                    value: 'PB设备－省网核心层'
-                },
-                {
-                    label: 'PB设备－省网汇聚层',
-                    value: 'PB设备－省网汇聚层'
-                },
-                {
-                    label: 'PB设备－省网接入层',
-                    value: 'PB设备－省网接入层'
-                },
-                {
-                    label: 'PB设备－省网业务层',
-                    value: 'PB设备－省网业务层'
-                },
-                {
-                    label: '城域网设备',
-                    value: '城域网设备'
-                }
-            ],
-            filterMethod (value, row) {
-                return row.deviceType.indexOf(value) > -1;
-            }*/
+            width: 200
         },
         {
             title: '上传时间',
@@ -351,24 +310,7 @@ export const devicetables = {
         {
             title: 'snmp版本',
             key: 'snmpVersion',
-            width: 140,
-            /*filters: [
-                {
-                    label: 'V1',
-                    value: 'V1'
-                },
-                {
-                    label: 'V2C',
-                    value: 'V2C'
-                },
-                {
-                    label: 'V3',
-                    value: 'V3'
-                }
-            ],
-            filterMethod (value, row) {
-                return row.snmpVersion.indexOf(value) > -1;
-            }*/
+            width: 140
         },
         {
             title: 'snmp端口',

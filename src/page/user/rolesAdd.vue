@@ -8,14 +8,14 @@
             </div>
             <div class="power-title mt-20">
                 <strong>设备管理</strong>
-                <p class="power-list">未选择</p>
+                <p class="power-list"></p>
                 <em class="czicon" :class="{on:treeShow==1}" @click="treeShow=1"></em>
             </div>
             <div class="power-tree" :class="{on:treeShow==1}">
                 <span class="power-name mt-20">设备列表</span>
-                <Tree :data="data.deviceList" show-checkbox></Tree>
+                <Tree :data="data.deviceList" show-checkbox @on-check-change="checkDeviceList"></Tree>
                 <span class="power-name mt-10">设备上传</span>
-                <Tree :data="data.deviceImport" show-checkbox></Tree>
+                <Tree :data="data.deviceImport" show-checkbox @on-check-change="checkDeviceImport"></Tree>
             </div>
             <div class="power-title mt-20">
                 <strong>端口管理</strong>
@@ -24,9 +24,9 @@
             </div>
             <div class="power-tree" :class="{'on':treeShow==2}">
                 <span class="power-name mt-20">端口列表</span>
-                <Tree :data="data.portList" show-checkbox></Tree>
+                <Tree :data="data.portList" show-checkbox @on-check-change="checkPortList"></Tree>
                 <span class="power-name mt-10">端口上传</span>
-                <Tree :data="data.portImport" show-checkbox></Tree>
+                <Tree :data="data.portImport" show-checkbox @on-check-change="checkPortImport"></Tree>
             </div>
             <!--<div class="power-title mt-20">
                 <strong>数据管理</strong>
@@ -38,9 +38,19 @@
                     <Tree :data="data.other" show-checkbox></Tree>
                 </ul>
             </div>
-            <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px">创建</Button>
+            <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px" @click="roleAdd" :disabled="roleBTN">创建</Button>
             <Button type="ghost" class="f16 mt-20" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
         </div>
+        <!--网络错误-->
+        <Modal v-model="dialog.error" :mask-closable="false" title="提示">
+            <div class="clearfix dialog-body">
+                <p class="mt-10 text-center f18">操作失败！</p>
+                <p class="mt-10 text-center f16">{{modalcontent}}</p>
+            </div>
+            <div slot="footer">
+                <Button type="primary" style="width:80px" class="align f14" @click="dialog.error=!dialog.error">确定</Button>
+            </div>
+        </Modal>
     </div>
 </template>
 <style lang="less">
@@ -154,6 +164,7 @@
     }
 </style>
 <script type="text/ecmascript-6">
+import {config} from '../../assets/js/data'
     const data = [{
         "checked": false,
         "children": [
@@ -167,7 +178,7 @@
                 "id": 20,
                 "pId": 18,
                 "title": "采购共享中心",
-                "checked": false
+                "checked": true
             },
             {
                 "id": 21,
@@ -488,23 +499,64 @@
                     portImport:[],
                     portList:[]
                 },
+                modalcontent:'',
                 rolesName:'',
-                treeShow:1
+                dialog:{
+                    error:false,
+                },
+                treeShow:1,
+                roleData:{          //回传后台的数据
+                    deviceImport:'',
+                    deviceImportTitle:'',
+                    deviceList:'',
+                    deviceListTitle:'',
+                    portImport:'',
+                    portImportTitle:'',
+                    portList:'',
+                    portListTitle:'',
+                }
             }
         },
         methods:{
-            copyArr(arr){
-                return arr.map((e)=>{
-                    if(typeof e === 'object'){
-                        return Object.assign({},e)
-                    }else{
-                        return e
+            checkDeviceList(arr){
+                this.roleData.deviceList = this.arrToString(arr);
+            },
+            checkDeviceImport(arr){
+                this.roleData.deviceImport = this.arrToString(arr);
+            },
+            checkPortList(arr){
+                this.roleData.portList = this.arrToString(arr);
+            },
+            checkPortImport(arr){
+                this.roleData.portImport = this.arrToString(arr);
+            },
+            arrToString(arr){
+                let str = '';
+                for(let i=0;i<arr.length;i++){
+                    str+='&menuIds[]=' + (arr[i].id||arr[i].menuId)
+                }
+                return str;
+            },
+            roleAdd(){
+                let data = 'roleName='+this.rolesName + this.roleData.deviceList + this.roleData.deviceImport + this.roleData.portImport + this.roleData.portList
+                this.$http.post('localhost',data,config).then((res)=>{
+                    if(res.msg=='1'){
+
+                    }else if(res.msg=='2'){
+
                     }
+                }).catch((res)=>{
+                    this.dialog.error = true;
                 })
             }
         },
         mounted(){
             this.$http.get('/role/roles/menus').then((res)=>{
+                this.data.deviceImport = res.data.deviceImport
+                this.data.deviceList = res.data.deviceList
+                this.data.portImport = res.data.portImport
+                this.data.portList = res.data.portList
+            }).catch((res)=>{
                 let deviceImport = JSON.parse(JSON.stringify(data));
                 let deviceList = JSON.parse(JSON.stringify(data));
                 let portImport = JSON.parse(JSON.stringify(data));
@@ -513,9 +565,16 @@
                 this.data.deviceList = deviceList
                 this.data.portImport = portImport
                 this.data.portList = portList
-            }).catch((res)=>{
-
             })
+        },
+        computed:{
+            roleBTN() {
+                if(this.rolesName){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
         }
     }
 </script>

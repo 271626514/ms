@@ -15,7 +15,7 @@
                 </Select>
             </h4>
         </div>
-        <Tabs type="card">
+        <Tabs type="card" :animated="false">
             <Tab-pane label="批量添加snmp V2设备">
                 <div class="usermanage">
                     <div class="module-search">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="module-header mt-20">
-                        <h4>待添加设备列表
+                        <h4>待添加snmp V2设备列表
                             <span class="info-text ml-20">已导入<i class="red"> {{snmp2Data.length}} </i>条设备信息</span>
                             <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="module-header mt-20">
-                        <h4>待添加设备列表
+                        <h4>待添加snmp V3设备列表
                             <span class="info-text ml-20">已导入<i class="red"> {{snmp3Data.length}} </i>条设备信息</span>
                             <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
@@ -66,14 +66,18 @@
                 <span class="x-label">上传文件：</span>
                 <span class="x-input">{{uploadData.name}}</span>
                 <span class="x-button">
-                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :show-upload-list="false">
+                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess">
                         <Button type="primary">上传文件</Button>
                     </Upload>
                 </span>
             </div>
-            <p style="width: 80%; margin: 0 auto">
+            <p style="width: 75%; margin: 20px auto">
                 注意： 请务必使用正确的设备／端口批量导入文件模版，不匹配的模版将导致批量添加操作失败。
             </p>
+            <div class="errorInfo">
+                <h6 class="red f16 text-center">上传失败！</h6>
+                <p style="width: 75%; margin: 0 auto">文件格式错误，仅支持 xls，xlsx格式文件</p>
+            </div>
             <div slot="footer">
                 <Button type="primary" @click="success" :disabled="uploadLoad">确定</Button>
                 <Button type="ghost" @click="close">取消</Button>
@@ -117,7 +121,7 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,snmp2tables,snmp3tables} from '../../../static/data'
+    import {showDataSelection,snmp2tables,snmp3tables} from '../../assets/js/data'
     export default{
         data() {
             return {
@@ -144,22 +148,7 @@
                         value: 'all',
                         label: '全国数据'
                     }
-                },
-                options: {
-                    disabledDate (date) {
-                        return date && date.valueOf() > Date.now();
-                    }
-                },
-                device: {
-                    IP: '',
-                    startDate:'',
-                    finDate: '',
-                    province: 'all',
-                    deviceType: 'all',
-                    SMNP: 'all',
-                    port: 'all',
-                },
-                selection: []
+                }
             }
         },
         methods:{
@@ -215,7 +204,6 @@
             close() {
                 this.uploadData.name = '';
                 this.dialog.upload = false;
-
             }
         },
         computed:{

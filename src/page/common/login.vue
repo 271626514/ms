@@ -77,7 +77,7 @@
         <div class="main-container login">
             <Form :model="user" :rules="login" ref="login">
                 <Form-item prop="userName">
-                    <Input v-model="user.userName" placeholder="用户名" :maxlength="50"></Input>
+                    <Input v-model="user.userName" placeholder="用户名" :maxlength="50" @keyup.13="show"></Input>
                 </Form-item>
                 <Form-item prop="userPassword" class="input-item">
                     <Input type="password" v-model="user.userPassword" placeholder="密码" :maxlength="20"></Input>
@@ -156,6 +156,9 @@ export default {
         },
         getCode() {
             this.imgSrc = '/img/checkImg?a='+Math.random()+100
+        },
+        show(){
+            console.log(123);
         }
     }
 }

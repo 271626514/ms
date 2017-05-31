@@ -77,9 +77,8 @@
         methods:{
             drawPie(id){
                 this.$http.get('../../../static/cp_data.json').then((res)=>{
-
+                    console.log(res)
                         var data = [];
-                        console.log(mapdata)
                         Highcharts.each(mapdata.features,function(md,index){
 
                             data.push({

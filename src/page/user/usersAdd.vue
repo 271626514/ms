@@ -133,14 +133,13 @@
             },
             checkRole(value){
                 this.formItem.roleId = value.value;
-                console.log(this.formItem.roleId)
             },
         },
         mounted(){
             this.$http.get('/user/users/add').then((res)=>{
                 this.roleData = this.getSelect(res.data.roles);
             }).catch((res)=>{
-
+                alert('数据加载失败，请稍后再试')
             })
         }
     }

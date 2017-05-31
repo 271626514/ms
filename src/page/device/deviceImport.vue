@@ -28,7 +28,7 @@
                     <div class="module-header mt-20">
                         <h4>待添加snmp V2设备列表
                             <span class="info-text ml-20">已导入<i class="red"> {{snmp2Data.length}} </i>条设备信息</span>
-                            <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
+                            <Button type="ghost"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right ml-10 f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
                         </h4>
                     </div>
@@ -50,8 +50,8 @@
                     <div class="module-header mt-20">
                         <h4>待添加snmp V3设备列表
                             <span class="info-text ml-20">已导入<i class="red"> {{snmp3Data.length}} </i>条设备信息</span>
-                            <Button type="text"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right blue f14">取消添加</Button>
-                            <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
+                            <Button type="ghost"  @click="cancelUpload" :disabled="!snmp3DataLength" class="right ml-10 f14">取消添加</Button>
+                            <Button type="primary" @click="confirmUpload" :disabled="!snmp3DataLength" class="btn-search right f14">确定添加</Button>
                         </h4>
                     </div>
                     <div class="tableContent">
@@ -61,26 +61,48 @@
             </Tab-pane>
         </Tabs>
         <!--上传-->
+        <button @click="dialog.watting=!dialog.watting">asdasd</button>
         <Modal v-model="dialog.upload" :mask-closable="false" title="文件上传">
             <div class="clearfix uploadModalContent">
                 <span class="x-label">上传文件：</span>
                 <span class="x-input">{{uploadData.name}}</span>
                 <span class="x-button">
-                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess">
+                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :on-error="uploadError" :before-upload="beforUpload">
                         <Button type="primary">上传文件</Button>
                     </Upload>
                 </span>
             </div>
             <p style="width: 75%; margin: 20px auto">
-                注意： 请务必使用正确的设备／端口批量导入文件模版，不匹配的模版将导致批量添加操作失败。
+                注意： 请务必使用正确的设备／端口批量导入文件模版，不匹配的模版将导致批量添加操作失败。仅支持上传xls、xlsx类型的文件。
             </p>
-            <div class="errorInfo">
+            <div class="errorInfo" v-if="dialogError.flag">
                 <h6 class="red f16 text-center">上传失败！</h6>
-                <p style="width: 75%; margin: 0 auto">文件格式错误，仅支持 xls，xlsx格式文件</p>
+                <p style="width: 75%; margin: 0 auto">{{dialogError.content}}</p>
             </div>
             <div slot="footer">
-                <Button type="primary" @click="success" :disabled="uploadLoad">确定</Button>
+                <Button type="primary" @click="toPython" :disabled="uploadLoad">确定</Button>
                 <Button type="ghost" @click="close">取消</Button>
+            </div>
+        </Modal>
+        <!--等待中-->
+        <Modal v-model="dialog.watting" :mask-closable="false" title="提示" class="userRole" :closable="false">
+            <div class="clearfix dialog-body">
+                <Spin fix v-if="pythonBtn">
+                    <Icon type="load-c" size=38 class="demo-spin-icon-load"></Icon>
+                    <div>导入中，请稍等...</div>
+                </Spin>
+                <div v-if="pythodFlag==1" class="x-area">
+                    <h3>导入成功！</h3>
+                    <p>请在待添加设备列表中确认设备信息</p>
+                </div>
+                <div v-if="pythodFlag==2" class="x-area">
+                    <h3>导入出错！</h3>
+                    <p>请在待添加设备列表中检查错误原因，并重新上传正确的文件</p>
+                </div>
+            </div>
+            <div slot="footer">
+                <button @click="pythodFlag=2">123123</button>
+                <Button type="primary" style="width:85px" class="align f14" @click="pythonShow" :disabled="pythonBtn">确定</Button>
             </div>
         </Modal>
     </div>
@@ -119,16 +141,30 @@
     float: left;
     margin-left: 10px;
 }
+.x-area{
+    h3{
+        font-size: 22px;
+        color: #333;
+        text-align: center;
+        font-weight: normal;
+    }
+    p{
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-top: 15px;
+    }
+}
 </style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,snmp2tables,snmp3tables} from '../../assets/js/data'
+    import {showDataSelection,snmp2tables,snmp3tables,config} from '../../assets/js/data'
     export default{
         data() {
             return {
                 selectionList: showDataSelection.dataList,
                 uploadData: {
                     name: '',
-                    state: '',
+                    state: 0,
                     data:{
                         type:''
                     }
@@ -137,8 +173,15 @@
                     success: false,
                     waitting: false,
                     error: false,
-                    upload: false
+                    upload: false,
+                    watting: false,
                 },
+                dialogError:{
+                    flag: false,
+                    content: ''
+                },
+                pythondata:[],
+                pythodFlag:0,
                 snmp2Data:[],
                 columns2:snmp2tables.columns,
                 snmp3Data: [],
@@ -155,55 +198,63 @@
             checkData(value) {      //切换数据来源
 
             },
-            modal(type){
+            modal(type){        //激活上传文件对话框，同步用户上传文件类型
                 this.dialog.upload = true;
                 this.uploadData.data.type = type;
             },
-            handleFormatError (file) {      //上传格式校验
-                this.$Notice.warning({
-                    title: '文件格式不正确',
-                    desc: '文件 ' + file.name + ' 格式不正确，请上传 xlsx 文件 。'
-                });
+            beforUpload(f){                 //文件上传前，文件名同步
+                this.uploadData.name = f.name;
             },
-            uploadSuccess(response, file, fileList) {       //上传成功回传
-                //请求
-                this.uploadData.name = file.name;
-                this.uploadData.state = 1;
-                if(this.uploadData.data.type=='device_v2'){
-                    this.snmp2Data = response.data
-                }else if(this.uploadData.data.type=='device_v3'){
-                    this.snmp3Data = response.data
+            handleFormatError (f) {      //上传格式校验
+                this.dialogError.flag = true;
+                this.dialogError.content = `文件格式错误，仅支持 xls，xlsx格式文件`;
+            },
+            uploadError(f){                 //上传失败,网络原因
+                this.dialogError.flag = true;
+                this.dialogError.content = `网络连接错误，请稍后再试`;
+            },
+            uploadSuccess(res, file, fileList) {       //上传成功回传
+                if(res.code==0){        //有错误
+                    this.dialogError.flag = true;
+                    this.dialogError.content = res.msg;
+                }else if(res.code==1){      //正确
+                    this.uploadData.state = 1;
                 }
             },
-            success() {                     //点击上传对话框
+            toPython() {             //点击上传对话框
                 this.dialog.upload = false;
-                this.uploadData.name = '';
-                this.uploadData.state = 0;
+                this.dialog.watting = true;
+                this.$http.post('/ms/demo',this.dialog,config).then((res)=>{
+                    this.pythondata = res.data;
+                    this.pythodFlag = res.code;
+                })
             },
-            cancelUpload() {
+            pythonShow() {          //数据展示
+                if(this.uploadData.data.type=='device_v2'){
+                    this.snmp2Data = this.pythondata
+                }else if(this.uploadData.data.type=='device_v3'){
+                    this.snmp3Data = this.pythondata
+                }
+                this.dialog.watting = false;
+            },
+            cancelUpload() {        //取消同步
                 this.snmp2Data = [];
                 this.snmp3Data = [];
             },
             confirmUpload() {
 
             },
-            error() {
-                this.dialog.waitting = false;
-                this.$Modal.error({
-                    content: '<div class="mt_15"><p>信息验证失败！</p><p>请您确认失败原因，修改错误信息后重新上传</p></div>',
-                    okText: '我知道了',
-                    onOk: () => {
-                        this.$set(this.snmpError,'snpmErrData',snpmErrData)
-                    },
-                });
-            },
-            loading () {
-                const msg = this.$Message.loading('正在加载中...', 0);
-                setTimeout(msg, 1500);
-            },
             close() {
                 this.uploadData.name = '';
                 this.dialog.upload = false;
+            },
+            reset() {
+                if(!this.dialog.upload){
+                    this.dialogError.flag = false;
+                    this.dialogError.content = '';
+                    this.uploadData.name = '';
+                    this.uploadData.state = 0;
+                }
             }
         },
         computed:{
@@ -225,7 +276,24 @@
                }else{
                    return false;
                }
+            },
+            snmp3DataLength() {
+                if(this.snmp3Data.length>1){
+                    return true;
+                }else{
+                    return false;
+                }
+            },
+            pythonBtn() {
+                if(this.pythondata.length<1){
+                    return true;
+                }else{
+                    return false;
+                }
             }
+        },
+        watch:{
+            'dialog.upload':'reset'
         }
     }
 </script>

@@ -77,7 +77,7 @@
         <div class="main-container login">
             <Form :model="user" :rules="login" ref="login">
                 <Form-item prop="userName">
-                    <Input v-model="user.userName" placeholder="用户名" :maxlength="50" @keyup.13="show"></Input>
+                    <Input v-model="user.userName" placeholder="用户名" :maxlength="50"></Input>
                 </Form-item>
                 <Form-item prop="userPassword" class="input-item">
                     <Input type="password" v-model="user.userPassword" placeholder="密码" :maxlength="20"></Input>
@@ -141,6 +141,8 @@ export default {
                             alert('用户名或密码错误')
                         }else if(res.data.code == 2){
                             alert('验证码不正确')
+                        }else if(res.data.code==3){
+                            alert('您的账号权限不足，请先联系管理员')
                         }
                     }).catch((res)=>{
                         this.$Message.success('登陆成功，欢迎您!');
@@ -156,9 +158,6 @@ export default {
         },
         getCode() {
             this.imgSrc = '/img/checkImg?a='+Math.random()+100
-        },
-        show(){
-            console.log(123);
         }
     }
 }

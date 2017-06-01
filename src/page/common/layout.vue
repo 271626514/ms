@@ -16,7 +16,7 @@
 <script type="text/ecmascript-6">
 import myHead from   '../../components/common/header'
 import myFoot from '../../components/common/foot'
-import myNav from '../../components/common/nav'
+import myNav from '../../components/common/navShow'
 import bread from '../../components/common/bread'
 export default{
     data() {

@@ -1,12 +1,20 @@
 <template>
     <div>
-        <Modal v-model="flag" :mask-closable="false" title="提示" :closable="false">
+        <Modal v-model="error" :mask-closable="false" title="提示" :closable="false">
             <div class="clearfix dialog-body">
                 <h1>{{title}}</h1>
                 <p class="red f16 text-center mt-20">{{content}}</p>
             </div>
             <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="flag=!flag">确定</Button>
+                <Button type="primary" style="width:90px" class="align" @click="error=!error">确定</Button>
+            </div>
+        </Modal>
+        <Modal v-model="success" :mask-closable="false" title="提示" :closable="false">
+            <div class="clearfix dialog-body">
+                <h1>{{title}}</h1>
+            </div>
+            <div slot="footer">
+                <Button type="primary" style="width:90px" class="align" @click="reload">确定</Button>
             </div>
         </Modal>
     </div>
@@ -18,7 +26,8 @@
     export default{
         data(){
             return{
-                flag:false
+                success:false,
+                error:false
             }
         },
         watch:{
@@ -26,10 +35,14 @@
         },
         methods:{
             setFlag(){
-                console.log(123)
                 if(this.dialog>0){
-                    this.flag = true;
+                    this.success = true;
+                }else if(this.dialog<0){
+                    this.error = true;
                 }
+            },
+            reload() {
+                window.location.reload();
             }
         },
         props: ['title','content','dialog'],

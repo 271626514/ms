@@ -26,25 +26,7 @@
                 <Button type="ghost" style="width:80px" class="align f14" @click="dialog.removeAll=!dialog.removeAll">取消</Button>
             </div>
         </Modal>
-        <!--操作成功回执-->
-        <Modal v-model="dialog.success" :mask-closable="false" title="提示" :closable="false">
-            <div class="clearfix dialog-body">
-                <h1>删除成功</h1>
-            </div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="reload">确定</Button>
-            </div>
-        </Modal>
-        <!--操作失败回执-->
-        <Modal v-model="dialog.error" :mask-closable="false" title="提示" :closable="false">
-            <div class="clearfix dialog-body">
-                <h1>删除失败</h1>
-                <p class="red f16 text-center mt-20">{{errorInfo}}</p>
-            </div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="dialog.error=!dialog.error">确定</Button>
-            </div>
-        </Modal>
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
 <style lang="less">
@@ -58,6 +40,7 @@
 }
 </style>
 <script type="text/ecmascript-6">
+    import modal from '../../components/common/modal.vue'
     import {roleslisttables} from '../../assets/js/data'
     export default{
         data() {
@@ -67,20 +50,19 @@
                 data: [],
                 selection: [],
                 removeState: 0,
-                errorInfo:'',
                 dialog:{
                     removeAll:false,
-                    success:false,
-                    error:false
+                },
+                modal:{
+                    title:'',
+                    content:'',
+                    dialog:0
                 }
             }
         },
         methods:{
             con(selection){
                 this.selection = selection;
-            },
-            reload(){
-                window.location.reload()
             },
             detail(index){
                 this.$store.dispatch('setuserrole',index);
@@ -92,20 +74,23 @@
             },
             remove(index){
                 this.$http.get('/demo/user').then(res=>{
-                    this.dialog.success = true;
+                    this.modal.dialog++;
+                    this.modal.title = '删除成功'
                 }).catch(res=>{
-                    this.dialog.error = true;
-                    this.errorInfo = `${res}`
+                    this.modal.dialog--;
+                    this.modal.title = '删除失败'
+                    this.modal.content = `${res}`
                 })
             },
             userrole_con(){     //批量删除
                 this.dialog.removeAll = false;
                 this.$http.get('/demo/user').then(res=>{
-                    this.dialog.success = true;
-                    window.location.reload()
+                    this.modal.dialog++;
+                    this.modal.title = '删除成功'
                 }).catch(res=>{
-                    this.dialog.error = true;
-                    this.errorInfo = `${res}`
+                    this.modal.dialog--;
+                    this.modal.title = '删除失败'
+                    this.modal.content = `${res}`
                 })
             }
         },
@@ -130,6 +115,9 @@
             }).catch(res=>{
                 this.data = roleslisttables.roleslist
             })
+        },
+        components:{
+            modal
         }
     }
 </script>

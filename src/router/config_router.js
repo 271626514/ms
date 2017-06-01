@@ -88,7 +88,7 @@ export default new Router({
         {
             path: '/export',
             name: '业务数据管理',
-            component: path.LAYOUT,
+            component: path.LAYOUT_SHOW,
             children: [
                 {
                     path: '',
@@ -111,7 +111,7 @@ export default new Router({
         {
             name: '系统管理',
             path:'/operateLog',
-            component: path.LAYOUT,
+            component: path.LAYOUT_SHOW,
             children: [
                 {
                     path: '',

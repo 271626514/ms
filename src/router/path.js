@@ -2,8 +2,7 @@
  * Created by syzx9801@163.com on 2017/4/26.
  */
 export const LOGIN = require('../page/common/login.vue');
-export const LAYOUT = require('../page/common/layout.vue');
-export const LAYOUT_SHOW = require('../page/common/layoutShow.vue');
+export const LAYOUT_SHOW = require('../page/common/layout.vue');
 export const HOME = require('../page/common/home.vue');
 export const MAP = require('../page/common/map.vue');
 

@@ -41,25 +41,7 @@
             <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px" @click="roleAdd" :disabled="roleBTN">创建</Button>
             <Button type="ghost" class="f16 mt-20" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user/rolesShow')">取消</Button>
         </div>
-        <!--操作成功回执-->
-        <Modal v-model="dialog.success" :mask-closable="false" title="提示" :closable="false">
-            <div class="clearfix dialog-body">
-                <h1>操作成功</h1>
-            </div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="$router.push('/user/rolesShow')">确定</Button>
-            </div>
-        </Modal>
-        <!--操作失败回执-->
-        <Modal v-model="dialog.error" :mask-closable="false" title="提示" :closable="false">
-            <div class="clearfix dialog-body">
-                <h1>操作失败</h1>
-                <p class="red f16 text-center mt-20">{{errorInfo}}</p>
-            </div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="dialog.error=!dialog.error">确定</Button>
-            </div>
-        </Modal>
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
 <style lang="less">
@@ -174,7 +156,8 @@
 </style>
 <script type="text/ecmascript-6">
 import {config} from '../../assets/js/data'
-    const data = [{
+import modal from '../../components/common/modal.vue'
+const data = [{
         "checked": false,
         "children": [
             {
@@ -508,12 +491,7 @@ import {config} from '../../assets/js/data'
                     portImport:[],
                     portList:[]
                 },
-                modalcontent:'',
                 rolesName:'',
-                dialog:{
-                    error:false,
-                },
-                errorInfo:'',
                 treeShow:1,
                 roleData:{          //回传后台的数据
                     deviceImport:'',
@@ -524,6 +502,11 @@ import {config} from '../../assets/js/data'
                     portImportTitle:'',
                     portList:'',
                     portListTitle:'',
+                },
+                modal:{
+                    title:'',
+                    content:'',
+                    dialog:0
                 }
             }
         },
@@ -551,13 +534,15 @@ import {config} from '../../assets/js/data'
                 let data = 'roleName='+this.rolesName + this.roleData.deviceList + this.roleData.deviceImport + this.roleData.portImport + this.roleData.portList
                 this.$http.post('localhost',data,config).then((res)=>{
                     if(res.msg=='1'){
-                        this.dialog.success = true;
+                        this.modal.dialog++;
+                        this.modal.title = '操作成功';
                     }else if(res.msg=='2'){
 
                     }
                 }).catch((res)=>{
-                    this.dialog.error = true;
-                    this.errorInfo = `${res}`
+                    this.modal.dialog--;
+                    this.modal.title = `操作失败`;
+                    this.modal.content = `${res}`
                 })
             }
         },
@@ -586,6 +571,9 @@ import {config} from '../../assets/js/data'
                     return true;
                 }
             }
+        },
+        components:{
+            modal
         }
     }
 </script>

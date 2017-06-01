@@ -545,7 +545,7 @@
 
                     }
                 }).catch((res)=>{
-                    this.modal.dialog++;
+                    this.modal.dialog--;
                     this.modal.title = `操作失败`
                     this.modal.content = `${res}`
                 })

@@ -1284,47 +1284,27 @@ export const portCheckTables = {
         }
     ]
 }
-/*export const userinfotables = {
-    columns:[
+export const removeData = {  //设备批量删除
+    columns:[       //表头
         {
-            title: '成员用户名',
-            key: 'username',
-            width: 270
-        },{
-            title: '用户权限',
-            key: 'userPermission',
-            width: 270,
-            render (row,column,index){
-                let text = "";
-                if(row.userPermission==0){
-                    text = '管理员'
-                }else if(row.userPermission==1){
-                    text = '地方用户-'+row.label
-                }else if(row.userPermission==99){
-                    text = ''
-                }
-                return `${text}`
-            }
-        },{
-            title: '操作',
-            key: 'action',
-            width: 259,
-            align: 'center',
-            render (row, column, index) {
-                if(row.userPermission==99){
-                    return ``
-                }else{
-                    return `<i-button type="primary" icon="settings" @click="setMember(${index})">权限设置</i-button> <i-button type="error" icon="trash-a" @click="remove(${index})">删除成员</i-button>`;
-                }
-            }
+            title: '省份',
+            key: 'province',
+            width: 75
+        },
+        {
+            title: '设备名称',
+            key: 'deviceName'
+        },
+        {
+            title: '设备IP',
+            key: 'IP'
+        },
+        {
+            title: '类型',
+            key: 'deviceType'
         }
-    ],
-    userList:[
-        {"username":"13146779142","province":"jiangsu","userPermission":"1","label":"江苏省"},
-        {"username":"中国移动杭州研发中心-洪承畴","province":"heilongjiang","userPermission":"1","label":"黑龙江省"},
-        {"username":"syzx9801@163.com","userPermission":"0","province":""}
-    ],
-}*/
+    ]
+}
 
 //管理后台数据
 export const userlisttables = {

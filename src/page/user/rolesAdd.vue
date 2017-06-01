@@ -39,16 +39,25 @@
                 </ul>
             </div>
             <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px" @click="roleAdd" :disabled="roleBTN">创建</Button>
-            <Button type="ghost" class="f16 mt-20" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
+            <Button type="ghost" class="f16 mt-20" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user/rolesShow')">取消</Button>
         </div>
-        <!--网络错误-->
-        <Modal v-model="dialog.error" :mask-closable="false" title="提示">
+        <!--操作成功回执-->
+        <Modal v-model="dialog.success" :mask-closable="false" title="提示" :closable="false">
             <div class="clearfix dialog-body">
-                <p class="mt-10 text-center f18">操作失败！</p>
-                <p class="mt-10 text-center f16">{{modalcontent}}</p>
+                <h1>操作成功</h1>
             </div>
             <div slot="footer">
-                <Button type="primary" style="width:80px" class="align f14" @click="dialog.error=!dialog.error">确定</Button>
+                <Button type="primary" style="width:90px" class="align" @click="$router.push('/user/rolesShow')">确定</Button>
+            </div>
+        </Modal>
+        <!--操作失败回执-->
+        <Modal v-model="dialog.error" :mask-closable="false" title="提示" :closable="false">
+            <div class="clearfix dialog-body">
+                <h1>操作失败</h1>
+                <p class="red f16 text-center mt-20">{{errorInfo}}</p>
+            </div>
+            <div slot="footer">
+                <Button type="primary" style="width:90px" class="align" @click="dialog.error=!dialog.error">确定</Button>
             </div>
         </Modal>
     </div>
@@ -504,6 +513,7 @@ import {config} from '../../assets/js/data'
                 dialog:{
                     error:false,
                 },
+                errorInfo:'',
                 treeShow:1,
                 roleData:{          //回传后台的数据
                     deviceImport:'',
@@ -541,12 +551,13 @@ import {config} from '../../assets/js/data'
                 let data = 'roleName='+this.rolesName + this.roleData.deviceList + this.roleData.deviceImport + this.roleData.portImport + this.roleData.portList
                 this.$http.post('localhost',data,config).then((res)=>{
                     if(res.msg=='1'){
-
+                        this.dialog.success = true;
                     }else if(res.msg=='2'){
 
                     }
                 }).catch((res)=>{
                     this.dialog.error = true;
+                    this.errorInfo = `${res}`
                 })
             }
         },

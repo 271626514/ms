@@ -1424,6 +1424,7 @@ export const roleslisttables = {
             rolesDetail: "设备管理：河南， 端口管理：河南，数据管理：河南，其他：未选择",
             addDate: '2016.09.12',
             updateDate: '2016.09.18',
+            usersCount: 7,
             containUser: [
                 {
                     username: 'sijiaqing001',
@@ -1437,6 +1438,7 @@ export const roleslisttables = {
             rolesDetail: "设备管理：全国， 端口管理：全国，数据管理：全国，其他：未选择",
             addDate: '2016.09.12',
             updateDate: '2016.09.18',
+            usersCount: 0,
             containUser: [],
         }
     ],

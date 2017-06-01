@@ -90,7 +90,10 @@
                     </span>
                 </Form-item>
                 <Form-item>
-                    <Button type="primary" class="btn-submit" @click="handleSubmit()">登  录</Button>
+                    <Button type="primary" :loading="loading" class="btn-submit f16" @click="handleSubmit()">
+                        <span v-if="!loading">登   陆</span>
+                        <span v-else>登陆中...</span>
+                    </Button>
                 </Form-item>
             </Form>
         </div>
@@ -110,6 +113,7 @@ export default {
                 userPassword: '',
                 code: ''
             },
+            loading:false,
             imgSrc: '/img/checkImg?a='+Math.random()+100,
             login: {
                 userName:[
@@ -130,6 +134,7 @@ export default {
         handleSubmit() {
             this.$refs['login'].validate((valid) => {
                 if(valid){
+                    this.loading = true;
                     let data = 'userName='+this.user.userName+'&userPassword='+md5(this.user.userPassword)+'&code='+this.user.code;
                     this.$http.post('/login',data,config)
                     .then((res) => {
@@ -137,6 +142,7 @@ export default {
                             let path = res.data.tree.children[0].resouce;
                             this.$store.dispatch('loginSet',{'user_name':this.user.userName,'logStatus':true});
                             this.$router.push(path);
+                            this.loading = false;
                         }else if(res.data.code == 1){
                             alert('用户名或密码错误')
                         }else if(res.data.code == 2){
@@ -144,6 +150,7 @@ export default {
                         }else if(res.data.code==3){
                             alert('您的账号权限不足，请先联系管理员')
                         }
+                        this.loading = true;
                     }).catch((res)=>{
                         this.$Message.success('登陆成功，欢迎您!');
                         this.$store.dispatch('loginSet',{'user_name':this.user.userName,'user_permission':1,'logStatus':true});

@@ -102,9 +102,9 @@
 </template>
 
 <script>
-import { validatePass,validateTel } from '../../../static/formrule'
+import { validatePass,validateTel } from '../../assets/js/formrule'
+import {BASEURL,config} from '../../assets/js/data'
 import md5 from 'md5'
-import {BASEURL,config} from '../../../static/data'
 export default {
     data() {
         return {
@@ -152,12 +152,11 @@ export default {
                         }
                         this.loading = true;
                     }).catch((res)=>{
-                        this.$Message.success('登陆成功，欢迎您!');
                         this.$store.dispatch('loginSet',{'user_name':this.user.userName,'user_permission':1,'logStatus':true});
                         if(this.user.user_name=='admin'){
                             this.$router.push('/user');
                         }else{
-                            this.$router.push('/dataview');
+                            this.$router.push('/device');
                         }
                     })
                 }

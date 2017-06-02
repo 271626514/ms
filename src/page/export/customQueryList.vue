@@ -24,7 +24,7 @@
         <div class="tableContent">
             <Table width="auto" stripe height="600" style="margin-top: 10px;" border :columns="columns" :data="data"></Table>
         </div>
-        <Modal v-model="dialog.search" :mask-closable="false" title="数据检索" class="userRole">
+        <Modal v-model="dialog.search" :mask-closable="false" title="数据检索" class="userRole" :closable="false">
             <div class="clearfix dialog-body">
                 <div class="search-item" v-if="!searchResult">
                     <p >查询名称：{{query.name}}</p>
@@ -36,7 +36,7 @@
                 </Spin>
             </div>
             <div slot="footer">
-                <a type="primary" style="width:85px" class="align f14" :src="searchUrl"  @click="download_con" :disabled="searchResult">下载文件</a>
+                <Button type="primary" style="width:85px" class="align f14"  @click="download_con" :disabled="searchResult">下载文件</Button>
             </div>
         </Modal>
     </div>
@@ -65,7 +65,7 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {customquerytables} from '../../../static/data'
+    import {customquerytables} from '../../assets/js/data'
     export default{
         data(){
             return {
@@ -87,18 +87,31 @@
                 this.dialog.search = true;
                 this.$http.post('http://localhost:8080/admin',this.query)
                         .then((res)=>{
-                            console.log(res)
+                            if(res.code==1){
+                                this.searchResult = false;
+                                this.searchUrl = res.url;
+                            }else if(res.code==2){
+
+                            }
                         })
-                        .catch((res)=>{
+                        .catch(res=>{
                             this.searchResult = false;
-                        //    this.searchUrl = res.url;
                         })
             },
             copythis(index){
                 this.query.sql = this.data[index].SQLDetail;
             },
             download_con(){
+                this.dialog.search = false;
+                this.$http.get('demo/user').then(res=>{
 
+                }).catch(res=>{
+                    console.log(res);
+                })
+            },
+            reset(){        //初始化
+                this.searchResult = true;
+                this.searchUrl = '';
             }
         },
         computed: {
@@ -107,6 +120,9 @@
                     return true;
                 }
             }
+        },
+        watch:{
+            'dialog.search':'reset'
         }
     }
 </script>

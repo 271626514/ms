@@ -11,7 +11,7 @@
 <style lang="less">
 </style>
 <script type="text/ecmascript-6">
-    import {datahistorytables} from '../../../static/data'
+    import {datahistorytables} from '../../assets/js/data'
     export default{
         data(){
             return {

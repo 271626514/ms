@@ -68,7 +68,7 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {loglisttables,showDataSelection,dateOptions} from '../../../static/data'
+    import {loglisttables,showDataSelection,dateOptions} from '../../assets/js/data'
     import * as types from '../../assets/js/const'
     export default{
         data(){

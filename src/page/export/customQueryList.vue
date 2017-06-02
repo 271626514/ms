@@ -39,6 +39,7 @@
                 <Button type="primary" style="width:85px" class="align f14"  @click="download_con" :disabled="searchResult">下载文件</Button>
             </div>
         </Modal>
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
 <style lang="less">
@@ -65,7 +66,8 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {customquerytables} from '../../assets/js/data'
+import {customquerytables} from '../../assets/js/data'
+import modal from '../../components/common/modal.vue'
     export default{
         data(){
             return {
@@ -79,6 +81,11 @@
                 query:{
                     name: '',
                     sql: ''
+                },
+                modal:{
+                    title:'',
+                    content:'',
+                    dialog:0,
                 }
             }
         },
@@ -91,11 +98,17 @@
                                 this.searchResult = false;
                                 this.searchUrl = res.url;
                             }else if(res.code==2){
-
+                                this.modal.dialog--;
+                                this.modal.title = '查询出错';
+                                this.modal.content = `${res}`;
+                                this.dialog.search = false;
                             }
                         })
                         .catch(res=>{
-                            this.searchResult = false;
+                            this.dialog.search = false;
+                            this.modal.dialog--;
+                            this.modal.title = '查询出错';
+                            this.modal.content = `${res}`
                         })
             },
             copythis(index){
@@ -123,6 +136,9 @@
         },
         watch:{
             'dialog.search':'reset'
+        },
+        components:{
+            modal
         }
     }
 </script>

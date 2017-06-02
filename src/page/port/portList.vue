@@ -71,7 +71,7 @@
 </template>
 <style lang="less"></style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,porttables} from '../../../static/data'
+    import {showDataSelection,porttables} from '../../assets/js/data'
     export default{
         data() {
             return {

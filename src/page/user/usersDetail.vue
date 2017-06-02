@@ -69,7 +69,7 @@
     }
 </style>
 <script type="text/ecmascript-6">
-import {userDetail,BASEURL} from '../../../static/data'
+import {userDetail,BASEURL} from '../../assets/js/data'
 export default{
     data() {
         return {

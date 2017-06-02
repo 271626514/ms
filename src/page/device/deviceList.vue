@@ -62,7 +62,7 @@
                     <span v-if="!loading">立即检索</span>
                     <span v-else>检索中</span>
                 </Button>
-                <a class="text-blue" @click="reset" :disabled="BtnDisabled">清空</a>
+                <a class="text-blue" @click="reset">清空</a>
             </div>
         </div>
         <div class="search-result">
@@ -150,6 +150,7 @@
                 removeColumns:removeData.columns,
                 operatUser: this.$store.getters.getusername,
                 removeData:[],
+                defaultDate: this.getDate(),
                 options: {
                     disabledDate (date) {
                         return date && date.valueOf() > Date.now();
@@ -157,8 +158,8 @@
                 },
                 device: {
                     IP: '',
-                    startDate:new Date(),
-                    finDate: new Date(),
+                    startDate: this.getDate(),
+                    finDate: this.getDate(),
                     province: 'all',
                     deviceType: 'all',
                     SMNP: 'all',
@@ -177,8 +178,8 @@
         methods:{
             reset(){        //清空检索条件
                 this.device.IP = "";
-                this.device.startDate = new Date();
-                this.device.finDate = new Date();
+                this.device.startDate = this.getDate();
+                this.device.finDate = this.getDate();
                 this.device.province = 'all';
                 this.device.deviceType = 'all';
                 this.device.SMNP = 'all';
@@ -243,8 +244,19 @@
             downloadAll() {     //下载批量选择的设备
 
             },
-            today(){
-                new Date();
+            getDate(){
+                let date = new Date();
+                let seperator1 = "-";
+                let month = date.getMonth() + 1;
+                let strDate = date.getDate();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                let currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                return currentdate;
             }
         },
         computed:{

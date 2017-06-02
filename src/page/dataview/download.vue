@@ -44,7 +44,7 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,showDataList} from '../../../static/data'
+    import {showDataSelection,showDataList} from '../../assets/js/data'
     export default{
         data() {
             return {

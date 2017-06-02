@@ -78,7 +78,7 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {rolesDetail,BASEURL,roleslisttables} from '../../../static/data'
+    import {rolesDetail,BASEURL,roleslisttables} from '../../assets/js/data'
     export default{
         data() {
             return {

@@ -62,7 +62,7 @@
 <style lang="less">
 </style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,portCheckTables} from '../../../static/data'
+    import {showDataSelection,portCheckTables} from '../../assets/js/data'
     export default{
         data() {
             return {

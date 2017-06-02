@@ -17,7 +17,7 @@
                     类型：
                 </div>
                 <div class="search-item">
-                    <Select v-model="defaultData.logType.value" :label-in-value="true" @on-change="selectLog" style="width:110px;">
+                    <Select v-model="log.logType" :label-in-value="true" @on-change="selectLog" style="width:110px;">
                         <Option v-for="item in logTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -25,7 +25,7 @@
                     来源：
                 </div>
                 <div class="search-item">
-                    <Select v-model="defaultData.source.value" :label-in-value="true" @on-change="selectSource" style="width:110px;">
+                    <Select v-model="log.source" :label-in-value="true" @on-change="selectSource" style="width:110px;">
                         <Option v-for="item in sourceList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -33,7 +33,7 @@
             <div class="item">
                 <div class="search-label" style="width:80px;text-align:right;">结果：</div>
                 <div class="search-item">
-                    <Select v-model="defaultData.result.value" :label-in-value="true" @on-change="selectResult" style="width:110px;">
+                    <Select v-model="log.result" :label-in-value="true" @on-change="selectResult" style="width:110px;">
                         <Option v-for="item in resultList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -47,7 +47,7 @@
         </div>
         <div class="search-result">
             <p class="search-content">已查找到<span>{{data.length}}</span>条数据</p>
-            <a class="search-download">下载检索结果文件</a>
+            <a class="search-download" :src="download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
             <Table width="auto" stripe height="600" style="margin-top: 10px;" border :columns="columns" :data="data"></Table>
@@ -75,31 +75,30 @@
             return {
                 columns: loglisttables.columns,
                 data: [],
+                download:'',
                 logTypeList:showDataSelection.logTypeList,
                 sourceList: showDataSelection.sourceList,
                 resultList: showDataSelection.resultList,
-                defaultDate:dateOptions.defaultDate,
                 options: dateOptions.options,
+                defaultDate: this.getDate(),
                 log:{
-                    user: '',
+                    user:'',
                     logType: 'all',
                     source: 'all',
                     result: 'all',
-                    startDate:new Date(),
-                    finDate: new Date()
-                },
-                defaultData:{
-                    logType:types.logType,
-                    source: types.source,
-                    result: types.result
+                    startDate: this.getDate(),
+                    finDate: this.getDate()
                 }
             }
         },
         methods:{
             getLogData(){
                 this.$http.post('http://localhost:8080/user',this.log)
-                        .then(()=>{
-
+                        .then(res=>{
+                            if(res.code==1){
+                                this.data = res.data;
+                                this.download = res.url;
+                            }
                         })
                         .catch((res)=>{
                             this.data = loglisttables.datalist
@@ -119,8 +118,8 @@
                 this.log.logType = 'all';
                 this.log.source = 'all';
                 this.log.result = 'all';
-                this.log.startDate = new Date();
-                this.log.finDate = new Date();
+                this.log.startDate = this.defaultDate;
+                this.log.finDate = this.defaultDate;
             },
             setStart(date) {
                 this.log.startDate = date;
@@ -136,12 +135,23 @@
                     return false;
                 }
             },
-        },
-        computed:{
-
+            getDate(){
+                let date = new Date();
+                let seperator1 = "-";
+                let month = date.getMonth() + 1;
+                let strDate = date.getDate();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                let currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                return currentdate;
+            }
         },
         mounted(){
-            this.getLogData()
+            this.getLogData();
         }
     }
 </script>

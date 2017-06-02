@@ -2,7 +2,7 @@
     <div>
         <div class="module-header">
             <h4>端口列表
-                <Select v-model="defaultData.data.value" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
+                <Select v-model="port.province" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
                     <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </h4>
@@ -24,7 +24,7 @@
                     省份：
                 </div>
                 <div class="search-item">
-                    <Select v-model="defaultData.province.value" :label-in-value="true" @on-change="selectProvince" style="width:88px;">
+                    <Select v-model="port.province" :label-in-value="true" @on-change="selectProvince" style="width:88px;">
                         <Option v-for="item in selectionProvence" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -32,7 +32,7 @@
                     端口类型：
                 </div>
                 <div class="search-item">
-                    <Select v-model="defaultData.portType.value" :label-in-value="true" @on-change="selectPortType">
+                    <Select v-model="port.portType" :label-in-value="true" @on-change="selectPortType" style="width: 80px">
                         <Option v-for="item in portTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -40,14 +40,14 @@
                     业务大类：
                 </div>
                 <div class="search-item">
-                    <Select v-model="defaultData.service.value" :label-in-value="true" @on-change="selectService">
+                    <Select v-model="port.service" :label-in-value="true" @on-change="selectService" style="width: 130px">
                         <Option v-for="item in serviceList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
             </div>
             <div class="item">
                 <span class="datelabel">设备IP检索</span>
-                <Input v-model="device.IP" style="width: 350px"></Input>
+                <Input v-model="port.IP" style="width: 350px"></Input>
             </div>
             <div class="search-ctrl">
                 <Button type="primary" class="btn-search ml-20 mt-40" @click="searchSubmit">立即检索</Button>
@@ -55,7 +55,6 @@
             </div>
         </div>
         <div class="search-result">
-            <p class="search-label">检索条件：</p>
             <p class="search-content">已查找到<span>1161</span>条数据</p>
             <a class="search-download">下载检索结果文件</a>
         </div>
@@ -81,30 +80,13 @@
                 serviceList: showDataSelection.serviceList,
                 portData: porttables.deviceData,
                 columns: porttables.columns,
-                defaultData:{
-                    province: {
-                        value: 'all',
-                        label: '全国'
-                    },
-                    data: {
-                        value: 'all',
-                        label: '全国数据'
-                    },
-                    portType: {
-                        value: 'all',
-                        label: '全部'
-                    },
-                    service: {
-                        value: 'all',
-                        label: '全部'
-                    }
-                },
+                defaultDate: this.getDate(),
                 options: {
                     disabledDate (date) {
                         return date && date.valueOf() > Date.now();
                     }
                 },
-                device: {
+                port: {
                     IP: '',
                     startDate:'',
                     finDate: '',
@@ -151,11 +133,25 @@
             con(selection){
                 this.selection = selection;
             },
+            getDate(){
+                let date = new Date();
+                let seperator1 = "-";
+                let month = date.getMonth() + 1;
+                let strDate = date.getDate();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                let currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                return currentdate;
+            }
+        },
+        mounted(){
+
         },
         computed:{
-            defaultDate(){
-                return new Date();
-            },
             BtnDisabled(){
                 if(this.selection.length){
                     return false;

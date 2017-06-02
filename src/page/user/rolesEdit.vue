@@ -41,7 +41,7 @@
             <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px" @click="roleAdd" :disabled="roleBTN">创建</Button>
             <Button type="ghost" class="f16 mt-20" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user/rolesShow')">取消</Button>
         </div>
-        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog" :url="this.modal.url"></modal>
     </div>
 </template>
 <style lang="less">
@@ -512,6 +512,7 @@
                     title:'',
                     content:'',
                     dialog:0,
+                    url:''
                 }
             }
         },
@@ -540,7 +541,8 @@
                 this.$http.post('localhost',data,config).then((res)=>{
                     if(res.msg=='1'){
                         this.modal.dialog++;
-                        this.modal.title = `操作成功`
+                        this.modal.title = `操作成功`;
+                        this.modal.url = '/user/rolesShow'
                     }else if(res.msg=='2'){
 
                     }

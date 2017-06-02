@@ -38,21 +38,15 @@
                 <Button type="ghost" class="f16" style="margin-left: 8px; width: 90px;height:36px" @click="$router.push('/user')">取消</Button>
             </Form-item>
         </Form>
-        <!---->
-        <Modal v-model="dialog.userstate" :mask-closable="false" title="提示" class="userstate">
-            <div class="clearfix dialog-body" v-html="dialog.content"></div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="userstate_con">确定</Button>
-            </div>
-        </Modal>
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog" :url="this.modal.url"></modal>
     </div>
 </template>
 <style lang="less">
 </style>
 <script type="text/ecmascript-6">
-import { validatePass,validateTel} from '../../../static/formrule'
-import {userDetail,config} from '../../../static/data'
-import {BASEURL} from '../../../static/const'
+import { validatePass,validateTel } from '../../assets/js/formrule'
+import { config } from '../../assets/js/data'
+import modal from '../../components/common/modal.vue'
 export default{
     data () {
         return {
@@ -89,10 +83,12 @@ export default{
                 ]
             },
             rolesList:[],
-            dialog:{
-                userstate:false,
-                content:''
-            },
+            modal:{
+                title:'',
+                content:'',
+                dialog:0,
+                url: ''
+            }
         }
     },
     methods:{
@@ -101,11 +97,19 @@ export default{
                 if (valid) {
                     let data = 'userId='+this.userID+'userName='+this.formItem.userName+'&userPassword='+this.formItem.userPassword+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
                     this.$http.post('/user/users/update',data,config).then((res)=>{
-                        this.dialog.userstate = true;
-                        this.dialog.content = `<h1>操作成功</h1>`
+                        if(res=='success'){
+                            this.modal.dialog++;
+                            this.modal.title = '操作成功';
+                            this.modal.url = '/user';
+                        }else if(res=='same'){
+                            this.modal.dialog--;
+                            this.modal.title = '操作失败';
+                            this.modal.content = `用户名已存在`;
+                        }
                     }).catch((res)=>{
-                        this.dialog.userstate = true;
-                        this.dialog.content = `<h1>操作成功</h1>`
+                        this.modal.dialog--;
+                        this.modal.title = '操作失败';
+                        this.modal.content = `${res}`;
                     })
                 }
             })
@@ -129,9 +133,6 @@ export default{
                 _array.push(obj);
             }
             return _array;
-        },
-        userstate_con(){
-            this.$router.push("/user")
         },
         checkRole(value){
             this.formItem.roleId = value.value;

@@ -14,13 +14,13 @@
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
         </div>
-        <!-- 开启禁用 -->
+       <!-- &lt;!&ndash; 开启禁用 &ndash;&gt;
         <Modal v-model="dialog.userstate" :mask-closable="false" title="提示" class="userstate">
             <div class="clearfix dialog-body" v-html="dialog.content"></div>
             <div slot="footer">
                 <Button type="primary" style="width:90px" class="align" @click="userstate_con">确定</Button>
             </div>
-        </Modal>
+        </Modal>-->
         <!--赋权-->
         <Modal v-model="dialog.userrole" :mask-closable="false" title="权限分配" class="userRole">
             <div class="clearfix dialog-body">
@@ -35,14 +35,13 @@
                     </Select>
                 </div>
                 <p class="red mt-20">如果您发现没有合适的权限，请先去创建权限再批量进行批量操作。</p>
-                <p class="red mt-20 text-center f14" v-if="roleState==1">设置成功！</p>
-                <p class="red mt-20 text-center f14" v-if="roleState==2">设置失败！Error Code：XXXXX</p>
             </div>
             <div slot="footer">
                 <Button type="primary" style="width:80px" class="align f14" @click="userrole_con">确定</Button>
                 <Button type="ghost" style="width:80px" class="align f14" @click="dialog.userrole=!dialog.userrole">取消</Button>
             </div>
         </Modal>
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
 <style lang="less">
@@ -94,7 +93,8 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {userlisttables,showDataSelection,config,roleslisttables} from '../../../static/data'
+    import {userlisttables,showDataSelection,config,roleslisttables} from '../../assets/js/data'
+    import modal from '../../components/common/modal.vue'
     export default{
         data(){
             return {
@@ -111,22 +111,27 @@
                     userstate: false,
                     userrole: false,
                     content: ''
+                },
+                modal:{
+                    title:'',
+                    content:'',
+                    dialog:0
                 }
             }
         },
         methods: {
-            con(selection){
+            con(selection){     //多选
                 this.selection = selection;
             },
-            detail(index){
+            detail(index){      //查看用户详情
                 this.$store.dispatch('setuserid',index);
                 this.$router.push('/user/usersDetail')
             },
-            remove(index){
+            remove(index){      //编辑用户详情
                 this.$store.dispatch('setuserid',index);
                 this.$router.push('/user/usersEdit')
             },
-            setUserState(flag){     //修改账户状态
+            setUserState(flag){     //启动、停用用户状态
                 let data = '';
                 for(let i=0;i<this.selection.length;i++){
                     data+= 'userIds[]='+this.selection[i].userId+'&';
@@ -135,20 +140,19 @@
                 this.$http.post('/user/users/del',_data,config)
                         .then((res)=>{
                             if(res.data.msg=='success'){
-                                this.dialog.userstate = true;
-                                this.dialog.content = `<h1>操作成功</h1>`
+                                this.modal.dialog++;
+                                this.modal.title = '操作成功'
                             }else if(res.data.msg=='error'){
-                                this.dialog.userstate = true
-                                this.dialog.content = `<h1>操作失败</h1><p class="errorInfo">${res.data.message}</p>`
+                                this.modal.dialog--;
+                                this.modal.title = '操作失败'
+                                this.modal.content = `${res}`
                             }
                         })
                         .catch((res)=>{
-                            this.dialog.userstate = true
-                            this.dialog.content = `<h1>操作失败</h1><p class="errorInfo">${res}</p>`
+                            this.modal.dialog--;
+                            this.modal.title = '操作失败'
+                            this.modal.content = `${res}`
                         })
-            },
-            userstate_con(){
-                window.location.reload();
             },
             userrole_con(){     //批量修改用户权限
                 let data = '';
@@ -159,13 +163,21 @@
                 this.$http.post('/user/users/usersGetRight',_data,config)
                         .then((res)=>{
                             if(res.data.msg=='success'){
-                                this.roleState = 1;
-                                setTimeout(window.location.reload(),3000)
+                                this.dialog.userrole = false;
+                                this.modal.dialog++;
+                                this.modal.title = '操作成功'
                             }else{
-                                this.roleState = 2;
+                                this.dialog.userrole = false;
+                                this.modal.dialog--;
+                                this.modal.title = '操作失败'
+                                this.modal.content = `${res}`
                             }
                         })
-                        .catch((res)=>{
+                        .catch(res=>{
+                            this.dialog.userrole = false;
+                            this.modal.dialog--;
+                            this.modal.title = '操作失败'
+                            this.modal.content = `${res}`
                         })
             },
             setUserRoles(){
@@ -205,6 +217,9 @@
                     this.selectionList = roleslisttables.roleslist;
                     this.defaultData.data = roleslisttables.roleslist[0]
             })
+        },
+        components:{
+            modal
         }
     }
 </script>

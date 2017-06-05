@@ -2,8 +2,8 @@
     <div>
         <div class="module-header">
             <h4>端口列表
-                <Select v-model="port.province" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
-                    <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
+                <Select v-model="port.province" :label-in-value="true" @on-change="selectProvince" style="width:100px;margin-left: 15px">
+                    <Option v-for="item in selectionProvence" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </h4>
         </div>
@@ -55,10 +55,11 @@
             </div>
         </div>
         <div class="search-result">
-            <p class="search-content">已查找到<span>1161</span>条数据</p>
+            <p class="search-content">已查找到<span>{{portData.length}}</span>条数据</p>
             <a class="search-download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
+            {{port}}
             <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="portData" style="margin-top: 10px"></Table>
             <div class="table-set">
                 <Button type="ghost" :disabled="BtnDisabled">下载所选</Button>
@@ -74,7 +75,6 @@
     export default{
         data() {
             return {
-                selectionList: showDataSelection.dataList,
                 selectionProvence: showDataSelection.dataProvenceList,
                 portTypeList: showDataSelection.portType,
                 serviceList: showDataSelection.serviceList,
@@ -88,8 +88,8 @@
                 },
                 port: {
                     IP: '',
-                    startDate:'',
-                    finDate: '',
+                    startDate:this.getDate(),
+                    finDate: this.getDate(),
                     province: 'all',
                     portType: 'all',
                     service: 'all'
@@ -98,39 +98,40 @@
             }
         },
         methods:{
-            reset(){
+            reset(){                //初始化
 
             },
             searchSubmit() {        //立即检索
+                this.$http.post('/demo/user',this.port,config).then(res=>{
 
+                }).catch(res=>{
+
+                })
             },
             setStart(date) {
-                this.device.startDate = date;
-                if(this.device.finish_date && this.device.start_date>this.device.finish_date){
+                this.port.startDate = date;
+                if(this.port.finDate && this.port.startDate>this.port.finDate){
                     alert('起始时间不能晚于结束时间！');
                     return false;
                 }
             },
             setFin(date) {
-                this.device.finDate = date;
-                if(this.device.finish_date<this.device.start_date){
+                this.port.finDate = date;
+                if(this.port.finDate<this.port.startDate){
                     alert('结束时间不能早于起始时间！');
                     return false;
                 }
             },
-            checkData(value) {      //切换数据来源
-
-            },
             selectProvince(v) {     //切换归属省份
                 this.device.province = v.value
             },
-            selectPortType(value) {   //切换端口类型
-                this.device.portType = value.value
+            selectPortType(v) {   //切换端口类型
+                this.device.portType = v.value
             },
             selectService(v) {         //切换业务大类
                 this.device.service = v.value
             },
-            con(selection){
+            con(selection){             //批量选择
                 this.selection = selection;
             },
             getDate(){

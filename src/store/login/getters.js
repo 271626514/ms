@@ -10,7 +10,12 @@ export default{
         let status = state.logStatus || JSON.parse(localStorage.getItem('user')).logStatus;
         return status;
     },
+    getuserRoleId: function(state){
+        let userRoleId = state.user_permission || JSON.parse(localStorage.getItem('user')).user_permission;
+        return userRoleId;
+    },
     getuserrolenavlist: function(state){
         let _temp = state.user_role_navlist || JSON.parse(localStorage.getItem('userrolenavlist'))
+        return _temp;
     }
 }

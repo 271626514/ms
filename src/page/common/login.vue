@@ -140,7 +140,7 @@ export default {
                     .then((res) => {
                         if(res.data.code==0){
                             let path = res.data.tree.children[0].resouce;
-                            this.$store.dispatch('loginSet',{'user_name':this.user.userName,'logStatus':true});
+                            this.$store.dispatch('loginSet',{'user_name':this.user.userName,'logStatus':true,'user_permission':res.data.roleId});
                             this.$router.push(path);
                             this.loading = false;
                         }else if(res.data.code == 1){

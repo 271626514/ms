@@ -20,7 +20,7 @@
                 <div class="usermanage">
                     <div class="module-search">
                         <div class="step">
-                            <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text">下载</a></p>
+                            <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text" href="/cdnManage/downloadTemp?type=device_v2">下载</a></p>
                             <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="modal('device_v2')">上传</a></p>
                             <p><span class="step-label">Step 3</span>在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作</p>
                         </div>
@@ -42,7 +42,7 @@
                 <div class="usermanage">
                     <div class="module-search">
                         <div class="step">
-                            <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text">下载</a></p>
+                            <p><span class="step-label">Step 1</span>下载设备添加模版， 点此 <a class="download-text" href="/cdnManage/downloadTemp?type=device_v3">下载</a></p>
                             <p><span class="step-label">Step 2</span>正确填写设备添加模版并上传，点此<a @click="modal('device_v3')">上传</a></p>
                             <p><span class="step-label">Step 3</span>在待添加设备列表中核对设备信息无误后，点击确定添加 完成操作</p>
                         </div>
@@ -67,7 +67,7 @@
                 <span class="x-label">上传文件：</span>
                 <span class="x-input">{{uploadData.name}}</span>
                 <span class="x-button">
-                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :on-error="uploadError" :before-upload="beforUpload">
+                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx','xls']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :on-error="uploadError" :before-upload="beforUpload" :show-upload-list="false">
                         <Button type="primary">上传文件</Button>
                     </Upload>
                 </span>
@@ -189,7 +189,7 @@
                 defaultData:{
                     data: {
                         value: 'all',
-                        label: '全国数据'
+                        label: '全国'
                     }
                 }
             }
@@ -205,20 +205,20 @@
             beforUpload(f){                 //文件上传前，文件名同步
                 this.uploadData.name = f.name;
             },
-            handleFormatError (f) {      //上传格式校验
+            handleFormatError (f) {         //上传格式校验
                 this.dialogError.flag = true;
-                this.dialogError.content = `文件格式错误，仅支持 xls，xlsx格式文件`;
+                this.dialogError.content = `文件格式错误，仅支持xls，xlsx格式文件`;
             },
             uploadError(f){                 //上传失败,网络原因
                 this.dialogError.flag = true;
                 this.dialogError.content = `网络连接错误，请稍后再试`;
             },
             uploadSuccess(res, file, fileList) {       //上传成功回传
-                if(res.code==0){        //有错误
-                    this.dialogError.flag = true;
-                    this.dialogError.content = res.msg;
-                }else if(res.code==1){      //正确
+                if(res.error.length){
                     this.uploadData.state = 1;
+                }else{
+                    this.dialogError.flag = true;
+                    this.dialogError.content = res.error[0].msg;
                 }
             },
             toPython() {             //点击上传对话框

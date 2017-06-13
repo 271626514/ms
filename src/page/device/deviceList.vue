@@ -2,7 +2,7 @@
     <div>
         <div class="module-header">
             <h4>设备列表
-                <Select v-model="device.province" :label-in-value="true" @on-change="selectProvince" style="width:300px;margin-left: 15px">
+                <Select v-model="device.province" :label-in-value="true" @on-change="selectProvince" style="width:160px;margin-left: 15px">
                     <Option v-for="item in selectionProvence" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </h4>
@@ -140,7 +140,7 @@
     export default{
         data() {
             return {
-                selectionList: showDataSelection.dataList,
+                roleId:this.$store.getters.getuserRoleId,
                 selectionProvence: showDataSelection.dataProvenceList,
                 deviceTypeList: showDataSelection.deviceTypeList,
                 SMNPList: showDataSelection.SMNPList,
@@ -257,6 +257,9 @@
                 }
                 let currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
                 return currentdate;
+            },
+            dataFormat(data){       //数据处理
+
             }
         },
         computed:{
@@ -270,6 +273,14 @@
                     return true;
                 }
             }
+        },
+        mounted(){
+            //拉取用户的权限列表
+            this.$http.get('/role/roles/menus?roleId='+this.roleId).then(res=>{
+                this.selectionProvence = res.menuDeviceList.children
+            }).catch(res=>{
+                console.log('获取用户下拉选择数据失败'+res)
+            })
         }
     }
 </script>

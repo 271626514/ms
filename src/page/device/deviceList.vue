@@ -276,7 +276,7 @@
         },
         mounted(){
             //拉取用户的权限列表
-            this.$http.get('/role/roles/menus?roleId='+this.roleId).then(res=>{
+            this.$http.get('/role/roles/menus?roleId='+this.roleId+'&type=deviceList').then(res=>{
                 this.selectionProvence = res.menuDeviceList.children
             }).catch(res=>{
                 console.log('获取用户下拉选择数据失败'+res)

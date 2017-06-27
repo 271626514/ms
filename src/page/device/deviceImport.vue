@@ -28,8 +28,8 @@
                     <div class="module-header mt-20">
                         <h4>待添加snmp V2设备列表
                             <span class="info-text ml-20">已导入<i class="red"> {{snmp2Data.length}} </i>条设备信息</span>
-                            <Button type="ghost"  @click="cancelUpload" :disabled="!snmp2DataLength" class="right ml-10 f14">取消添加</Button>
-                            <Button type="primary" @click="confirmUpload" :disabled="!snmp2DataLength" class="btn-search right f14">确定添加</Button>
+                            <Button type="ghost"  @click="cancelUpload" class="right ml-10 f14">取消添加</Button>
+                            <Button type="primary" @click="confirmUpload" :disabled="pythonBtn" class="btn-search right f14">确定添加</Button>
                         </h4>
                     </div>
                     <div class="tableContent">
@@ -50,8 +50,8 @@
                     <div class="module-header mt-20">
                         <h4>待添加snmp V3设备列表
                             <span class="info-text ml-20">已导入<i class="red"> {{snmp3Data.length}} </i>条设备信息</span>
-                            <Button type="ghost"  @click="cancelUpload" :disabled="!snmp3DataLength" class="right ml-10 f14">取消添加</Button>
-                            <Button type="primary" @click="confirmUpload" :disabled="!snmp3DataLength" class="btn-search right f14">确定添加</Button>
+                            <Button type="ghost"  @click="cancelUpload" class="right ml-10 f14">取消添加</Button>
+                            <Button type="primary" @click="confirmUpload" :disabled="pythonBtn" class="btn-search right f14">确定添加</Button>
                         </h4>
                     </div>
                     <div class="tableContent">
@@ -61,13 +61,12 @@
             </Tab-pane>
         </Tabs>
         <!--上传-->
-        <button @click="dialog.watting=!dialog.watting">asdasd</button>
         <Modal v-model="dialog.upload" :mask-closable="false" title="文件上传">
             <div class="clearfix uploadModalContent">
                 <span class="x-label">上传文件：</span>
                 <span class="x-input">{{uploadData.name}}</span>
                 <span class="x-button">
-                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx','xls']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :on-error="uploadError" :before-upload="beforUpload" :show-upload-list="false">
+                    <Upload action="/cdnManage/upload" :data="this.uploadData.data" :format="['xlsx','xls']" :on-format-error="handleFormatError" :on-success="uploadSuccess" :on-error="uploadError" :on-progress="uoloading" :show-upload-list="false">
                         <Button type="primary">上传文件</Button>
                     </Upload>
                 </span>
@@ -75,9 +74,18 @@
             <p style="width: 75%; margin: 20px auto">
                 注意： 请务必使用正确的设备／端口批量导入文件模版，不匹配的模版将导致批量添加操作失败。仅支持上传xls、xlsx类型的文件。
             </p>
+            <div class="uploading" v-if="dialog.uploading">
+                <Spin fix v-if="dialog.uploading">
+                    <Icon type="load-c" size=38 class="demo-spin-icon-load"></Icon>
+                    <div>上传中，请稍等...</div>
+                </Spin>
+            </div>
             <div class="errorInfo" v-if="dialogError.flag">
                 <h6 class="red f16 text-center">上传失败！</h6>
                 <p style="width: 75%; margin: 0 auto">{{dialogError.content}}</p>
+            </div>
+            <div class="errorInfo" v-if="dialogSuccess.flag">
+                <h6 class="red f16 text-center">上传成功！</h6>
             </div>
             <div slot="footer">
                 <Button type="primary" @click="toPython" :disabled="uploadLoad">确定</Button>
@@ -93,21 +101,22 @@
                 </Spin>
                 <div v-if="pythodFlag==1" class="x-area">
                     <h3>导入成功！</h3>
-                    <p>请在待添加设备列表中确认设备信息</p>
                 </div>
                 <div v-if="pythodFlag==2" class="x-area">
                     <h3>导入出错！</h3>
-                    <p>请在待添加设备列表中检查错误原因，并重新上传正确的文件</p>
                 </div>
             </div>
             <div slot="footer">
-                <button @click="pythodFlag=2">123123</button>
-                <Button type="primary" style="width:85px" class="align f14" @click="pythonShow" :disabled="pythonBtn">确定</Button>
+                <Button type="primary" style="width:85px" class="align f14" @click="dialog.watting=!dialog.watting">确定</Button>
             </div>
         </Modal>
     </div>
 </template>
 <style lang="less">
+.uploading{
+    position: relative;
+    height: 60px;
+}
 .step{
     font-size: 14px;
     p{
@@ -175,11 +184,14 @@
                     error: false,
                     upload: false,
                     watting: false,
+                    uploading: false
                 },
                 dialogError:{
                     flag: false,
                     content: ''
                 },
+                dialogSuccess:false,
+                checked: 'false',
                 pythondata:[],
                 pythodFlag:0,
                 snmp2Data:[],
@@ -202,32 +214,40 @@
                 this.dialog.upload = true;
                 this.uploadData.data.type = type;
             },
-            beforUpload(f){                 //文件上传前，文件名同步
-                this.uploadData.name = f.name;
-            },
             handleFormatError (f) {         //上传格式校验
+                this.dialog.uploading = false;
                 this.dialogError.flag = true;
                 this.dialogError.content = `文件格式错误，仅支持xls，xlsx格式文件`;
             },
             uploadError(f){                 //上传失败,网络原因
+                this.dialog.uploading = false;
                 this.dialogError.flag = true;
                 this.dialogError.content = `网络连接错误，请稍后再试`;
             },
-            uploadSuccess(res, file, fileList) {       //上传成功回传
-                if(res.error.length){
-                    this.uploadData.state = 1;
-                }else{
+            uoloading(){
+                this.dialog.uploading = true;
+                this.dialogError.flag = false;
+                this.dialogError.content = '';
+            },
+            uploadSuccess(res, file) {       //上传成功回传
+                this.dialog.uploading = false;
+                if(res.error.msg){
                     this.dialogError.flag = true;
-                    this.dialogError.content = res.error[0].msg;
+                    this.dialogError.content = res.error.msg;
+                }else if(!res.error.length){
+                    this.uploadData.name = file.name;
+                    this.uploadData.state = 1;
+                    this.pythondata = res.data;
+                    this.checked = res.checked;
                 }
             },
             toPython() {             //点击上传对话框
                 this.dialog.upload = false;
-                this.dialog.watting = true;
-                this.$http.post('/ms/demo',this.dialog,config).then((res)=>{
-                    this.pythondata = res.data;
-                    this.pythodFlag = res.code;
-                })
+                if(this.uploadData.data.type=='device_v2'){
+                    this.snmp2Data = this.pythondata
+                }else if(this.uploadData.data.type=='device_v3'){
+                    this.snmp3Data = this.pythondata
+                }
             },
             pythonShow() {          //数据展示
                 if(this.uploadData.data.type=='device_v2'){
@@ -238,11 +258,35 @@
                 this.dialog.watting = false;
             },
             cancelUpload() {        //取消同步
-                this.snmp2Data = [];
-                this.snmp3Data = [];
+                if(this.uploadData.data.type=='device_v2'){
+                    this.snmp2Data = [];
+                    this.$http.get('/cdnManage/clear?type=device_v2').then(res=>{
+                        console.log(res)
+                    });
+                }else if(this.uploadData.data.type=='device_v3'){
+                    this.snmp3Data = [];
+                    this.$http.get('/cdnManage/clear?type=device_v3').then(res=>{
+                        console.log(res)
+                    });
+                }
             },
-            confirmUpload() {
-
+            confirmUpload() {       //开始同步
+                this.dialog.watting = true;
+                if(this.uploadData.data.type=='device_v2'){
+                    this.snmp2Data = [];
+                    this.$http.get('/cdnManage/import?type=device_v2').then(res=>{
+                        this.pythodFlag = 1;
+                    }).catch(res=>{
+                        this.pythodFlag = 2;
+                    });
+                }else if(this.uploadData.data.type=='device_v3'){
+                    this.snmp3Data = [];
+                    this.$http.get('/cdnManage/import?type=device_v3').then(res=>{
+                        this.pythodFlag = 1;
+                    }).catch(res=>{
+                        this.pythodFlag = 2;
+                    });
+                }
             },
             close() {
                 this.uploadData.name = '';
@@ -254,6 +298,7 @@
                     this.dialogError.content = '';
                     this.uploadData.name = '';
                     this.uploadData.state = 0;
+                    this.dialog.uploading = false;
                 }
             }
         },
@@ -271,21 +316,21 @@
                 }
             },
             snmp2DataLength() {
-               if(this.snmp2Data.length>1){
+               if(this.snmp2Data.length>0){
                    return true;
                }else{
                    return false;
                }
             },
             snmp3DataLength() {
-                if(this.snmp3Data.length>1){
+                if(this.snmp3Data.length>0){
                     return true;
                 }else{
                     return false;
                 }
             },
             pythonBtn() {
-                if(this.pythondata.length<1){
+                if(this.checked=='false'){
                     return true;
                 }else{
                     return false;

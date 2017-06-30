@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="pull-left logo-info">
-            <img src="../../assets/imgs/logo.png">
+            <img src="../../assets/imgs/logo.png" />
             <span>全网流量资源管理平台</span>
         </div>
         <div class="pull-right user-info">

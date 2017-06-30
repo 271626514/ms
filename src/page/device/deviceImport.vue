@@ -27,7 +27,7 @@
                     </div>
                     <div class="module-header mt-20">
                         <h4>待添加snmp V2设备列表
-                            <span class="info-text ml-20">已导入<i class="red"> {{snmp2Data.length}} </i>条设备信息</span>
+                            <span class="info-text ml-20">已校验<i class="red"> {{snmp2Data.length}} </i>条设备信息</span>
                             <Button type="ghost"  @click="cancelUpload" class="right ml-10 f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="pythonBtn" class="btn-search right f14">确定添加</Button>
                         </h4>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="module-header mt-20">
                         <h4>待添加snmp V3设备列表
-                            <span class="info-text ml-20">已导入<i class="red"> {{snmp3Data.length}} </i>条设备信息</span>
+                            <span class="info-text ml-20">已校验<i class="red"> {{snmp3Data.length}} </i>条设备信息</span>
                             <Button type="ghost"  @click="cancelUpload" class="right ml-10 f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="pythonBtn" class="btn-search right f14">确定添加</Button>
                         </h4>

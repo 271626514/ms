@@ -2,10 +2,9 @@
     <div class="home">
         <header>
             <div class="pull-left logo-info">
-                <img src="../../assets/imgs/logo_home.png">
+                <a @click="$router.push('/home')"><img src="../../assets/imgs/logo_home.png" id="logoToHome"></a>
                 <span>全网流量资源管理平台</span>
                 <div class="pull-right">
-                    <a @click="$router.push('/map')">数据视图</a>
                     <a>在线文档</a>
                     <a>关于我们</a>
                 </div>
@@ -13,12 +12,16 @@
         </header>
         <div class="homeBg">
             <img src="../../assets/imgs/map.png" width="72%" />
-            <span class="login" @click="$router.push('/login')">用户登陆</span>
+            <span class="login" @click="$router.push('/login')">用户登录</span>
+            <span id="map" @click="$router.push('/map')">数据汇总</span>
         </div>
         <my-foot></my-foot>
     </div>
 </template>
 <style lang="less">
+    #logoToHome{
+        cursor: pointer;
+    }
 .home{
     position:relative;
     header{
@@ -72,7 +75,22 @@
             cursor: pointer;
             border-radius: 3px;
             top:50%;
-            left: 50%;
+            left: 40%;
+            margin-left: -78px;
+        }
+        #map{
+            display: inline-block;
+            width: 156px;
+            height: 56px;
+            line-height: 56px;
+            color: #fff;
+            background: #feb343;
+            font-size: 24px;
+            position: absolute;
+            cursor: pointer;
+            border-radius: 3px;
+            top:50%;
+            left: 60%;
             margin-left: -78px;
         }
     }

@@ -105,6 +105,11 @@ export default new Router({
                     path: 'customQueryList',
                     name: '自定义查询',
                     component: path.CUSTOM_QUERY_LIST
+                },
+                {
+                    path: 'publicData',
+                    name: '数据发布',
+                    component: path.PUBLIC_DATA
                 }
             ]
         },

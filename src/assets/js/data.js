@@ -283,17 +283,17 @@ export const devicetables = {
         },
         {
             title: '设备名称',
-            key: 'deviceName',
+            key: 'name',
             width: 185
         },
         {
             title: '设备IP',
-            key: 'IP',
+            key: 'ipAddr',
             width: 180
         },
         {
             title: '所属机房',
-            key: 'labs',
+            key: 'room',
             width: 280
         },
         {
@@ -303,14 +303,17 @@ export const devicetables = {
         },
         {
             title: '上传时间',
-            key: 'uploadDate',
-            align: 'center',
+            key: 'createTime',
             width: 200
         },
         {
             title: 'snmp版本',
             key: 'snmpVersion',
-            width: 140
+            width: 140,
+            render (row, column, index) {
+                const text = row.snmpVersion ? '有':'无';
+                return `${text}`;
+            }
         },
         {
             title: 'snmp端口',
@@ -319,45 +322,62 @@ export const devicetables = {
         },
         {
             title: 'snmp团体字',
-            key: 'snmpRaid',
+            key: 'snmpCommunity',
             width: 200
         },
         {
             title: 'snmpv3配置用户名',
-            key: 'snmpv3Name',
+            key: 'snmpv3Securityname',
             width: 200
         },
         {
             title: 'snmpv3安全级别',
-            key: 'snmpv3SaveLevel',
-            width: 200
+            key: 'snmpv3Securitylevel',
+            width: 200,
+            render (row, column, index) {
+                let text = '';
+                switch (row.snmpv3Securitylevel) {
+                    case 0:
+                        text = `低级`;
+                        break;
+                    case 1:
+                        text = `中级`;
+                        break;
+                    case 2:
+                        text = `高级`;
+                        break;
+                    default:
+                        text = `无安全级别`;
+                }
+                return `${text}`;
+            }
         },
         {
             title: 'snmpv3验证字符串',
-            key: 'snmpv3Code',
+            key: 'snmpv3Authpassphrase',
             width: 200
         },
         {
             title: 'snmpv3验证协议',
-            key: 'snmpv3Protocol',
+            key: 'snmpv3Authprotocol',
             width: 200
         },
         {
             title: 'snmpv3私有加密协议',
-            key: 'snmpv3Encryp',
+            key: 'snmpv3Privprotocol',
             width: 200
         },
         {
             title: 'snmpv3私有加密字符串',
-            key: 'snmpv3EncrypCode',
+            key: 'snmpv3Privpassphrase',
             width: 200
         },
         {
             title: '设备状态',
-            key: 'deviceState',
+            key: 'status',
             width: 200,
             render (row, column, index) {
-                const text = row.deviceState == 0 ? '导入未采集':'导入已采集';
+                const text = row.status ? '导入已采集':'导入未采集';
                 return `${text}`;
             }
         },
@@ -368,6 +388,29 @@ export const devicetables = {
         },
     ],
     deviceData: [
+        {
+            "beginTime":null,
+            "endTime":null,
+            "id":1,
+            "name":"HESJ-PC-IDC-SW01-S9312",
+            "province":"??",
+            "room":null,
+            "type":null,
+            "ipAddr":"111.11.25.9",
+            "snmpVersion":false,
+            "snmpPort":"161",
+            "snmpCommunity":"HBnmc311",
+            "snmpv3Securityname":"null",
+            "snmpv3Securitylevel":0,
+            "snmpv3Authpassphrase":"null",
+            "snmpv3Privpassphrase":"null",
+            "snmpv3Authprotocol":0,
+            "snmpv3Privprotocol":0,
+            "zbHostid":10393,
+            "status":true,
+            "createTime":1459440000,
+            "lastmodifiedTime":1459440000
+        },
         {
             "uploadDate": "2017-03-29 18:39:52",
             "deviceName": "服务器",
@@ -1198,21 +1241,27 @@ export const portCheckTables = {
     ],
     deviceData: [
         {
-            "uploadDate": "2017-03-29 18:39:52",
-            "deviceName": "服务器",
-            "IP": "192.168.0.131",
-            "labs": "杭研海创园3#",
-            "deviceType": "城域网设备",
-            "snmpVersion": "XML-1515",
-            "snmpPort": "8080",
-            "snmpRaid": "5BB3CDN",
-            "snmpv3Name": "root",
-            "snmpv3SaveLevel": "AAA",
-            "snmpv3Code": "EUurie@804k",
-            "snmpv3Protocol": "https",
-            "snmpv3Encryp": "ftp",
-            "snmpv3EncrypCode": "4297f44b13955235245b2497399d7a93",
-            "deviceState": "0"
+            "beginTime":null,
+            "endTime":null,
+            "id":1,
+            "name":"HESJ-PC-IDC-SW01-S9312",
+            "province":"??",
+            "room":null,
+            "type":null,
+            "ipAddr":"111.11.25.9",
+            "snmpVersion":true,
+            "snmpPort":"161",
+            "snmpCommunity":"HBnmc311",
+            "snmpv3Securityname":"null",
+            "snmpv3Securitylevel":0,
+            "snmpv3Authpassphrase":"null",
+            "snmpv3Privpassphrase":"null",
+            "snmpv3Authprotocol":0,
+            "snmpv3Privprotocol":0,
+            "zbHostid":10393,
+            "status":true,
+            "createTime":1459440000,
+            "lastmodifiedTime":1459440000
         },
         {
             "uploadDate": "2017-03-29 18:39:52",

@@ -27,7 +27,7 @@
                     </div>
                     <div class="module-header mt-20">
                         <h4>待添加端口列表
-                            <span class="info-text ml-20">已导入<i class="red"> {{portData.length}} </i>条端口信息</span>
+                            <span class="info-text ml-20">已校验<i class="red"> {{portData.length}} </i>条端口信息</span>
                             <Button type="text"  @click="cancelUpload" class="right blue f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="pythonBtn" class="btn-search right f14">确定添加</Button>
                         </h4>
@@ -219,50 +219,20 @@
             },
             toPython() {             //点击上传对话框
                 this.dialog.upload = false;
-                if(this.uploadData.data.type=='device_v2'){
-                    this.snmp2Data = this.pythondata
-                }else if(this.uploadData.data.type=='device_v3'){
-                    this.snmp3Data = this.pythondata
-                }
-            },
-            pythonShow() {          //数据展示
-                if(this.uploadData.data.type=='device_v2'){
-                    this.snmp2Data = this.pythondata
-                }else if(this.uploadData.data.type=='device_v3'){
-                    this.snmp3Data = this.pythondata
-                }
-                this.dialog.watting = false;
+                this.portData = this.pythondata;
             },
             cancelUpload() {        //取消同步
-                if(this.uploadData.data.type=='device_v2'){
-                    this.snmp2Data = [];
-                    this.$http.get('/cdnManage/clear?type=device_v2').then(res=>{
-                        console.log(res)
-                    });
-                }else if(this.uploadData.data.type=='device_v3'){
-                    this.snmp3Data = [];
-                    this.$http.get('/cdnManage/clear?type=device_v3').then(res=>{
-                        console.log(res)
-                    });
-                }
+                this.pythondata = [];
+                this.$http.get('/cdnManage/clear?type=port').then(res=>{
+                    console.log(res)
+                });
             },
             confirmUpload() {       //开始同步
                 this.dialog.watting = true;
-                if(this.uploadData.data.type=='device_v2'){
-                    this.snmp2Data = [];
-                    this.$http.get('/cdnManage/import?type=device_v2').then(res=>{
-                        this.pythodFlag = 1;
-                    }).catch(res=>{
-                        this.pythodFlag = 2;
-                    });
-                }else if(this.uploadData.data.type=='device_v3'){
-                    this.snmp3Data = [];
-                    this.$http.get('/cdnManage/import?type=device_v3').then(res=>{
-                        this.pythodFlag = 1;
-                    }).catch(res=>{
-                        this.pythodFlag = 2;
-                    });
-                }
+                this.pythondata = [];
+                this.$http.get('/cdnManage/clear?type=port').then(res=>{
+                    console.log(res)
+                });
             },
             close() {
                 this.uploadData.name = '';
@@ -289,20 +259,6 @@
             uploadLoad() {
                 if(this.uploadData.state!=1){
                     return true;
-                }
-            },
-            snmp2DataLength() {
-                if(this.snmp2Data.length>0){
-                    return true;
-                }else{
-                    return false;
-                }
-            },
-            snmp3DataLength() {
-                if(this.snmp3Data.length>0){
-                    return true;
-                }else{
-                    return false;
                 }
             },
             pythonBtn() {

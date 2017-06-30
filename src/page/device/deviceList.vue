@@ -32,15 +32,15 @@
                     类型：
                 </div>
                 <div class="search-item">
-                    <Select v-model="device.deviceType" :label-in-value="true" @on-change="selectDevice" style="width:138px;">
+                    <Select v-model="device.type" :label-in-value="true" @on-change="selectDevice" style="width:138px;">
                         <Option v-for="item in deviceTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
                 <div class="search-label ml-20">
-                    SMNP版本：
+                    SNMP版本：
                 </div>
                 <div class="search-item">
-                    <Select v-model="device.SMNP" :label-in-value="true" @on-change="selectSMNP" style="width:88px;">
+                    <Select v-model="device.snmpVersion" :label-in-value="true" @on-change="selectSMNP" style="width:88px;">
                         <Option v-for="item in SMNPList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -48,14 +48,14 @@
                     端口：
                 </div>
                 <div class="search-item">
-                    <Select v-model="device.port" :label-in-value="true" @on-change="selectPort" style="width:88px;">
+                    <Select v-model="device.snmpPort" :label-in-value="true" @on-change="selectPort" style="width:88px;">
                         <Option v-for="item in portList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
             </div>
             <div class="item">
                 <span class="datelabel">设备IP检索</span>
-                <Input v-model="device.IP" style="width: 350px"></Input>
+                <Input v-model="device.ipAddr" style="width: 350px"></Input>
             </div>
             <div class="search-ctrl">
                 <Button type="primary" class="btn-search ml-20 mt-40" @click="searchSubmit" :loading="loading">
@@ -145,8 +145,10 @@
                 deviceTypeList: showDataSelection.deviceTypeList,
                 SMNPList: showDataSelection.SMNPList,
                 portList: showDataSelection.portList,
+
                 deviceData: devicetables.deviceData,
                 columns: devicetables.columns,
+
                 removeColumns:removeData.columns,
                 operatUser: this.$store.getters.getusername,
                 removeData:[],
@@ -156,14 +158,14 @@
                         return date && date.valueOf() > Date.now();
                     }
                 },
-                device: {
-                    IP: '',
-                    startDate: this.getDate(),
-                    finDate: this.getDate(),
+                device: {               //上传数据
+                    ipAddr: '',
+                    beginTime: this.getDate(),
+                    endTime: this.getDate(),
                     province: 'all',
-                    deviceType: 'all',
-                    SMNP: 'all',
-                    port: 'all',
+                    type: 'all',
+                    snmpVersion: 'all',
+                    snmpPort: 'all',
                 },
                 loading:false,
                 selection: [],
@@ -177,13 +179,13 @@
         },
         methods:{
             reset(){        //清空检索条件
-                this.device.IP = "";
-                this.device.startDate = this.getDate();
-                this.device.finDate = this.getDate();
+                this.device.ipAddr = "";
+                this.device.beginTime = this.getDate();
+                this.device.endTime = this.getDate();
                 this.device.province = 'all';
-                this.device.deviceType = 'all';
-                this.device.SMNP = 'all';
-                this.device.port = 'all';
+                this.device.type = 'all';
+                this.device.snmpVersion = 'all';
+                this.device.snmpPort = 'all';
             },
             searchSubmit() {        //立即检索
                 this.loading = true;
@@ -280,6 +282,11 @@
                 this.selectionProvence = res.menuDeviceList.children
             }).catch(res=>{
                 console.log('获取用户下拉选择数据失败'+res)
+            });
+            this.$http.get('/cdnManage/devicesList').then(res=>{
+                this.deviceData = res.data;
+            }).catch(res=>{
+                console.log('获取设备信息列表数据失败'+res)
             })
         }
     }

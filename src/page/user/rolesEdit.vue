@@ -152,7 +152,6 @@
     }
 </style>
 <script type="text/ecmascript-6">
-    import {config} from '../../assets/js/data'
     import modal from '../../components/common/modal.vue'
     import role from '../../../static/role.json'
     export default {
@@ -214,7 +213,7 @@
                 }).catch((res)=>{
                     this.modal.dialog--;
                     this.modal.title = `操作失败`;
-                    this.modal.content = `${res}`
+                    this.modal.content = `${res}`;
                 })
             }
         },
@@ -230,7 +229,7 @@
                 this.data.deviceImport = role[0].menuDeviceAdd;
                 this.data.portImport = role[0].menuPortAdd;
                 this.data.portList = role[0].menuPortList;
-                this.roleName = role[0].roleName
+                this.roleName = role[0].roleName;
             })
         },
         computed:{

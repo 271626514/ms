@@ -7,7 +7,7 @@ export default{
         return userid;
     },
     getuserrole :function(state){
-        let userid = state.roles_id || JSON.parse(localStorage.getItem('userrole'));
-        return userid;
+        let roleid = state.roles_id || JSON.parse(localStorage.getItem('userrole'));
+        return roleid;
     }
 }

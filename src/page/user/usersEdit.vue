@@ -95,7 +95,7 @@ export default{
         handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    let data = 'userId='+this.userID+'userName='+this.formItem.userName+'&userPassword='+this.formItem.userPassword+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
+                    let data = 'userId='+this.userID+'&userName='+this.formItem.userName+'&userPassword='+this.formItem.userPassword+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
                     this.$http.post('/user/users/update',data,config).then((res)=>{
                         if(res=='success'){
                             this.modal.dialog++;

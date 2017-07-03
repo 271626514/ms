@@ -1,5 +1,6 @@
 [
     {
+        "roleName": "name",
         "menuDeviceList": [
             {
                 "checked": false,
@@ -8,14 +9,14 @@
                         "id": 19,
                         "pId": 18,
                         "title": "财务公司",
-                        "checked": false,
+                        "checked": true,
                         "img": "财务"
                     },
                     {
                         "id": 20,
                         "pId": 18,
                         "title": "采购共享中心",
-                        "checked": false,
+                        "checked": true,
                         "img": "采购"
                     },
                     {

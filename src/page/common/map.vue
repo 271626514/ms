@@ -449,7 +449,7 @@
                         formatter: "{a} <br/>{b} : {c}%"
                     },
                     title:{
-                        text: '国际公司CDN业务付费率',
+                        text: '国际流量付费率',
                         subtext: '付费率=（付费穿透+付费直连）/ CMNET国际流量',
                         textStyle:{
                             fontWeight: 'normal',
@@ -473,7 +473,7 @@
                     },
                     series : [
                         {
-                            name:'国际公司CDN业务付费率',
+                            name:'国际流量付费率',
                             type:'gauge',
                             detail : {formatter:'{value}%'},
                             data:[{value: 48.47, name: '付费率'}]

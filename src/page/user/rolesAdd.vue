@@ -4,35 +4,32 @@
         <div class="module-roles">
             <div class="title">
                 <label>权限名称：</label>
-                <Input v-model="rolesName" style="width: 300px;"></Input>
+                <Input v-model="roleName" style="width: 300px;"></Input>
             </div>
             <div class="power-title mt-20">
                 <strong>设备管理</strong>
-                <p class="power-list"></p>
+                <p class="power-list" v-if="deviceIsCheck">未选择</p>
+                <p class="power-list" v-else>已选择</p>
                 <em class="czicon" :class="{on:treeShow==1}" @click="treeShow=1"></em>
             </div>
             <div class="power-tree" :class="{on:treeShow==1}">
                 <span class="power-name mt-20">设备列表</span>
-                <Tree :data="data.deviceList" show-checkbox @on-check-change="checkDeviceList"></Tree>
+                <Tree :data="data.deviceList" show-checkbox @on-check-change="setDeviceList"></Tree>
                 <span class="power-name mt-10">设备上传</span>
-                <Tree :data="data.deviceImport" show-checkbox @on-check-change="checkDeviceImport"></Tree>
+                <Tree :data="data.deviceImport" show-checkbox @on-check-change="setDeveiceImport"></Tree>
             </div>
             <div class="power-title mt-20">
                 <strong>端口管理</strong>
-                <p class="power-list">未选择</p>
+                <p class="power-list" v-if="portIsCheck">未选择</p>
+                <p class="power-list" v-else>已选择</p>
                 <em class="czicon" :class="{on:treeShow==2}" @click="treeShow=2"></em>
             </div>
             <div class="power-tree" :class="{'on':treeShow==2}">
                 <span class="power-name mt-20">端口列表</span>
-                <Tree :data="data.portList" show-checkbox @on-check-change="checkPortList"></Tree>
+                <Tree :data="data.portList" show-checkbox @on-check-change="setPortList"></Tree>
                 <span class="power-name mt-10">端口上传</span>
-                <Tree :data="data.portImport" show-checkbox @on-check-change="checkPortImport"></Tree>
+                <Tree :data="data.portImport" show-checkbox @on-check-change="setPortImport"></Tree>
             </div>
-            <!--<div class="power-title mt-20">
-                <strong>数据管理</strong>
-                <p class="power-list">未选择</p>
-                <em class="czicon" :class="{on:treeShow==3}" @click="treeShow=3"></em>
-            </div>-->
             <div class="power-tree" :class="{'on':treeShow==3}">
                 <ul id="businessTree" class="ztree">
                     <Tree :data="data.other" show-checkbox></Tree>
@@ -157,352 +154,24 @@
 <script type="text/ecmascript-6">
 import {config} from '../../assets/js/data'
 import modal from '../../components/common/modal.vue'
-const data = [{
-        "checked": false,
-        "children": [
-            {
-                "id": 19,
-                "pId": 18,
-                "title": "财务公司",
-                "checked": false
-            },
-            {
-                "id": 20,
-                "pId": 18,
-                "title": "采购共享中心",
-                "checked": true
-            },
-            {
-                "id": 21,
-                "pId": 18,
-                "title": "国际公司",
-                "checked": false
-            },
-            {
-                "id": 22,
-                "pId": 18,
-                "title": "杭州研发中心",
-                "checked": false
-            },
-            {
-                "id": 23,
-                "pId": 18,
-                "title": "集团公司",
-                "checked": false
-            },
-            {
-                "id": 24,
-                "pId": 18,
-                "title": "咪咕公司",
-                "checked": false
-            },
-            {
-                "id": 25,
-                "pId": 18,
-                "title": "设计院",
-                "checked": false
-            },
-            {
-                "id": 26,
-                "pId": 18,
-                "title": "中国移动（深圳）有限公司",
-                "checked": false
-            },
-            {
-                "id": 27,
-                "pId": 18,
-                "title": "苏州研发中心",
-                "checked": false
-            },
-            {
-                "id": 28,
-                "pId": 18,
-                "title": "铁通公司",
-                "checked": false
-            },
-            {
-                "id": 29,
-                "pId": 18,
-                "title": "信安中心",
-                "checked": false
-            },
-            {
-                "id": 30,
-                "pId": 18,
-                "title": "信息港中心",
-                "checked": false
-            },
-            {
-                "id": 31,
-                "pId": 18,
-                "title": "研究院",
-                "checked": false
-            },
-            {
-                "id": 32,
-                "pId": 18,
-                "title": "移动学院",
-                "checked": false
-            },
-            {
-                "id": 33,
-                "pId": 18,
-                "title": "在线服务公司",
-                "checked": false
-            },
-            {
-                "id": 34,
-                "pId": 18,
-                "title": "政企分公司",
-                "checked": false
-            },
-            {
-                "id": 35,
-                "pId": 18,
-                "title": "中移互联网公司",
-                "checked": false
-            },
-            {
-                "id": 36,
-                "pId": 18,
-                "title": "中移物联网公司",
-                "checked": false
-            },
-            {
-                "id": 37,
-                "pId": 18,
-                "title": "终端公司",
-                "checked": false
-            },
-            {
-                "id": 38,
-                "pId": 18,
-                "title": "卓望公司",
-                "checked": false
-            },
-            {
-                "id": 39,
-                "pId": 18,
-                "title": "上海移动",
-                "checked": false
-            },
-            {
-                "id": 40,
-                "pId": 18,
-                "title": "云南移动",
-                "checked": false
-            },
-            {
-                "id": 41,
-                "pId": 18,
-                "title": "内蒙古移动",
-                "checked": false
-            },
-            {
-                "id": 42,
-                "pId": 18,
-                "title": "北京移动",
-                "checked": false
-            },
-            {
-                "id": 43,
-                "pId": 18,
-                "title": "吉林移动",
-                "checked": false
-            },
-            {
-                "id": 44,
-                "pId": 18,
-                "title": "四川移动",
-                "checked": false
-            },
-            {
-                "id": 45,
-                "pId": 18,
-                "title": "天津移动",
-                "checked": false
-            },
-            {
-                "id": 46,
-                "pId": 18,
-                "title": "宁夏移动",
-                "checked": false
-            },
-            {
-                "id": 47,
-                "pId": 18,
-                "title": "安徽移动",
-                "checked": false
-            },
-            {
-                "id": 48,
-                "pId": 18,
-                "title": "山东移动",
-                "checked": false
-            },
-            {
-                "id": 49,
-                "pId": 18,
-                "title": "山西移动",
-                "checked": false
-            },
-            {
-                "id": 50,
-                "pId": 18,
-                "title": "广东移动",
-                "checked": false
-            },
-            {
-                "id": 51,
-                "pId": 18,
-                "title": "广西移动",
-                "checked": false
-            },
-            {
-                "id": 52,
-                "pId": 18,
-                "title": "新疆移动",
-                "checked": false
-            },
-            {
-                "id": 53,
-                "pId": 18,
-                "title": "江苏移动",
-                "checked": false
-            },
-            {
-                "id": 54,
-                "pId": 18,
-                "title": "江西移动",
-                "checked": false
-            },
-            {
-                "id": 55,
-                "pId": 18,
-                "title": "河北移动",
-                "checked": false
-            },
-            {
-                "id": 56,
-                "pId": 18,
-                "title": "河南移动",
-                "checked": false
-            },
-            {
-                "id": 57,
-                "pId": 18,
-                "title": "浙江移动",
-                "checked": false
-            },
-            {
-                "id": 58,
-                "pId": 18,
-                "title": "海南移动",
-                "checked": false
-            },
-            {
-                "id": 59,
-                "pId": 18,
-                "title": "湖北移动",
-                "checked": false
-            },
-            {
-                "id": 60,
-                "pId": 18,
-                "title": "湖南移动",
-                "checked": false
-            },
-            {
-                "id": 61,
-                "pId": 18,
-                "title": "甘肃移动",
-                "checked": false
-            },
-            {
-                "id": 62,
-                "pId": 18,
-                "title": "福建移动",
-                "checked": false
-            },
-            {
-                "id": 63,
-                "pId": 18,
-                "title": "西藏移动",
-                "checked": false
-            },
-            {
-                "id": 64,
-                "pId": 18,
-                "title": "贵州移动",
-                "checked": false
-            },
-            {
-                "id": 65,
-                "pId": 18,
-                "title": "辽宁移动",
-                "checked": false
-            },
-            {
-                "id": 66,
-                "pId": 18,
-                "title": "重庆移动",
-                "checked": false
-            },
-            {
-                "id": 67,
-                "pId": 18,
-                "title": "陕西移动",
-                "checked": false
-            },
-            {
-                "id": 68,
-                "pId": 18,
-                "title": "青海移动",
-                "checked": false
-            },
-            {
-                "id": 69,
-                "pId": 18,
-                "title": "黑龙江移动",
-                "checked": false
-            },
-            {
-                "id": 70,
-                "pId": 18,
-                "title": "香港移动",
-                "checked": false
-            }
-        ],
-        "depth": 1,
-        "img": "",
-        "menuId": 18,
-        "title": "全国",
-        "parentId": 0,
-        "sort": 0,
-        "type": -2,
-        "url": ""
-    }]
+import role from '../../../static/role.json'
     export default {
         data () {
             return {
                 data:{
-                    deviceImport:[],
                     deviceList:[],
-                    portImport:[],
-                    portList:[]
+                    deviceImport:[],
+                    portList:[],
+                    portImport:[]
                 },
-                rolesName:'',
+                temp:{
+                    deviceList:[],
+                    deviceImport:[],
+                    portList:[],
+                    portImport:[]
+                },
+                roleName:'',
                 treeShow:1,
-                roleData:{          //回传后台的数据
-                    deviceImport:'',
-                    deviceImportTitle:'',
-                    deviceList:'',
-                    deviceListTitle:'',
-                    portImport:'',
-                    portImportTitle:'',
-                    portList:'',
-                    portListTitle:'',
-                },
                 modal:{
                     title:'',
                     content:'',
@@ -512,34 +181,34 @@ const data = [{
             }
         },
         methods:{
-            checkDeviceList(arr){
-                this.roleData.deviceList = this.arrToString(arr);
+            setPortList(value){
+                this.temp.portList = value;
             },
-            checkDeviceImport(arr){
-                this.roleData.deviceImport = this.arrToString(arr);
+            setDeviceList(value){
+                this.temp.deviceList = value;
             },
-            checkPortList(arr){
-                this.roleData.portList = this.arrToString(arr);
+            setDeveiceImport(value){
+                this.temp.deviceImport = value;
             },
-            checkPortImport(arr){
-                this.roleData.portImport = this.arrToString(arr);
+            setPortImport(value){
+                this.temp.portImport = value;
             },
-            arrToString(arr){
+            arrToString(){
                 let str = '';
-                for(let i=0;i<arr.length;i++){
-                    str+='&menuIds[]=' + (arr[i].id||arr[i].menuId)
+                let idArr = [...this.temp.deviceList,...this.temp.deviceImport,...this.temp.portList,...this.temp.portImport];
+                for(let i=0;i<idArr.length;i++){
+                    str+='&menuIds[]=' + (idArr[i].id||idArr[i].menuId)
                 }
                 return str;
             },
             roleAdd(){
-                let data = 'roleName='+this.rolesName + this.roleData.deviceList + this.roleData.deviceImport + this.roleData.portImport + this.roleData.portList
-                this.$http.post('localhost',data,config).then((res)=>{
-                    if(res.msg=='1'){
+                let roleIdS = this.arrToString();
+                let data = 'roleName='+this.roleName + roleIdS;
+                this.$http.post('role/roles/addOrUpdate?',data,config).then((res)=>{
+                    if(res.msg=='ok'){
                         this.modal.dialog++;
                         this.modal.title = '操作成功';
                         this.modal.url = '/user/rolesShow';
-                    }else if(res.msg=='2'){
-
                     }
                 }).catch((res)=>{
                     this.modal.dialog--;
@@ -550,24 +219,34 @@ const data = [{
         },
         mounted(){
             this.$http.get('/role/roles/menus').then((res)=>{
-                this.data.deviceImport = res.data.deviceImport
-                this.data.deviceList = res.data.deviceList
-                this.data.portImport = res.data.portImport
-                this.data.portList = res.data.portList
+                this.data.deviceImport = res[0].deviceImport
+                this.data.deviceList = res[0].deviceList
+                this.data.portImport = res[0].portImport
+                this.data.portList = res[0].portList
             }).catch((res)=>{
-                let deviceImport = JSON.parse(JSON.stringify(data));
-                let deviceList = JSON.parse(JSON.stringify(data));
-                let portImport = JSON.parse(JSON.stringify(data));
-                let portList = JSON.parse(JSON.stringify(data));
-                this.data.deviceImport = deviceImport
-                this.data.deviceList = deviceList
-                this.data.portImport = portImport
-                this.data.portList = portList
+                this.data.deviceList = role[0].menuDeviceList;
+                this.data.deviceImport = role[0].menuDeviceAdd;
+                this.data.portImport = role[0].menuPortAdd;
+                this.data.portList = role[0].menuPortList;
             })
         },
         computed:{
             roleBTN() {
-                if(this.rolesName){
+                if(this.roleName){
+                    return false;
+                }else{
+                    return true;
+                }
+            },
+            deviceIsCheck(){
+                if(this.temp.deviceImport.length>0||this.temp.deviceList.length>0){
+                    return false;
+                }else{
+                    return true;
+                }
+            },
+            portIsCheck(){
+                if(this.temp.portImport.length>0||this.temp.portList.length>0){
                     return false;
                 }else{
                     return true;

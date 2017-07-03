@@ -1459,15 +1459,16 @@ export const roleslisttables = {
             align: 'center',
             render (row, column, index) {
                 if(row.usersCount<1){
-                    return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a> <a style="margin-left: 10px" @click="remove(${index})">删除</a>`;
+                    return `<a @click="detail(${row.roleId})">查看</a> <a style="margin-left: 10px" @click="edit(${row.roleId})">修改</a> <a style="margin-left: 10px" @click="remove(${row.roleId})">删除</a>`;
                 }else{
-                    return `<a @click="detail(${row.id})">查看</a> <a style="margin-left: 10px" @click="edit(${row.id})">修改</a>`
+                    return `<a @click="detail(${row.roleId})">查看</a> <a style="margin-left: 10px" @click="edit(${row.roleId})">修改</a>`
                 }
             }
         }
     ],
     roleslist:[
         {
+            id: 1,
             roleId: 3,
             roleName: "河南省",
             rolesDetail: "设备管理：河南， 端口管理：河南，数据管理：河南，其他：未选择",
@@ -1482,7 +1483,8 @@ export const roleslisttables = {
             ],
         },
         {
-            roleId:1,
+            id:2,
+            roleId:99,
             roleName: "高级权限",
             rolesDetail: "设备管理：全国， 端口管理：全国，数据管理：全国，其他：未选择",
             addDate: '2016.09.12',
@@ -1624,7 +1626,7 @@ export const userDetail = {
 }
 
 //权限详情
-export const rolesDetail = {
+export const rolesObj = {
     rolesName: '管理员',
     addDate: '2016.09.12',
     updateDate: '2016.09.18',

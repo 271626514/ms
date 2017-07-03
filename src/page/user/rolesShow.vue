@@ -46,7 +46,6 @@
         data() {
             return {
                 columns: roleslisttables.columns,
-            //    data: roleslisttables.roleslist,
                 data: [],
                 selection: [],
                 removeState: 0,
@@ -73,7 +72,7 @@
                 this.$router.push('/user/rolesEdit')
             },
             remove(index){
-                this.$http.get('/demo/user').then(res=>{
+                this.$http.get('/demo/user?id='+index).then(res=>{
                     this.modal.dialog++;
                     this.modal.title = '删除成功'
                 }).catch(res=>{

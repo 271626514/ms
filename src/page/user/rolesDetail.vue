@@ -78,7 +78,7 @@
 }
 </style>
 <script type="text/ecmascript-6">
-    import {rolesDetail,BASEURL,roleslisttables} from '../../assets/js/data'
+    import {roleslisttables} from '../../assets/js/data'
     export default{
         data() {
             return {
@@ -88,7 +88,8 @@
         },
         methods:{
             getRoleDetail:function(){
-                this.$http.post(BASEURL+'/admin',{userid:this.rolesId})
+                console.log(123)
+                this.$http.get('/admin?id='+this.rolesId)
                         .then((res) => {
                             this.userDetail = res;
                         })

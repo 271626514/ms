@@ -76,6 +76,9 @@
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
+            <div class="page">
+                <Page :total="page.totalList" @on-change="onChange"></Page>
+            </div>
         </div>
         <!--批量删除-->
         <Modal v-model="dialog.removeAll" :mask-closable="false" title="批量删除" class="removeAll" width="640">
@@ -134,6 +137,10 @@
         color: #666;
     }
 }
+.page{
+    float: right;
+    margin-top: 10px;
+}
 </style>
 <script type="text/ecmascript-6">
     import {showDataSelection,devicetables,removeData,config} from '../../assets/js/data'
@@ -166,6 +173,11 @@
                     type: 'all',
                     snmpVersion: 'all',
                     snmpPort: 'all',
+                },
+                page:{
+                    totalList: 114,
+                    pageNum: 1,
+                    pageSize: 15
                 },
                 loading:false,
                 selection: [],
@@ -262,6 +274,9 @@
             },
             dataFormat(data){       //数据处理
 
+            },
+            onChange(page){         //分页查询
+                console.log(page)
             }
         },
         computed:{
@@ -285,8 +300,9 @@
             });
             this.$http.get('/cdnManage/devicesList').then(res=>{
                 this.deviceData = res.data;
+                this.page.totleList = res.data.totleList;
             }).catch(res=>{
-                console.log('获取设备信息列表数据失败'+res)
+                console.log('获取设备信息列表数据失败'+res);
             })
         }
     }

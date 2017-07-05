@@ -91,8 +91,8 @@
                 </Form-item>
                 <Form-item>
                     <Button type="primary" :loading="loading" class="btn-submit f16" @click="handleSubmit()">
-                        <span v-if="!loading">登   陆</span>
-                        <span v-else>登陆中...</span>
+                        <span v-if="!loading">登   录</span>
+                        <span v-else>登录中...</span>
                     </Button>
                 </Form-item>
             </Form>
@@ -144,13 +144,15 @@ export default {
                             this.$router.push(path);
                             this.loading = false;
                         }else if(res.data.code == 1){
-                            alert('用户名或密码错误')
+                            alert('用户名或密码错误');
+                            this.loading = true;
                         }else if(res.data.code == 2){
-                            alert('验证码不正确')
+                            alert('验证码不正确');
+                            this.loading = true;
                         }else if(res.data.code==3){
-                            alert('您的账号权限不足，请先联系管理员')
+                            alert('您的账号权限不足，请先联系管理员');
+                            this.loading = true;
                         }
-                        this.loading = true;
                     }).catch((res)=>{
                         this.$store.dispatch('loginSet',{'user_name':this.user.userName,'user_permission':1,'logStatus':true});
                         if(this.user.user_name=='admin'){

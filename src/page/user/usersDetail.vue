@@ -14,7 +14,7 @@
             </div>
             <div class="item">
                 <div class="label">手机号码：</div>
-                <div class="desc">{{userDetail.tel}}</div>
+                <div class="desc">{{userDetail.phone}}</div>
             </div>
             <div class="item">
                 <div class="label">邮箱地址：</div>

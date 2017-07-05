@@ -6,7 +6,7 @@
         <i></i>
         <span>联系我们</span>
         <i></i>
-        <span>Copyright©2014 杭研开发平台业务产品部</span>
+        <span>Copyright©2014 杭研开放平台业务产品部</span>
     </div>
 </template>
 <style lang="less">

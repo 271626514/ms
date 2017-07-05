@@ -14,9 +14,9 @@
             </div>
             <div class="power-tree" :class="{on:treeShow==1}">
                 <span class="power-name mt-20">设备列表</span>
-                <Tree :data="data.deviceList" show-checkbox @on-check-change="setDeviceList"></Tree>
+                <Tree :data="tree.deviceList" show-checkbox @on-check-change="setDeviceList" ref="tree1"></Tree>
                 <span class="power-name mt-10">设备上传</span>
-                <Tree :data="data.deviceImport" show-checkbox @on-check-change="setDeveiceImport"></Tree>
+                <Tree :data="tree.deviceImport" show-checkbox @on-check-change="setDeveiceImport"></Tree>
             </div>
             <div class="power-title mt-20">
                 <strong>端口管理</strong>
@@ -26,13 +26,13 @@
             </div>
             <div class="power-tree" :class="{'on':treeShow==2}">
                 <span class="power-name mt-20">端口列表</span>
-                <Tree :data="data.portList" show-checkbox @on-check-change="setPortList"></Tree>
+                <Tree :data="tree.portList" show-checkbox @on-check-change="setPortList"></Tree>
                 <span class="power-name mt-10">端口上传</span>
-                <Tree :data="data.portImport" show-checkbox @on-check-change="setPortImport"></Tree>
+                <Tree :data="tree.portImport" show-checkbox @on-check-change="setPortImport"></Tree>
             </div>
             <div class="power-tree" :class="{'on':treeShow==3}">
                 <ul id="businessTree" class="ztree">
-                    <Tree :data="data.other" show-checkbox></Tree>
+                    <Tree :data="tree.other" show-checkbox></Tree>
                 </ul>
             </div>
             <Button type="primary" class="f16 mt-20" style="width: 90px;height:36px" @click="roleAdd" :disabled="roleBTN">保存</Button>
@@ -157,7 +157,7 @@
     export default {
         data () {
             return {
-                data:{
+                tree:{
                     deviceList:[],
                     deviceImport:[],
                     portList:[],
@@ -177,7 +177,8 @@
                     content:'',
                     dialog:0,
                     url:''
-                }
+                },
+                roleList:''
             }
         },
         methods:{
@@ -219,18 +220,21 @@
         },
         mounted(){
             this.$http.get('/role/roles/addOrUpdate?roleId='+this.rolesId).then((res)=>{
-                this.data.deviceImport = res[0].deviceImport
-                this.data.deviceList = res[0].deviceList
-                this.data.portImport = res[0].portImport
-                this.data.portList = res[0].portList
+                this.tree.deviceImport = res[0].menuDeviceAdd
+                this.tree.deviceList = res[0].menuDeviceList
+                this.tree.portImport = res[0].menuPortAdd
+                this.tree.portList = res[0].menuPortList
                 this.roleName = res[0].roleName
+                //初始化
+
             }).catch((res)=>{
-                this.data.deviceList = role[0].menuDeviceList;
-                this.data.deviceImport = role[0].menuDeviceAdd;
-                this.data.portImport = role[0].menuPortAdd;
-                this.data.portList = role[0].menuPortList;
+                this.$set(this.tree,'deviceList',role[0].menuDeviceList);
+                this.$set(this.tree,'deviceImport',role[0].menuDeviceAdd);
+                this.$set(this.tree,'portImport',role[0].menuPortAdd);
+                this.$set(this.tree,'portList',role[0].menuPortList);
                 this.roleName = role[0].roleName;
             })
+
         },
         computed:{
             roleBTN() {

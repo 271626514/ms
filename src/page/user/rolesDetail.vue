@@ -88,7 +88,6 @@
         },
         methods:{
             getRoleDetail:function(){
-                console.log(123)
                 this.$http.get('/admin?id='+this.rolesId)
                         .then((res) => {
                             this.userDetail = res;

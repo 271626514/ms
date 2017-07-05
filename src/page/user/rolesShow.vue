@@ -112,7 +112,7 @@
             this.$http.get('/role/rolesShow').then((res)=>{
                 this.data = res.data.rolesList;
             }).catch(res=>{
-                this.data = roleslisttables.roleslist
+                console.log('获取权限列表失败'+res)
             })
         },
         components:{

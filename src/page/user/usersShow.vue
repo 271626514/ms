@@ -14,13 +14,7 @@
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
         </div>
-       <!-- &lt;!&ndash; 开启禁用 &ndash;&gt;
-        <Modal v-model="dialog.userstate" :mask-closable="false" title="提示" class="userstate">
-            <div class="clearfix dialog-body" v-html="dialog.content"></div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="userstate_con">确定</Button>
-            </div>
-        </Modal>-->
+
         <!--赋权-->
         <Modal v-model="dialog.userrole" :mask-closable="false" title="权限分配" class="userRole">
             <div class="clearfix dialog-body">
@@ -41,6 +35,7 @@
                 <Button type="ghost" style="width:80px" class="align f14" @click="dialog.userrole=!dialog.userrole">取消</Button>
             </div>
         </Modal>
+
         <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
@@ -149,9 +144,7 @@
                             }
                         })
                         .catch((res)=>{
-                            this.modal.dialog--;
-                            this.modal.title = '操作失败'
-                            this.modal.content = `${res}`
+                           console.log('用户账号状态修改失败'+res)
                         })
             },
             userrole_con(){     //批量修改用户权限

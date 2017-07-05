@@ -26,7 +26,7 @@
             </div>
             <div class="item">
                 <div class="label">创建时间：</div>
-                <div class="desc">{{userDetail.creatTime}}</div>
+                <div class="desc">{{userDetail.createTime}}</div>
             </div>
             <div class="item">
                 <div class="label">权限分配：</div>

@@ -70,7 +70,7 @@
 </template>
 <style lang="less"></style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,porttables} from '../../assets/js/data'
+    import {showDataSelection,porttables,config} from '../../assets/js/data'
     export default{
         data() {
             return {
@@ -87,8 +87,8 @@
                 },
                 port: {
                     IP: '',
-                    startDate:this.getDate(),
-                    finDate: this.getDate(),
+                    beginTime:this.getDate(),
+                    endTime: this.getDate(),
                     province: 'all',
                     portType: 'all',
                     service: 'all'
@@ -98,37 +98,43 @@
         },
         methods:{
             reset(){                //初始化
+                this.port.IP = '';
+                this.port.beginTime = this.getDate();
+                this.port.endTime = this.getDate();
+                this.port.province = 'all';
+                this.port.portType = 'all';
+                this.port.service = 'all';
 
             },
             searchSubmit() {        //立即检索
                 this.$http.post('/demo/user',this.port,config).then(res=>{
 
                 }).catch(res=>{
-
+                    console.log('提交失败'+res);
                 })
             },
             setStart(date) {
-                this.port.startDate = date;
-                if(this.port.finDate && this.port.startDate>this.port.finDate){
+                this.port.beginTime = date;
+                if(this.port.endTime && this.port.beginTime>this.port.endTime){
                     alert('起始时间不能晚于结束时间！');
                     return false;
                 }
             },
             setFin(date) {
-                this.port.finDate = date;
-                if(this.port.finDate<this.port.startDate){
+                this.port.endTime = date;
+                if(this.port.endTime<this.port.beginTime){
                     alert('结束时间不能早于起始时间！');
                     return false;
                 }
             },
             selectProvince(v) {     //切换归属省份
-                this.device.province = v.value
+                this.port.province = v.value
             },
             selectPortType(v) {   //切换端口类型
-                this.device.portType = v.value
+                this.port.portType = v.value
             },
             selectService(v) {         //切换业务大类
-                this.device.service = v.value
+                this.port.service = v.value
             },
             con(selection){             //批量选择
                 this.selection = selection;

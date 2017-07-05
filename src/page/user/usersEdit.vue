@@ -64,7 +64,7 @@ export default{
             userAdd: {
                 password: [
                     { required: true, message: '请填写密码', trigger: 'blur' },
-                    { validator: validatePass,trigger: 'blur'}
+                    /*{ validator: validatePass,trigger: 'blur'}*/
                 ],
                 userRelname: [
                     { required: true, message: '请填写姓名', trigger: 'blur' },
@@ -97,14 +97,14 @@ export default{
                 if (valid) {
                     let data = 'userId='+this.userID+'&userName='+this.formItem.userName+'&userPassword='+this.formItem.password+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
                     this.$http.post('/user/users/update',data,config).then((res)=>{
-                        if(res=='success'){
+                        if(res.data == 'success'){
                             this.modal.dialog++;
                             this.modal.title = '操作成功';
                             this.modal.url = '/user';
-                        }else if(res=='same'){
+                        }else if(res.data == 'error'){
                             this.modal.dialog--;
                             this.modal.title = '操作失败';
-                            this.modal.content = `用户名已存在`;
+                            this.modal.content = `请求失败，请稍后再试`;
                         }
                     }).catch((res)=>{
                         this.modal.dialog--;

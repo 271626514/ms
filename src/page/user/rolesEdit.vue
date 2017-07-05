@@ -203,7 +203,7 @@
                 }
                 return str;
             },
-            getCheckNode(){
+            getCheckNode(){     //格式化用户权限列表渲染
                 for(let i=0;i<this.tree.deviceList[0].children.length;i++){
                     if(this.tree.deviceList[0].children[i].checked){
                         this.temp.deviceList.push(this.tree.deviceList[0].children[i])
@@ -229,10 +229,18 @@
                 let roleIdS = this.arrToString();
                 let data = '&roleName='+this.roleName + roleIdS;
                 this.$http.post('role/roles/addOrUpdate?roleId='+this.rolesId,data,config).then((res)=>{
-                    if(res.msg=='ok'){
+                    if(res.data=='success'){
                         this.modal.dialog++;
                         this.modal.title = '操作成功';
                         this.modal.url = '/user/rolesShow';
+                    }else if(res.data == 'error'){
+                        this.modal.dialog--;
+                        this.modal.title = `操作失败`;
+                        this.modal.content = `请求失败,请稍后再试`
+                    }else if(res.data == 'same'){
+                        this.modal.dialog--;
+                        this.modal.title = `操作失败`;
+                        this.modal.content = `权限名称重复，请修改`
                     }
                 }).catch((res)=>{
                     this.modal.dialog--;
@@ -242,12 +250,13 @@
             }
         },
         mounted(){
-            this.$http.get('/role/roles/addOrUpdate?roleId='+this.rolesId).then((res)=>{
-                this.tree.deviceImport = res[0].menuDeviceAdd
-                this.tree.deviceList = res[0].menuDeviceList
-                this.tree.portImport = res[0].menuPortAdd
-                this.tree.portList = res[0].menuPortList
+            this.$http.get('/role/roles/menus?roleId='+this.rolesId).then((res)=>{
+                this.data.deviceImport = res.data[0].menuDeviceAdd;
+                this.data.deviceList = res.data[0].menuDeviceList
+                this.data.portImport = res.data[0].menuPortAdd
+                this.data.portList = res.data[0].menuPortList
                 this.roleName = res[0].roleName
+                this.getCheckNode();
             }).catch((res)=>{
                 console.log('获取用户权限列表失败'+res)
             })

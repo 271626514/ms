@@ -205,29 +205,32 @@ import role from '../../../static/role.json'
                 let roleIdS = this.arrToString();
                 let data = 'roleName='+this.roleName + roleIdS;
                 this.$http.post('role/roles/addOrUpdate?',data,config).then((res)=>{
-                    if(res.msg=='ok'){
+                    if(res.data=='success'){
                         this.modal.dialog++;
                         this.modal.title = '操作成功';
                         this.modal.url = '/user/rolesShow';
+                    }else if(res.data == 'error'){
+                        this.modal.dialog--;
+                        this.modal.title = `操作失败`;
+                        this.modal.content = `请求失败,请稍后再试`
+                    }else if(res.data == 'same'){
+                        this.modal.dialog--;
+                        this.modal.title = `操作失败`;
+                        this.modal.content = `权限名称重复，请修改`
                     }
                 }).catch((res)=>{
-                    this.modal.dialog--;
-                    this.modal.title = `操作失败`;
-                    this.modal.content = `${res}`
+                    console.log('发送请求失败'+res)
                 })
             }
         },
         mounted(){
             this.$http.get('/role/roles/menus').then((res)=>{
-                this.data.deviceImport = res[0].deviceImport
-                this.data.deviceList = res[0].deviceList
-                this.data.portImport = res[0].portImport
-                this.data.portList = res[0].portList
+                this.data.deviceImport = res.data[0].menuDeviceAdd;
+                this.data.deviceList = res.data[0].menuDeviceList
+                this.data.portImport = res.data[0].menuPortAdd
+                this.data.portList = res.data[0].menuPortList
             }).catch((res)=>{
-                this.data.deviceList = role[0].menuDeviceList;
-                this.data.deviceImport = role[0].menuDeviceAdd;
-                this.data.portImport = role[0].menuPortAdd;
-                this.data.portList = role[0].menuPortList;
+                console.log('获取用户权限列表失败'+res)
             })
         },
         computed:{

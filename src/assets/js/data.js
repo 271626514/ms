@@ -1500,6 +1500,7 @@ export const datahistorytables = {
             title: '数据名称',
             key: 'dataName',
             align: 'center',
+            width:400
         },
         {
             title: '更新时间',
@@ -1510,6 +1511,7 @@ export const datahistorytables = {
             title: '数据下载',
             key: 'downloadData',
             align: 'center',
+            width:100,
             render (row, column, index) {
                 return `<a>立即下载</a>`;
             }

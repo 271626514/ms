@@ -213,9 +213,7 @@
                     this.selectionList = this.getSelect(res.data.roles);    //处理
                     this.defaultData.data = res.data.roles[0];
                 }).catch((res)=>{
-                    this.data = userlisttables.userList;
-                    this.selectionList = roleslisttables.roleslist;
-                    this.defaultData.data = roleslisttables.roleslist[0]
+                    console.log('读取用户列表错误'+res)
             })
         },
         components:{

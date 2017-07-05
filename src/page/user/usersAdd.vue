@@ -141,7 +141,7 @@
             this.$http.get('/user/users/add').then((res)=>{
                 this.roleData = this.getSelect(res.data.roles);
             }).catch((res)=>{
-
+                console.log('获取可选择用户权限列表失败'+res)
             })
         },
         components:{

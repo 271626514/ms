@@ -84,7 +84,7 @@ export default{
                         this.userDetail = res.data.user;
                     })
                     .catch((res)=>{
-                        this.userDetail = userDetail
+                        console.log('获取用户详情信息失败'+res)
                     })
         },
         toEdit: function(index){

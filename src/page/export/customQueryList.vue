@@ -72,7 +72,7 @@ import modal from '../../components/common/modal.vue'
         data(){
             return {
                 columns: customquerytables.columns,
-                data: customquerytables.datalist,
+                data: [],
                 dialog: {
                     search: false
                 },

@@ -153,7 +153,7 @@
                 SMNPList: showDataSelection.SMNPList,
                 portList: showDataSelection.portList,
 
-                deviceData: devicetables.deviceData,
+                deviceData: [],
                 columns: devicetables.columns,
 
                 removeColumns:removeData.columns,
@@ -175,7 +175,7 @@
                     snmpPort: 'all',
                 },
                 page:{
-                    totalList: 114,
+                    totalList: 10,
                     pageNum: 1,
                     pageSize: 15
                 },

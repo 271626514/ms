@@ -74,7 +74,7 @@
             position: absolute;
             cursor: pointer;
             border-radius: 3px;
-            top:50%;
+            top:45%;
             left: 40%;
             margin-left: -78px;
         }
@@ -89,7 +89,7 @@
             position: absolute;
             cursor: pointer;
             border-radius: 3px;
-            top:50%;
+            top:45%;
             left: 60%;
             margin-left: -78px;
         }
@@ -109,7 +109,11 @@
         }
     }
 }
-
+@media (max-width: 1440px) {
+    .login,#map{
+        top:35% !important;
+    }
+}
 </style>
 <script type="text/ecmascript-6">
 import myFoot from '../../components/common/foot'

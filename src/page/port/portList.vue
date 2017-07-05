@@ -59,7 +59,6 @@
             <a class="search-download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
-            {{port}}
             <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="portData" style="margin-top: 10px"></Table>
             <div class="table-set">
                 <Button type="ghost" :disabled="BtnDisabled">下载所选</Button>
@@ -78,7 +77,7 @@
                 selectionProvence: showDataSelection.dataProvenceList,
                 portTypeList: showDataSelection.portType,
                 serviceList: showDataSelection.serviceList,
-                portData: porttables.deviceData,
+                portData: [],
                 columns: porttables.columns,
                 defaultDate: this.getDate(),
                 options: {

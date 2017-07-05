@@ -16,7 +16,7 @@
         data(){
             return {
                 columns: datahistorytables.columns,
-                data: datahistorytables.datalist
+                data: []
             }
         },
     }

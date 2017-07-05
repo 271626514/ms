@@ -121,7 +121,7 @@ export default{
                         this.rolesList = this.getSelect(res.data.roles);
                     })
                     .catch((res)=>{
-                        this.formItem = userDetail
+                        console.log('获取用户信息失败'+res)
                     })
         },
         getSelect(arr){

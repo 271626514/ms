@@ -101,7 +101,7 @@
                             }
                         })
                         .catch((res)=>{
-                            this.data = loglisttables.datalist
+                            console.log('获取日志列表失败'+res)
                         })
             },
             selectLog(value){

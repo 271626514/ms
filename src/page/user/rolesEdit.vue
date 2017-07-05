@@ -153,6 +153,7 @@
 </style>
 <script type="text/ecmascript-6">
     import modal from '../../components/common/modal.vue'
+    import {config} from '../../assets/js/data'
     import role from '../../../static/role.json'
     export default {
         data () {
@@ -177,13 +178,13 @@
                     content:'',
                     dialog:0,
                     url:''
-                },
-                roleList:''
+                }
             }
         },
         methods:{
             setPortList(value){
                 this.temp.portList = value;
+                console.log(this.temp.portList)
             },
             setDeviceList(value){
                 this.temp.deviceList = value;
@@ -202,10 +203,32 @@
                 }
                 return str;
             },
+            getCheckNode(){
+                for(let i=0;i<this.tree.deviceList[0].children.length;i++){
+                    if(this.tree.deviceList[0].children[i].checked){
+                        this.temp.deviceList.push(this.tree.deviceList[0].children[i])
+                    }
+                };
+                for(let i=0;i<this.tree.deviceImport[0].children.length;i++){
+                    if(this.tree.deviceImport[0].children[i].checked){
+                        this.temp.deviceImport.push(this.tree.deviceImport[0].children[i])
+                    }
+                };
+                for(let i=0;i<this.tree.portImport[0].children.length;i++){
+                    if(this.tree.portImport[0].children[i].checked){
+                        this.temp.portImport.push(this.tree.portImport[0].children[i])
+                    }
+                };
+                for(let i=0;i<this.tree.portList[0].children.length;i++){
+                    if(this.tree.portList[0].children[i].checked){
+                        this.temp.portList.push(this.tree.portList[0].children[i])
+                    }
+                };
+            },
             roleAdd(){
                 let roleIdS = this.arrToString();
                 let data = '&roleName='+this.roleName + roleIdS;
-                this.$http.post('role/roles/add?roleId='+this.rolesId,data,config).then((res)=>{
+                this.$http.post('role/roles/addOrUpdate?roleId='+this.rolesId,data,config).then((res)=>{
                     if(res.msg=='ok'){
                         this.modal.dialog++;
                         this.modal.title = '操作成功';
@@ -225,16 +248,9 @@
                 this.tree.portImport = res[0].menuPortAdd
                 this.tree.portList = res[0].menuPortList
                 this.roleName = res[0].roleName
-                //初始化
-
             }).catch((res)=>{
-                this.$set(this.tree,'deviceList',role[0].menuDeviceList);
-                this.$set(this.tree,'deviceImport',role[0].menuDeviceAdd);
-                this.$set(this.tree,'portImport',role[0].menuPortAdd);
-                this.$set(this.tree,'portList',role[0].menuPortList);
-                this.roleName = role[0].roleName;
+                console.log('获取用户权限列表失败'+res)
             })
-
         },
         computed:{
             roleBTN() {

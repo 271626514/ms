@@ -6,11 +6,12 @@
         <div class="userDetail">
             <div class="item">
                 <div class="label">权限名称：</div>
-                <div class="desc">{{rolesDetail.rolesName}}</div>
+                <div class="desc">{{rolesDetail.roleName}}</div>
             </div>
             <div class="item">
                 <div class="label">权限详情：</div>
                 <div class="desc-content">
+                    {{rolesDetail.role.roleDesc}}
                     <ul>
                         <li class="bg-odd">
                             <span class="title">设备管理</span>
@@ -25,18 +26,18 @@
             </div>
             <div class="item">
                 <div class="label">创建时间：</div>
-                <div class="desc">{{rolesDetail.addDate}}</div>
+                <div class="desc">{{rolesDetail.role.createTime}}</div>
             </div>
             <div class="item">
                 <div class="label">最近修改：</div>
-                <div class="desc">{{rolesDetail.updateDate}}</div>
+                <div class="desc">{{rolesDetail.role.lastTime}}</div>
             </div>
             <div class="item">
                 <div class="label">用户数量：</div>
-                <div class="desc">{{rolesDetail.containUser.length}}</div>
-                <div class="desc-content" v-if="rolesDetail.containUser.length">
+                <div class="desc">{{rolesDetail.userCount}}</div>
+                <div class="desc-content" v-if="rolesDetail.userCount">
                     <ul>
-                        <li class="user-item" v-for="i in rolesDetail.containUser">{{i.username}}<i>({{i.delayDate}})</i></li>
+                        <li class="user-item" v-for="i in rolesDetail.userByRoleId">{{i.userName}}<i>({{i.lastTime}})</i></li>
                     </ul>
                 </div>
             </div>
@@ -88,12 +89,12 @@
         },
         methods:{
             getRoleDetail:function(){
-                this.$http.get('/admin?id='+this.rolesId)
+                this.$http.get('/role/roles/tail?roleId='+this.rolesId)
                         .then((res) => {
-                            this.userDetail = res;
+                            this.rolesDetail = res.data;
                         })
                         .catch((res)=>{
-                            this.rolesDetail = roleslisttables.roleslist[this.rolesId]
+                            console.log('获取权限详情失败'+res)
                         })
             },
             toEdit: function(){

@@ -242,7 +242,7 @@
                         this.modal.title = `操作失败`;
                         this.modal.content = `权限名称重复，请修改`
                     }
-                }).catch((res)=>{
+                }).catch(res => {
                     this.modal.dialog--;
                     this.modal.title = `操作失败`;
                     this.modal.content = `${res}`;
@@ -251,11 +251,11 @@
         },
         mounted(){
             this.$http.get('/role/roles/menus?roleId='+this.rolesId).then((res)=>{
-                this.data.deviceImport = res.data[0].menuDeviceAdd;
-                this.data.deviceList = res.data[0].menuDeviceList
-                this.data.portImport = res.data[0].menuPortAdd
-                this.data.portList = res.data[0].menuPortList
-                this.roleName = res[0].roleName
+                this.tree.deviceImport = res.data[0].menuDeviceAdd;
+                this.tree.deviceList = res.data[0].menuDeviceList
+                this.tree.portImport = res.data[0].menuPortAdd
+                this.tree.portList = res.data[0].menuPortList
+                this.roleName = res.data[0].roleName
                 this.getCheckNode();
             }).catch((res)=>{
                 console.log('获取用户权限列表失败'+res)

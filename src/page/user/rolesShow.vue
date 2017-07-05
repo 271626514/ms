@@ -41,7 +41,7 @@
 </style>
 <script type="text/ecmascript-6">
     import modal from '../../components/common/modal.vue'
-    import {roleslisttables} from '../../assets/js/data'
+    import {roleslisttables,config} from '../../assets/js/data'
     export default{
         data() {
             return {
@@ -72,24 +72,34 @@
                 this.$router.push('/user/rolesEdit')
             },
             remove(index){
-                this.$http.get('/demo/user?id='+index).then(res=>{
-                    this.modal.dialog++;
-                    this.modal.title = '删除成功'
-                }).catch(res=>{
-                    this.modal.dialog--;
-                    this.modal.title = '删除失败'
-                    this.modal.content = `${res}`
+                let data = 'roleIds[]='+index;
+                this.$http.post('/role/roles/del?',data,config).then(res=>{
+                    if(res.data=='success'){
+                        this.modal.dialog++;
+                        this.modal.title = '删除成功'
+                    }else if(res.data == 'error'){
+                        this.modal.dialog--;
+                        this.modal.title = '删除失败'
+                        this.modal.content = ``
+                    }
                 })
             },
             userrole_con(){     //批量删除
                 this.dialog.removeAll = false;
-                this.$http.get('/demo/user').then(res=>{
-                    this.modal.dialog++;
-                    this.modal.title = '删除成功'
-                }).catch(res=>{
-                    this.modal.dialog--;
-                    this.modal.title = '删除失败'
-                    this.modal.content = `${res}`
+                let data = '';
+                for(let i=0;i<this.selection.length;i++){
+                    data+= 'roleIds[]='+this.selection[i].roleId+'&';
+                }
+                let _data = data;
+                this.$http.post('/role/roles/del?',_data,config).then(res=>{
+                    if(res.data=='success'){
+                        this.modal.dialog++;
+                        this.modal.title = '删除成功'
+                    }else if(res.data == 'error'){
+                        this.modal.dialog--;
+                        this.modal.title = '删除失败'
+                        this.modal.content = ``
+                    }
                 })
             }
         },

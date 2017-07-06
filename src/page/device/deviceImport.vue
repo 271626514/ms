@@ -10,7 +10,7 @@
                     </div>
                 </Tooltip>
                 <span class="role-text ml-20">权限选择</span>
-                <Select v-model="defaultData.data.value" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
+                <Select v-model="province" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
                     <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </h4>
@@ -170,7 +170,8 @@
     export default{
         data() {
             return {
-                selectionList: showDataSelection.dataList,
+                selectionList: [],
+                roleId:this.$store.getters.getuserRoleId,
                 uploadData: {
                     name: '',
                     state: 0,
@@ -198,17 +199,12 @@
                 columns2:snmp2tables.columns,
                 snmp3Data: [],
                 columns3:snmp3tables.columns,
-                defaultData:{
-                    data: {
-                        value: 'all',
-                        label: '全国'
-                    }
-                }
+
             }
         },
         methods:{
             checkData(value) {      //切换数据来源
-
+                this.province = value.value;
             },
             modal(type){        //激活上传文件对话框，同步用户上传文件类型
                 this.dialog.upload = true;
@@ -300,7 +296,31 @@
                     this.uploadData.state = 0;
                     this.dialog.uploading = false;
                 }
+            },
+            userRoleList(data){     //处理用户列表可用权限
+                let roleList = [];
+                if(data.checked){
+                    roleList.push({label:'全国',value:'全国'})
+                }
+                for(var item of data.children){
+                    if(item.checked){
+                        var _temp = {
+                            label: item.img,
+                            value: item.img
+                        }
+                        roleList.push(_temp)
+                    }
+                }
+                return roleList;
             }
+        },
+        mounted() {
+            this.$http.get('/role/roles/menus?roleId='+this.roleId+'&type=deviceAdd').then(res=>{
+                this.selectionList = this.userRoleList(res.data[0].menuDeviceAdd[0]);
+                this.province = this.selectionList[0].value;
+            }).catch(res=>{
+                console.log('获取用户权限数据失败'+res)
+            });
         },
         computed:{
             BtnDisabled(){

@@ -47,10 +47,13 @@
             </div>
             <div class="item">
                 <span class="datelabel">设备IP检索</span>
-                <Input v-model="port.IP" style="width: 350px"></Input>
+                <Input v-model="port.ipAddr" style="width: 350px"></Input>
             </div>
             <div class="search-ctrl">
-                <Button type="primary" class="btn-search ml-20 mt-40" @click="searchSubmit">立即检索</Button>
+                <Button type="primary" class="btn-search ml-20 mt-40" @click.native="searchSubmit" :loading="loading">
+                    <span v-if="!loading">立即检索</span>
+                    <span v-else>检索中</span>
+                </Button>
                 <a class="text-blue" @click="reset">清空</a>
             </div>
         </div>
@@ -65,12 +68,35 @@
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px">批量删除</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
+            <div class="page" v-if="portData">
+                <Page :total="page.totalList" @on-change="onChange"></Page>
+            </div>
         </div>
+        <Modal v-model="dialog.removeAll" :mask-closable="false" title="批量删除" class="removeAll" width="640">
+            <div class="clearfix">
+                <div>
+                    <p class="mb-10">是否确定删除以下设备？</p>
+                    <div class="tableContent">
+                        <Table width="auto" stripe border :columns="removeColumns" :data="removeData" style="margin-top: 10px"></Table>
+                    </div>
+                    <p class="mt-10">操作人员：{{operatUser}}</p>
+                    <p class="gray mt-10 f12">注意：</p>
+                    <p class="gray f12">删除设备后，将无法对基于该设备继续增加端口信息，已添加的端口则不受影响。</p>
+                </div>
+            </div>
+            <div slot="footer">
+                <Button type="primary" style="width:80px" class="align f14" @click="remove_con">确定</Button>
+                <Button type="ghost" style="width:80px" class="align f14" @click="dialog.removeAll=!dialog.removeAll">取消</Button>
+            </div>
+        </Modal>
+
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
 <style lang="less"></style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,porttables,config} from '../../assets/js/data'
+    import {showDataSelection,porttables,config,removeData} from '../../assets/js/data'
+    import modal from '../../components/common/modal.vue'
     export default{
         data() {
             return {
@@ -80,37 +106,79 @@
                 portData: [],
                 columns: porttables.columns,
                 defaultDate: this.getDate(),
+                userRoleList:[],
+                operatUser: this.$store.getters.getusername,
+                roleId:this.$store.getters.getuserRoleId,
+                removeData:[],
+                removeColumns:removeData.columns,   //批量删除字段
                 options: {
                     disabledDate (date) {
                         return date && date.valueOf() > Date.now();
                     }
                 },
                 port: {
-                    IP: '',
+                    ipAddr: '',
                     beginTime:this.getDate(),
                     endTime: this.getDate(),
-                    province: 'all',
-                    portType: 'all',
-                    service: 'all'
+                    province: '全国',
+                    portType: '全部',
+                    service: '全部'
+                },
+                modal:{
+                    title:'',
+                    content:'',
+                    dialog:0
+                },
+                dialog:{
+                    removeAll:false
+                },
+                page:{
+                    totalList: 10,
+                    pageNum: 1,
+                    pageSize: 15
                 },
                 selection: []
             }
         },
         methods:{
-            reset(){                //初始化
-                this.port.IP = '';
-                this.port.beginTime = this.getDate();
-                this.port.endTime = this.getDate();
-                this.port.province = 'all';
-                this.port.portType = 'all';
-                this.port.service = 'all';
-
+            dataFormat(pageSize,pageNum){       //数据处理
+                let str = ''
+                for(var item in this.port){
+                    str+='&'+item+'=' + this.port[item];
+                }
+                str+= '&pageSize='+ pageSize + '&pageNum='+ pageNum;
+                return str;
             },
-            searchSubmit() {        //立即检索
-                this.$http.post('/demo/user',this.port,config).then(res=>{
-
+            searchSubmit(e,pageSize=15,pageNum=1) {        //立即检索
+                this.loading = true;
+                let data = this.dataFormat(pageSize,pageNum);
+                this.$http.post('/cdnManage/portsList',data,config).then(res=>{
+                    this.portData = res.data;
+                    this.page.totalList = res.data.totalList;
+                    this.loading = false;
                 }).catch(res=>{
-                    console.log('提交失败'+res);
+                    this.loading = false;
+                })
+            },
+            onChange(pageNum){         //分页查询
+                this.searchSubmit(null,15,pageNum);
+                this.page.pageNum = pageNum;
+            },
+            remove_con(){       //批量删除同步后台
+                this.dialog.removeAll = false;
+                this.$http.post('/admin/user',this.removeData,config).then(res=>{
+                    if(res.data == 'success'){
+                        this.modal.dialog++;
+                        this.modal.title = '删除成功'
+                    }else if(res.data == 'error'){
+                        this.modal.dialog--;
+                        this.modal.title = '删除失败'
+                        this.modal.content = ``
+                    }
+                }).catch(res=>{
+                    this.modal.dialog--;
+                    this.modal.title = '删除失败'
+                    this.modal.content = `请检查网络，稍后再试`
                 })
             },
             setStart(date) {
@@ -152,10 +220,31 @@
                 }
                 let currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
                 return currentdate;
-            }
+            },
+            reset(){                //初始化
+                this.port.ipAddr = '';
+                this.port.beginTime = this.getDate();
+                this.port.endTime = this.getDate();
+                this.port.province = '全国';
+                this.port.portType = '全部';
+                this.port.service = '全部';
+            },
         },
         mounted(){
-
+            //拉取用户的权限列表
+            this.$http.get('/role/roles/menus?roleId='+this.roleId+'&type=portList').then(res=>{
+                this.selectionProvence = this.userRoleList(res.data[0].menuDeviceList[0]);
+                this.port.province = this.selectionProvence[0].value;
+            }).catch(res=>{
+                console.log('获取用户权限数据失败'+res)
+            });
+            /*//获取设备信息全部数据
+             this.$http.get('/cdnManage/devicesList?province='+).then(res=>{
+             this.deviceData = res.data;
+             this.page.totleList = res.data.totleList;
+             }).catch(res=>{
+             console.log('获取设备信息列表数据失败'+res);
+             })*/
         },
         computed:{
             BtnDisabled(){

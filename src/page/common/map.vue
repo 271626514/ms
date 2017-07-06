@@ -114,8 +114,8 @@
     width: 100%;
 }
 #port,#port2,#port3,#tobuy,#rose,#rose2,#rose3,#rose4{
-    width: 1000px;
-    height: 850px;
+    width: 575px;
+    height: 400px;
     float: left;
 }
 #port2,#tobuy,#rose2,#rose4{
@@ -245,7 +245,7 @@
                         text: '国际公司端口分布',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
+                            fontSize: 14
                         },
                         left: 'center'
                     },
@@ -300,7 +300,7 @@
                                     }
                                 }
                             },
-                            barWidth:'100px',
+                            barWidth:'50px',
                             data: portData.portNumber
                         }
                     ]
@@ -313,7 +313,7 @@
                         text: '国际公司带宽分布*',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
+                            fontSize: 14
                         },
                         left : 'center'
                     },
@@ -368,7 +368,7 @@
                                     }
                                 }
                             },
-                            barWidth:'100px',
+                            barWidth:'50px',
                             data: portData.portNumber3
                         }
                     ]
@@ -381,7 +381,7 @@
                         text: '国际公司各类业务日均流量#',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
+                            fontSize: 14
                         },
                         left: 'center'
                     },
@@ -436,7 +436,7 @@
                                     }
                                 }
                             },
-                            barWidth:'100px',
+                            barWidth:'50px',
                             data: portData.portNumber2
                         }
                     ]
@@ -453,11 +453,7 @@
                         subtext: '付费率=（付费穿透+付费直连）/ CMNET国际流量',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
-                        },
-                        subTextStyle:{
-                            fontWeiht:'normal',
-                            fontSize:18
+                            fontSize: 14
                         },
                         left: 'center'
                     },
@@ -496,7 +492,7 @@
                         text: '国际公司付费穿透业务TOP10流量分布',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
+                            fontSize: 14
                         },
                         left: 'center'
                     },
@@ -513,8 +509,6 @@
                         left: 5,
                         top: 50,
                         data: tobuy.roseData,
-                        itemWidth: 50,
-                        itemHeight: 28
                     },
                     calculable: true,
                     series: [
@@ -525,13 +519,6 @@
                             center: ['60%', '50%'],
                             roseType: 'radius',
                             data: tobuy.detaiData,
-                            label:{
-                                normal:{
-                                    textStyle:{
-                                        fontSize: '20',
-                                    }
-                                }
-                            },
                             itemStyle: {
                                 normal:{
                                     color: function (params){
@@ -559,7 +546,7 @@
                         text: '国际公司付费直联业务TOP10流量分布',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
+                            fontSize: 14
                         },
                         left: 'center'
                     },
@@ -576,8 +563,6 @@
                         left: 5,
                         top: 50,
                         data: ['Cogent'],
-                        itemWidth: 50,
-                        itemHeight: 28
                     },
                     calculable: true,
                     series: [
@@ -599,13 +584,6 @@
                                     shadowOffset: 0,
                                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                                 }
-                            },
-                            label:{
-                                normal:{
-                                    textStyle:{
-                                        fontSize: '20',
-                                    }
-                                }
                             }
                         }
                     ]
@@ -622,7 +600,7 @@
                         text: '国际公司收费客户业务TOP10 流量分布',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
+                            fontSize: 14
                         },
                         left: 'center'
                     },
@@ -640,8 +618,6 @@
                         left: 5,
                         top: 50,
                         data: tobuy.roseData2,
-                        itemWidth: 50,
-                        itemHeight: 28
                     },
                     calculable: true,
                     series: [
@@ -663,14 +639,7 @@
                                     shadowOffset: 0,
                                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                                 }
-                            },
-                            label:{
-                                normal:{
-                                    textStyle:{
-                                        fontSize: 16,
-                                    }
-                                }
-                            },
+                            }
                         }
                     ]
                 });
@@ -686,7 +655,7 @@
                         text: '国际公司免费直连业务TOP10 流量分布',
                         textStyle:{
                             fontWeight: 'normal',
-                            fontSize: 20
+                            fontSize: 14
                         },
                         left: 'center'
                     },
@@ -704,8 +673,6 @@
                         left: 5,
                         top: 50,
                         data: tobuy.roseData3,
-                        itemWidth: 50,
-                        itemHeight: 28
                     },
                     calculable: true,
                     series: [
@@ -726,14 +693,7 @@
                                     shadowBlur: 10,
                                     shadowOffset: 0,
                                     shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                },
-                                label:{
-                                    normal:{
-                                        textStyle:{
-                                            fontSize: '20'
-                                        }
-                                    }
-                                },
+                                }
                             }
                         }
                     ]
@@ -747,7 +707,7 @@
                             text:'国际公司各类业务流量趋势分析*',
                             textStyle:{
                                 fontWeight: 'normal',
-                                fontSize: 20
+                                fontSize: 14
                             },
                             left: 'center'
                         },
@@ -770,9 +730,7 @@
                         },
                         legend: {
                             data:line.tagName,
-                            top: '8%',
-                            itemWidth: 50,
-                            itemHeight: 28
+                            top: '8%'
                         },
                         xAxis: [
                             {

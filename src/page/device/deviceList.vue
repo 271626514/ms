@@ -40,7 +40,7 @@
                     SNMP版本：
                 </div>
                 <div class="search-item">
-                    <Select v-model="device.snmpVersion" :label-in-value="true" @on-change="selectSMNP" style="width:88px;">
+                    <Select v-model="device.snmpVersionView" :label-in-value="true" @on-change="selectSMNP" style="width:88px;">
                         <Option v-for="item in SMNPList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -58,7 +58,7 @@
                 <Input v-model="device.ipAddr" style="width: 350px"></Input>
             </div>
             <div class="search-ctrl">
-                <Button type="primary" class="btn-search ml-20 mt-40" @click="searchSubmit" :loading="loading">
+                <Button type="primary" class="btn-search ml-20 mt-40" @click.native="searchSubmit" :loading="loading">
                     <span v-if="!loading">立即检索</span>
                     <span v-else>检索中</span>
                 </Button>
@@ -76,7 +76,7 @@
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
-            <div class="page">
+            <div class="page" v-if="deviceData">
                 <Page :total="page.totalList" @on-change="onChange"></Page>
             </div>
         </div>
@@ -98,25 +98,8 @@
                 <Button type="ghost" style="width:80px" class="align f14" @click="dialog.removeAll=!dialog.removeAll">取消</Button>
             </div>
         </Modal>
-        <!--操作成功回执-->
-        <Modal v-model="dialog.success" :mask-closable="false" title="提示" :closable="false">
-            <div class="clearfix dialog-body">
-                <h1>删除成功</h1>
-            </div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="reload">确定</Button>
-            </div>
-        </Modal>
-        <!--操作失败回执-->
-        <Modal v-model="dialog.error" :mask-closable="false" title="提示" :closable="false">
-            <div class="clearfix dialog-body">
-                <h1>删除失败</h1>
-                <p class="red f16 text-center mt-20">{{errorInfo}}</p>
-            </div>
-            <div slot="footer">
-                <Button type="primary" style="width:90px" class="align" @click="dialog.error=!dialog.error">确定</Button>
-            </div>
-        </Modal>
+
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
 <style lang="less">
@@ -144,20 +127,21 @@
 </style>
 <script type="text/ecmascript-6">
     import {showDataSelection,devicetables,removeData,config} from '../../assets/js/data'
+    import modal from '../../components/common/modal.vue'
     export default{
         data() {
             return {
+                deviceData: [],                     //列表数据
+                operatUser: this.$store.getters.getusername,
                 roleId:this.$store.getters.getuserRoleId,
-                selectionProvence: showDataSelection.dataProvenceList,
+                selectionProvence: [],
+
                 deviceTypeList: showDataSelection.deviceTypeList,
                 SMNPList: showDataSelection.SMNPList,
                 portList: showDataSelection.portList,
 
-                deviceData: [],
-                columns: devicetables.columns,
-
-                removeColumns:removeData.columns,
-                operatUser: this.$store.getters.getusername,
+                columns: devicetables.columns,      //列表头
+                removeColumns:removeData.columns,   //批量删除字段
                 removeData:[],
                 defaultDate: this.getDate(),
                 options: {
@@ -169,10 +153,10 @@
                     ipAddr: '',
                     beginTime: this.getDate(),
                     endTime: this.getDate(),
-                    province: 'all',
-                    type: 'all',
-                    snmpVersion: 'all',
-                    snmpPort: 'all',
+                    province: '全国',
+                    type: '全部',
+                    snmpVersionView: '全部',
+                    snmpPort: '全部',
                 },
                 page:{
                     totalList: 10,
@@ -183,56 +167,92 @@
                 selection: [],
                 dialog:{
                     removeAll:false,
-                    success: false,
-                    error:false,
                 },
-                errorInfo:''        //同步后台失败的回传错误信息文字
+                modal:{
+                    title:'',
+                    content:'',
+                    dialog:0
+                },
             }
         },
         methods:{
-            reset(){        //清空检索条件
-                this.device.ipAddr = "";
-                this.device.beginTime = this.getDate();
-                this.device.endTime = this.getDate();
-                this.device.province = 'all';
-                this.device.type = 'all';
-                this.device.snmpVersion = 'all';
-                this.device.snmpPort = 'all';
+            dataFormat(pageSize,pageNum){       //数据处理
+                let str = ''
+                for(var item in this.device){
+                    str+='&'+item+'=' + this.device[item];
+                }
+                str+= '&pageSize='+ pageSize + '&pageNum='+ pageNum;
+                return str;
             },
-            searchSubmit() {        //立即检索
+            searchSubmit(e,pageSize=15,pageNum = this.page.pageNum) {        //立即检索
                 this.loading = true;
-                this.$http.post('/admin/user',this.device,config).then(res=>{
+                let data = this.dataFormat(pageSize,pageNum);
+                this.$http.post('/cdnManage/devicesList',data,config).then(res=>{
+                    this.deviceData = res.data;
+                    this.page.totalList = res.data[0].totalList;
                     this.loading = false;
                 }).catch(res=>{
                     this.loading = false;
-                    console.log(res)
                 })
             },
+            remove_con(){       //批量删除同步后台
+                this.dialog.removeAll = false;
+                let data = '';
+                for(var item of this.removeData){
+                    data+= '&ids[]='+ item.id;
+                }
+                this.$http.post('/admin/user',data,config).then(res=>{
+                    if(res.data == 'success'){
+                        this.modal.dialog++;
+                        this.modal.title = '删除成功'
+                    }else if(res.data == 'error'){
+                        this.modal.dialog--;
+                        this.modal.title = '删除失败'
+                        this.modal.content = ``
+                    }
+                }).catch(res=>{
+                    this.modal.dialog--;
+                    this.modal.title = '删除失败'
+                    this.modal.content = `请检查网络，稍后再试`
+                })
+            },
+            downloadAll() {     //下载批量选择的设备
+                this.dialog.removeAll = false;
+                let data = '';
+                for(var item of this.removeData){
+                    data+= '&ids[]='+ item.id;
+                }
+                this.$http.post('/cdnManage/devicesList',data,config).then(res=>{})
+            },
+            onChange(pageNum){         //分页查询
+                this.searchSubmit(null,15,pageNum);
+                this.page.pageNum = pageNum;
+            },
             setStart(date) {
-                this.device.startDate = date;
-                if(this.device.finish_date && this.device.start_date>this.device.finish_date){
+                this.device.beginTime = date;
+                if(this.device.endTime && this.device.beginTime>this.device.endTime){
                     alert('起始时间不能晚于结束时间！');
                     return false;
                 }
             },
             setFin(date) {
-                this.device.finDate = date;
-                if(this.device.finish_date<this.device.start_date){
+                this.device.endTime = date;
+                if(this.device.endTime<this.device.beginTime){
                     alert('结束时间不能早于起始时间！');
                     return false;
                 }
             },
             selectDevice(value) {   //切换设备类型
-                this.device.deviceType = value.value
+                this.device.type = value.value
             },
             selectSMNP(v) {         //切换smnp
-                this.device.SMNP = v.value
+                this.device.snmpVersionView = v.value
             },
             selectProvince(v) {     //切换归属省份
                 this.device.province = v.value
             },
             selectPort(v) {         //切换端口
-                this.device.port = v.value
+                this.device.snmpPort = v.value
             },
             con(selection){
                 this.selection = selection;
@@ -241,22 +261,14 @@
                 this.dialog.removeAll = true;
                 this.removeData = this.selection;
             },
-            remove_con(){       //批量删除同步后台
-                this.dialog.removeAll = false;
-
-                this.$http.post('/admin/user',this.removeData,config).then((res)=>{
-                    this.dialog.success = true;
-                }).catch((res)=>{
-                    this.dialog.error = true;
-                    this.errorInfo = `${res}`
-                })
-
-            },
-            reload(){ //重新加载页面
-                window.location.reload();
-            },
-            downloadAll() {     //下载批量选择的设备
-
+            reset(){        //清空检索条件
+                this.device.ipAddr = "";
+                this.device.beginTime = this.getDate();
+                this.device.endTime = this.getDate();
+                this.device.province = '全国';
+                this.device.type = '全部';
+                this.device.snmpVersionView = '全部';
+                this.device.snmpPort = '全部';
             },
             getDate(){
                 let date = new Date();
@@ -272,17 +284,24 @@
                 let currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
                 return currentdate;
             },
-            dataFormat(data){       //数据处理
-
-            },
-            onChange(page){         //分页查询
-                console.log(page)
+            userRoleList(data){     //处理用户列表可用权限
+                let roleList = [];
+                if(data.checked){
+                    roleList.push({label:'全国',value:'全国'})
+                }
+                for(var item of data.children){
+                    if(item.checked){
+                        var _temp = {
+                            label: item.img,
+                            value: item.img
+                        }
+                        roleList.push(_temp)
+                    }
+                }
+                return roleList;
             }
         },
         computed:{
-            defaultDate(){
-               return new Date();
-            },
             BtnDisabled(){
                 if(this.selection.length){
                     return false;
@@ -294,16 +313,21 @@
         mounted(){
             //拉取用户的权限列表
             this.$http.get('/role/roles/menus?roleId='+this.roleId+'&type=deviceList').then(res=>{
-                this.selectionProvence = res.menuDeviceList.children
+                this.selectionProvence = this.userRoleList(res.data[0].menuDeviceList[0]);
+                this.device.province = this.selectionProvence[0].value;
             }).catch(res=>{
-                console.log('获取用户下拉选择数据失败'+res)
+                console.log('获取用户权限数据失败'+res)
             });
-            this.$http.get('/cdnManage/devicesList').then(res=>{
+            /*//获取设备信息全部数据
+            this.$http.get('/cdnManage/devicesList?province='+).then(res=>{
                 this.deviceData = res.data;
                 this.page.totleList = res.data.totleList;
             }).catch(res=>{
                 console.log('获取设备信息列表数据失败'+res);
-            })
+            })*/
+        },
+        components:{
+            modal
         }
     }
 </script>

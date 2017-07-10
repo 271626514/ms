@@ -7,8 +7,8 @@
             <Form-item label="账号：" prop="userName">
                 <Input v-model="formItem.userName" placeholder="6-50位字母或数字" disabled style="width:320px;"></Input>
             </Form-item>
-            <Form-item label="密码：" prop="password">
-                <Input v-model="formItem.password" placeholder="8-20位大小写字母或数字组合" type="password" style="width:320px;"></Input>
+            <Form-item label="密码：" prop="userPassword">
+                <Input v-model="formItem.userPassword" placeholder="8-20位大小写字母或数字组合" type="password" style="width:320px;"></Input>
             </Form-item>
             <Form-item label="姓名：" prop="userRelname">
                 <Input v-model="formItem.userRelname" style="width:320px;"></Input>
@@ -53,7 +53,7 @@ export default{
             userID: this.$store.getters.getuserid,
             formItem: {
                 userName: '',
-                password: '',
+                userPassword: '',
                 userRelname: '',
                 phone: '',
                 email: '',
@@ -62,7 +62,7 @@ export default{
                 state: '1',
             },
             userAdd: {
-                password: [
+                userPassword: [
                     { required: true, message: '请填写密码', trigger: 'blur' },
                     /*{ validator: validatePass,trigger: 'blur'}*/
                 ],
@@ -95,12 +95,13 @@ export default{
         handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    let data = 'userId='+this.userID+'&userName='+this.formItem.userName+'&userPassword='+this.formItem.password+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
+                    let data = 'userId='+this.userID+'&userName='+this.formItem.userName+'&userPassword='+this.formItem.userPassword+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
                     this.$http.post('/user/users/update',data,config).then((res)=>{
                         if(res.data == 'success'){
                             this.modal.dialog++;
                             this.modal.title = '操作成功';
                             this.modal.url = '/user';
+                            this.modal.content = ``;
                         }else if(res.data == 'error'){
                             this.modal.dialog--;
                             this.modal.title = '操作失败';
@@ -140,6 +141,9 @@ export default{
     },
     mounted(){
         this.getUserDetail();
+    },
+    components:{
+        modal
     }
 }
 </script>

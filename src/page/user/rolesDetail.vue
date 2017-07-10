@@ -10,9 +10,10 @@
             </div>
             <div class="item">
                 <div class="label">权限详情：</div>
-                <div class="desc-content">
-                    {{rolesDetail.role.roleDesc}}
-                    <ul>
+                <div class="desc-content" v-html="rolesContent">
+                   <!-- {{rolesContent}}
+                    {{rolesDetail.role.roleDesc}}-->
+                    <!--<ul>
                         <li class="bg-odd">
                             <span class="title">设备管理</span>
                             <span class="content">未选</span>
@@ -21,7 +22,7 @@
                             <span class="title">端口管理</span>
                             <span class="content">未选</span>
                         </li>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
             <div class="item">
@@ -54,7 +55,7 @@
     padding: 15px 35px;
     margin-left: 10px;
     li{
-        height:40px;
+        overflow: hidden;
         line-height: 40px;
         .title,.content{
             float: left;
@@ -64,6 +65,9 @@
             text-align: center;
             font-size: 14px;
             color: #333;
+        }
+        .content{
+            width: 640px !important;
         }
     }
     .user-item{
@@ -103,6 +107,22 @@
         },
         mounted(){
             this.getRoleDetail();
+        },
+        computed : {
+            rolesContent(){
+                let HTML = '<ul>';
+                let data = this.rolesDetail.role.roleDesc;
+                let _array = data.split(';');
+                for(let i=0;i<_array.length;i++){
+                    if(i%2==0){
+                        HTML+= '<li><span class="title">'+_array[i].substr(0,5) + '</span><span class="content">' +_array[i].substr(5)+'</span></li>'
+                    }else{
+                        HTML+= '<li class="bg-odd"><span class="title">'+_array[i].substr(0,5) + '</span><span class="content">' +_array[i].substr(5)+'</span></li>'
+                    }
+                }
+                HTML+= '</ul>';
+                return HTML;
+            }
         }
     }
 </script>

@@ -11,11 +11,11 @@
             <div class="item">
                 <span class="datelabel">上传时间</span>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :value="port.beginTime" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
                 </div>
                 <div class="line"></div>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :value="port.endTime" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
                 </div>
             </div>
             <div class="item">
@@ -32,7 +32,7 @@
                     端口类型：
                 </div>
                 <div class="search-item">
-                    <Select v-model="port.portType" :label-in-value="true" @on-change="selectPortType" style="width: 80px">
+                    <Select v-model="port.type" :label-in-value="true" @on-change="selectPortType" style="width: 80px">
                         <Option v-for="item in portTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -69,7 +69,7 @@
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
             <div class="page" v-if="portData">
-                <Page :total="page.totalList" @on-change="onChange"></Page>
+                <Page :total="page.totalList" :page-size="15" @on-change="onChange"></Page>
             </div>
         </div>
         <Modal v-model="dialog.removeAll" :mask-closable="false" title="批量删除" class="removeAll" width="640">
@@ -100,13 +100,11 @@
     export default{
         data() {
             return {
-                selectionProvence: showDataSelection.dataProvenceList,
+                selectionProvence: [],
                 portTypeList: showDataSelection.portType,
                 serviceList: showDataSelection.serviceList,
                 portData: [],
                 columns: porttables.columns,
-                defaultDate: this.getDate(),
-                userRoleList:[],
                 operatUser: this.$store.getters.getusername,
                 roleId:this.$store.getters.getuserRoleId,
                 removeData:[],
@@ -121,7 +119,7 @@
                     beginTime:this.getDate(),
                     endTime: this.getDate(),
                     province: '全国',
-                    portType: '全部',
+                    type: '全部',
                     service: '全部'
                 },
                 modal:{
@@ -129,6 +127,7 @@
                     content:'',
                     dialog:0
                 },
+                loading:false,
                 dialog:{
                     removeAll:false
                 },
@@ -153,8 +152,8 @@
                 this.loading = true;
                 let data = this.dataFormat(pageSize,pageNum);
                 this.$http.post('/cdnManage/portsList',data,config).then(res=>{
-                    this.portData = res.data;
-                    this.page.totalList = res.data.totalList;
+                    this.portData = res.data.list;
+                    this.page.totalList = res.data.totalCount;
                     this.loading = false;
                 }).catch(res=>{
                     this.loading = false;
@@ -198,13 +197,13 @@
             selectProvince(v) {     //切换归属省份
                 this.port.province = v.value
             },
-            selectPortType(v) {   //切换端口类型
-                this.port.portType = v.value
+            selectPortType(v) {     //切换端口类型
+                this.port.type = v.value
             },
-            selectService(v) {         //切换业务大类
+            selectService(v) {      //切换业务大类
                 this.port.service = v.value
             },
-            con(selection){             //批量选择
+            con(selection){         //批量选择
                 this.selection = selection;
             },
             getDate(){
@@ -229,22 +228,31 @@
                 this.port.portType = '全部';
                 this.port.service = '全部';
             },
+            userRoleList(data){     //处理用户列表可用权限
+                let roleList = [];
+                if(data.checked){
+                    roleList.push({label:'全国',value:'全国'})
+                }
+                for(var item of data.children){
+                    if(item.checked){
+                        var _temp = {
+                            label: item.img,
+                            value: item.img
+                        }
+                        roleList.push(_temp)
+                    }
+                }
+                return roleList;
+            }
         },
         mounted(){
             //拉取用户的权限列表
             this.$http.get('/role/roles/menus?roleId='+this.roleId+'&type=portList').then(res=>{
-                this.selectionProvence = this.userRoleList(res.data[0].menuDeviceList[0]);
+                this.selectionProvence = this.userRoleList(res.data[0].menuPortList[0]);
                 this.port.province = this.selectionProvence[0].value;
             }).catch(res=>{
                 console.log('获取用户权限数据失败'+res)
             });
-            /*//获取设备信息全部数据
-             this.$http.get('/cdnManage/devicesList?province='+).then(res=>{
-             this.deviceData = res.data;
-             this.page.totleList = res.data.totleList;
-             }).catch(res=>{
-             console.log('获取设备信息列表数据失败'+res);
-             })*/
         },
         computed:{
             BtnDisabled(){

@@ -11,11 +11,11 @@
             <div class="item">
                 <span class="datelabel">上传时间</span>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :value="device.beginTime" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
                 </div>
                 <div class="line"></div>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :value="device.endTime" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
                 </div>
             </div>
             <div class="item">
@@ -32,7 +32,7 @@
                     类型：
                 </div>
                 <div class="search-item">
-                    <Select v-model="device.type" :label-in-value="true" @on-change="selectDevice" style="width:138px;">
+                    <Select v-model="device.type" :label-in-value="true" @on-change="v=>{ setOption(v,'type')}" style="width:138px;">
                         <Option v-for="item in deviceTypeList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
@@ -77,7 +77,7 @@
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
             <div class="page" v-if="deviceData">
-                <Page :total="page.totalList" @on-change="onChange"></Page>
+                <Page :total="page.totalList" :page-size="15" @on-change="onChange"></Page>
             </div>
         </div>
         <!--批量删除-->
@@ -143,7 +143,6 @@
                 columns: devicetables.columns,      //列表头
                 removeColumns:removeData.columns,   //批量删除字段
                 removeData:[],
-                defaultDate: this.getDate(),
                 options: {
                     disabledDate (date) {
                         return date && date.valueOf() > Date.now();
@@ -188,8 +187,8 @@
                 this.loading = true;
                 let data = this.dataFormat(pageSize,pageNum);
                 this.$http.post('/cdnManage/devicesList',data,config).then(res=>{
-                    this.deviceData = res.data;
-                    this.page.totalList = res.data[0].totalList;
+                    this.deviceData = res.data.list;
+                    this.page.totalList = res.data.totalCount;
                     this.loading = false;
                 }).catch(res=>{
                     this.loading = false;
@@ -263,8 +262,8 @@
             },
             reset(){        //清空检索条件
                 this.device.ipAddr = "";
-                this.device.beginTime = this.getDate();
-                this.device.endTime = this.getDate();
+                this.device.beginTime = this.defaultDate
+                this.device.endTime = this.defaultDate
                 this.device.province = '全国';
                 this.device.type = '全部';
                 this.device.snmpVersionView = '全部';

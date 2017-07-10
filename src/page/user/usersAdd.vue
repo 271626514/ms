@@ -45,111 +45,111 @@
 <style lang="less">
 </style>
 <script type="text/ecmascript-6">
-    import { validatePass,validateTel } from '../../assets/js/formrule'
-    import { config } from '../../assets/js/data'
-    import modal from '../../components/common/modal.vue'
-    import md5 from 'md5'
-    export default{
-        data () {
-            return {
-                formItem: {
-                    userName: '',
-                    password: '',
-                    userRelname: '',
-                    phone: '',
-                    email: '',
-                    company: '',
-                    roldId: '',
-                    state: '1',
-                },
-                modal:{
-                    title:'',
-                    content:'',
-                    dialog:0,
-                    url: ''
-                },
-                roleData:[],
-                userAdd: {
-                    userName:[
-                        { required: true, message: '请填写用户名', trigger: 'blur' },
-                        { type: 'string', min: 6, message: '账号不能少于6位', trigger: 'blur' }
-                    ],
-                    password: [
-                        { required: true, message: '请填写密码', trigger: 'blur' },
-                        /*{ validator: validatePass,trigger: 'blur'}*/
-                    ],
-                    userRelname: [
-                        { required: true, message: '请填写姓名', trigger: 'blur' },
-                        { type: 'string', max: 20, message: '姓名不能超过20个字符', trigger: 'blur' }
-                    ],
-                    phone: [
-                        { required: true, message: '请填写手机号', trigger: 'blur' },
-                        { validator: validateTel, trigger: 'blur' }
-                    ],
-                    email: [
-                        { required: true, message: '请填写邮箱', trigger: 'blur' },
-                        { type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
-                    ],
-                    company: [
-                        {required: true, message: '请填写公司名称', trigger: 'blur'},
-                    ]
-                }
+import { validatePass,validateTel } from '../../assets/js/formrule'
+import { config } from '../../assets/js/data'
+import modal from '../../components/common/modal.vue'
+import md5 from 'md5'
+export default{
+    data () {
+        return {
+            formItem: {
+                userName: '',
+                password: '',
+                userRelname: '',
+                phone: '',
+                email: '',
+                company: '',
+                roldId: '',
+                state: '1',
+            },
+            modal:{
+                title:'',
+                content:'',
+                dialog:0,
+                url: ''
+            },
+            roleData:[],
+            userAdd: {
+                userName:[
+                    { required: true, message: '请填写用户名', trigger: 'blur' },
+                    { type: 'string', min: 6, message: '账号不能少于6位', trigger: 'blur' }
+                ],
+                password: [
+                    { required: true, message: '请填写密码', trigger: 'blur' },
+                    /*{ validator: validatePass,trigger: 'blur'}*/
+                ],
+                userRelname: [
+                    { required: true, message: '请填写姓名', trigger: 'blur' },
+                    { type: 'string', max: 20, message: '姓名不能超过20个字符', trigger: 'blur' }
+                ],
+                phone: [
+                    { required: true, message: '请填写手机号', trigger: 'blur' },
+                    { validator: validateTel, trigger: 'blur' }
+                ],
+                email: [
+                    { required: true, message: '请填写邮箱', trigger: 'blur' },
+                    { type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
+                ],
+                company: [
+                    {required: true, message: '请填写公司名称', trigger: 'blur'},
+                ]
             }
-        },
-        methods:{
-            handleSubmit(name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        let data = 'userName='+this.formItem.userName+'&userPassword='+this.formItem.password+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
-                        this.$http.post('/user/users/add',data,config)
-                            .then((res)=>{
-                                if(res.data=='success'){
-                                    this.modal.dialog++;
-                                    this.modal.title = '操作成功';
-                                    this.modal.url = '/user';
-                                }else if(res.data=='same'){
-                                    this.modal.dialog--;
-                                    this.modal.title = '操作失败';
-                                    this.modal.content = `用户名已存在`;
-                                }else if(res.data == 'error'){
-                                    this.modal.dialog--;
-                                    this.modal.title = '操作失败';
-                                    this.modal.content = `请求失败，请稍后再试`
-                                }
-                            }).catch((res)=>{
+        }
+    },
+    methods:{
+        handleSubmit(name) {
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    let data = 'userName='+this.formItem.userName+'&userPassword='+this.formItem.password+'&userRelname='+this.formItem.userRelname+'&phone='+this.formItem.phone+'&email='+this.formItem.email+'&company='+this.formItem.company+'&state='+this.formItem.state+'&roleId='+this.formItem.roleId
+                    this.$http.post('/user/users/add',data,config)
+                        .then((res)=>{
+                            if(res.data=='success'){
+                                this.modal.dialog++;
+                                this.modal.title = '操作成功';
+                                this.modal.url = '/user';
+                            }else if(res.data=='same'){
                                 this.modal.dialog--;
                                 this.modal.title = '操作失败';
-                                this.modal.content = `${res}`;
-                        })
-                    }
-                })
-            },
-            getSelect(arr){
-                let _array = [];
-                for(let i=0;i<arr.length;i++){
-                    let obj = new Object;
-                    obj.value = arr[i].roleId;
-                    obj.label = arr[i].roleName;
-                    _array.push(obj);
+                                this.modal.content = `用户名已存在`;
+                            }else if(res.data == 'error'){
+                                this.modal.dialog--;
+                                this.modal.title = '操作失败';
+                                this.modal.content = `请求失败，请稍后再试`
+                            }
+                        }).catch((res)=>{
+                            this.modal.dialog--;
+                            this.modal.title = '操作失败';
+                            this.modal.content = `${res}`;
+                    })
                 }
-                return _array;
-            },
-            userstate_con(){
-                this.$router.push("/user")
-            },
-            checkRole(value){
-                this.formItem.roleId = value.value;
-            },
-        },
-        mounted(){
-            this.$http.get('/user/users/add').then((res)=>{
-                this.roleData = this.getSelect(res.data.roles);
-            }).catch((res)=>{
-                console.log('获取可选择用户权限列表失败'+res)
             })
         },
-        components:{
-            modal
-        }
+        getSelect(arr){
+            let _array = [];
+            for(let i=0;i<arr.length;i++){
+                let obj = new Object;
+                obj.value = arr[i].roleId;
+                obj.label = arr[i].roleName;
+                _array.push(obj);
+            }
+            return _array;
+        },
+        userstate_con(){
+            this.$router.push("/user")
+        },
+        checkRole(value){
+            this.formItem.roleId = value.value;
+        },
+    },
+    mounted(){
+        this.$http.get('/user/users/add').then((res)=>{
+            this.roleData = this.getSelect(res.data.roles);
+        }).catch((res)=>{
+            console.log('获取可选择用户权限列表失败'+res)
+        })
+    },
+    components:{
+        modal
     }
+}
 </script>

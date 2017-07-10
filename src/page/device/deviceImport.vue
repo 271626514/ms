@@ -10,7 +10,7 @@
                     </div>
                 </Tooltip>
                 <span class="role-text ml-20">权限选择</span>
-                <Select v-model="province" :label-in-value="true" @on-change="checkData" style="width:300px;margin-left: 15px">
+                <Select v-model="province" :label-in-value="true" @on-change="checkData" style="width:160px;margin-left: 15px">
                     <Option v-for="item in selectionList" :value="item.value" :key="item">{{ item.label }}</Option>
                 </Select>
             </h4>
@@ -193,6 +193,7 @@
                 },
                 dialogSuccess:false,
                 checked: 'false',
+                province:'',
                 pythondata:[],
                 pythodFlag:0,
                 snmp2Data:[],

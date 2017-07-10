@@ -109,18 +109,6 @@ export const showDataSelection = {
         {
             value: '全部',
             label: '全部'
-        },
-        {
-            value: 1,
-            label: 'V1'
-        },
-        {
-            value: 2,
-            label: 'V2C'
-        },
-        {
-            value: 3,
-            label: 'V3'
         }
     ],
     portType:[
@@ -299,11 +287,18 @@ export const devicetables = {
         {
             title: '设备类型',
             key: 'type',
-            width: 200
+            width: 200,
+            render(r,c,i){
+                let text = '';
+                if(r.type==null){
+                    text = '';
+                }
+                return text;
+            }
         },
         {
             title: '上传时间',
-            key: 'createTime',
+            key: 'createTimeView',
             width: 200
         },
         {
@@ -318,7 +313,8 @@ export const devicetables = {
         {
             title: 'snmp端口',
             key: 'snmpPort',
-            width: 140
+            width: 140,
+
         },
         {
             title: 'snmp团体字',
@@ -334,23 +330,6 @@ export const devicetables = {
             title: 'snmpv3安全级别',
             key: 'snmpv3Securitylevel',
             width: 200,
-            /*render (row, column, index) {
-                let text = '';
-                switch (row.snmpv3Securitylevel) {
-                    case 0:
-                        text = `低级`;
-                        break;
-                    case 1:
-                        text = `中级`;
-                        break;
-                    case 2:
-                        text = `高级`;
-                        break;
-                    default:
-                        text = `无安全级别`;
-                }
-                return `${text}`;
-            }*/
         },
         {
             title: 'snmpv3验证字符串',
@@ -405,59 +384,54 @@ export const porttables = {
         },
         {
             title: '设备名称',
-            key: 'name',
+            key: 'devicesName',
             width: 200
         },
         {
             title: '设备IP',
-            key: 'ipAddr',
+            key: 'devicesIp',
             width: 200
         },
         {
             title: '端口名称',
-            key: 'portName',
+            key: 'name',
             width: 250
         },
         {
             title: '端口类型',
-            key: 'portType',
+            key: 'type',
             width: 200,
         },
         {
             title: '上传时间',
-            key: 'createTime',
+            key: 'createTimeView',
             align: 'center',
             width: 200
         },
         {
             title: '业务大类',
-            key: 'service',
+            key: 'service1',
             width: 200,
         },
         {
             title: '业务小类',
-            key: 'serviceSuper',
+            key: 'service2',
             width: 200
         },
         {
             title: '对端设备',
-            key: 'snmpRaid',
+            key: 'peerDevice',
             width: 200
         },
         {
             title: '端口状态',
-            key: 'portState',
+            key: 'status',
             width: 200,
             render (row, column, index) {
                 const text = row.deviceState == 0 ? '导入未采集':'导入已采集';
                 return `${text}`;
             }
-        },
-        {
-            title: '备注',
-            key: 'description',
-            width: 200
-        },
+        }
     ],
     deviceData: []
 }
@@ -474,7 +448,11 @@ export const snmp2tables = {
             title: '校验',
             align: 'center',
             key: 'check',
-            width: 200
+            width: 200,
+            render(row, column, index){
+                const text = row.check == '正常无错误'? `<p class="right">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
+                return `${text}`
+            }
         },
         {
             title: '设备状态',
@@ -510,71 +488,13 @@ export const snmp2tables = {
             title: '设备类型',
             key: 'deviceType',
             align: 'center',
-            width: 200,
-            /*filters: [
-                {
-                    label: 'IDC核心设备',
-                    value: 'IDC核心设备'
-                },
-                {
-                    label: 'IDC汇聚设备',
-                    value: 'IDC汇聚设备'
-                },
-                {
-                    label: 'IDC接入设备',
-                    value: 'IDC接入设备'
-                },
-                {
-                    label: 'Cache/CDN设备',
-                    value: 'Cache/CDN设备'
-                },
-                {
-                    label: 'PB设备－省网核心层',
-                    value: 'PB设备－省网核心层'
-                },
-                {
-                    label: 'PB设备－省网汇聚层',
-                    value: 'PB设备－省网汇聚层'
-                },
-                {
-                    label: 'PB设备－省网接入层',
-                    value: 'PB设备－省网接入层'
-                },
-                {
-                    label: 'PB设备－省网业务层',
-                    value: 'PB设备－省网业务层'
-                },
-                {
-                    label: '城域网设备',
-                    value: '城域网设备'
-                }
-            ],
-            filterMethod (value, row) {
-                return row.deviceType.indexOf(value) > -1;
-            }*/
+            width: 200
         },
         {
             title: 'snmp版本',
             key: 'snmpVersion',
             align: 'center',
             width: 200,
-            /*filters: [
-                {
-                    label: 'V1',
-                    value: 'V1'
-                },
-                {
-                    label: 'V2C',
-                    value: 'V2C'
-                },
-                {
-                    label: 'V3',
-                    value: 'V3'
-                }
-            ],
-            filterMethod (value, row) {
-                return row.snmpVersion.indexOf(value) > -1;
-            }*/
         },
         {
             title: 'snmp端口',
@@ -602,7 +522,11 @@ export const snmp3tables = {
             title: '校验',
             align: 'center',
             key: 'check',
-            width: 200
+            width: 200,
+            render(row, column, index){
+                const text = row.check == '正常无错误'? `<p class="right">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
+                return `${text}`
+            }
         },
         {
             title: '设备状态',
@@ -635,69 +559,11 @@ export const snmp3tables = {
             title: '设备类型',
             key: 'deviceType',
             width: 200,
-            /*filters: [
-                {
-                    label: 'IDC核心设备',
-                    value: 'IDC核心设备'
-                },
-                {
-                    label: 'IDC汇聚设备',
-                    value: 'IDC汇聚设备'
-                },
-                {
-                    label: 'IDC接入设备',
-                    value: 'IDC接入设备'
-                },
-                {
-                    label: 'Cache/CDN设备',
-                    value: 'Cache/CDN设备'
-                },
-                {
-                    label: 'PB设备－省网核心层',
-                    value: 'PB设备－省网核心层'
-                },
-                {
-                    label: 'PB设备－省网汇聚层',
-                    value: 'PB设备－省网汇聚层'
-                },
-                {
-                    label: 'PB设备－省网接入层',
-                    value: 'PB设备－省网接入层'
-                },
-                {
-                    label: 'PB设备－省网业务层',
-                    value: 'PB设备－省网业务层'
-                },
-                {
-                    label: '城域网设备',
-                    value: '城域网设备'
-                }
-            ],
-            filterMethod (value, row) {
-                return row.deviceType.indexOf(value) > -1;
-            }*/
         },
         {
             title: 'snmp版本',
             key: 'snmpVersion',
             width: 200,
-            /*filters: [
-                {
-                    label: 'V1',
-                    value: 'V1'
-                },
-                {
-                    label: 'V2C',
-                    value: 'V2C'
-                },
-                {
-                    label: 'V3',
-                    value: 'V3'
-                }
-            ],
-            filterMethod (value, row) {
-                return row.snmpVersion.indexOf(value) > -1;
-            }*/
         },
         {
             title: 'SNMPv3安全名称',
@@ -750,7 +616,11 @@ export const portCheckTables = {
             title: '校验',
             align: 'center',
             key: 'check',
-            width: 200
+            width: 200,
+            render(row, column, index){
+                const text = row.check == '正常无错误'? `<p class="right">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
+                return `${text}`
+            }
         },
         {
             title: '端口状态',
@@ -782,81 +652,11 @@ export const portCheckTables = {
             title: '端口类型',
             key: 'portType',
             width: 200,
-            /*filters: [
-                {
-                    label: '上联',
-                    value: '上联'
-                },
-                {
-                    label: '下联',
-                    value: '下联'
-                },
-                {
-                    label: '级联',
-                    value: '级联'
-                },
-                {
-                    label: '其他',
-                    value: '其他'
-                }
-            ],*/
-            /*filterMethod (value, row) {
-                return row.deviceType.indexOf(value) > -1;
-            }*/
         },
         {
             title: '业务大类',
             key: 'service',
             width: 200,
-            /*filters: [
-                {
-                    label: '集团出口',
-                    value: '集团出口'
-                },
-                {
-                    label: '他省直连',
-                    value: '他省直连'
-                },
-                {
-                    label: '三方出口',
-                    value: '三方出口'
-                },
-                {
-                    label: 'IDC',
-                    value: 'IDC'
-                },
-                {
-                    label: '统建CDN-IDC',
-                    value: '统建CDN-IDC'
-                },
-                {
-                    label: '统建CDN-省网',
-                    value: '统建CDN-省网'
-                },
-                {
-                    label: '统建CDN-地市',
-                    value: '统建CDN-地市'
-                },
-                {
-                    label: '省建Cache',
-                    value: '省建Cache'
-                },
-                {
-                    label: '第三方CDN',
-                    value: '第三方CDN'
-                },
-                {
-                    label: '手机用户',
-                    value: '手机用户'
-                },
-                {
-                    label: '固网用户',
-                    value: '固网用户'
-                }
-            ],
-            filterMethod (value, row) {
-                return row.snmpVersion.indexOf(value) > -1;
-            }*/
         },
         {
             title: '业务小类',
@@ -868,15 +668,6 @@ export const portCheckTables = {
             key: 'snmpRaid',
             width: 200
         },
-        /*{
-            title: '端口状态',
-            key: 'portState',
-            width: 200,
-            render (row, column, index) {
-                const text = row.deviceState == 0 ? '导入未采集':'导入已采集';
-                return `${text}`;
-            }
-        },*/
         {
             title: '备注',
             key: 'description',

@@ -214,6 +214,7 @@
                     this.dialogError.content = res.error.msg;
                 }else if(!res.error.length){
                     this.uploadData.name = file.name;
+                    this.dialogError.content = `上传成功`;
                     this.uploadData.state = 1;
                     this.pythondata = res.data;
                     this.checked = res.checked;

@@ -14,13 +14,18 @@ Vue.config.productionTip = false
 
 router.beforeEach((to,from,next) => {
     let loginStatus = JSON.parse(window.localStorage.getItem('user')) || null;
-    if(loginStatus === null && to.path != '/login' && to.path != '/home' && to.path != '/map'){
-        next({path: 'home'})
+    if(!to.meta.browse){
+        if(loginStatus){
+            next();
+        }else{
+            next({
+                path: '/login',
+            })
+        }
     }else{
-        next()
+        next();
     }
 })
-
 new Vue({
     el: '#app',
     router,

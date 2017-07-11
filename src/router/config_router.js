@@ -10,31 +10,32 @@ export default new Router({
         {
             path: '/',
             redirect: function(){
-                let loginStatus = JSON.parse(window.localStorage.getItem('user')) || null;
-                if(loginStatus===null){
-                    return '/home'
-                }else if(loginStatus.user_name=='admin'){
-                    return '/user'
-                }else{
-                    return '/dataview'
-                }
-            }
+                return '/home'
+            },
+            meta: { browse: true }
         },
         {
             path: '/home',
-            component: path.HOME
+            component: path.HOME,
+            meta: { browse: true }
         },
         {
             path: '/login',
-            component: path.LOGIN
+            component: path.LOGIN,
+            meta: { browse: true }
         },
         {
             path: '/map',
-            component: path.MAP
+            component: path.MAP,
+            meta: { browse: true }
+        },
+        {
+            path: '/forgetPwd',
+            component: path.FORGETPASSWORD,
+            meta: { browse: true }
         },
         {
             path: '/user',
-            name: '用户管理',
             component: path.LAYOUT_SHOW,
             children: [
                 {
@@ -45,49 +46,40 @@ export default new Router({
                 },
                 {
                     path: 'usersShow',
-                    name: '用户列表',
-                    component: path.USERS_SHOW
+                    component: path.USERS_SHOW,
                 },
                 {
                     path: 'rolesShow',
-                    name: '权限列表',
                     component: path.ROLES_SHOW
                 },
                 {
                     path: 'usersAdd',
-                    name: '创建用户',
-                    component: path.USERS_ADD
+                    component: path.USERS_ADD,
                 },
                 {
                     path: 'usersEdit',
-                    name: '修改用户信息',
-                    component: path.USERS_EDIT
+                    component: path.USERS_EDIT,
                 },
                 {
                     path: 'usersDetail',
-                    name: '查看详情',
-                    component: path.USERS_DETAIL
+                    component: path.USERS_DETAIL,
                 },
                 {
                     path: 'rolesAdd',
-                    name: '查看权限',
-                    component: path.ROLES_ADD
+                    component: path.ROLES_ADD,
                 },
                 {
                     path: 'rolesEdit',
-                    name: '修改权限',
-                    component: path.ROLES_EDIT
+                    component: path.ROLES_EDIT,
                 },
                 {
                     path: 'rolesDetail',
-                    name: '权限详情',
-                    component: path.ROLES_DETAIL
+                    component: path.ROLES_DETAIL,
                 }
             ]
         },
         {
             path: '/export',
-            name: '业务数据管理',
             component: path.LAYOUT_SHOW,
             children: [
                 {
@@ -98,23 +90,19 @@ export default new Router({
                 },
                 {
                     path: 'adminHistoryData',
-                    name: '历史数据',
                     component: path.ADMIN_HISTORY_DATA
                 },
                 {
                     path: 'customQueryList',
-                    name: '自定义查询',
                     component: path.CUSTOM_QUERY_LIST
                 },
                 {
                     path: 'publicData',
-                    name: '数据发布',
                     component: path.PUBLIC_DATA
                 }
             ]
         },
         {
-            name: '系统管理',
             path:'/operateLog',
             component: path.LAYOUT_SHOW,
             children: [
@@ -126,13 +114,11 @@ export default new Router({
                 },
                 {
                     path: 'showLogList',
-                    name: '日志管理',
                     component: path.SHOW_LOG_LIST
                 }
             ]
         },
         {
-            name: '数据管理',
             path: '/dataview',
             component: path.LAYOUT_SHOW,
             children: [
@@ -144,18 +130,15 @@ export default new Router({
                 },
                 {
                     path: 'showDataSum',
-                    name: '数据总览',
                     component: path.SHOW_DATA_SUM
                 },
                 {
                     path: 'download',
-                    name: '历史数据下载',
                     component: path.DOWNLOAD
                 }
             ]
         },
         {
-            name: '设备管理',
             path: '/device',
             component: path.LAYOUT_SHOW,
             children: [
@@ -167,23 +150,19 @@ export default new Router({
                 },
                 {
                     path: 'deviceList',
-                    name: '设备列表',
                     component: path.DEVICE_LIST
                 },
                 {
                     path: 'deviceImport',
-                    name: '设备导入',
                     component: path.DEVICE_IMPORT
                 },
                 {
                     path: 'deviceConcat',
-                    name: '设备同步',
                     component: path.DEVICE_CONCAT
                 }
             ]
         },
         {
-            name: '端口管理',
             path: '/port',
             component: path.LAYOUT_SHOW,
             children: [
@@ -195,17 +174,14 @@ export default new Router({
                 },
                 {
                     path: 'portList',
-                    name: '端口列表',
                     component: path.PORT_LIST
                 },
                 {
                     path: 'portImport',
-                    name: '端口导入',
                     component: path.PORT_IMPORT
                 },
                 {
                     path: 'portConcat',
-                    name: '设备同步',
                     component: path.PORT_CONCAT
                 }
             ]

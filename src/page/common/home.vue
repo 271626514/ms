@@ -37,6 +37,7 @@
     .logo-info{
         width: 1200px;
         margin: 0 auto;
+        cursor:pointer;
         float:none;
         span{
             color: #FFF;

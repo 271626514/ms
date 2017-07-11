@@ -236,6 +236,7 @@
                     this.uploadData.state = 1;
                     this.pythondata = res.data;
                     this.checked = res.checked;
+                    this.dialogError.content = `上传成功`;
                 }
             },
             toPython() {             //点击上传对话框

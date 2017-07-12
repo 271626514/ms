@@ -27,8 +27,8 @@
         computed: {
             bread:function(){
                 let _bread = [];
-                for(let i=0;i<this.$route.matched.length;i++){
-                    _bread.push(this.$route.matched[i].name);
+                for(let i of this.$route.matched){
+                    _bread.push(i.meta.name);
                 }
                 return _bread;
             }

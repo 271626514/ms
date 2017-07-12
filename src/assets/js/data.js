@@ -365,8 +365,7 @@ export const devicetables = {
             key: 'description',
             width:200
         },
-    ],
-    deviceData: []
+    ]
 }
 export const porttables = {
     columns: [
@@ -410,12 +409,12 @@ export const porttables = {
         },
         {
             title: '业务大类',
-            key: 'service1',
+            key: 'service1View',
             width: 200,
         },
         {
             title: '业务小类',
-            key: 'service2',
+            key: 'service2View',
             width: 200
         },
         {
@@ -432,8 +431,7 @@ export const porttables = {
                 return `${text}`;
             }
         }
-    ],
-    deviceData: []
+    ]
 }
 export const snmp2tables = {
     columns: [
@@ -450,7 +448,7 @@ export const snmp2tables = {
             key: 'check',
             width: 200,
             render(row, column, index){
-                const text = row.check == '正常无错误'? `<p class="right">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
+                const text = row.check == '正常无错误'? `<p class="sure">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
                 return `${text}`
             }
         },
@@ -506,8 +504,7 @@ export const snmp2tables = {
             key: 'snmpRaid',
             width: 200
         }
-    ],
-    snmp2: []
+    ]
 }
 export const snmp3tables = {
     columns: [
@@ -524,7 +521,7 @@ export const snmp3tables = {
             key: 'check',
             width: 200,
             render(row, column, index){
-                const text = row.check == '正常无错误'? `<p class="right">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
+                const text = row.check == '正常无错误'? `<p class="sure">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
                 return `${text}`
             }
         },
@@ -600,8 +597,7 @@ export const snmp3tables = {
             key: 'description',
             width: 200
         }
-    ],
-    snmp3: []
+    ]
 }
 export const portCheckTables = {
     columns: [
@@ -618,7 +614,7 @@ export const portCheckTables = {
             key: 'check',
             width: 200,
             render(row, column, index){
-                const text = row.check == '正常无错误'? `<p class="right">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
+                const text = row.check == '正常无错误'? `<p class="sure">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
                 return `${text}`
             }
         },
@@ -673,8 +669,7 @@ export const portCheckTables = {
             key: 'description',
             width: 200
         },
-    ],
-    deviceData: []
+    ]
 }
 export const removeData = {  //设备批量删除
     columns:[       //表头
@@ -756,8 +751,7 @@ export const userlisttables = {
                 return `<a @click="detail(${row.userId})">查看</a> <a style="margin-left: 10px" @click="remove(${row.userId})">修改</a>`;
             }
         }
-    ],
-    userList:[]
+    ]
 }
 export const roleslisttables = {
     columns:[
@@ -798,8 +792,7 @@ export const roleslisttables = {
                 }
             }
         }
-    ],
-    roleslist:[]
+    ]
 }
 export const datahistorytables = {
     columns:[
@@ -824,8 +817,7 @@ export const datahistorytables = {
             }
 
         }
-    ],
-    datalist:[],
+    ]
 }
 export const customquerytables = {
     columns:[
@@ -856,8 +848,7 @@ export const customquerytables = {
             }
 
         }
-    ],
-    datalist:[],
+    ]
 }
 export const loglisttables = {
     columns:[
@@ -895,8 +886,7 @@ export const loglisttables = {
             key: 'result',
             width: 100
         }
-    ],
-    datalist:[],
+    ]
 }
 
 export const BASEURL = '/demoms'  //路径
@@ -905,7 +895,11 @@ export const config = {
         'Content-Type': 'application/x-www-form-urlencoded',
     },
 }
-
+export const download = {
+    headers: {
+        'Content-Type': 'application/json',
+    },
+}
 export const dateOptions = {
     defaultDate:new Date(),
     options: {

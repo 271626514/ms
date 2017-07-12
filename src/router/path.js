@@ -6,6 +6,7 @@ export const LAYOUT_SHOW = require('../page/common/layout.vue');
 export const HOME = require('../page/common/home.vue');
 export const MAP = require('../page/common/map.vue');
 export const FORGETPASSWORD = require('../page/common/forgetPwd.vue');
+export const NOTFOUND = require('../page/common/404.vue');
 
 //业务数据
 export const SHOW_DATA_SUM = require('../page/dataview/showdatasum.vue')
@@ -30,3 +31,6 @@ export const ADMIN_HISTORY_DATA = require('../page/export/adminHistoryData.vue')
 export const CUSTOM_QUERY_LIST = require('../page/export/customQueryList.vue')
 export const SHOW_LOG_LIST = require('../page/operateLog/showLogList.vue')
 export const PUBLIC_DATA = require('../page/export/publicData.vue')
+
+//业务数据展现
+export const MAP_LIST = require('../page/map/mapList.vue');

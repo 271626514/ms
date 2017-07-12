@@ -28,7 +28,7 @@
                     <div class="module-header mt-20">
                         <h4>待添加端口列表
                             <span class="info-text ml-20">已校验<i class="red"> {{portData.length}} </i>条端口信息</span>
-                            <Button type="text"  @click="cancelUpload" class="right blue f14">取消添加</Button>
+                            <Button type="ghost"  @click="cancelUpload" class="right ml-10 f14">取消添加</Button>
                             <Button type="primary" @click="confirmUpload" :disabled="pythonBtn" class="btn-search right f14">确定添加</Button>
                         </h4>
                     </div>
@@ -62,7 +62,7 @@
                 <h6 class="red f16 text-center">上传失败！</h6>
                 <p style="width: 75%; margin: 0 auto">{{dialogError.content}}</p>
             </div>
-            <div class="errorInfo" v-if="dialogSuccess.flag">
+            <div class="errorInfo" v-if="dialogSuccess">
                 <h6 class="red f16 text-center">上传成功！</h6>
             </div>
             <div slot="footer">
@@ -73,21 +73,16 @@
         <!--等待中-->
         <Modal v-model="dialog.watting" :mask-closable="false" title="提示" class="userRole" :closable="false">
             <div class="clearfix dialog-body">
-                <Spin fix v-if="pythonBtn">
+                <Spin fix>
                     <Icon type="load-c" size=38 class="demo-spin-icon-load"></Icon>
-                    <div>导入中，请稍等...</div>
+                    <div>同步中，请稍等...</div>
                 </Spin>
-                <div v-if="pythodFlag==1" class="x-area">
-                    <h3>导入成功！</h3>
-                </div>
-                <div v-if="pythodFlag==2" class="x-area">
-                    <h3>导入出错！</h3>
-                </div>
             </div>
             <div slot="footer">
-                <Button type="primary" style="width:85px" class="align f14" @click="dialog.watting=!dialog.watting">确定</Button>
+                <Button type="primary" style="width:85px" v-if="false" class="align f14" @click="dialog.watting=!dialog.watting">确定</Button>
             </div>
         </Modal>
+        <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
     </div>
 </template>
 <style lang="less">
@@ -145,6 +140,7 @@
 </style>
 <script type="text/ecmascript-6">
     import {showDataSelection,portCheckTables,config} from '../../assets/js/data'
+    import modal from '../../components/common/modal.vue'
     export default{
         data() {
             return {
@@ -169,6 +165,11 @@
                     flag: false,
                     content: ''
                 },
+                modal:{
+                    title:'',
+                    content:'',
+                    dialog:0
+                },
                 province:'',
                 dialogSuccess:false,
                 checked: 'false',
@@ -187,10 +188,6 @@
         methods:{
             checkData(value) {      //切换数据来源
                 this.province = value.value;
-            },
-            modal(type){        //激活上传文件对话框，同步用户上传文件类型
-                this.dialog.upload = true;
-                this.uploadData.data.type = type;
             },
             handleFormatError (f) {         //上传格式校验
                 this.dialog.uploading = false;
@@ -214,7 +211,7 @@
                     this.dialogError.content = res.error.msg;
                 }else if(!res.error.length){
                     this.uploadData.name = file.name;
-                    this.dialogError.content = `上传成功`;
+                    this.dialogSuccess.flag = true;
                     this.uploadData.state = 1;
                     this.pythondata = res.data;
                     this.checked = res.checked;
@@ -225,16 +222,26 @@
                 this.portData = this.pythondata;
             },
             cancelUpload() {        //取消同步
-                this.pythondata = [];
-                this.$http.get('/cdnManage/clear?type=port').then(res=>{
-                    console.log(res)
-                });
+                this.portData = [];
             },
             confirmUpload() {       //开始同步
                 this.dialog.watting = true;
-                this.pythondata = [];
-                this.$http.get('/cdnManage/clear?type=port').then(res=>{
-                    console.log(res)
+                this.$http.get('/cdnManage/import?type=port').then(res=>{
+                    this.dialog.watting = false;
+                    if(res.data == 'success'){
+                        this.modal.dialog++;
+                        this.modal.title = '同步成功';
+                        this.modal.url = '/port/portImport';
+                    }else{
+                        this.modal.dialog--;
+                        this.modal.title = `同步失败`;
+                        this.modal.content = `请稍后再试`;
+                    }
+                }).catch(res=>{
+                    this.dialog.watting = false;
+                    this.modal.dialog--;
+                    this.modal.title = `同步失败`;
+                    this.modal.content = `请稍后再试`
                 });
             },
             close() {
@@ -299,6 +306,9 @@
                 console.log('获取用户权限数据失败'+res)
             });
         },
+        components:{
+            modal
+        }
     }
 </script>
 

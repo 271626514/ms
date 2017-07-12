@@ -67,12 +67,12 @@
         </div>
         <div class="search-result">
             <p class="search-content">已查找到<span>{{deviceData.length}}</span>条数据</p>
-            <a class="search-download">下载检索结果文件</a>
+            <a class="search-download" :href="downloadhref" v-if="deviceData.length">下载检索结果文件</a>
         </div>
         <div class="tableContent">
             <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="deviceData" style="margin-top: 10px"></Table>
             <div class="table-set">
-                <Button type="ghost" :disabled="BtnDisabled" @click="downloadAll">下载所选</Button>
+                <Button type="ghost" :disabled="BtnDisabled"><a :href="downloadsec">下载所选</a></Button>
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
@@ -157,6 +157,8 @@
                     snmpVersionView: '全部',
                     snmpPort: '全部',
                 },
+                downloadhref:'',
+                downloadsec:'',
                 page:{
                     totalList: 10,
                     pageNum: 1,
@@ -190,6 +192,7 @@
                     this.deviceData = res.data.list;
                     this.page.totalList = res.data.totalCount;
                     this.loading = false;
+                    this.downloadhref= '/cdnManage/exportDevicesList?totlePage='+this.page.totalList+data;
                 }).catch(res=>{
                     this.loading = false;
                 })
@@ -214,14 +217,6 @@
                     this.modal.title = '删除失败'
                     this.modal.content = `请检查网络，稍后再试`
                 })
-            },
-            downloadAll() {     //下载批量选择的设备
-                this.dialog.removeAll = false;
-                let data = '';
-                for(var item of this.removeData){
-                    data+= '&ids[]='+ item.id;
-                }
-                this.$http.post('/cdnManage/devicesList',data,config).then(res=>{})
             },
             onChange(pageNum){         //分页查询
                 this.searchSubmit(null,15,pageNum);
@@ -255,6 +250,11 @@
             },
             con(selection){
                 this.selection = selection;
+                let data = '';
+                for(let i of selection){
+                    data+= 'ids[]='+i.id + '&';
+                }
+                this.downloadsec = '/cdnManage/exportSelDevicesList?'+ data.substr(0, data.length-1);
             },
             removeall() {       //激活批量删除Moadl
                 this.dialog.removeAll = true;

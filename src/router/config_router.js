@@ -15,6 +15,13 @@ export default new Router({
             meta: { browse: true }
         },
         {
+            path: '/mapList',
+            component: path.MAP_LIST,
+            children: [
+
+            ]
+        },
+        {
             path: '/home',
             component: path.HOME,
             meta: { browse: true }
@@ -36,6 +43,7 @@ export default new Router({
         },
         {
             path: '/user',
+            meta: {name: '用户管理'},
             component: path.LAYOUT_SHOW,
             children: [
                 {
@@ -47,40 +55,49 @@ export default new Router({
                 {
                     path: 'usersShow',
                     component: path.USERS_SHOW,
+                    meta: {name: '用户列表'}
                 },
                 {
                     path: 'rolesShow',
-                    component: path.ROLES_SHOW
+                    component: path.ROLES_SHOW,
+                    meta: {name: '权限列表'}
                 },
                 {
                     path: 'usersAdd',
                     component: path.USERS_ADD,
+                    meta: {name: '用户新增'}
                 },
                 {
                     path: 'usersEdit',
                     component: path.USERS_EDIT,
+                    meta: {name: '用户编辑'}
                 },
                 {
                     path: 'usersDetail',
                     component: path.USERS_DETAIL,
+                    meta: {name: '用户详情'}
                 },
                 {
                     path: 'rolesAdd',
                     component: path.ROLES_ADD,
+                    meta: {name: '权限新增'}
                 },
                 {
                     path: 'rolesEdit',
                     component: path.ROLES_EDIT,
+                    meta: {name: '权限编辑'}
                 },
                 {
                     path: 'rolesDetail',
                     component: path.ROLES_DETAIL,
+                    meta: {name: '权限详情'}
                 }
             ]
         },
         {
             path: '/export',
             component: path.LAYOUT_SHOW,
+            meta: {name: '业务数据管理'},
             children: [
                 {
                     path: '',
@@ -90,21 +107,25 @@ export default new Router({
                 },
                 {
                     path: 'adminHistoryData',
-                    component: path.ADMIN_HISTORY_DATA
+                    component: path.ADMIN_HISTORY_DATA,
+                    meta: {name: '历史数据'}
                 },
                 {
                     path: 'customQueryList',
-                    component: path.CUSTOM_QUERY_LIST
+                    component: path.CUSTOM_QUERY_LIST,
+                    meta: {name: '自定义查询'}
                 },
                 {
                     path: 'publicData',
-                    component: path.PUBLIC_DATA
+                    component: path.PUBLIC_DATA,
+                    meta: {name: '数据发布'}
                 }
             ]
         },
         {
             path:'/operateLog',
             component: path.LAYOUT_SHOW,
+            meta: {name: '系统管理'},
             children: [
                 {
                     path: '',
@@ -114,13 +135,15 @@ export default new Router({
                 },
                 {
                     path: 'showLogList',
-                    component: path.SHOW_LOG_LIST
+                    component: path.SHOW_LOG_LIST,
+                    meta: {name: '日志管理'}
                 }
             ]
         },
         {
             path: '/dataview',
             component: path.LAYOUT_SHOW,
+            meta: {name: '数据总览'},
             children: [
                 {
                     path: '',
@@ -130,7 +153,8 @@ export default new Router({
                 },
                 {
                     path: 'showDataSum',
-                    component: path.SHOW_DATA_SUM
+                    component: path.SHOW_DATA_SUM,
+                    meta: {name: ''}
                 },
                 {
                     path: 'download',
@@ -141,6 +165,7 @@ export default new Router({
         {
             path: '/device',
             component: path.LAYOUT_SHOW,
+            meta: {name: '设备管理'},
             children: [
                 {
                     path: '',
@@ -150,11 +175,13 @@ export default new Router({
                 },
                 {
                     path: 'deviceList',
-                    component: path.DEVICE_LIST
+                    component: path.DEVICE_LIST,
+                    meta: {name: '设备列表'}
                 },
                 {
                     path: 'deviceImport',
-                    component: path.DEVICE_IMPORT
+                    component: path.DEVICE_IMPORT,
+                    meta: {name: '设备导入'}
                 },
                 {
                     path: 'deviceConcat',
@@ -165,6 +192,7 @@ export default new Router({
         {
             path: '/port',
             component: path.LAYOUT_SHOW,
+            meta: {name: '端口管理'},
             children: [
                 {
                     path: '',
@@ -174,17 +202,23 @@ export default new Router({
                 },
                 {
                     path: 'portList',
-                    component: path.PORT_LIST
+                    component: path.PORT_LIST,
+                    meta: {name: '端口列表'}
                 },
                 {
                     path: 'portImport',
-                    component: path.PORT_IMPORT
+                    component: path.PORT_IMPORT,
+                    meta: {name: '端口导入'}
                 },
                 {
                     path: 'portConcat',
                     component: path.PORT_CONCAT
                 }
             ]
+        },
+        {
+            path: '*',
+            component: path.NOTFOUND
         }
     ]
 })

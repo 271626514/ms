@@ -84,7 +84,7 @@
                 <h6 class="red f16 text-center">上传失败！</h6>
                 <p style="width: 75%; margin: 0 auto">{{dialogError.content}}</p>
             </div>
-            <div class="errorInfo" v-if="dialogSuccess.flag">
+            <div class="errorInfo" v-if="dialogSuccess">
                 <h6 class="red f16 text-center">上传成功！</h6>
             </div>
             <div slot="footer">
@@ -92,24 +92,19 @@
                 <Button type="ghost" @click="close">取消</Button>
             </div>
         </Modal>
-        <!--等待中-->
+        <!--同步等待-->
         <Modal v-model="dialog.watting" :mask-closable="false" title="提示" class="userRole" :closable="false">
             <div class="clearfix dialog-body">
-                <Spin fix v-if="pythonBtn">
+                <Spin fix>
                     <Icon type="load-c" size=38 class="demo-spin-icon-load"></Icon>
-                    <div>导入中，请稍等...</div>
+                    <div>同步中，请稍等...</div>
                 </Spin>
-                <div v-if="pythodFlag==1" class="x-area">
-                    <h3>导入成功！</h3>
-                </div>
-                <div v-if="pythodFlag==2" class="x-area">
-                    <h3>导入出错！</h3>
-                </div>
             </div>
             <div slot="footer">
-                <Button type="primary" style="width:85px" class="align f14" @click="dialog.watting=!dialog.watting">确定</Button>
+                <Button type="primary" style="width:85px" v-if="false" class="align f14" @click="dialog.watting=!dialog.watting">确定</Button>
             </div>
         </Modal>
+        <myModal :title="this.myModal.title" :content="this.myModal.content" :dialog="this.myModal.dialog"></myModal>
     </div>
 </template>
 <style lang="less">
@@ -167,6 +162,7 @@
 </style>
 <script type="text/ecmascript-6">
     import {showDataSelection,snmp2tables,snmp3tables,config} from '../../assets/js/data'
+    import myModal from '../../components/common/modal.vue'
     export default{
         data() {
             return {
@@ -186,6 +182,11 @@
                     upload: false,
                     watting: false,
                     uploading: false
+                },
+                myModal:{
+                    title:'',
+                    content:'',
+                    dialog:0
                 },
                 dialogError:{
                     flag: false,
@@ -236,7 +237,7 @@
                     this.uploadData.state = 1;
                     this.pythondata = res.data;
                     this.checked = res.checked;
-                    this.dialogError.content = `上传成功`;
+                    this.dialogSuccess = true;
                 }
             },
             toPython() {             //点击上传对话框
@@ -258,33 +259,37 @@
             cancelUpload() {        //取消同步
                 if(this.uploadData.data.type=='device_v2'){
                     this.snmp2Data = [];
-                    this.$http.get('/cdnManage/clear?type=device_v2').then(res=>{
-                        console.log(res)
-                    });
                 }else if(this.uploadData.data.type=='device_v3'){
                     this.snmp3Data = [];
-                    this.$http.get('/cdnManage/clear?type=device_v3').then(res=>{
+                    /*this.$http.get('/cdnManage/clear?type=device_v3').then(res=>{
                         console.log(res)
-                    });
+                    });*/
                 }
             },
             confirmUpload() {       //开始同步
                 this.dialog.watting = true;
-                if(this.uploadData.data.type=='device_v2'){
-                    this.snmp2Data = [];
-                    this.$http.get('/cdnManage/import?type=device_v2').then(res=>{
-                        this.pythodFlag = 1;
-                    }).catch(res=>{
-                        this.pythodFlag = 2;
-                    });
-                }else if(this.uploadData.data.type=='device_v3'){
-                    this.snmp3Data = [];
-                    this.$http.get('/cdnManage/import?type=device_v3').then(res=>{
-                        this.pythodFlag = 1;
-                    }).catch(res=>{
-                        this.pythodFlag = 2;
-                    });
-                }
+                this.$http.get('/cdnManage/import?type='+this.uploadData.data.type).then(res=>{
+                    this.dialog.watting = false;
+                    if(res.data == 'success'){
+                        this.myModal.dialog++;
+                        this.myModal.title = '同步成功';
+                        this.myModal.url = '/device/deviceImport';
+                        if(this.uploadData.data.type=='device_v2'){
+                            this.snmp2Data = [];
+                        }else if(this.uploadData.data.type=='device_v3'){
+                            this.snmp3Data = [];
+                        }
+                    }else{
+                        this.myModal.dialog--;
+                        this.myModal.title = `同步失败`;
+                        this.myModal.content = `请稍后再试`;
+                    }
+                }).catch(res=>{
+                    this.dialog.watting = false;
+                    this.myModal.dialog--;
+                    this.myModal.title = `同步失败`;
+                    this.myModal.content = `请稍后再试`;
+                });
             },
             close() {
                 this.uploadData.name = '';
@@ -361,6 +366,9 @@
         },
         watch:{
             'dialog.upload':'reset'
+        },
+        components:{
+            myModal
         }
     }
 </script>

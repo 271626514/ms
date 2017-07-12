@@ -130,7 +130,6 @@
 </style>
 <script type="text/ecmascript-6">
     import echarts from 'echarts';
-    import '../../assets/js/infographic.js'
     import myFoot from '../../components/common/foot'
     const portData = {
         xData: ['CMNET国际','付费穿透','付费直连','免费直连','收费用户'],

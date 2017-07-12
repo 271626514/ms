@@ -59,12 +59,12 @@
         </div>
         <div class="search-result">
             <p class="search-content">已查找到<span>{{portData.length}}</span>条数据</p>
-            <a class="search-download">下载检索结果文件</a>
+            <a class="search-download" v-if="portData.length" :href="downloadhref">下载检索结果文件</a>
         </div>
         <div class="tableContent">
             <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="portData" style="margin-top: 10px"></Table>
             <div class="table-set">
-                <Button type="ghost" :disabled="BtnDisabled">下载所选</Button>
+                <Button type="ghost" :disabled="BtnDisabled"><a :href="downloadsec">下载所选</a></Button>
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px">批量删除</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
@@ -95,7 +95,7 @@
 </template>
 <style lang="less"></style>
 <script type="text/ecmascript-6">
-    import {showDataSelection,porttables,config,removeData} from '../../assets/js/data'
+    import {showDataSelection,porttables,config,removeData,download} from '../../assets/js/data'
     import modal from '../../components/common/modal.vue'
     export default{
         data() {
@@ -122,6 +122,8 @@
                     type: '全部',
                     service: '全部'
                 },
+                downloadhref: '',
+                downloadsec: '',
                 modal:{
                     title:'',
                     content:'',
@@ -155,6 +157,7 @@
                     this.portData = res.data.list;
                     this.page.totalList = res.data.totalCount;
                     this.loading = false;
+                    this.downloadhref= '/cdnManage/exportPortsList?totlePage='+this.page.totalList+data;
                 }).catch(res=>{
                     this.loading = false;
                 })
@@ -205,6 +208,11 @@
             },
             con(selection){         //批量选择
                 this.selection = selection;
+                let data = '';
+                for(let i of selection){
+                    data+= 'ids[]='+i.id + '&';
+                }
+                this.downloadsec = '/cdnManage/exportSelPortsList?'+ data.substr(0, data.length-1);
             },
             getDate(){
                 let date = new Date();
@@ -262,6 +270,9 @@
                     return true;
                 }
             }
+        },
+        components:{
+            modal
         }
     }
 </script>

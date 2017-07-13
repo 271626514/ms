@@ -17,9 +17,17 @@ export default new Router({
         {
             path: '/mapList',
             component: path.MAP_LIST,
-            children: [
-
-            ]
+            meta: {name: '数据视图'},
+        },
+        {
+            path: '/mapList/map1',
+            component: path.MAP_1,
+            meta: {name: '视图详情'}
+        },
+        {
+            path: '/mapList/map2',
+            component: path.MAP_2,
+            meta: {name: '视图详情'}
         },
         {
             path: '/home',

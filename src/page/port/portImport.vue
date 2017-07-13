@@ -150,7 +150,9 @@
                     name: '',
                     state: 0,
                     data:{
-                        type:'port'
+                        type:'port',
+                        roleId: this.$store.getters.getuserRoleId,
+                        menuName: ''
                     }
                 },
                 dialog:{
@@ -188,6 +190,7 @@
         methods:{
             checkData(value) {      //切换数据来源
                 this.province = value.value;
+                this.uploadData.data.menuName = value.value;
             },
             handleFormatError (f) {         //上传格式校验
                 this.dialog.uploading = false;
@@ -211,7 +214,7 @@
                     this.dialogError.content = res.error.msg;
                 }else if(!res.error.length){
                     this.uploadData.name = file.name;
-                    this.dialogSuccess.flag = true;
+                    this.dialogSuccess = true;
                     this.uploadData.state = 1;
                     this.pythondata = res.data;
                     this.checked = res.checked;
@@ -255,6 +258,7 @@
                     this.uploadData.name = '';
                     this.uploadData.state = 0;
                     this.dialog.uploading = false;
+                    this.dialogSuccess = false;
                 }
             },
             userRoleList(data){     //处理用户列表可用权限
@@ -302,6 +306,7 @@
             this.$http.get('/role/roles/menus?roleId='+this.roleId+'&type=deviceAdd').then(res=>{
                 this.selectionList = this.userRoleList(res.data[0].menuPortAdd[0]);
                 this.province = this.selectionList[0].value;
+                this.uploadData.data.menuName = this.selectionList[0].value;
             }).catch(res=>{
                 console.log('获取用户权限数据失败'+res)
             });

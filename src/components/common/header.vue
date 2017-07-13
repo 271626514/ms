@@ -1,17 +1,22 @@
 <template>
     <div class="header">
-        <div class="pull-left logo-info">
-            <img src="../../assets/imgs/logo.png" />
-            <span>全网流量资源管理平台</span>
-        </div>
-        <div class="pull-right user-info">
-            <span>{{username}} 你好</span>
-            <i></i>
-            <a @click="loginout">退出</a>
+        <div class="container clearfix" :style="{width:autowidth}">
+            <div class="pull-left logo-info">
+                <img src="../../assets/imgs/logo.png" />
+                <span>全网流量资源管理平台</span>
+            </div>
+            <div class="pull-right user-info">
+                <span>{{username}} 你好</span>
+                <i></i>
+                <a @click="loginout">退出</a>
+            </div>
         </div>
     </div>
 </template>
 <style lang="less">
+.container{
+    margin: 0 auto;
+}
 .header{
     height: 67px;
     width: 100%;
@@ -58,6 +63,11 @@
         computed: {
             username:function(){
                 return this.$store.getters.getusername;
+            }
+        },
+        props:{
+            autowidth:{
+                default: '100%'
             }
         },
         methods: {

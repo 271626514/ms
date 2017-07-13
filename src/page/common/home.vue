@@ -13,7 +13,7 @@
         <div class="homeBg">
             <img src="../../assets/imgs/map.png" width="72%" />
             <span class="login" @click="$router.push('/login')">用户登录</span>
-            <span id="map" @click="$router.push('/map')">数据汇总</span>
+            <span id="map" @click="$router.push('/mapList')">数据汇总</span>
         </div>
         <my-foot></my-foot>
     </div>

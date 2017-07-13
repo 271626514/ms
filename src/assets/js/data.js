@@ -265,6 +265,11 @@ export const devicetables = {
             width: 50
         },
         {
+            title: '设备ID',
+            key: 'id',
+            width:100
+        },
+        {
             title: '省份',
             key: 'province',
             width: 75
@@ -297,12 +302,7 @@ export const devicetables = {
             }
         },
         {
-            title: '上传时间',
-            key: 'createTimeView',
-            width: 200
-        },
-        {
-            title: 'snmp版本',
+            title: 'SNMP版本',
             key: 'snmpVersion',
             width: 140,
             render (row, column, index) {
@@ -311,43 +311,42 @@ export const devicetables = {
             }
         },
         {
-            title: 'snmp端口',
+            title: 'SNMP端口',
             key: 'snmpPort',
             width: 140,
-
         },
         {
-            title: 'snmp团体字',
+            title: 'SNMP团体字',
             key: 'snmpCommunity',
             width: 200
         },
         {
-            title: 'snmpv3配置用户名',
+            title: 'SNMPv3安全名称',
             key: 'snmpv3Securityname',
             width: 200
         },
         {
-            title: 'snmpv3安全级别',
+            title: 'SNMPv3安全级别',
             key: 'snmpv3Securitylevel',
             width: 200,
         },
         {
-            title: 'snmpv3验证字符串',
-            key: 'snmpv3Authpassphrase',
-            width: 200
-        },
-        {
-            title: 'snmpv3验证协议',
+            title: 'SNMPv3认证协议',
             key: 'snmpv3Authprotocol',
             width: 200
         },
         {
-            title: 'snmpv3私有加密协议',
+            title: 'SNMPv3认证口令',
+            key: 'snmpv3Authpassphrase',
+            width: 200
+        },
+        {
+            title: 'SNMPv3加密协议',
             key: 'snmpv3Privprotocol',
             width: 200
         },
         {
-            title: 'snmpv3私有加密字符串',
+            title: 'SNMPv3私有密钥',
             key: 'snmpv3Privpassphrase',
             width: 200
         },
@@ -365,6 +364,11 @@ export const devicetables = {
             key: 'description',
             width:200
         },
+        {
+            title: '上传时间',
+            key: 'createTimeView',
+            width: 200
+        }
     ]
 }
 export const porttables = {
@@ -374,6 +378,16 @@ export const porttables = {
             align: 'center',
             fixed: 'left',
             width: 100
+        },
+        {
+            title: '端口ID',
+            key: 'id',
+            width:100
+        },
+        {
+            title: '设备ID',
+            key: 'deviceid',
+            width:100
         },
         {
             align: 'center',
@@ -402,12 +416,6 @@ export const porttables = {
             width: 200,
         },
         {
-            title: '上传时间',
-            key: 'createTimeView',
-            align: 'center',
-            width: 200
-        },
-        {
             title: '业务大类',
             key: 'service1View',
             width: 200,
@@ -430,6 +438,12 @@ export const porttables = {
                 const text = row.deviceState == 0 ? '导入未采集':'导入已采集';
                 return `${text}`;
             }
+        },
+        {
+            title: '上传时间',
+            key: 'createTimeView',
+            align: 'center',
+            width: 200
         }
     ]
 }
@@ -907,4 +921,26 @@ export const dateOptions = {
             return date && date.valueOf() > Date.now();
         }
     },
+}
+//地图数据
+export const mapList = {
+    data : [
+        {
+            title: '国际公司流量分析专题',
+            img: 'img-view-1',
+            createTime: '2017-06-30 13：00',
+            id: '1'
+        },
+        /*{
+            title: '全网统建CDN、IDC、统建Cache、省建Cache、省建OTT业务流量分析日报',
+            img: 'img-view-2',
+            createTime: '2017-06-20 13：00',
+            id: '2'
+        }*/
+    ]
+}
+//图表详情数据
+export const echartData = {
+    //统建CDN业务分析数据
+    data1:[]
 }

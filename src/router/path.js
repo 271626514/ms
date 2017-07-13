@@ -34,3 +34,5 @@ export const PUBLIC_DATA = require('../page/export/publicData.vue')
 
 //业务数据展现
 export const MAP_LIST = require('../page/map/mapList.vue');
+export const MAP_1 = require('../page/map/map1.vue');
+export const MAP_2 = require('../page/map/map2.vue');

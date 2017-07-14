@@ -19,5 +19,12 @@
                 data: []
             }
         },
+        mounted(){
+            this.$http.get('/export/adminHistoryData').then(res=>{
+                this.data = res.data.adminHistoryDataList
+            }).catch(res=>{
+                console.log('获取历史默认数据失败'+res)
+            })
+        }
     }
 </script>

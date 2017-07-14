@@ -273,7 +273,7 @@
                 this.dialog.watting = true;
                 this.$http.get('/cdnManage/import?type='+this.uploadData.data.type).then(res=>{
                     this.dialog.watting = false;
-                    if(res.data == 'success'){
+                    if(res.data == '正常无错误'){
                         this.myModal.dialog++;
                         this.myModal.title = '同步成功';
                         this.myModal.url = '/device/deviceImport';
@@ -285,7 +285,7 @@
                     }else{
                         this.myModal.dialog--;
                         this.myModal.title = `同步失败`;
-                        this.myModal.content = `请稍后再试`;
+                        this.myModal.content = `${res.data}`;
                     }
                 }).catch(res=>{
                     this.dialog.watting = false;

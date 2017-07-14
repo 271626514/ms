@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="search-result">
-            <p class="search-content">已查找到<span>{{portData.length}}</span>条数据</p>
+            <p class="search-content">已查找到<span>{{page.totalList}}</span>条数据</p>
             <a class="search-download" v-if="portData.length" :href="downloadhref">下载检索结果文件</a>
         </div>
         <div class="tableContent">
@@ -134,7 +134,7 @@
                     removeAll:false
                 },
                 page:{
-                    totalList: 10,
+                    totalList: 0,
                     pageNum: 1,
                     pageSize: 15
                 },

@@ -641,6 +641,7 @@ export const portCheckTables = {
         {
             align: 'center',
             title: '省份',
+            key: 'province',
             width: 100
         },
         {
@@ -818,7 +819,7 @@ export const datahistorytables = {
         },
         {
             title: '更新时间',
-            key: 'updateDate',
+            key: 'upadateTimeView',
             align: 'center',
         },
         {
@@ -827,7 +828,7 @@ export const datahistorytables = {
             align: 'center',
             width:100,
             render (row, column, index) {
-                return `<a>立即下载</a>`;
+                return `<a :href="${row.dataDownload}">立即下载</a>`;
             }
 
         }
@@ -843,12 +844,12 @@ export const customquerytables = {
         },
         {
             title: 'SQL语句详情',
-            key: 'SQLDetail',
+            key: 'querySqlShow',
             align: 'center',
         },
         {
             title: '创建时间',
-            key: 'addDate',
+            key: 'createTimeView',
             align: 'center',
             width: 200
         },
@@ -931,16 +932,16 @@ export const mapList = {
             createTime: '2017-06-30 13：00',
             id: '1'
         },
-        /*{
-            title: '全网统建CDN、IDC、统建Cache、省建Cache、省建OTT业务流量分析日报',
+        {
+            title: '全网统建CDN、IDC、统建Cache、省建Cache、省建OTT业务流量分析日报（图例）',
             img: 'img-view-2',
             createTime: '2017-06-20 13：00',
             id: '2'
-        }*/
+        }
     ]
 }
 //图表详情数据
 export const echartData = {
     //统建CDN业务分析数据
-    data1:[]
+    data1:['安徽','北京','福建','甘肃','广东','广西','贵州','河南','河北','黑龙江','湖北','湖南','吉林','江苏','江西','辽宁','内蒙古','宁夏','青海','山东','山西','陕西','上海','四川','天津','西藏','新疆','云南','浙江','重庆']
 }

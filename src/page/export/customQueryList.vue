@@ -36,7 +36,7 @@
                 </Spin>
             </div>
             <div slot="footer">
-                <Button type="primary" style="width:85px" class="align f14"  @click="download_con" :disabled="searchResult">下载文件</Button>
+                <Button type="primary" style="width:85px" class="align f14" :disabled="searchResult"><a :href="searchUrl">下载文件</a></Button>
             </div>
         </Modal>
         <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
@@ -112,15 +112,7 @@ import modal from '../../components/common/modal.vue'
                         })
             },
             copythis(index){
-                this.query.sql = this.data[index].SQLDetail;
-            },
-            download_con(){
-                this.dialog.search = false;
-                this.$http.get('demo/user').then(res=>{
-
-                }).catch(res=>{
-                    console.log(res);
-                })
+                this.query.sql = this.data[index].querySqlShow;
             },
             reset(){        //初始化
                 this.searchResult = true;
@@ -136,6 +128,13 @@ import modal from '../../components/common/modal.vue'
         },
         watch:{
             'dialog.search':'reset'
+        },
+        mounted(){
+            this.$http.get('/export/customQueryList').then(res=>{
+                this.data = res.data.CustomQueryList
+            }).catch(res=>{
+                console.log('获取自定义查询默认数据失败'+res)
+            })
         },
         components:{
             modal

@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="search-result">
-            <p class="search-content">已查找到<span>{{deviceData.length}}</span>条数据</p>
+            <p class="search-content">已查找到<span>{{page.totalList}}</span>条数据</p>
             <a class="search-download" :href="downloadhref" v-if="deviceData.length">下载检索结果文件</a>
         </div>
         <div class="tableContent">
@@ -160,7 +160,7 @@
                 downloadhref:'',
                 downloadsec:'',
                 page:{
-                    totalList: 10,
+                    totalList: 0,
                     pageNum: 1,
                     pageSize: 15
                 },

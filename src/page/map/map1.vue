@@ -1,6 +1,17 @@
 <template>
     <div id="map">
         <my-head :autowidth="width"></my-head>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">首页</a>
+            </li>
+            <li>
+                <a @click="$router.push('/mapList')">数据视图</a>
+            </li>
+            <li>
+                数据详情
+            </li>
+        </ol>
         <h1>国际公司流量分析专题</h1>
         <h2>网络部 <span>2017-06-30 13:00</span></h2>
         <div class="map">
@@ -51,7 +62,7 @@
 #map{
     h1{
         width: 80%;
-        margin: 98px auto 10px auto;
+        margin: 68px auto 10px auto;
         text-align: center;
         font-size: 24px;
         color: #333;

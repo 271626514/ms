@@ -30,6 +30,11 @@ export default new Router({
             meta: {name: '视图详情'}
         },
         {
+            path: '/mapList/map3',
+            component: path.MAP_3,
+            meta: {name: '视图详情'}
+        },
+        {
             path: '/home',
             component: path.HOME,
             meta: { browse: true }
@@ -37,11 +42,6 @@ export default new Router({
         {
             path: '/login',
             component: path.LOGIN,
-            meta: { browse: true }
-        },
-        {
-            path: '/map',
-            component: path.MAP,
             meta: { browse: true }
         },
         {

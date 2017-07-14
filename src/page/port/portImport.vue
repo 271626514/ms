@@ -231,14 +231,14 @@
                 this.dialog.watting = true;
                 this.$http.get('/cdnManage/import?type=port').then(res=>{
                     this.dialog.watting = false;
-                    if(res.data == 'success'){
+                    if(res.data == '正常无错误'){
                         this.modal.dialog++;
                         this.modal.title = '同步成功';
                         this.modal.url = '/port/portImport';
                     }else{
                         this.modal.dialog--;
                         this.modal.title = `同步失败`;
-                        this.modal.content = `请稍后再试`;
+                        this.modal.content = `${res.data}`;
                     }
                 }).catch(res=>{
                     this.dialog.watting = false;

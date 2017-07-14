@@ -4,7 +4,6 @@
 export const LOGIN = require('../page/common/login.vue');
 export const LAYOUT_SHOW = require('../page/common/layout.vue');
 export const HOME = require('../page/common/home.vue');
-export const MAP = require('../page/common/map.vue');
 export const FORGETPASSWORD = require('../page/common/forgetPwd.vue');
 export const NOTFOUND = require('../page/common/404.vue');
 
@@ -36,3 +35,4 @@ export const PUBLIC_DATA = require('../page/export/publicData.vue')
 export const MAP_LIST = require('../page/map/mapList.vue');
 export const MAP_1 = require('../page/map/map1.vue');
 export const MAP_2 = require('../page/map/map2.vue');
+export const MAP_3 = require('../page/map/map3.vue');

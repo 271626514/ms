@@ -18,21 +18,25 @@ export default new Router({
             path: '/mapList',
             component: path.MAP_LIST,
             meta: {name: '数据视图'},
+            meta: { browse: true }
         },
         {
             path: '/mapList/map1',
             component: path.MAP_1,
-            meta: {name: '视图详情'}
+            meta: {name: '视图详情'},
+            meta: { browse: true }
         },
         {
             path: '/mapList/map2',
             component: path.MAP_2,
-            meta: {name: '视图详情'}
+            meta: {name: '视图详情'},
+            meta: { browse: true }
         },
         {
             path: '/mapList/map3',
             component: path.MAP_3,
-            meta: {name: '视图详情'}
+            meta: {name: '视图详情'},
+            meta: { browse: true }
         },
         {
             path: '/home',

@@ -1,6 +1,6 @@
 <template>
     <div id="map">
-        <my-head :autowidth="width"></my-head>
+        <my-head></my-head>
         <ol class="breadcrumb">
             <li>
                 <a href="/">首页</a>
@@ -137,7 +137,7 @@
 <script type="text/ecmascript-6">
     import echarts from 'echarts';
     import myFoot from '../../components/common/foot'
-    import myHead from '../../components/common/header'
+    import myHead from '../../components/common/header-show'
     const portData = {
         xData: ['CMNET国际','付费穿透','付费直连','免费直连','收费用户'],
         portNumber: [67.000,25.000,4.000,91.000,61.000],

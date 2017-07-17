@@ -1,6 +1,6 @@
 <template>
     <div id="map">
-        <my-head :autowidth="width"></my-head>
+        <my-head></my-head>
         <ol class="breadcrumb">
             <li>
                 <a href="/">首页</a>
@@ -55,7 +55,7 @@
     import echarts from 'echarts';
     import infographic from '../../assets/js/infographic'
     import myFoot from '../../components/common/foot'
-    import myHead from '../../components/common/header'
+    import myHead from '../../components/common/header-show'
     import {echartData} from '../../assets/js/data'
     const color = {
         lightblue: '#85cef4',

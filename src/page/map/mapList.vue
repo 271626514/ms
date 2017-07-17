@@ -1,6 +1,6 @@
 <template>
     <div>
-        <my-head :autowidth="width"></my-head>
+        <my-head></my-head>
         <div class="map-list">
             <ol class="breadcrumb">
                 <li><a href="/">首页</a></li>
@@ -62,12 +62,11 @@
     import {mapList} from '../../assets/js/data'
     import echarts from 'echarts';
     import myFoot from '../../components/common/foot'
-    import myHead from '../../components/common/header'
+    import myHead from '../../components/common/header-show'
     export default{
         data(){
             return {
                 mapList: mapList.data,
-                width:'1200px'
             }
         },
         components:{

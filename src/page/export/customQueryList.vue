@@ -24,7 +24,7 @@
         <div class="tableContent">
             <Table width="auto" stripe height="600" style="margin-top: 10px;" border :columns="columns" :data="data"></Table>
         </div>
-        <Modal v-model="dialog.search" :mask-closable="false" title="数据检索" class="userRole" :closable="false">
+        <Modal v-model="dialog.search" title="数据检索" class="userRole">
             <div class="clearfix dialog-body">
                 <div class="search-item" v-if="!searchResult">
                     <p >查询名称：{{query.name}}</p>
@@ -36,7 +36,8 @@
                 </Spin>
             </div>
             <div slot="footer">
-                <Button type="primary" style="width:85px" class="align f14" :disabled="searchResult"><a :href="searchUrl">下载文件</a></Button>
+                <span></span>
+                <a :href="searchUrl" @click="dialog.search=!dialog.search" v-if="searchUrl.length">下载文件</a>
             </div>
         </Modal>
         <modal :title="this.modal.title" :content="this.modal.content" :dialog="this.modal.dialog"></modal>
@@ -92,19 +93,30 @@ import modal from '../../components/common/modal.vue'
         methods:{
             setSearch(type){
                 this.dialog.search = true;
-                this.$http.post('http://localhost:8080/admin',this.query)
-                        .then((res)=>{
-                            if(res.code==1){
+                let data = '';
+                let path = '';
+                if(type=='save'){
+                    data = '/export/exportForsuperManagerJudge?querySql='+this.query.sql+'&queryName='+ this.query.name+ '&saveOrNot=save';
+                    path = '/export/exportForsuperManager?querySql='+this.query.sql+'&queryName='+ this.query.name+ '&saveOrNot=save';
+                }else{
+                    data = '/export/exportForsuperManagerJudge?querySql='+this.query.sql+'&queryName='+ this.query.name+ '&saveOrNot=Not';
+                    path = '/export/exportForsuperManager?querySql='+this.query.sql+'&queryName='+ this.query.name+ '&saveOrNot=Not';
+                }
+                this.$http.get(data)
+                        .then(res=>{
+                            if(res.data=='ok'){
                                 this.searchResult = false;
-                                this.searchUrl = res.url;
-                            }else if(res.code==2){
+                                this.searchUrl = path;
+                            }else{
                                 this.modal.dialog--;
                                 this.modal.title = '查询出错';
-                                this.modal.content = `${res}`;
+                                this.modal.content = `请稍后再试`;
                                 this.dialog.search = false;
                             }
                         })
                         .catch(res=>{
+                            /*this.searchResult = false;
+                            this.searchUrl = '';*/
                             this.dialog.search = false;
                             this.modal.dialog--;
                             this.modal.title = '查询出错';

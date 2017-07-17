@@ -13,7 +13,7 @@
             </li>
         </ol>
         <h1>全网统建CDN、IDC、统建Cache、省建Cache、省建OTT业务流量分析日报（图例）</h1>
-        <h2>网络部 <span>2017-06-30 13:00</span></h2>
+        <h2>网络部 <span>{{createTimeView}}</span></h2>
         <div class="map">
             <div id="map-content">
                 <h3>一、统建CDN业务分析</h3>
@@ -68,25 +68,37 @@
         red: '#46d185',
         green: '#ec5845'
     }
-    let data2 = [];
-    let data3 = [];
-    let data4 = [];
-    let data5 = [];
-    for(let i=0;i<31;i++){
-        data2.push((Math.random()* 5).toFixed(2));
-        data4.push((Math.random()* 5).toFixed(2));
-        data5.push((Math.random()* 10).toFixed(2));
-        data3.push((Math.random()* 20).toFixed(2));
-    }
     export default{
         data(){
             return {
                 chart:null,
-                width: '1200px'
+                width: '1200px',
+                data1:[],
+                CDN:{
+                    trafficin:[],
+                    trafficout:[]
+                },
+                cache:{
+                    trafficin:[],
+                    trafficout:[]
+                },
+                IDC:{
+                    trafficin:[],
+                    trafficout:[]
+                },
+                pcache:{
+                    trafficin:[],
+                    trafficout:[]
+                },
+                pott:{
+                    trafficin:[],
+                    trafficout:[]
+                },
+                createTimeView:''
             }
         },
         methods:{
-            drawbar(id,columns,data1,data2,color) {           //一号柱状图
+            drawbar(id,columns,data1,data2,color) {
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     tooltip: {
@@ -153,7 +165,7 @@
                         {
                             type: 'value',
                             name: '流量,Gbps',
-                            max: 25,
+                            max: 800,
                             nameLocation: 'middle',
                             nameGap:30
                         }
@@ -193,15 +205,43 @@
                         }
                     ]
                 });
+            },
+            formatter(data){
+                let obj = {
+                    trafficin:[],
+                    trafficout:[]
+                };
+                for(let item of data){
+                    obj.trafficin.push(item.trafficin);
+                    obj.trafficout.push(item.trafficout);
+                }
+                return obj;
+            },
+            formatterPro(data){
+                let array = [];
+                for(let item of data){
+                    array.push(item.province)
+                }
+                return array;
             }
         },
         mounted(){
-            this.$nextTick(function() {
-                this.drawbar('map-item-1',echartData.data1,data2,data3,[color.lightblue,color.orange]);
-                this.drawbar('map-item-2',echartData.data1,data2,data3,[color.yellow,color.violet]);
-                this.drawbar('map-item-3',echartData.data1,data4,data5,[color.red,color.green]);
-                this.drawbar('map-item-4',echartData.data1,data2,data5,[color.envy,color.red]);
-                this.drawbar('map-item-5',echartData.data1,data4,data3,[color.violet,color.blue]);
+            this.$http.get('/data/showdaydata').then(res=>{
+                this.createTimeView = res.data.PCache[0].createtime+ '  13:00';
+                this.data1 = this.formatterPro(res.data.PCache);
+                this.CDN = this.formatter(res.data.CDN)
+                this.cache = this.formatter(res.data.Cache);
+                this.IDC = this.formatter(res.data.IDC);
+                this.pcache = this.formatter(res.data.PCache);
+                this.pott = this.formatter(res.data.POTT);
+            }).then(()=>{
+                this.$nextTick(function() {
+                    this.drawbar('map-item-1',this.data1,this.CDN.trafficin,this.CDN.trafficout,[color.lightblue,color.orange]);
+                    this.drawbar('map-item-2',this.data1,this.cache.trafficin,this.cache.trafficout,[color.yellow,color.violet]);
+                    this.drawbar('map-item-3',this.data1,this.IDC.trafficin,this.IDC.trafficout,[color.red,color.green]);
+                    this.drawbar('map-item-4',this.data1,this.pcache.trafficin,this.pcache.trafficout,[color.envy,color.red]);
+                    this.drawbar('map-item-5',this.data1,this.pott.trafficin,this.pott.trafficout,[color.violet,color.blue]);
+                });
             });
         },
         components:{

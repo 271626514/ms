@@ -36,3 +36,4 @@ export const MAP_LIST = require('../page/map/mapList.vue');
 export const MAP_1 = require('../page/map/map1.vue');
 export const MAP_2 = require('../page/map/map2.vue');
 export const MAP_3 = require('../page/map/map3.vue');
+export const MAP_4 = require('../page/map/map4.vue');

@@ -39,6 +39,12 @@ export default new Router({
             meta: { browse: true }
         },
         {
+            path: '/mapList/map4',
+            component: path.MAP_4,
+            meta: {name: '视图详情'},
+            meta: { browse: true }
+        },
+        {
             path: '/home',
             component: path.HOME,
             meta: { browse: true }

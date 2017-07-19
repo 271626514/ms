@@ -2,6 +2,155 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40a0f825-47df-45d8-95f3-406fdc7ae5e0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/bg-r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/bicon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/checkbg-r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/checkbg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/checkedbg-r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/checkedbg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/date_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/home_bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-app-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-app.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-data2-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-data2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-date-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-date.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-device-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-device.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-ping-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-ping.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-port-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-port.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-proposition-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-proposition.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-question.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-resource-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-resource.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-review-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-review.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-system-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-system.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-user-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-users-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-users.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-web-p.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/icon-web.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/img-view-1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/img-view-2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/img-view-3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/ive-check.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/ive-uncheck.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/load.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/login-Expire.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/login-bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/login-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/login-logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/logo_home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/sure.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/ticon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/title.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/unsure.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/web_404.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.babelrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/build.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/check-versions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/dev-client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/dev-server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/vue-loader.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/webpack.base.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/webpack.dev.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/webpack.prod.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/dev.env.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/prod.env.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/App.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/css/const.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/css/ivew.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/css/layout.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/css/me.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/js/const.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/js/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/js/formrule.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/js/infographic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/js/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/bread.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/content.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/foot.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/header-show.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/header.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/modal.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/navShow.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/404.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/forgetPwd.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/home.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/layout.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/login.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/loginOverload.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/map.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/resetPwd.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/common/resetPwdExpire.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/dataview/download.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/dataview/showdatasum.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/device/deviceConcat.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/device/deviceImport.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/device/deviceList.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/export/adminHistoryData.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/export/customQueryList.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/export/publicData.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/map/map1.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/map/map2.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/map/map3.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/map/map4.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/map/map5.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/map/mapList.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/operateLog/showLogList.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/port/portConcat.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/port/portImport.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/port/portList.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/rolesAdd.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/rolesDetail.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/rolesEdit.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/rolesShow.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/usersAdd.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/usersDetail.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/usersEdit.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/user/usersShow.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/router/config_router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/router/path.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/login/action.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/login/getters.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/login/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/login/mutations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/mutation-types.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/page/action.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/page/getters.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/page/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/page/mutations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/store.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/role.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="assets.iws" />
@@ -369,7 +518,13 @@
       <option name="project" value="LOCAL" />
       <updated>1500458661892</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update&#10;">
+      <created>1500459765421</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1500459765421</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -392,7 +547,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22895622" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TTT" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />

@@ -93,16 +93,23 @@
         },
         methods:{
             getLogData(){
-                this.$http.post('http://localhost:8080/user',this.log)
-                        .then(res=>{
-                            if(res.code==1){
-                                this.data = res.data;
-                                this.download = res.url;
-                            }
-                        })
-                        .catch((res)=>{
-                            console.log('获取日志列表失败'+res)
-                        })
+//                this.$http.post('http://localhost:8080/user',this.log)
+//                        .then(res=>{
+//                            if(res.code==1){
+//                                this.data = res.data;
+//                                this.download = res.url;
+//                            }
+//                        })
+//                        .catch((res)=>{
+//                            console.log('获取日志列表失败'+res)
+//                        })
+                let data = 'operateLog/showLogList?pageSize=15&pageNum=1&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate;
+                this.$http.get('data').then((res)=>{
+                    alert('succ');
+                }).catch((res)=>{
+//                    console.log('获取日志列表失败'+res)
+                    console.log(data);
+                })
             },
             selectLog(value){
                 this.log.logType = value.value

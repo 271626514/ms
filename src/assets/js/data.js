@@ -944,11 +944,17 @@ export const mapList = {
             createTime: '2017-06-30 13：00',
             id: '1'
         },
-        {
+        /*{
             title: '全网流量迁移地图（图例）',
             img: 'img-view-3',
             createTime: '2017-06-20 13：00',
             id: '3'
+        },*/
+        {
+            title: '全国流量示意图',
+            img: 'img-view-3',
+            createTime: '2017-06-20 13:00',
+            id: '4'
         }
     ]
 }

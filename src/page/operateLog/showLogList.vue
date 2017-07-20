@@ -104,8 +104,9 @@
 //                            console.log('获取日志列表失败'+res)
 //                        })
                 let data = 'operateLog/showLogList?pageSize=15&pageNum=1&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate;
-                this.$http.get('data').then((res)=>{
+                this.$http.get(data).then((res)=>{
                     alert('succ');
+                    console.log(res.data);
                 }).catch((res)=>{
 //                    console.log('获取日志列表失败'+res)
                     console.log(data);

@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="search-result">
-            <p class="search-content">已查找到<span>{{data.length}}</span>条数据</p>
+            <p class="search-content">已查找到<span>{{allRecordNumber}}</span>条数据</p>
             <a class="search-download" :src="download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
@@ -74,6 +74,7 @@
         data(){
             return {
                 columns: loglisttables.columns,
+                allRecordNumber:'',
                 data: [],
                 download:'',
                 logTypeList:showDataSelection.logTypeList,
@@ -93,20 +94,10 @@
         },
         methods:{
             getLogData(){
-//                this.$http.post('http://localhost:8080/user',this.log)
-//                        .then(res=>{
-//                            if(res.code==1){
-//                                this.data = res.data;
-//                                this.download = res.url;
-//                            }
-//                        })
-//                        .catch((res)=>{
-//                            console.log('获取日志列表失败'+res)
-//                        })
                 let data = 'operateLog/showLogList?pageSize=15&pageNum=1&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate;
                 this.$http.get(data).then((res)=>{
-                    alert('succ');
-                    console.log(res.data);
+                    this.allRecordNumber = res.data.allRecordNumber;
+                    this.data = res.data.OperateLogList;
                 }).catch((res)=>{
 //                    console.log('获取日志列表失败'+res)
                     console.log(data);

@@ -12,11 +12,12 @@
                 数据详情
             </li>
         </ol>
-        <h1>全网流量地图（图例）</h1>
+        <h1>全网业务流量分布地图（图例）</h1>
         <h2>网络部 <span>2017-06-30 13:00</span></h2>
         <div class="map clearfix">
             <div id="china-charts-map"></div>
             <div id="china-charts-lines"></div>
+            <p class="data-info pull-left" style="width: 1000px; margin-bottom: 50px;">数据来源：网络部 2017-07-20 13:00 —— 2017-07-20 13:00</p>
         </div>
         <my-foot></my-foot>
     </div>
@@ -24,16 +25,15 @@
 <style lang="less">
     #china-charts-map{
         background: #1b1b1b;
-        width: 900px;
-        height: 600px;
-        margin-bottom: 130px;
+        width: 850px;
+        height: 650px;
         float: left;
     }
     #china-charts-lines{
         float: left;
         margin-top: 100px;
         width: 300px;
-        height: 500px;
+        height: 300px;
     }
 </style>
 <script type="text/ecmascript-6">
@@ -114,13 +114,13 @@
             text: ['高','低'],
             calculable: true,
             inRange: {
-                color: color
+                color: ['#e0ffff', '#006edd']
             },
         },
         legend: {
             orient: 'horizontal',
-            left: '13%',
-            top: '0',
+            left: '25%',
+            top: '1%',
             data:['统建CDN','IDC','省建Cache','统建Cache','省建OTT'],
 
         },
@@ -129,15 +129,15 @@
             formatter: function(obj){
                 let data = map4.mapdata[obj.dataIndex];
                 return `<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px">
-                            全网流量各省数据
+                            全网业务流量分布地图
                         </div>
                         省份：${data.name}<br/>
-                        统建CDN：${data.value.CDN}<br />
-                        IDC：${data.value.IDC}<br />
-                        统建Cache：${data.value.Cache}<br />
-                        省建Cache：${data.value.PCache}<br />
-                        省建OTT：${data.value.POTT}<br />
-                        总计流量：${data.value.POTT+data.value.CDN+data.value.IDC+data.value.Cache+data.value.PCache}<br />
+                        统建CDN：${data.value.CDN}GBPS<br />
+                        IDC：${data.value.IDC}GBPS<br />
+                        统建Cache：${data.value.Cache}GBPS<br />
+                        省建Cache：${data.value.PCache}GBPS<br />
+                        省建OTT：${data.value.POTT}GBPS<br />
+                        总计流量：${data.value.POTT+data.value.CDN+data.value.IDC+data.value.Cache+data.value.PCache}GBPS<br />
                         `
             }
         },
@@ -175,14 +175,15 @@
                         text: `${name}流量数据`,
                         left: 'center',
                         textStyle:{
-                            fontSize: 16
+                            fontSize: 16,
+                            fontWeight: 'normal'
                         }
                     },
                     tooltip: {
                         trigger: 'item',
                         formatter:(item)=>{
                             return `<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px">${name}流量数据</div>
-                                    ${item.name}：${item.value}<br/>`
+                                    ${item.name}：${item.value}GBPS<br/>`
                         }
                     },
                     legend: {

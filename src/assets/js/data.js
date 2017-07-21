@@ -3,20 +3,6 @@
  */
 //前台展现数据
 export const showDataSelection = {
-    dataList:[
-        {
-            value: 'all',
-            label: '全国数据'
-        },
-        {
-            value: 'hy',
-            label: '中移杭州信息技术有限公司'
-        },
-        {
-            value: 'zhejiang',
-            label: '浙江省移动公司'
-        }
-    ],
     dataTypeList: [
         {
             value:'all',
@@ -29,24 +15,6 @@ export const showDataSelection = {
         {
             value: 'show',
             label: '数据总览'
-        }
-    ],
-    dataProvenceList:[
-        {
-            value: '全国',
-            label: '全国'
-        },
-        {
-            value: 'zhejiang',
-            label: '浙江'
-        },
-        {
-            value: 'beijing',
-            label: '北京'
-        },
-        {
-            value: 'shanghai',
-            label: '上海'
         }
     ],
     deviceTypeList: [
@@ -293,7 +261,7 @@ export const devicetables = {
             title: '设备类型',
             key: 'type',
             width: 200,
-            render(fc,obj){
+            render:(fc,obj)=>{
                 let text = '';
                 if(obj.row.type==null){
                     text = '';
@@ -305,7 +273,7 @@ export const devicetables = {
             title: 'SNMP版本',
             key: 'snmpVersion',
             width: 140,
-            render (fc,obj) {
+            render:(fc,obj)=>{
                 const text = obj.row.snmpVersion ? '有':'无';
                 return `${text}`;
             }
@@ -354,7 +322,7 @@ export const devicetables = {
             title: '设备状态',
             key: 'status',
             width: 200,
-            render (fc, obj) {
+            render:(fc, obj)=>{
                 const text = obj.row.status ? '导入已采集':'导入未采集';
                 return `${text}`;
             }
@@ -461,9 +429,12 @@ export const snmp2tables = {
             align: 'center',
             key: 'check',
             width: 200,
-            render(fc,obj){
-                const text = obj.row.check == '正常无错误'? `<p class="sure">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
-                return `${text}`
+            render:(fc,obj)=>{
+                if(obj.row.check=='正常无错误'){
+                    return fc('p',{class:'sure'},obj.row.check)
+                }else{
+                    return fc('p',{class:'wrong'},obj.row.check)
+                }
             }
         },
         {
@@ -535,8 +506,11 @@ export const snmp3tables = {
             key: 'check',
             width: 200,
             render(fc,obj){
-                const text = obj.row.check == '正常无错误'? `<p class="sure">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
-                return `${text}`
+                if(obj.row.check=='正常无错误'){
+                    return fc('p',{class:'sure'},obj.row.check)
+                }else{
+                    return fc('p',{class:'wrong'},obj.row.check)
+                }
             }
         },
         {
@@ -628,8 +602,11 @@ export const portCheckTables = {
             key: 'check',
             width: 200,
             render(fc,obj){
-                const text = obj.row.check == '正常无错误'? `<p class="sure">${row.check}</p>`: `<p class="wrong">${row.check}</p>`
-                return `${text}`
+                if(obj.row.check=='正常无错误'){
+                    return fc('p',{class:'sure'},obj.row.check)
+                }else{
+                    return fc('p',{class:'wrong'},obj.row.check)
+                }
             }
         },
         {
@@ -762,8 +739,23 @@ export const userlisttables = {
             key: 'action',
             width: 160,
             align: 'center',
-            render (fc,obj) {
-                return `<a @click="detail(${obj.row.userId})">查看</a> <a style="margin-left: 10px" @click="remove(${obj.row.userId})">修改</a>`;
+            render: (fc,obj)=>{
+                return fc('div',[fc('a',{
+                    on:{
+                        click:()=>{
+                            this.detail(obj.row.userId)
+                        }
+                    }
+                },`查看`),fc('a',{
+                    style:{
+                        marginLeft: '10px'
+                    },
+                    on:{
+                        click:()=>{
+                            this.remove(obj.row.userId)
+                        }
+                    }
+                },`修改`)])
             }
         }
     ]
@@ -799,11 +791,51 @@ export const roleslisttables = {
             key: 'action',
             width: 240,
             align: 'center',
-            render (fc,obj) {
+            render: (fc,obj)=>{
                 if(obj.row.usersCount<1){
-                    return `<a @click="detail(${obj.row.roleId})">查看</a> <a style="margin-left: 10px" @click="edit(${obj.row.roleId})">修改</a> <a style="margin-left: 10px" @click="remove(${obj.row.roleId})">删除</a>`;
+                //    return `<a @click="detail(${obj.row.roleId})">查看</a> <a style="margin-left: 10px" @click="edit(${obj.row.roleId})">修改</a> <a style="margin-left: 10px" @click="remove(${obj.row.roleId})">删除</a>`;
+                    return fc('div',[fc('a',{
+                        on:{
+                            click:()=>{
+                                this.detail(obj.row.roleId)
+                            }
+                        }
+                    },'查看'),fc('a',{
+                        on:{
+                            click:()=>{
+                                this.edit(obj.row.roleId)
+                            }
+                        },
+                        style:{
+                            marginLeft: '10px'
+                        }
+                    },'修改'),fc('a',{
+                        on:{
+                            click:()=>{
+                                this.remove(obj.row.roleId)
+                            }
+                        },
+                        style:{
+                            marginLeft: '10px'
+                        }
+                    },'删除')])
                 }else{
-                    return `<a @click="detail(${obj.row.roleId})">查看</a> <a style="margin-left: 10px" @click="edit(${obj.row.roleId})">修改</a>`
+                    return fc('div',[fc('a',{
+                        on:{
+                            click:()=>{
+                                this.detail(obj.row.roleId)
+                            }
+                        }
+                    },'查看'),fc('a',{
+                        on:{
+                            click:()=>{
+                                this.edit(obj.row.roleId)
+                            }
+                        },
+                        style:{
+                            marginLeft: '10px'
+                        }
+                    },'修改')])
                 }
             }
         }
@@ -824,11 +856,15 @@ export const datahistorytables = {
         },
         {
             title: '数据下载',
-            key: 'downloadData',
+            key: 'download',
             align: 'center',
             width:100,
-            render (fc,obj) {
-                return `<a :href="${obj.row.dataDownload}">立即下载</a>`;
+            render:(fc,obj)=>{
+                return fc('a',{
+                    attrs:{
+                        'href': obj.row.dataDownload
+                    },
+                },'立即下载')
             }
 
         }
@@ -858,8 +894,14 @@ export const customquerytables = {
             key: 'action',
             align: 'center',
             width: 200,
-            render (fc,obj) {
-                return `<a @click="copythis(${obj.index})">复制</a>`;
+            render:(fc,obj)=> {
+                return fc('a',{
+                    on:{
+                        click:()=>{
+                            this.copythis(obj.index)
+                        }
+                    }
+                },`复制`)
             }
 
         }
@@ -869,12 +911,12 @@ export const loglisttables = {
     columns:[
         {
             title: 'ID',
-            key: 'Id',
+            key: 'userId',
             width: 200
         },
         {
             title: '操作类型',
-            key: 'logType',
+            key:"type",
             width: 100
         },
         {
@@ -884,16 +926,16 @@ export const loglisttables = {
         },
         {
             title: '用户姓名',
-            key: 'userName',
+            key: 'userNameShow',
             width: 200,
         },
         {
             title: '操作详情',
-            key: 'actionDetail'
+            key: 'operateContentShow'
         },
         {
             title: '操作时间',
-            key: 'actionDate',
+            key: 'operateTimeShow',
             width: 200
         },
         {

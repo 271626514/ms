@@ -15,7 +15,32 @@
     export default{
         data(){
             return {
-                columns: datahistorytables.columns,
+                columns:[
+                    {
+                        title: '数据名称',
+                        key: 'dataName',
+                        align: 'center',
+                        width:400
+                    },
+                    {
+                        title: '更新时间',
+                        key: 'upadateTimeView',
+                        align: 'center',
+                    },
+                    {
+                        title: '数据下载',
+                        key: 'downloadData',
+                        align: 'center',
+                        width:100,
+                        render:(fc,obj)=>{
+                            //    return `<a :href="${obj.row.dataDownload}">立即下载</a>`;
+                            return fc('a',{
+
+                            },'立即下载')
+                        }
+
+                    }
+                ],
                 data: []
             }
         },

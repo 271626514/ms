@@ -116,7 +116,7 @@
                 },
                 port: {
                     ipAddr: '',
-                    beginTime:this.getDate(),
+                    beginTime:'2017-01-01',
                     endTime: this.getDate(),
                     province: '全国',
                     type: '全部',
@@ -168,14 +168,25 @@
             },
             remove_con(){       //批量删除同步后台
                 this.dialog.removeAll = false;
-                this.$http.post('/admin/user',this.removeData,config).then(res=>{
-                    if(res.data == 'success'){
+                let json = [];
+                for(var item of this.removeData){
+                    json.push({
+                        id: item.id,
+                        province: item.province,
+                        name:item.name,
+                        ipAddr:item.ipAddr
+                    })
+                }
+
+                let data = 'type=port&json='+JSON.stringify(json);
+                this.$http.post('/cdnManage/delete',data,config).then(res=>{
+                    if(res.data == '正常无错误'){
                         this.modal.dialog++;
                         this.modal.title = '删除成功'
-                    }else if(res.data == 'error'){
+                    }else{
                         this.modal.dialog--;
                         this.modal.title = '删除失败'
-                        this.modal.content = ``
+                        this.modal.content = `${res.data}`
                     }
                 }).catch(res=>{
                     this.modal.dialog--;

@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40a0f825-47df-45d8-95f3-406fdc7ae5e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/js/data.js" afterPath="$PROJECT_DIR$/src/assets/js/data.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/device/deviceList.vue" afterPath="$PROJECT_DIR$/src/page/device/deviceList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/export/adminHistoryData.vue" afterPath="$PROJECT_DIR$/src/page/export/adminHistoryData.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/export/customQueryList.vue" afterPath="$PROJECT_DIR$/src/page/export/customQueryList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/export/publicData.vue" afterPath="$PROJECT_DIR$/src/page/export/publicData.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/map/map4.vue" afterPath="$PROJECT_DIR$/src/page/map/map4.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/operateLog/showLogList.vue" afterPath="$PROJECT_DIR$/src/page/operateLog/showLogList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/port/portList.vue" afterPath="$PROJECT_DIR$/src/page/port/portList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/user/rolesShow.vue" afterPath="$PROJECT_DIR$/src/page/user/rolesShow.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/user/usersShow.vue" afterPath="$PROJECT_DIR$/src/page/user/usersShow.vue" />
     </list>
     <ignored path="assets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,45 +22,7 @@
     <favorites_list name="assets" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="deviceList.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/page/device/deviceList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.692307">
-              <caret line="135" column="57" selection-start-line="135" selection-start-column="57" selection-end-line="135" selection-end-column="57" />
-              <folding>
-                <element signature="e#8123#8691#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/assets/js/data.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57246375">
-              <caret line="613" column="10" selection-start-line="613" selection-start-column="10" selection-end-line="613" selection-end-column="10" />
-              <folding>
-                <element signature="e#95#3525#0" expanded="false" />
-                <element signature="e#3554#3944#0" expanded="false" />
-                <marker date="1500628191074" expanded="true" signature="16483:16500" placeholder="..." />
-                <marker date="1500628191074" expanded="true" signature="16552:16569" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="publicData.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/page/export/publicData.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.538462">
-              <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -103,7 +55,6 @@
         <option value="$PROJECT_DIR$/src/page/operateLog/showLogList.vue" />
         <option value="$PROJECT_DIR$/src/page/port/portList.vue" />
         <option value="$PROJECT_DIR$/src/page/device/deviceList.vue" />
-        <option value="$PROJECT_DIR$/src/page/map/map4.vue" />
         <option value="$PROJECT_DIR$/src/page/device/deviceImport.vue" />
         <option value="$PROJECT_DIR$/src/page/port/portImport.vue" />
         <option value="$PROJECT_DIR$/src/page/user/usersShow.vue" />
@@ -112,6 +63,7 @@
         <option value="$PROJECT_DIR$/src/page/export/customQueryList.vue" />
         <option value="$PROJECT_DIR$/src/page/export/publicData.vue" />
         <option value="$PROJECT_DIR$/src/assets/js/data.js" />
+        <option value="$PROJECT_DIR$/src/page/map/map4.vue" />
       </list>
     </option>
   </component>
@@ -160,16 +112,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -343,7 +285,13 @@
       <option name="project" value="LOCAL" />
       <updated>1500546090396</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update&#10;">
+      <created>1500628285140</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1500628285140</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -359,20 +307,20 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255274" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TTT" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21324354" sideWeight="0.5021097" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21255274" sideWeight="0.5039282" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21324354" sideWeight="0.4978903" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22895622" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255274" sideWeight="0.49607182" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="TTT" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21255274" sideWeight="0.5039282" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -448,6 +396,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5310559">
           <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -521,17 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/js/chartsData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2826087">
-          <caret line="328" column="31" selection-start-line="328" selection-start-column="31" selection-end-line="328" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#52#0" expanded="false" />
-            <element signature="e#303#7086#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/page/map/map1.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28057554">
@@ -572,14 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/map/map2.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.384615">
-          <caret line="41" column="94" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/page/port/portImport.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44484413">
@@ -615,22 +545,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="10" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/map/map4.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7553957">
-          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#1389#1601#0" expanded="false" />
-            <element signature="e#1621#2849#0" expanded="false" />
-            <marker date="1500606860183" expanded="true" signature="3868:3969" placeholder="..." />
-            <marker date="1500606860183" expanded="true" signature="3970:4040" placeholder="..." />
-            <marker date="1500606860183" expanded="true" signature="5901:6002" placeholder="..." />
-            <marker date="1500606860183" expanded="true" signature="6003:6020" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,16 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/device/deviceList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.692307">
-          <caret line="135" column="57" selection-start-line="135" selection-start-column="57" selection-end-line="135" selection-end-column="57" />
-          <folding>
-            <element signature="e#8123#8691#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/page/user/usersShow.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.192308">
@@ -698,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/page/export/publicData.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.538462">
+        <state vertical-scroll-proportion="0.5467626">
           <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
           <folding />
         </state>
@@ -706,13 +610,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/js/data.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57246375">
-          <caret line="613" column="10" selection-start-line="613" selection-start-column="10" selection-end-line="613" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.5942029">
+          <caret line="611" column="9" selection-start-line="611" selection-start-column="9" selection-end-line="611" selection-end-column="9" />
           <folding>
             <element signature="e#95#3525#0" expanded="false" />
             <element signature="e#3554#3944#0" expanded="false" />
             <marker date="1500628191074" expanded="true" signature="16483:16500" placeholder="..." />
             <marker date="1500628191074" expanded="true" signature="16552:16569" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/map/map2.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8705036">
+          <caret line="239" column="64" selection-start-line="239" selection-start-column="64" selection-end-line="239" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/map/map4.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.352518">
+          <caret line="189" column="45" selection-start-line="189" selection-start-column="45" selection-end-line="189" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <marker date="1500606860183" expanded="true" signature="3868:3969" placeholder="..." />
+            <marker date="1500606860183" expanded="true" signature="3970:4040" placeholder="..." />
+            <marker date="1500606860183" expanded="true" signature="5901:6002" placeholder="..." />
+            <marker date="1500606860183" expanded="true" signature="6003:6020" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/js/chartsData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.32093">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#52#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/device/deviceList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39568347">
+          <caret line="135" column="57" selection-start-line="135" selection-start-column="57" selection-end-line="135" selection-end-column="57" />
+          <folding>
+            <element signature="e#8123#8691#0" expanded="false" />
           </folding>
         </state>
       </provider>

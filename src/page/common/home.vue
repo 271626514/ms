@@ -19,9 +19,9 @@
     </div>
 </template>
 <style lang="less">
-    #logoToHome{
-        cursor: pointer;
-    }
+#logoToHome{
+    cursor: pointer;
+}
 .home{
     position:relative;
     header{
@@ -30,9 +30,7 @@
         overflow: hidden;
         width: 100%;
         color: #FFF;
-        background:-moz-linear-gradient(top, #1a71bb, #1d80c7);
-        background:-webkit-gradient(linear, 0 0, 0 bottom, from(#1a71bb), to(#1d80c7));
-        background:-o-linear-gradient(top, #1a71bb, #1d80c7);
+        background: linear-gradient(to bottom,#1a71bb,#1d80c7);
     }
     .logo-info{
         width: 1200px;

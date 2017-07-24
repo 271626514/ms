@@ -15,6 +15,44 @@ export default new Router({
             meta: { browse: true }
         },
         {
+            path: '/demo',
+            meta: { browse: true },
+            components: path.MAP,
+            children:[
+                {
+                    path:'',
+                    redirect: function(){
+                        return 'map1'
+                    },
+                },
+                {
+                    path: 'map1',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_1,
+                },
+                {
+                    path: 'map2',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_2,
+                },
+                {
+                    path: 'map3',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_3,
+                },
+                {
+                    path: 'map4',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_4,
+                },
+                {
+                    path: 'map5',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_5,
+                }
+            ]
+        },
+        {
             path: '/mapList',
             component: path.MAP_LIST,
             meta: {name: '数据视图'},

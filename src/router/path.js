@@ -42,3 +42,11 @@ export const MAP_2 = require('../page/map/map2.vue');
 export const MAP_3 = require('../page/map/map3.vue');
 export const MAP_4 = require('../page/map/map4.vue');
 export const MAP_5 = require('../page/map/map5.vue');
+
+//demo
+export const MAP = require('../page/demo/map.vue');
+export const DEMO_MAP_1 = require('../page/demo/map1.vue');
+export const DEMO_MAP_2 = require('../page/demo/map2.vue');
+export const DEMO_MAP_3 = require('../page/demo/map3.vue');
+export const DEMO_MAP_4 = require('../page/demo/map4.vue');
+export const DEMO_MAP_5 = require('../page/demo/map5.vue');

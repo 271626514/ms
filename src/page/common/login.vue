@@ -165,11 +165,10 @@ export default {
             this.imgSrc = '/img/checkImg?a='+Math.random()+100
         },
         enter(){
-            let that = this;
-            document.onkeydown = function(){
+            document.onkeydown = ()=>{
                 let keycode = window.event.keyCode;
                 if(keycode == 13){
-                    that.handleSubmit();
+                    this.handleSubmit();
                 }
             }
         }

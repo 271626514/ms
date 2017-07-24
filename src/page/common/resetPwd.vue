@@ -35,7 +35,6 @@
         font-size: 20px !important;
     }
 }
-
 .resetPwd{
     width: 420px;
     margin: 10px auto;
@@ -134,8 +133,8 @@
         mounted:function (){
            this.user.userId  = this.getUrlKey("userId");
             this.user.uuid = this.getUrlKey("uuid");
-            console.log("userId:"+this.user.userId);
-            console.log("uuid:"+this.user.uuid);
+//            console.log("userId:"+this.user.userId);
+//            console.log("uuid:"+this.user.uuid);
         }
     }
 </script>

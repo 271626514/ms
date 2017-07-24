@@ -53,7 +53,6 @@
 </style>
 <script type="text/ecmascript-6">
     import echarts from 'echarts';
-    import infographic from '../../assets/js/infographic'
     import myFoot from '../../components/common/foot'
     import myHead from '../../components/common/header-show'
     import {echartData} from '../../assets/js/data'

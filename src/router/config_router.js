@@ -21,6 +21,10 @@ export default new Router({
             meta: { browse: true }
         },
         {
+            path:'/tinyMce',
+            component:path.TINYMCE,
+        },
+        {
             path: '/mapList/map1',
             component: path.MAP_1,
             meta: {name: '视图详情'},

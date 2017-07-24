@@ -9,6 +9,7 @@ export const RESETPASSWORD = require('../page/common/resetPwd.vue');
 export const RESETPASSWORDEXPIRE = require('../page/common/resetPwdExpire.vue');
 export const LOGINOVERLOAD = require('../page/common/loginOverload.vue');
 export const NOTFOUND = require('../page/common/404.vue');
+export const TINYMCE = require('../page/common/tinymce.vue');
 
 //业务数据
 export const SHOW_DATA_SUM = require('../page/dataview/showdatasum.vue')

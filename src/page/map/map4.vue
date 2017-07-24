@@ -35,6 +35,14 @@
         width: 300px;
         height: 300px;
     }
+    .echart-circle{
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 5px;
+        background: #FFF;
+    }
 </style>
 <script type="text/ecmascript-6">
     import echarts from 'echarts';
@@ -57,7 +65,7 @@
 
     let ser = ()=>{
         let array = [];
-        let labelArray = [{name:'统建CDN',item:'CDN'},{name:'IDC',item:'IDC'},{name:'省建Cache',item:'PCache'},{name:'统建Cache',item:'Cache'},{name:'省建OTT',item:'POTT'}]
+        let labelArray = [{name:'统建CDN',item:'CDN'},{name:'IDC',item:'IDC'},{name:'省建Cache',item:'PCache'},{name:'统建Cache',item:'Cache'},{name:'省建OTT',item:'POTT'},{name:'',item:''}]
         for(let i=0;i<labelArray.length;i++){
             array.push({
                 name: labelArray[i].name,
@@ -72,7 +80,7 @@
                 itemStyle: {
                     normal: {
                         color: Object.values(color)[i],
-                        areaColor: colorD,
+                        areaColor: '#e0ffff',
                         borderColor: 'rgba(100,149,237,1)',
                         opacity: '0.6'
                     },
@@ -119,7 +127,7 @@
         },
         legend: {
             orient: 'horizontal',
-            left: '25%',
+            left: '20%',
             top: '1%',
             data:['统建CDN','IDC','省建Cache','统建Cache','省建OTT'],
 
@@ -132,12 +140,12 @@
                             全网业务流量分布地图
                         </div>
                         省份：${data.name}<br/>
-                        统建CDN：${data.value.CDN}GBPS<br />
-                        IDC：${data.value.IDC}GBPS<br />
-                        统建Cache：${data.value.Cache}GBPS<br />
-                        省建Cache：${data.value.PCache}GBPS<br />
-                        省建OTT：${data.value.POTT}GBPS<br />
-                        总计流量：${data.value.POTT+data.value.CDN+data.value.IDC+data.value.Cache+data.value.PCache}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[0]}"></b>统建CDN：${data.value.CDN}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[1]}"></b>IDC：${data.value.IDC}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[2]}"></b>统建Cache：${data.value.Cache}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[3]}"></b>省建Cache：${data.value.PCache}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[4]}"></b>省建OTT：${data.value.POTT}GBPS<br />
+                        <b class="echart-circle" style="background: #0063dd"></b>总计流量：${(data.value.POTT+data.value.CDN+data.value.IDC+data.value.Cache+data.value.PCache).toFixed(2)}GBPS<br />
                         `
             }
         },

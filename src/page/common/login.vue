@@ -163,7 +163,19 @@ export default {
         },
         getCode() {
             this.imgSrc = '/img/checkImg?a='+Math.random()+100
+        },
+        enter(){
+            let that = this;
+            document.onkeydown = function(){
+                let keycode = window.event.keyCode;
+                if(keycode == 13){
+                    that.handleSubmit();
+                }
+            }
         }
+    },
+    mounted:function(){
+        this.enter();
     }
 }
 </script>

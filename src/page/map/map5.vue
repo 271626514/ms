@@ -12,34 +12,29 @@
                 数据详情
             </li>
         </ol>
-        <h1>全网统建CDN、IDC、统建Cache、省建Cache、省建OTT业务流量分析日报</h1>
+        <h1>全网统建CDN、IDC、统建Cache、省建Cache、省建OTT业务流量分析周报</h1>
         <h2>网络部 <span>{{createTimeView}}</span></h2>
         <div class="map">
             <div id="map-content">
                 <h3>一、统建CDN业务分析</h3>
                 <div class="map-wrapper">
                     <div id="map-item-1"></div>
-                    <p class="data-info">数据来源：网络部 {{createTimeView}} —— {{createTimeView}}</p>
                 </div>
                 <h3>二、统建Cache业务分析</h3>
                 <div class="map-wrapper">
                     <div id="map-item-2"></div>
-                    <p class="data-info">数据来源：网络部 {{createTimeView}} —— {{createTimeView}}</p>
                 </div>
                 <h3>三、IDC 业务分析</h3>
                 <div class="map-wrapper">
                     <div id="map-item-3"></div>
-                    <p class="data-info">数据来源：网络部 {{createTimeView}} —— {{createTimeView}}</p>
                 </div>
                 <h3>四、省建Cache 业务分析</h3>
                 <div class="map-wrapper">
                     <div id="map-item-4"></div>
-                    <p class="data-info">数据来源：网络部 {{createTimeView}} —— {{createTimeView}}</p>
                 </div>
                 <h3>五、OTT 业务分析</h3>
-                <div class="map-wrapper mb-60">
+                <div class="map-wrapper">
                     <div id="map-item-5"></div>
-                    <p class="data-info">数据来源：网络部 {{createTimeView}} —— {{createTimeView}}</p>
                 </div>
             </div>
         </div>
@@ -54,11 +49,6 @@
     }
     #map-item-5{
         margin-bottom: 30px;
-    }
-    .data-info{
-        width: 1024px;
-        margin: 10px auto 0 auto;
-        text-align: right;
     }
 </style>
 <script type="text/ecmascript-6">

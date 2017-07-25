@@ -45,7 +45,85 @@
     export default{
         data() {
             return {
-                columns: roleslisttables.columns,
+                columns:[
+                    {
+                        type: 'selection',
+                        width: 100
+                    },
+                    {
+                        type: 'index',
+                        title: '序号',
+                        width: 100
+                    },
+                    {
+                        title: '权限名称',
+                        key: 'roleName',
+                        width: 200
+                    },
+                    {
+                        title: '权限详情',
+                        key: 'roleDesc',
+                    },
+                    {
+                        title: '用户数量',
+                        key: 'usersCount',
+                        align: 'center',
+                        width: 100
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 240,
+                        align: 'center',
+                        render: (fc,obj)=>{
+                            if(obj.row.usersCount<1){
+                                //    return `<a @click="detail(${obj.row.roleId})">查看</a> <a style="margin-left: 10px" @click="edit(${obj.row.roleId})">修改</a> <a style="margin-left: 10px" @click="remove(${obj.row.roleId})">删除</a>`;
+                                return fc('div',[fc('a',{
+                                    on:{
+                                        click:()=>{
+                                            this.detail(obj.row.roleId)
+                                        }
+                                    }
+                                },'查看'),fc('a',{
+                                    on:{
+                                        click:()=>{
+                                            this.edit(obj.row.roleId)
+                                        }
+                                    },
+                                    style:{
+                                        marginLeft: '10px'
+                                    }
+                                },'修改'),fc('a',{
+                                    on:{
+                                        click:()=>{
+                                            this.remove(obj.row.roleId)
+                                        }
+                                    },
+                                    style:{
+                                        marginLeft: '10px'
+                                    }
+                                },'删除')])
+                            }else{
+                                return fc('div',[fc('a',{
+                                    on:{
+                                        click:()=>{
+                                            this.detail(obj.row.roleId)
+                                        }
+                                    }
+                                },'查看'),fc('a',{
+                                    on:{
+                                        click:()=>{
+                                            this.edit(obj.row.roleId)
+                                        }
+                                    },
+                                    style:{
+                                        marginLeft: '10px'
+                                    }
+                                },'修改')])
+                            }
+                        }
+                    }
+                ],
                 data: [],
                 selection: [],
                 removeState: 0,

@@ -72,7 +72,41 @@ import modal from '../../components/common/modal.vue'
     export default{
         data(){
             return {
-                columns: customquerytables.columns,
+                columns:[
+                    {
+                        title: '查询名称',
+                        key: 'queryName',
+                        align: 'center',
+                        width: 200
+                    },
+                    {
+                        title: 'SQL语句详情',
+                        key: 'querySqlShow',
+                        align: 'center',
+                    },
+                    {
+                        title: '创建时间',
+                        key: 'createTimeView',
+                        align: 'center',
+                        width: 200
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        align: 'center',
+                        width: 200,
+                        render:(fc,obj)=> {
+                            return fc('a',{
+                                on:{
+                                    click:()=>{
+                                        this.copythis(obj.index)
+                                    }
+                                }
+                            },`复制`)
+                        }
+
+                    }
+                ],
                 data: [],
                 dialog: {
                     search: false

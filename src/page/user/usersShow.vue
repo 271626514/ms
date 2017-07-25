@@ -93,7 +93,78 @@
     export default{
         data(){
             return {
-                columns: userlisttables.columns,
+                columns:[
+                    {
+                        type: 'selection',
+                        align: 'center',
+                        width: 100
+                    },
+                    {
+                        type: 'index',
+                        align: 'center',
+                        title: '序号',
+                        width: 100
+                    },
+                    {
+                        title: '账户名称',
+                        key: 'userName',
+                        align: 'center',
+                    },
+                    {
+                        title: '公司',
+                        key: 'company',
+                        align: 'center',
+                    },
+                    {
+                        title: '权限分配',
+                        key: 'roleName',
+                        align: 'center',
+
+                    },
+                    {
+                        title: '状态',
+                        key: 'state',
+                        align: 'center',
+                        width: 170
+                    },
+                    {
+                        title: '最近在线',
+                        key: 'delayDate',
+                        align: 'center',
+                        width: 170,
+                        render (fc,obj){
+                            if(obj.row.loginStatus){
+                                return `当前在线`
+                            }else{
+                                return `${obj.row.lastTime}`
+                            }
+                        }
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 160,
+                        align: 'center',
+                        render: (fc,obj)=>{
+                            return fc('div',[fc('a',{
+                                on:{
+                                    click:()=>{
+                                        this.detail(obj.row.userId)
+                                    }
+                                }
+                            },`查看`),fc('a',{
+                                style:{
+                                    marginLeft: '10px'
+                                },
+                                on:{
+                                    click:()=>{
+                                        this.remove(obj.row.userId)
+                                    }
+                                }
+                            },`修改`)])
+                        }
+                    }
+                ],
                 data: [],
                 selectionList:[],   //批量修改用户权限的下拉数据组
                 selection: [],      //多选组

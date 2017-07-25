@@ -5,7 +5,11 @@ export const LOGIN = require('../page/common/login.vue');
 export const LAYOUT_SHOW = require('../page/common/layout.vue');
 export const HOME = require('../page/common/home.vue');
 export const FORGETPASSWORD = require('../page/common/forgetPwd.vue');
+export const RESETPASSWORD = require('../page/common/resetPwd.vue');
+export const RESETPASSWORDEXPIRE = require('../page/common/resetPwdExpire.vue');
+export const LOGINOVERLOAD = require('../page/common/loginOverload.vue');
 export const NOTFOUND = require('../page/common/404.vue');
+export const TINYMCE = require('../page/common/tinymce.vue');
 
 //业务数据
 export const SHOW_DATA_SUM = require('../page/dataview/showdatasum.vue')
@@ -37,3 +41,12 @@ export const MAP_1 = require('../page/map/map1.vue');
 export const MAP_2 = require('../page/map/map2.vue');
 export const MAP_3 = require('../page/map/map3.vue');
 export const MAP_4 = require('../page/map/map4.vue');
+export const MAP_5 = require('../page/map/map5.vue');
+
+//demo
+export const MAP = require('../page/demo/map.vue');
+export const DEMO_MAP_1 = require('../page/demo/map1.vue');
+export const DEMO_MAP_2 = require('../page/demo/map2.vue');
+export const DEMO_MAP_3 = require('../page/demo/map3.vue');
+export const DEMO_MAP_4 = require('../page/demo/map4.vue');
+export const DEMO_MAP_5 = require('../page/demo/map5.vue');

@@ -15,10 +15,52 @@ export default new Router({
             meta: { browse: true }
         },
         {
+            path: '/demo',
+            meta: { browse: true },
+            component: path.MAP,
+            children:[
+                {
+                    path:'',
+                    redirect: function(){
+                        return 'map1'
+                    },
+                },
+                {
+                    path: 'map1',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_1,
+                },
+                {
+                    path: 'map2',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_2,
+                },
+                {
+                    path: 'map3',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_3,
+                },
+                {
+                    path: 'map4',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_4,
+                },
+                {
+                    path: 'map5',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_5,
+                }
+            ]
+        },
+        {
             path: '/mapList',
             component: path.MAP_LIST,
             meta: {name: '数据视图'},
             meta: { browse: true }
+        },
+        {
+            path:'/tinyMce',
+            component:path.TINYMCE,
         },
         {
             path: '/mapList/map1',
@@ -45,6 +87,12 @@ export default new Router({
             meta: { browse: true }
         },
         {
+            path: '/mapList/map5',
+            component: path.MAP_5,
+            meta: {name: '视图详情'},
+            meta: { browse: true }
+        },
+        {
             path: '/home',
             component: path.HOME,
             meta: { browse: true }
@@ -55,9 +103,24 @@ export default new Router({
             meta: { browse: true }
         },
         {
+            path:'/loginOverload',
+            component:path.LOGINOVERLOAD,
+            meta:{ browse:true }
+        },
+        {
             path: '/forgetPwd',
             component: path.FORGETPASSWORD,
             meta: { browse: true }
+        },
+        {
+            path:'/resetPwd',
+            component:path.RESETPASSWORD,
+            meta:{ browse:true }
+        },
+        {
+            path:'/resetPwdExpire',
+            component:path.RESETPASSWORDEXPIRE,
+            meta:{ browse:true }
         },
         {
             path: '/user',

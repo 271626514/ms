@@ -70,7 +70,7 @@
         '吉林': [125.8154,44.2584],
         '湖南': [113.0823,28.2568],
     };
-    let data = ()=>{
+/*    let data = ()=>{
         let array = [];
         let pro = Object.keys(geoCoordMap);
         pro.map((item)=>{
@@ -78,10 +78,49 @@
             _temp.push({name:item,value:parseInt(Math.random()*100)})
             array.push(_temp);
         })
+        console.log(array)
         return array;
     }
     let BJData = data();
-    var convertData = function (data) {
+    let BJData = [
+         [{name:'北京'},{name:'上海',value:88}],
+         [{name:'北京'},{name:'浙江',value:60}],
+         [{name:'北京'},{name:'广东',value:30}],
+         [{name:'上海'},{name:'北京',value:44}],
+         [{name:'上海'},{name:'浙江',value:36}],
+         [{name:'上海'},{name:'广东',value:57}],
+         [{name:'浙江'},{name:'广东',value:99}],
+         [{name:'浙江'},{name:'北京',value:32}],
+         [{name:'浙江'},{name:'上海',value:9}],
+         [{name:'广东'},{name:'浙江',value:99}],
+         [{name:'广东'},{name:'北京',value:32}],
+         [{name:'广东'},{name:'上海',value:9}],
+     ];
+    */
+    let cityData = ()=>{
+        let array = [];
+        Object.keys(geoCoordMap).map((i)=>{
+            array.push({name:i});
+        });
+        return array;
+    }
+    let _tempData = ()=>{
+        let array = [];
+        let _temp = [];
+        Object.keys(geoCoordMap).map((i)=>{
+            _temp.push(i);
+        });
+        for(let i of _temp){
+            for(let j of _temp){
+                if(i!=j){
+                    array.push([{name:i},{name:j,value:parseInt(Math.random()*100)}])
+                }
+            }
+        }
+        return array;
+    }
+    let BJData = _tempData()
+    let convertData = function (data) {
         var res = [];
         for (var i = 0; i < data.length; i++) {
             var dataItem = data[i];
@@ -111,7 +150,8 @@
                 period: 6,
                 trailLength: 0.7,
                 color: '#fff',
-                symbolSize: 2
+                symbol: 'arrow',
+                symbolSize: 3
             },
             lineStyle: {
                 normal: {
@@ -147,7 +187,7 @@
                 trigger: 'item',
                 formatter: function (obj) {
                     return `<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">${obj.seriesName}</div>
-                            From： ${obj.data.fromName} To ${obj.data.toName}<br />流量：${BJData[obj.dataIndex][1].value}`
+                            From： ${obj.data.fromName} To ${obj.data.toName}<br />流量：${BJData[obj.dataIndex][1].value}Gbps`
                 }
             },
             data: convertData(BJData)
@@ -168,9 +208,7 @@
                     formatter: '{b}'
                 }
             },
-            symbolSize: function (val) {
-                return val[2] / 6;
-            },
+            symbolSize: 4,
             itemStyle: {
                 normal: {
                     color: color
@@ -183,14 +221,14 @@
                     return `<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px">
                             ${obj.seriesName}
                         </div>
-                        ${obj.name} ：${value[2]}Gbps
+                        ${obj.name}
                         `
                 }
             },
-            data: BJData.map(function (dataItem) {
+            data: cityData().map(function (dataItem) {
                 return {
-                    name: dataItem[1].name,
-                    value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                    name: dataItem.name,
+                    value: geoCoordMap[dataItem.name]
                 };
             })
         }];
@@ -233,7 +271,7 @@
             show: false,
             min : 0,
             max : 100,
-            color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+            color: ['lime'],
             textStyle:{
                 color:'#fff'
             }

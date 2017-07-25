@@ -5,7 +5,6 @@ import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import store from './store/store'
 import axios from 'axios'
-
 Vue.use(iView)
 
 Vue.prototype.$http = axios;
@@ -31,5 +30,12 @@ new Vue({
     router,
     store:store,
     template: '<App/>',
-    components: { App }
+    components: { App },
 })
+
+
+
+
+
+
+

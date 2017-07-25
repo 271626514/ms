@@ -14,6 +14,7 @@
         <Modal v-model="success" :mask-closable="false" title="提示" :closable="false">
             <div class="clearfix dialog-body">
                 <h1>{{title}}</h1>
+                <p class="red f16 text-center mt-20">{{content}}</p>
             </div>
             <div slot="footer">
                 <Button type="primary" style="width:90px" class="align" @click="reload">确定</Button>
@@ -23,6 +24,7 @@
         <Modal v-model="redirect" :mask-closable="false" title="提示" :closable="false">
             <div class="clearfix dialog-body">
                 <h1>{{title}}</h1>
+                <p class="f16 text-center mt-20" v-html="content"></p>
             </div>
             <div slot="footer">
                 <Button type="primary" style="width:90px" class="align" @click="$router.push(path)">确定</Button>
@@ -60,5 +62,17 @@
             }
         },
         props: ['title','content','dialog','url'],
+       /* props: {
+            title:'String',
+            content:'String',
+            dialog:'Number',
+            url:'String',
+            color:{
+                type: 'String',
+                default:function(){
+                    return '#ff5021'
+                }
+            }
+        },*/
     }
 </script>

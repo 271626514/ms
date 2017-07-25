@@ -81,7 +81,7 @@
                 </Form-item>
                 <Form-item prop="userPassword" class="input-item">
                     <Input type="password" v-model="user.userPassword" placeholder="密码" :maxlength="20"></Input>
-                    <a class="point" @click="">忘记密码？</a>
+                    <a class="point" @click="$router.push('/forgetPwd')">忘记密码？</a>
                 </Form-item>
                 <Form-item prop="code">
                     <Input v-model="user.code" placeholder="输入验证码" :maxlength="4" style="width:240px;"></Input>
@@ -163,7 +163,18 @@ export default {
         },
         getCode() {
             this.imgSrc = '/img/checkImg?a='+Math.random()+100
+        },
+        enter(){
+            document.onkeydown = ()=>{
+                let keycode = window.event.keyCode;
+                if(keycode == 13){
+                    this.handleSubmit();
+                }
+            }
         }
+    },
+    mounted:function(){
+        this.enter();
     }
 }
 </script>

@@ -46,11 +46,15 @@
             </div>
         </div>
         <div class="search-result">
-            <p class="search-content">已查找到<span>{{data.length}}</span>条数据</p>
+            <p class="search-content">已查找到<span>{{allRecordNumber}}</span>条数据</p>
             <a class="search-download" :src="download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
-            <Table width="auto" stripe height="600" style="margin-top: 10px;" border :columns="columns" :data="data"></Table>
+            <Table width="auto" stripe style="margin-top: 10px;" border :columns="columns" :data="data"></Table>
+
+            <div class="page" v-if="data">
+                <Page :total="page.totalList" :page-size="15" @on-change="onChange"></Page>
+            </div>
         </div>
 
     </div>
@@ -74,6 +78,7 @@
         data(){
             return {
                 columns: loglisttables.columns,
+                allRecordNumber:'',
                 data: [],
                 download:'',
                 logTypeList:showDataSelection.logTypeList,
@@ -88,21 +93,25 @@
                     result: 'all',
                     startDate: this.getDate(),
                     finDate: this.getDate()
-                }
+                },
+                page:{
+                    totalList: 0,
+                    pageNum: 1,
+                    pageSize: 15
+                },
             }
         },
         methods:{
-            getLogData(){
-                this.$http.post('http://localhost:8080/user',this.log)
-                        .then(res=>{
-                            if(res.code==1){
-                                this.data = res.data;
-                                this.download = res.url;
-                            }
-                        })
-                        .catch((res)=>{
-                            console.log('获取日志列表失败'+res)
-                        })
+            getLogData(e,pageSize=15,pageNum=1){
+                let data = 'operateLog/showLogList?pageSize=15&pageNum=1&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate;
+                this.$http.get(data).then((res)=>{
+                    this.allRecordNumber = res.data.allRecordNumber;
+                    this.page.totalList = res.data.totalPages;
+                    this.page.pageNum = res.data.pageNum;
+                    this.data = res.data.OperateLogList;
+                }).catch((res)=>{
+                    console.log('error');
+                })
             },
             selectLog(value){
                 this.log.logType = value.value
@@ -148,6 +157,10 @@
                 }
                 let currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
                 return currentdate;
+            },
+            onChange(pageNum){
+                this.getLogData(null,15,pageNum);
+                this.page.pageNum = pageNum;
             }
         },
         mounted(){

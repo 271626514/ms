@@ -17,7 +17,7 @@ export default new Router({
         {
             path: '/demo',
             meta: { browse: true },
-            components: path.MAP,
+            component: path.MAP,
             children:[
                 {
                     path:'',

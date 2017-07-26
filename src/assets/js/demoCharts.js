@@ -301,6 +301,7 @@ export const demo = {
             },
         ]
     },
+    colorTen:['#ff6666','#ffb54c','#f4de4a','#b7e871','#3aba70','#68c5f5','#68c5f5','#566eff','#dd56ff','#ef5e80'],
     map2:{
         map2:[
             {
@@ -455,3 +456,36 @@ export const colorD = '#1d2b46'
 export const color = ['#f4d45b','#61b1ec','#615297','#ec6182']
 export const column = ["安徽", "北京", "福建", "甘肃", "广东", "贵州", "广西", "海南", "河北", "河南", "黑龙江", "湖北", "湖南", "吉林", "江苏", "江西", "辽宁", "内蒙古", "宁夏", "青海", "山东", "山西", "陕西", "上海", "四川", "天津", "西藏", "新疆", "云南", "浙江", "重庆"]
 export const timeColumn = ['0:00','1:00','2:00','3:00','4:00','5:00','6:00','7:00','8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00']
+export const textStyle = {
+    color:'#feffff',
+    fontSize: 24,
+    fontWeight: 'normal'
+}
+export const labelStyle = {
+    textStyle:{
+        color: '#feffff',
+        fontSize: 14,
+        fontWeight: 'normal'
+    }
+}
+export const seriesLabelStyle = {
+    textStyle:{
+        color: '#feffff',
+        fontSize: 14,
+        fontWeight: 'normal'
+    }
+}
+export const itemHeight = 15;
+export const itemWidth =15;
+
+export const axisLine = {
+    lineStyle:{
+        color:'#30436d'
+    }
+}
+export const axisLabel = {
+    textStyle:{
+        color: '#5971a3',
+        fontSize: 14
+    }
+}

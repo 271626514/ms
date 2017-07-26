@@ -1,17 +1,25 @@
 <template>
     <div id="map2">
-        <div class="map-container h350 clearfix">
-            <div class="item" id="map2-map1"></div>
-            <div class="item" id="map2-map2"></div>
-            <div class="item" id="map2-map3"></div>
+        <div class="map-container h360 clearfix">
+            <div class="item border" id="map2-map1">
+                <h2>采集CP</h2>
+                <div class="num-map">
+                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
+                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
+                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
+                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
+                </div>
+            </div>
+            <div class="item border" id="map2-map2"></div>
+            <div class="item border" id="map2-map3"></div>
         </div>
         <ul class="goods">
-            <li v-for="(item,index) in data" @click="check(index)">{{item.name}}</li>
+            <li v-for="(item,index) in data" class="map-icon" @click="check(index)" :class="['map-icon-'+index,{'active':index==mapindex}]"></li>
         </ul>
         <div class="map-container clearfix h550">
-            <div class="map-container left clearfix h550">
-                <div class="item" id="map2-map4"></div>
-                <div class="item" id="map2-map5"></div>
+            <div class="h600 w750 left">
+                <div id="map2-map4"></div>
+                <div id="map2-map5"></div>
             </div>
             <div class="map-container left clearfix h550">
                 <div class="item" id="map2-map6"></div>
@@ -24,31 +32,76 @@
         .item{
             float: left;
         }
-        #map2-map1,#map2-map2,#map2-map3{
-            width: 300px;
-            height: 300px;
+        #map2-map1,#map2-map2{
+            width: 435px;
+            height: 360px;
         }
-        #map2-map4{
-            width: 650px;
-            height: 250px;
+        #map2-map3{
+            width: 690px;
+            height: 360px;
         }
-        #map2-map5{
-            width: 650px;
+        #map2-map4,#map2-map5{
+            width: 750px;
             height: 300px;
+            float: none;
         }
         .goods{
+            padding: 20px;
+            border:2px solid #2c3e65;
+            border-top:0;
             li{
                 display: inline-block;
-                font-size: 14px;
-                padding: 5px 10px;
+                margin-left: 25px;
+                width: 140px;
+                height: 140px;
+                cursor:pointer;
+                &:hover,&.active{
+                    border:2px solid #52a5f7;
+                }
+            }
+            .map-icon-0{
+                background: url(../../assets/imgs/map-icon-0.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-1{
+                background: url(../../assets/imgs/map-icon-1.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-2{
+                background: url(../../assets/imgs/map-icon-2.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-3{
+                background: url(../../assets/imgs/map-icon-3.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-4{
+                background: url(../../assets/imgs/map-icon-4.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-5{
+                background: url(../../assets/imgs/map-icon-5.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-6{
+                background: url(../../assets/imgs/map-icon-6.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-7{
+                background: url(../../assets/imgs/map-icon-7.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-8{
+                background: url(../../assets/imgs/map-icon-8.png) no-repeat;
+                background-size:contain;
             }
         }
+
     }
 </style>
 <script type="text/ecmascript-6">
     import echarts from 'echarts'
-    import {demo,color,colorD} from '../../assets/js/chartsData'
-    import {column,timeColumn} from '../../assets/js/demoCharts'
+    import {column,timeColumn,demo,textStyle,labelStyle,seriesLabelStyle,itemHeight,itemWidth,axisLabel,axisLine} from '../../assets/js/demoCharts'
     const placeHolderStyle = {
         normal : {
             color: 'rgba(0,0,0,0)',
@@ -62,7 +115,7 @@
     const map1 =  {
         name: '带宽',
         type: 'pie',
-        radius: ['45%', '65%'],
+        radius: ['45%', '60%'],
         center: ['50%', '50%'],
         data: [
             {name:'带宽',value: 30.6},
@@ -82,24 +135,22 @@
                 show: true,
                 position: 'center',
                 textStyle: {
-                    fontSize: '30',
-                    fontWeight: 'bold'
+                    fontSize: '24',
+                    fontWeight: 'normal',
                 },
                 formatter: "{c}T"
             },
             emphasis: {
                 show: true,
                 textStyle: {
-                    fontSize: '30',
-                    fontWeight: 'bold'
+                    fontSize: '24',
+                    fontWeight: 'normal'
                 }
             }
         },
         itemStyle: {
             normal:{
-                color: function (params){
-                    return demo.color[params.dataIndex];
-                }
+                color: '#ffb54c'
             },
             emphasis: {
                 shadowBlur: 10,
@@ -112,7 +163,8 @@
     export default{
         data(){
             return {
-                data:demo.map2.map4
+                data:demo.map2.map4,
+                mapindex: 0,
             }
         },
         methods:{
@@ -121,14 +173,17 @@
                 this.chart.setOption({
                     title : {
                         text: title,
-                        textStyle:{
-                            fontWeight: 'normal',
-                            fontSize: 14
-                        },
-                        left: 'center'
+                        textStyle,
+                        left: 'center',
+                        top:20,
                     },
                     tooltip: {
                         trigger: 'item',
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#333'
+                        }
                     },
                     legend: {
                         orient: 'horizontal',
@@ -145,45 +200,60 @@
                 this.chart.setOption({
                     title : {
                         text: title,
-                        textStyle:{
-                            fontWeight: 'normal',
-                            fontSize: 14
-                        },
+                        textStyle,
+                        top:20,
                         left: 'center'
                     },
                     color: ['#3398DB'],
                     tooltip : {
-                        trigger: 'axis',
+                        trigger: 'item',
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#000'
+                        },
                     },
-                    grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true
-                    },
-                    xAxis : [{
+                    xAxis : [
+                        {
                             show:false,
                             type : 'category',
-                            data : ['腾讯','爱奇艺','阿里巴巴','优酷土豆网','百度','易视腾科技有限公司','芒果TV','搜狐','金山网络'],
-                    }],
-                    legend: {
-                        data: ['腾讯','爱奇艺','阿里巴巴','优酷土豆网','百度','易视腾科技有限公司','芒果TV','搜狐','金山网络']
-                    },
-                    yAxis : [{
+                            data : ['腾讯','爱奇艺','阿里巴巴','优酷土豆网','百度','易视腾','芒果TV','搜狐','新浪','金山网络'],
+                        }
+                    ],
+                    yAxis : [
+                        {
                             show:false,
                             type : 'value',
 
-                    }],
+                        }
+                    ],
+                    barWidth:30,
                     label: {
                         normal: {
                             show: true,
-                            position: 'insideRight'
+                            position: 'top',
+                            textStyle:{
+                                color:'#FFF'
+                            },
+                            formatter: function(data){
+                                return `${data.name}\n${data.data}`
+                            }
+                        },
+                        emphasis:{
+                            show:true,
+                            position: 'top',
+                            textStyle:{
+                                color:'#FFF'
+                            },
+                            formatter: function(data){
+                                return `${data.name}\n${data.data}`
+                            }
                         }
                     },
                     itemStyle:{
                         normal:{
                             color: function (params){
-                                return Object.values(color)[params.dataIndex]
+                                return Object.values(demo.colorTen)[params.dataIndex]
                             }
                         }
                     },
@@ -196,38 +266,23 @@
                     ]
                 });
             },
-            drawpro(id,data1,color,title) {
+            drawpro(id,data1,title) {
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title:{
                         text:`${title}分省流量`,
-                        textStyle:{
-                            fontWeight: 'normal',
-                            fontSize: 14
-                        },
-                        left: 'center'
+                        textStyle,
+                        left: 'center',
+                        top:20
                     },
                     tooltip: {
-                        trigger: 'axis',
-                        axisPointer: {
-                            type: "shadow"
+                        trigger: 'item',
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#000'
                         },
                     },
-                    /*dataZoom:[
-                        {
-                            type: 'slider',
-                            show: true,
-                            xAxisIndex: [0],
-                            start: 1,
-                            end: 25,
-                        },
-                        {
-                            type: 'inside',
-                            xAxisIndex: [0],
-                            start: 1,
-                            end: 25
-                        },
-                    ],*/
                     xAxis: [
                         {
                             axisLabel: {
@@ -239,11 +294,13 @@
                                     "fontSize": 12
                                 }
                             },
+                            show:false,
                             data: column
                         }
                     ],
                     yAxis: [
                         {
+                            show:false,
                             type: 'value',
                             max: 'auto',
                             nameLocation: 'middle',
@@ -259,13 +316,13 @@
                             type: 'bar',
                             label: {
                                 normal: {
-                                    show: true,
+                                    show: false,
                                     position: 'insideTop'
                                 }
                             },
                             itemStyle:{
                                 normal:{
-                                    color: color[0]
+                                    color: '#affd87'
                                 }
                             },
                             data: data1
@@ -273,40 +330,26 @@
                     ]
                 });
             },
-            drawarea(id,data,color,title){
+            drawarea(id,data,title){
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title:{
                         text:`${title}分时流量`,
-                        textStyle:{
-                            fontWeight: 'normal',
-                            fontSize: 14
-                        },
-                        left: 'center'
+                        textStyle,
+                        top:20,
+                        left:'center'
                     },
                     tooltip: {
                         trigger: 'axis',
-                        axisPointer: {
-                            type: "shadow"
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#000'
                         },
                     },
-                    /*dataZoom:[
-                        {
-                            type: 'slider',
-                            show: true,
-                            xAxisIndex: [0],
-                            start: 1,
-                            end: 25,
-                        },
-                        {
-                            type: 'inside',
-                            xAxisIndex: [0],
-                            start: 1,
-                            end: 25
-                        },
-                    ],*/
                     xAxis: [
                         {
+                            show:false,
                             axisLabel: {
                                 interval: 0,
                                 show: true,
@@ -321,6 +364,7 @@
                     ],
                     yAxis: [
                         {
+                            show:false,
                             type: 'value',
                             max: 'auto',
                             nameLocation: 'middle',
@@ -337,7 +381,7 @@
                             areaStyle: {normal: {}},
                             itemStyle:{
                                 normal:{
-                                    color: color[0]
+                                    color: '#52a5f7'
                                 }
                             },
                             data: data
@@ -347,6 +391,7 @@
             },
             check(index){
                 //切换
+                this.mapindex = index;
                 let data1 = ()=>{
                     let array = [];
                     for(let i=0;i<31;i++){
@@ -363,9 +408,10 @@
                     return array;
                 }
                 let title = this.data[index].name
-                this.drawpro('map2-map4',data1(),color,title);
-                this.drawarea('map2-map5',data2(),color,title);
-                this.drawmap('map2-map6',)
+                this.drawpro('map2-map4',data1(),title);
+                this.drawarea('map2-map5',data2(),title);
+            //    this.drawmap('map2-map6',)
+
             }
         },
         mounted(){

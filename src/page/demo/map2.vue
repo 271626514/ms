@@ -23,7 +23,7 @@
                 <div id="map2-map5"></div>
             </div>
             <div class="map-container left clearfix h550">
-                <div class="item" id="map2-map6"></div>
+                <div class="item h600 w750" id="map2-map6"></div>
             </div>
         </div>
     </div>
@@ -168,6 +168,7 @@
 </style>
 <script type="text/ecmascript-6">
     import echarts from 'echarts'
+    import china from 'echarts/map/js/china'
     import {column,timeColumn,demo,textStyle,labelStyle,seriesLabelStyle,itemHeight,itemWidth,axisLabel,axisLine} from '../../assets/js/demoCharts'
     const placeHolderStyle = {
         normal : {
@@ -467,14 +468,15 @@
                         text:`${title}流量地图`,
                         textStyle,
                         right:20,
-                        top:20
+                        top:20,
+                        left: 'center'
                     },
                     right:20,
-                    zoom:1.4,
+                    zoom:2,
                     visualMap: {
                         min: 0,
                         max: 100,
-                        left: '5%',
+                        right: '5%',
                         top: 'center',
                         text: ['高','低'],
                         calculable: false,
@@ -487,13 +489,6 @@
                     },
                     legend: {
                         show:false,
-                        orient: 'horizontal',
-                        right: 0,
-                        bottom: 10,
-                        itemWidth,
-                        itemHeight,
-                        textStyle:labelStyle.textStyle,
-                        data:['统建CDN','IDC','省建Cache','统建Cache'],
                     },
                     tooltip:{
                         trigger: 'item',
@@ -502,7 +497,7 @@
                         textStyle:{
                             color: '#333'
                         },
-                        formatter: '{a}{b}{c}'
+                        formatter: '{a}<br />{b}:'
                     },
                     series: data,
                 })
@@ -510,6 +505,7 @@
             check(index){
                 //切换
                 this.mapindex = index;
+                let title = this.data[index].name;
                 let data1 = ()=>{
                     let array = [];
                     for(let i=0;i<31;i++){
@@ -526,13 +522,40 @@
                     return array;
                 }
                 let data3 = ()=>{
-                    
-                }
-                let title = this.data[index].name
+                    return {
+                        name: `${title}流量地图`,
+                        type: 'map',
+                        map: 'china',
+                        zoom: 1.6,
+                        top: '25%',
+                        right: 0,
+                        label: {
+                            normal: { show: false},
+                            emphasis: { show: false}
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#1d2b46',
+                                areaColor: '#1d2b46',
+                                borderColor: 'rgba(100,149,237,1)',
+                                opacity: '0.6'
+                            },
+                            emphasis: {
+                                areaColor: '#ff9e40',
+                                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                shadowBlur: 10,
+                                opacity: '0.8'
+                            }
+                        },
+                        roam: true,
+                        data:[
+                            {name:'北京',value:77}
+                        ]
+                    }
+                };
                 this.drawpro('map2-map4',data1(),title);
                 this.drawarea('map2-map5',data2(),title);
                 this.drawmap('map2-map6',data3(),title);
-
             }
         },
         mounted(){

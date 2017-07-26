@@ -4,10 +4,11 @@
             <div class="item border" id="map2-map1">
                 <h2>采集CP</h2>
                 <div class="num-map">
-                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
-                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
-                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
-                    <ul><li>0</li><li v-for="index in 9">{{index}}</li></ul>
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <div class="num-con"><ul class="num-info">个</ul></div>
                 </div>
             </div>
             <div class="item border" id="map2-map2"></div>
@@ -31,6 +32,72 @@
     #map2{
         .item{
             float: left;
+            h2{
+                font-size: 22px;
+                margin-top: 15px;
+                color: #FFF;
+                text-align: center;
+                font-weight: normal;
+                font-family: "微软雅黑", sans-serif;
+            }
+        }
+        .num-map{
+            width: 300px;
+            margin: 70px auto;
+            .num-con{
+                display: inline-block;
+                width: 55px;
+                height: 100px;
+                position: relative;
+                overflow: hidden;
+                &:first-of-type ul.move{
+                    animation: top1 1.5s ease forwards;
+                }
+                &:nth-child(2) ul.move{
+                    animation: top2 1.5s ease forwards;
+                }
+                &:nth-child(3) ul.move{
+                    animation: top3 1.5s ease forwards;
+                }
+                &:nth-child(4) ul.move{
+                    animation: top4 1.5s ease forwards;
+                }
+            }
+            ul{
+                position: absolute;
+                top:0;
+                width: 55px;
+                font-size: 80px;
+                color: #F0F0F0;
+                height: 100px;
+                li{
+                    height: 100px;
+                    line-height: 100px;
+                    text-align: center;
+                }
+            }
+            @keyframes top1{
+                100% {top:-1000px}
+            }
+            @keyframes top2{
+                100% {top:-1100px}
+            }
+            @keyframes top3{
+                100% {top:-2000px}
+            }
+            @keyframes top4{
+                100% {top:-2100px}
+            }
+            .num-info{
+                height: 100px;
+                line-height: 100px;
+                font-size: 54px;
+                text-align: center;
+                font-weight: bold;
+                display: inline-block;
+                position: absolute;
+                top:0;
+            }
         }
         #map2-map1,#map2-map2{
             width: 435px;
@@ -165,6 +232,7 @@
             return {
                 data:demo.map2.map4,
                 mapindex: 0,
+                flag:true
             }
         },
         methods:{
@@ -384,10 +452,60 @@
                                     color: '#52a5f7'
                                 }
                             },
+                            smooth:true,
+                            showSymbol:false,
                             data: data
                         }
                     ]
                 });
+            },
+            drawmap(id,data,title){
+                this.chart = echarts.init(document.getElementById(id));
+                this.chart.setOption({
+                    backgroundColor: '#1d2b46',
+                    title:{
+                        text:`${title}流量地图`,
+                        textStyle,
+                        right:20,
+                        top:20
+                    },
+                    right:20,
+                    zoom:1.4,
+                    visualMap: {
+                        min: 0,
+                        max: 100,
+                        left: '5%',
+                        top: 'center',
+                        text: ['高','低'],
+                        calculable: false,
+                        inRange: {
+                            color: ['#1d2b46', '#205dda']
+                        },
+                        textStyle:{
+                            color:'#5971a3'
+                        }
+                    },
+                    legend: {
+                        show:false,
+                        orient: 'horizontal',
+                        right: 0,
+                        bottom: 10,
+                        itemWidth,
+                        itemHeight,
+                        textStyle:labelStyle.textStyle,
+                        data:['统建CDN','IDC','省建Cache','统建Cache'],
+                    },
+                    tooltip:{
+                        trigger: 'item',
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#333'
+                        },
+                        formatter: '{a}{b}{c}'
+                    },
+                    series: data,
+                })
             },
             check(index){
                 //切换
@@ -407,10 +525,13 @@
                     }
                     return array;
                 }
+                let data3 = ()=>{
+                    
+                }
                 let title = this.data[index].name
                 this.drawpro('map2-map4',data1(),title);
                 this.drawarea('map2-map5',data2(),title);
-            //    this.drawmap('map2-map6',)
+                this.drawmap('map2-map6',data3(),title);
 
             }
         },

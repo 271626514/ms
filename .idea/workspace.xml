@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40a0f825-47df-45d8-95f3-406fdc7ae5e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/map-icon-8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/select_bg.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+    <list default="true" id="40a0f825-47df-45d8-95f3-406fdc7ae5e0" name="Default" comment="Default">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/js/demoCharts.js" afterPath="$PROJECT_DIR$/src/assets/js/demoCharts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/demo/map.vue" afterPath="$PROJECT_DIR$/src/page/demo/map.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/demo/map1.vue" afterPath="$PROJECT_DIR$/src/page/demo/map1.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/demo/map2.vue" afterPath="$PROJECT_DIR$/src/page/demo/map2.vue" />
     </list>
@@ -38,22 +25,106 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="map1.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="map1.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/page/demo/map1.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.26923">
-              <caret line="235" column="17" selection-start-line="235" selection-start-column="17" selection-end-line="235" selection-end-column="17" />
+            <state vertical-scroll-proportion="1.3800905">
+              <caret line="243" column="35" selection-start-line="243" selection-start-column="35" selection-end-line="243" selection-end-column="35" />
               <folding>
-                <element signature="e#4011#4225#0" expanded="false" />
-                <element signature="e#4245#5469#0" expanded="false" />
-                <marker date="1501055553029" expanded="true" signature="6627:6728" placeholder="..." />
-                <marker date="1501055553029" expanded="true" signature="6729:6795" placeholder="..." />
-                <marker date="1501055553029" expanded="true" signature="6898:6910" placeholder="..." />
-                <marker date="1501055553029" expanded="true" signature="7032:7044" placeholder="..." />
-                <marker date="1501055553029" expanded="true" signature="7164:7176" placeholder="..." />
-                <marker date="1501055553029" expanded="true" signature="7302:7314" placeholder="..." />
-                <marker date="1501055553029" expanded="true" signature="7441:7460" placeholder="..." />
-                <marker date="1501055553029" expanded="true" signature="11686:11787" placeholder="..." />
+                <marker date="1501083179871" expanded="true" signature="1095:2214" placeholder="{&quot;name&quot;: '端口数量'...}" />
+                <marker date="1501083179871" expanded="true" signature="1279:1371" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083179871" expanded="true" signature="1388:1712" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="1410:1636" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083179871" expanded="true" signature="1466:1552" placeholder="{&quot;color&quot;: '#FFF'...}" />
+                <marker date="1501083179871" expanded="true" signature="1660:1702" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083179871" expanded="true" signature="1733:1875" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="1755:1798" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083179871" expanded="true" signature="1822:1865" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083179871" expanded="true" signature="1896:2208" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="1917:2044" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="1959:2030" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="2068:2198" placeholder="{&quot;shadowBlur&quot;: 10...}" />
+                <marker date="1501083179871" expanded="true" signature="2232:3290" placeholder="{&quot;name&quot;: '带宽'...}" />
+                <marker date="1501083179871" expanded="true" signature="2418:2743" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="2440:2666" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083179871" expanded="true" signature="2532:2618" placeholder="{&quot;color&quot;: '#FFF'...}" />
+                <marker date="1501083179871" expanded="true" signature="2690:2733" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083179871" expanded="true" signature="2764:2839" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="2786:2829" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083179871" expanded="true" signature="2860:3172" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="2881:3008" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="2923:2994" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="3032:3162" placeholder="{&quot;shadowBlur&quot;: 10...}" />
+                <marker date="1501083179871" expanded="true" signature="3191:3283" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083179871" expanded="true" signature="3308:3987" placeholder="{&quot;name&quot;: '流量'...}" />
+                <marker date="1501083179871" expanded="true" signature="3366:3645" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="3388:3635" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083179871" expanded="true" signature="3546:3621" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="3664:3749" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083179871" expanded="true" signature="3769:3927" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="3790:3917" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="3832:3903" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4011:4225" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4072:4196" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4097:4185" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4245:5469" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4471:5441" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4496:5430" placeholder="{&quot;type&quot;: 'map'...}" />
+                <marker date="1501083179871" expanded="true" signature="4693:4801" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4830:5341" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="4860:5084" placeholder="{&quot;areaColor&quot;: '#1d2b46'...}" />
+                <marker date="1501083179871" expanded="true" signature="5116:5323" placeholder="{&quot;areaColor&quot;: '#ff9e40'...}" />
+                <marker date="1501083179871" expanded="true" signature="5511:7678" placeholder="{&quot;backgroundColor&quot;: '#1d2b46'...}" />
+                <marker date="1501083179871" expanded="true" signature="5563:5670" placeholder="{&quot;text&quot;: '全网地图流量/Gbps'...}" />
+                <marker date="1501083179871" expanded="true" signature="5727:6046" placeholder="{&quot;min&quot;: 0...}" />
+                <marker date="1501083179871" expanded="true" signature="5904:5965" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="5989:6036" placeholder="{&quot;color&quot;: '#5971a3'...}" />
+                <marker date="1501083179871" expanded="true" signature="6064:6300" placeholder="{&quot;orient&quot;: 'horizontal'...}" />
+                <marker date="1501083179871" expanded="true" signature="6318:7647" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083179871" expanded="true" signature="6448:6493" placeholder="{&quot;color&quot;: '#333'...}" />
+                <marker date="1501083179871" expanded="true" signature="6531:7637" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="7698:13844" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="7714:7761" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="7735:7751" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="7779:13542" placeholder="{...}" />
+                <marker date="1501083179871" expanded="false" signature="7819:8863" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="7930:8847" placeholder="{&quot;calculable&quot;: true...}" />
+                <marker date="1501083179871" expanded="true" signature="7960:8094" placeholder="{&quot;left&quot;: 'center'...}" />
+                <marker date="1501083179871" expanded="true" signature="8125:8394" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083179871" expanded="true" signature="8303:8372" placeholder="{&quot;color&quot;: '#333'...}" />
+                <marker date="1501083179871" expanded="true" signature="8424:8754" placeholder="{&quot;orient&quot;: 'horizontal'...}" />
+                <marker date="1501083179871" expanded="false" signature="8901:10358" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="9012:10342" placeholder="{&quot;calculable&quot;: true...}" />
+                <marker date="1501083179871" expanded="true" signature="9042:9176" placeholder="{&quot;left&quot;: 'center'...}" />
+                <marker date="1501083179871" expanded="true" signature="9207:9476" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083179871" expanded="true" signature="9385:9454" placeholder="{&quot;color&quot;: '#333'...}" />
+                <marker date="1501083179871" expanded="true" signature="9580:10008" placeholder="[...]" />
+                <marker date="1501083179871" expanded="true" signature="9606:9986" placeholder="{&quot;type&quot;: 'category'...}" />
+                <marker date="1501083179871" expanded="true" signature="9801:9876" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083179871" expanded="true" signature="10037:10323" placeholder="[...]" />
+                <marker date="1501083179871" expanded="true" signature="10063:10301" placeholder="{&quot;type&quot;: 'value'...}" />
+                <marker date="1501083179871" expanded="true" signature="10383:10663" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="10588:10647" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="10690:13532" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="10770:10986" placeholder="[...]" />
+                <marker date="1501083179871" expanded="true" signature="10792:10968" placeholder="{&quot;name&quot;: `${name}`...}" />
+                <marker date="1501083179871" expanded="true" signature="11017:13390" placeholder="{&quot;barWidth&quot;: '60%'...}" />
+                <marker date="1501083179871" expanded="true" signature="11046:11350" placeholder="{&quot;text&quot;: `${name}流量数据`...}" />
+                <marker date="1501083179871" expanded="true" signature="11167:11328" placeholder="{&quot;color&quot;: '#feffff'...}" />
+                <marker date="1501083179871" expanded="true" signature="11381:11963" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083179871" expanded="true" signature="11559:11628" placeholder="{&quot;color&quot;: '#333'...}" />
+                <marker date="1501083179871" expanded="true" signature="11672:11941" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="11993:12139" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="12167:12344" placeholder="{&quot;left&quot;: '3%'...}" />
+                <marker date="1501083179871" expanded="true" signature="12376:12620" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="12409:12598" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="12463:12572" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="12686:12984" placeholder="{&quot;type&quot;: 'value'...}" />
+                <marker date="1501083179871" expanded="true" signature="12843:12927" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="13013:13333" placeholder="{&quot;type&quot;: 'category'...}" />
+                <marker date="1501083179871" expanded="true" signature="13192:13276" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="13561:13838" placeholder="{...}" />
+                <marker date="1501083179871" expanded="true" signature="13601:13826" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -75,32 +146,109 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/page/demo/map.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5172415">
-              <caret line="111" column="12" selection-start-line="111" selection-start-column="12" selection-end-line="111" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="map2.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="map2.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/page/demo/map2.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5155875">
-              <caret line="340" column="22" selection-start-line="340" selection-start-column="22" selection-end-line="340" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="528" column="20" selection-start-line="528" selection-start-column="20" selection-end-line="528" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#!!top" expanded="false" />
-                <element signature="e#3703#3911#0" expanded="false" />
-                <element signature="e#3931#5112#0" expanded="false" />
-                <element signature="e#5387#6337#0" expanded="false" />
-                <element signature="e#6375#8971#0" expanded="false" />
-                <element signature="e#6486#8955#0" expanded="false" />
-                <element signature="e#9652#10205#0" expanded="false" />
-                <element signature="e#10234#10638#0" expanded="false" />
-                <element signature="e#12037#12594#0" expanded="false" />
-                <element signature="e#12623#13027#0" expanded="false" />
+                <marker date="1501083080133" expanded="false" signature="6330:6538" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="6349:6465" placeholder="{&quot;color&quot;: 'rgba(0,0,0,0)'...}" />
+                <marker date="1501083080133" expanded="true" signature="6486:6532" placeholder="{&quot;color&quot;: 'rgba(0,0,0,0)'...}" />
+                <marker date="1501083080133" expanded="false" signature="6558:7739" placeholder="{&quot;name&quot;: '带宽'...}" />
+                <marker date="1501083080133" expanded="true" signature="6679:6862" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="6730:6852" placeholder="{&quot;name&quot;: 'invisible'...}" />
+                <marker date="1501083080133" expanded="true" signature="6881:6966" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083080133" expanded="true" signature="7017:7479" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="7039:7278" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083080133" expanded="true" signature="7132:7229" placeholder="{&quot;fontSize&quot;: '24'...}" />
+                <marker date="1501083080133" expanded="true" signature="7302:7469" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083080133" expanded="true" signature="7359:7455" placeholder="{&quot;fontSize&quot;: '24'...}" />
+                <marker date="1501083080133" expanded="true" signature="7500:7733" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="7521:7569" placeholder="{&quot;color&quot;: '#ffb54c'...}" />
+                <marker date="1501083080133" expanded="true" signature="7593:7723" placeholder="{&quot;shadowBlur&quot;: 10...}" />
+                <marker date="1501083080133" expanded="true" signature="7828:19148" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="7844:7982" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="7865:7972" placeholder="{&quot;mapindex&quot;: 0...}" />
+                <marker date="1501083080133" expanded="true" signature="8000:19005" placeholder="{...}" />
+                <marker date="1501083080133" expanded="false" signature="8040:8990" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="8151:8974" placeholder="{&quot;calculable&quot;: true...}" />
+                <marker date="1501083080133" expanded="true" signature="8181:8348" placeholder="{&quot;left&quot;: 'center'...}" />
+                <marker date="1501083080133" expanded="true" signature="8379:8648" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083080133" expanded="true" signature="8557:8626" placeholder="{&quot;color&quot;: '#333'...}" />
+                <marker date="1501083080133" expanded="true" signature="8678:8881" placeholder="{&quot;orient&quot;: 'horizontal'...}" />
+                <marker date="1501083080133" expanded="false" signature="9028:11624" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="9139:11608" placeholder="{&quot;barWidth&quot;: 30...}" />
+                <marker date="1501083080133" expanded="true" signature="9169:9335" placeholder="{&quot;top&quot;: 20...}" />
+                <marker date="1501083080133" expanded="true" signature="9407:9677" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083080133" expanded="true" signature="9585:9654" placeholder="{&quot;color&quot;: '#000'...}" />
+                <marker date="1501083080133" expanded="true" signature="9707:9968" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="9733:9946" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="9998:10158" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="10024:10136" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="10220:11072" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="10254:10635" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083080133" expanded="true" signature="10379:10455" placeholder="{&quot;color&quot;: '#FFF'...}" />
+                <marker date="1501083080133" expanded="true" signature="10510:10609" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="10670:11050" placeholder="{&quot;show&quot;: true...}" />
+                <marker date="1501083080133" expanded="true" signature="10794:10870" placeholder="{&quot;color&quot;: '#FFF'...}" />
+                <marker date="1501083080133" expanded="true" signature="10925:11024" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="11104:11356" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="11137:11334" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="11191:11308" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="11386:11590" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="11412:11568" placeholder="{&quot;name&quot;: 'ICP流量TOP10'...}" />
+                <marker date="1501083080133" expanded="false" signature="11662:14011" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="11773:13995" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="11801:11975" placeholder="{&quot;text&quot;: `${title}分省流量`...}" />
+                <marker date="1501083080133" expanded="true" signature="12006:12276" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083080133" expanded="true" signature="12184:12253" placeholder="{&quot;color&quot;: '#000'...}" />
+                <marker date="1501083080133" expanded="true" signature="12305:12858" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="12331:12836" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="12372:12728" placeholder="{&quot;interval&quot;: 0...}" />
+                <marker date="1501083080133" expanded="true" signature="12554:12698" placeholder="{&quot;fontFamily&quot;: &quot;微软雅黑&quot;...}" />
+                <marker date="1501083080133" expanded="true" signature="12887:13291" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="12913:13269" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="13169:13243" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="13321:13977" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="13347:13955" placeholder="{&quot;name&quot;: `${title}分省流量`...}" />
+                <marker date="1501083080133" expanded="true" signature="13475:13689" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="13517:13659" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="13729:13888" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="13770:13858" placeholder="{&quot;color&quot;: '#affd87'...}" />
+                <marker date="1501083080133" expanded="false" signature="14048:16289" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="14159:16273" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="14187:14360" placeholder="{&quot;text&quot;: `${title}分时流量`...}" />
+                <marker date="1501083080133" expanded="true" signature="14391:14661" placeholder="{&quot;trigger&quot;: 'axis'...}" />
+                <marker date="1501083080133" expanded="true" signature="14569:14638" placeholder="{&quot;color&quot;: '#000'...}" />
+                <marker date="1501083080133" expanded="true" signature="14690:15247" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="14716:15225" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="14797:15153" placeholder="{&quot;interval&quot;: 0...}" />
+                <marker date="1501083080133" expanded="true" signature="14979:15123" placeholder="{&quot;fontFamily&quot;: &quot;微软雅黑&quot;...}" />
+                <marker date="1501083080133" expanded="true" signature="15276:15680" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="15302:15658" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="15558:15632" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="15710:16255" placeholder="[...]" />
+                <marker date="1501083080133" expanded="true" signature="15736:16233" placeholder="{&quot;name&quot;: `${title}分时流量`...}" />
+                <marker date="1501083080133" expanded="true" signature="15921:16080" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="15962:16050" placeholder="{&quot;color&quot;: '#52a5f7'...}" />
+                <marker date="1501083080133" expanded="true" signature="16325:18060" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="16436:18045" placeholder="{&quot;backgroundColor&quot;: '#1d2b46'...}" />
+                <marker date="1501083080133" expanded="true" signature="16512:16680" placeholder="{&quot;text&quot;: `${title}流量地图`...}" />
+                <marker date="1501083080133" expanded="true" signature="16773:17247" placeholder="{&quot;min&quot;: 0...}" />
+                <marker date="1501083080133" expanded="true" signature="17033:17118" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="17154:17225" placeholder="{&quot;color&quot;: '#5971a3'...}" />
+                <marker date="1501083080133" expanded="true" signature="17277:17645" placeholder="{&quot;show&quot;: false...}" />
+                <marker date="1501083080133" expanded="true" signature="17675:17992" placeholder="{&quot;trigger&quot;: 'item'...}" />
+                <marker date="1501083080133" expanded="true" signature="17853:17922" placeholder="{&quot;color&quot;: '#333'...}" />
+                <marker date="1501083080133" expanded="true" signature="18086:18995" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="18180:18399" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="18259:18347" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="18466:18685" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="18545:18633" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="18718:18758" placeholder="{...}" />
+                <marker date="1501083080133" expanded="true" signature="19024:19142" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -156,10 +304,10 @@
         <option value="$PROJECT_DIR$/src/page/map/map1.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/const.less" />
         <option value="$PROJECT_DIR$/src/assets/js/chartsData.js" />
-        <option value="$PROJECT_DIR$/src/page/demo/map1.vue" />
         <option value="$PROJECT_DIR$/src/assets/js/demoCharts.js" />
         <option value="$PROJECT_DIR$/src/page/demo/map.vue" />
         <option value="$PROJECT_DIR$/src/page/demo/map2.vue" />
+        <option value="$PROJECT_DIR$/src/page/demo/map1.vue" />
       </list>
     </option>
   </component>
@@ -174,7 +322,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -183,8 +331,14 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="2" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
+    <OptionsSetting value="true" id="添加" />
+    <OptionsSetting value="true" id="移除" />
+    <OptionsSetting value="true" id="签出" />
+    <OptionsSetting value="true" id="更新" />
+    <OptionsSetting value="true" id="状态" />
+    <OptionsSetting value="true" id="编辑" />
+    <ConfirmationsSetting value="0" id="添加" />
+    <ConfirmationsSetting value="0" id="移除" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -201,8 +355,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -217,12 +369,82 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="msde" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="msde" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="msde" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="msde" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="msde" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -404,7 +626,13 @@
       <option name="project" value="LOCAL" />
       <updated>1500977953522</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Default">
+      <created>1501077384324</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1501077384324</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -417,28 +645,32 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1956751" sideWeight="0.49607182" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TTT" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21324354" sideWeight="0.5021097" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21255274" sideWeight="0.5039282" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21324354" sideWeight="0.4978903" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25476992" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25456497" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21255274" sideWeight="0.5039282" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21324354" sideWeight="0.4978903" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="TTT" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -475,7 +707,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="update&#10;" />
+    <MESSAGE value="Default" />
+    <option name="LAST_COMMIT_MESSAGE" value="Default" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -484,17 +717,116 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map2.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#!!top" expanded="false" />
+            <marker date="1501083080133" expanded="false" signature="6330:6538" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="6349:6465" placeholder="{&quot;color&quot;: 'rgba(0,0,0,0)'...}" />
+            <marker date="1501083080133" expanded="true" signature="6486:6532" placeholder="{&quot;color&quot;: 'rgba(0,0,0,0)'...}" />
+            <marker date="1501083080133" expanded="false" signature="6558:7739" placeholder="{&quot;name&quot;: '带宽'...}" />
+            <marker date="1501083080133" expanded="true" signature="6679:6862" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="6730:6852" placeholder="{&quot;name&quot;: 'invisible'...}" />
+            <marker date="1501083080133" expanded="true" signature="6881:6966" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="7017:7479" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7039:7278" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="7132:7229" placeholder="{&quot;fontSize&quot;: '24'...}" />
+            <marker date="1501083080133" expanded="true" signature="7302:7469" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="7359:7455" placeholder="{&quot;fontSize&quot;: '24'...}" />
+            <marker date="1501083080133" expanded="true" signature="7500:7733" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7521:7569" placeholder="{&quot;color&quot;: '#ffb54c'...}" />
+            <marker date="1501083080133" expanded="true" signature="7593:7723" placeholder="{&quot;shadowBlur&quot;: 10...}" />
+            <marker date="1501083080133" expanded="true" signature="7828:19148" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7844:7982" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7865:7972" placeholder="{&quot;mapindex&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="8000:19005" placeholder="{...}" />
+            <marker date="1501083080133" expanded="false" signature="8040:8990" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="8151:8974" placeholder="{&quot;calculable&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="8181:8348" placeholder="{&quot;left&quot;: 'center'...}" />
+            <marker date="1501083080133" expanded="true" signature="8379:8648" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="8557:8626" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083080133" expanded="true" signature="8678:8881" placeholder="{&quot;orient&quot;: 'horizontal'...}" />
+            <marker date="1501083080133" expanded="false" signature="9028:11624" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="9139:11608" placeholder="{&quot;barWidth&quot;: 30...}" />
+            <marker date="1501083080133" expanded="true" signature="9169:9335" placeholder="{&quot;top&quot;: 20...}" />
+            <marker date="1501083080133" expanded="true" signature="9407:9677" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="9585:9654" placeholder="{&quot;color&quot;: '#000'...}" />
+            <marker date="1501083080133" expanded="true" signature="9707:9968" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="9733:9946" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="9998:10158" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="10024:10136" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="10220:11072" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="10254:10635" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="10379:10455" placeholder="{&quot;color&quot;: '#FFF'...}" />
+            <marker date="1501083080133" expanded="true" signature="10510:10609" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="10670:11050" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="10794:10870" placeholder="{&quot;color&quot;: '#FFF'...}" />
+            <marker date="1501083080133" expanded="true" signature="10925:11024" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11104:11356" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11137:11334" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11191:11308" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11386:11590" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="11412:11568" placeholder="{&quot;name&quot;: 'ICP流量TOP10'...}" />
+            <marker date="1501083080133" expanded="false" signature="11662:14011" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11773:13995" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11801:11975" placeholder="{&quot;text&quot;: `${title}分省流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="12006:12276" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="12184:12253" placeholder="{&quot;color&quot;: '#000'...}" />
+            <marker date="1501083080133" expanded="true" signature="12305:12858" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="12331:12836" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="12372:12728" placeholder="{&quot;interval&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="12554:12698" placeholder="{&quot;fontFamily&quot;: &quot;微软雅黑&quot;...}" />
+            <marker date="1501083080133" expanded="true" signature="12887:13291" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="12913:13269" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="13169:13243" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="13321:13977" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="13347:13955" placeholder="{&quot;name&quot;: `${title}分省流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="13475:13689" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="13517:13659" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="13729:13888" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="13770:13858" placeholder="{&quot;color&quot;: '#affd87'...}" />
+            <marker date="1501083080133" expanded="false" signature="14048:16289" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="14159:16273" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="14187:14360" placeholder="{&quot;text&quot;: `${title}分时流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="14391:14661" placeholder="{&quot;trigger&quot;: 'axis'...}" />
+            <marker date="1501083080133" expanded="true" signature="14569:14638" placeholder="{&quot;color&quot;: '#000'...}" />
+            <marker date="1501083080133" expanded="true" signature="14690:15247" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="14716:15225" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="14797:15153" placeholder="{&quot;interval&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="14979:15123" placeholder="{&quot;fontFamily&quot;: &quot;微软雅黑&quot;...}" />
+            <marker date="1501083080133" expanded="true" signature="15276:15680" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="15302:15658" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="15558:15632" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="15710:16255" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="15736:16233" placeholder="{&quot;name&quot;: `${title}分时流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="15921:16080" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="15962:16050" placeholder="{&quot;color&quot;: '#52a5f7'...}" />
+            <marker date="1501083080133" expanded="true" signature="16325:18060" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="16436:18045" placeholder="{&quot;backgroundColor&quot;: '#1d2b46'...}" />
+            <marker date="1501083080133" expanded="true" signature="16512:16680" placeholder="{&quot;text&quot;: `${title}流量地图`...}" />
+            <marker date="1501083080133" expanded="true" signature="16773:17247" placeholder="{&quot;min&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="17033:17118" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="17154:17225" placeholder="{&quot;color&quot;: '#5971a3'...}" />
+            <marker date="1501083080133" expanded="true" signature="17277:17645" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="17675:17992" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="17853:17922" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083080133" expanded="true" signature="18086:18995" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18180:18399" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18259:18347" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18466:18685" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18545:18633" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18718:18758" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="19024:19142" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://K:/项目定义/归档/carMarketweb/carMarketweb/assets/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34925374">
-          <caret line="220" column="33" selection-start-line="220" selection-start-column="33" selection-end-line="220" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -724,7 +1056,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25075075">
           <caret line="952" column="6" selection-start-line="952" selection-start-column="6" selection-end-line="952" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,10 +1070,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.8461537">
           <caret line="220" column="33" selection-start-line="220" selection-start-column="33" selection-end-line="220" selection-end-column="33" />
-          <folding>
-            <element signature="e#3472#7419#0" expanded="false" />
-            <element signature="e#7809#7989#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -750,18 +1078,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-66.84615">
           <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
-          <folding>
-            <element signature="e#5772#7916#0" expanded="false" />
-            <marker date="1500861551753" expanded="true" signature="4070:4171" placeholder="..." />
-            <marker date="1500861551753" expanded="true" signature="4172:4242" placeholder="..." />
-            <marker date="1500861551753" expanded="false" signature="4345:4357" placeholder="..." />
-            <marker date="1500861551753" expanded="false" signature="4479:4491" placeholder="..." />
-            <marker date="1500861551753" expanded="false" signature="4611:4623" placeholder="..." />
-            <marker date="1500861551753" expanded="false" signature="4749:4761" placeholder="..." />
-            <marker date="1500861551753" expanded="false" signature="4888:4900" placeholder="..." />
-            <marker date="1500861551753" expanded="false" signature="5023:5042" placeholder="..." />
-            <marker date="1500861551753" expanded="true" signature="6553:6654" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -769,11 +1086,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0769231">
           <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
-          <folding>
-            <marker date="1500366772630" expanded="false" signature="5477:5578" placeholder="..." />
-            <marker date="1500366772630" expanded="true" signature="6567:6668" placeholder="..." />
-            <marker date="1500366772630" expanded="true" signature="6669:6746" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,10 +1093,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="22.846153">
           <caret line="248" column="43" selection-start-line="248" selection-start-column="43" selection-end-line="248" selection-end-column="43" />
-          <folding>
-            <element signature="e#7726#10128#0" expanded="false" />
-            <element signature="e#16794#18890#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,11 +1100,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6216216">
           <caret line="336" column="39" selection-start-line="336" selection-start-column="39" selection-end-line="336" selection-end-column="39" />
-          <folding>
-            <element signature="e#303#7086#0" expanded="false" />
-            <element signature="e#319#7084#0" expanded="false" />
-            <element signature="e#7763#14836#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,7 +1135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3321739">
           <caret line="26" column="103" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="103" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -846,9 +1148,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/page/demo/map.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5172415">
-          <caret line="111" column="12" selection-start-line="111" selection-start-column="12" selection-end-line="111" selection-end-column="12" />
-          <folding />
+        <state vertical-scroll-proportion="0.5701358">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <marker date="1501077321693" expanded="true" signature="3390:4494" placeholder="{...}" />
+            <marker date="1501077321693" expanded="true" signature="3406:4364" placeholder="{...}" />
+            <marker date="1501077321693" expanded="true" signature="3427:4354" placeholder="{...}" />
+            <marker date="1501077321693" expanded="true" signature="3453:4219" placeholder="[...]" />
+            <marker date="1501077321693" expanded="true" signature="3475:3576" placeholder="{&quot;label&quot;: '全网流量分析'...}" />
+            <marker date="1501077321693" expanded="true" signature="3598:3701" placeholder="{&quot;label&quot;: '互联网流量分析'...}" />
+            <marker date="1501077321693" expanded="true" signature="3723:3825" placeholder="{&quot;label&quot;: '国际流量分析'...}" />
+            <marker date="1501077321693" expanded="true" signature="3847:3951" placeholder="{&quot;label&quot;: '拥塞监控效果提升'...}" />
+            <marker date="1501077321693" expanded="true" signature="3973:4077" placeholder="{&quot;label&quot;: '内容网络点击分析'...}" />
+            <marker date="1501077321693" expanded="true" signature="4099:4201" placeholder="{&quot;label&quot;: 'IP户籍计划'...}" />
+            <marker date="1501077321693" expanded="true" signature="4251:4340" placeholder="{&quot;label&quot;: '全网流量分析'...}" />
+            <marker date="1501077321693" expanded="true" signature="4382:4488" placeholder="{...}" />
+            <marker date="1501077321693" expanded="true" signature="4412:4478" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -866,40 +1182,211 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map1.vue">
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map2.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.26923">
-          <caret line="235" column="17" selection-start-line="235" selection-start-column="17" selection-end-line="235" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="528" column="20" selection-start-line="528" selection-start-column="20" selection-end-line="528" selection-end-column="20" />
           <folding>
-            <element signature="e#4011#4225#0" expanded="false" />
-            <element signature="e#4245#5469#0" expanded="false" />
-            <marker date="1501055553029" expanded="true" signature="6627:6728" placeholder="..." />
-            <marker date="1501055553029" expanded="true" signature="6729:6795" placeholder="..." />
-            <marker date="1501055553029" expanded="true" signature="6898:6910" placeholder="..." />
-            <marker date="1501055553029" expanded="true" signature="7032:7044" placeholder="..." />
-            <marker date="1501055553029" expanded="true" signature="7164:7176" placeholder="..." />
-            <marker date="1501055553029" expanded="true" signature="7302:7314" placeholder="..." />
-            <marker date="1501055553029" expanded="true" signature="7441:7460" placeholder="..." />
-            <marker date="1501055553029" expanded="true" signature="11686:11787" placeholder="..." />
+            <element signature="n#style#0;n#!!top" expanded="false" />
+            <marker date="1501083080133" expanded="false" signature="6330:6538" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="6349:6465" placeholder="{&quot;color&quot;: 'rgba(0,0,0,0)'...}" />
+            <marker date="1501083080133" expanded="true" signature="6486:6532" placeholder="{&quot;color&quot;: 'rgba(0,0,0,0)'...}" />
+            <marker date="1501083080133" expanded="false" signature="6558:7739" placeholder="{&quot;name&quot;: '带宽'...}" />
+            <marker date="1501083080133" expanded="true" signature="6679:6862" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="6730:6852" placeholder="{&quot;name&quot;: 'invisible'...}" />
+            <marker date="1501083080133" expanded="true" signature="6881:6966" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="7017:7479" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7039:7278" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="7132:7229" placeholder="{&quot;fontSize&quot;: '24'...}" />
+            <marker date="1501083080133" expanded="true" signature="7302:7469" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="7359:7455" placeholder="{&quot;fontSize&quot;: '24'...}" />
+            <marker date="1501083080133" expanded="true" signature="7500:7733" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7521:7569" placeholder="{&quot;color&quot;: '#ffb54c'...}" />
+            <marker date="1501083080133" expanded="true" signature="7593:7723" placeholder="{&quot;shadowBlur&quot;: 10...}" />
+            <marker date="1501083080133" expanded="true" signature="7828:19148" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7844:7982" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="7865:7972" placeholder="{&quot;mapindex&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="8000:19005" placeholder="{...}" />
+            <marker date="1501083080133" expanded="false" signature="8040:8990" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="8151:8974" placeholder="{&quot;calculable&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="8181:8348" placeholder="{&quot;left&quot;: 'center'...}" />
+            <marker date="1501083080133" expanded="true" signature="8379:8648" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="8557:8626" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083080133" expanded="true" signature="8678:8881" placeholder="{&quot;orient&quot;: 'horizontal'...}" />
+            <marker date="1501083080133" expanded="false" signature="9028:11624" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="9139:11608" placeholder="{&quot;barWidth&quot;: 30...}" />
+            <marker date="1501083080133" expanded="true" signature="9169:9335" placeholder="{&quot;top&quot;: 20...}" />
+            <marker date="1501083080133" expanded="true" signature="9407:9677" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="9585:9654" placeholder="{&quot;color&quot;: '#000'...}" />
+            <marker date="1501083080133" expanded="true" signature="9707:9968" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="9733:9946" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="9998:10158" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="10024:10136" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="10220:11072" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="10254:10635" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="10379:10455" placeholder="{&quot;color&quot;: '#FFF'...}" />
+            <marker date="1501083080133" expanded="true" signature="10510:10609" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="10670:11050" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083080133" expanded="true" signature="10794:10870" placeholder="{&quot;color&quot;: '#FFF'...}" />
+            <marker date="1501083080133" expanded="true" signature="10925:11024" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11104:11356" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11137:11334" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11191:11308" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11386:11590" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="11412:11568" placeholder="{&quot;name&quot;: 'ICP流量TOP10'...}" />
+            <marker date="1501083080133" expanded="false" signature="11662:14011" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11773:13995" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="11801:11975" placeholder="{&quot;text&quot;: `${title}分省流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="12006:12276" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="12184:12253" placeholder="{&quot;color&quot;: '#000'...}" />
+            <marker date="1501083080133" expanded="true" signature="12305:12858" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="12331:12836" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="12372:12728" placeholder="{&quot;interval&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="12554:12698" placeholder="{&quot;fontFamily&quot;: &quot;微软雅黑&quot;...}" />
+            <marker date="1501083080133" expanded="true" signature="12887:13291" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="12913:13269" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="13169:13243" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="13321:13977" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="13347:13955" placeholder="{&quot;name&quot;: `${title}分省流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="13475:13689" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="13517:13659" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="13729:13888" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="13770:13858" placeholder="{&quot;color&quot;: '#affd87'...}" />
+            <marker date="1501083080133" expanded="false" signature="14048:16289" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="14159:16273" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="14187:14360" placeholder="{&quot;text&quot;: `${title}分时流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="14391:14661" placeholder="{&quot;trigger&quot;: 'axis'...}" />
+            <marker date="1501083080133" expanded="true" signature="14569:14638" placeholder="{&quot;color&quot;: '#000'...}" />
+            <marker date="1501083080133" expanded="true" signature="14690:15247" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="14716:15225" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="14797:15153" placeholder="{&quot;interval&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="14979:15123" placeholder="{&quot;fontFamily&quot;: &quot;微软雅黑&quot;...}" />
+            <marker date="1501083080133" expanded="true" signature="15276:15680" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="15302:15658" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="15558:15632" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="15710:16255" placeholder="[...]" />
+            <marker date="1501083080133" expanded="true" signature="15736:16233" placeholder="{&quot;name&quot;: `${title}分时流量`...}" />
+            <marker date="1501083080133" expanded="true" signature="15921:16080" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="15962:16050" placeholder="{&quot;color&quot;: '#52a5f7'...}" />
+            <marker date="1501083080133" expanded="true" signature="16325:18060" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="16436:18045" placeholder="{&quot;backgroundColor&quot;: '#1d2b46'...}" />
+            <marker date="1501083080133" expanded="true" signature="16512:16680" placeholder="{&quot;text&quot;: `${title}流量地图`...}" />
+            <marker date="1501083080133" expanded="true" signature="16773:17247" placeholder="{&quot;min&quot;: 0...}" />
+            <marker date="1501083080133" expanded="true" signature="17033:17118" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="17154:17225" placeholder="{&quot;color&quot;: '#5971a3'...}" />
+            <marker date="1501083080133" expanded="true" signature="17277:17645" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083080133" expanded="true" signature="17675:17992" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083080133" expanded="true" signature="17853:17922" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083080133" expanded="true" signature="18086:18995" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18180:18399" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18259:18347" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18466:18685" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18545:18633" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="18718:18758" placeholder="{...}" />
+            <marker date="1501083080133" expanded="true" signature="19024:19142" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map2.vue">
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map1.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5155875">
-          <caret line="340" column="22" selection-start-line="340" selection-start-column="22" selection-end-line="340" selection-end-column="22" />
+        <state vertical-scroll-proportion="1.3800905">
+          <caret line="243" column="35" selection-start-line="243" selection-start-column="35" selection-end-line="243" selection-end-column="35" />
           <folding>
-            <element signature="n#style#0;n#!!top" expanded="false" />
-            <element signature="e#3703#3911#0" expanded="false" />
-            <element signature="e#3931#5112#0" expanded="false" />
-            <element signature="e#5387#6337#0" expanded="false" />
-            <element signature="e#6375#8971#0" expanded="false" />
-            <element signature="e#6486#8955#0" expanded="false" />
-            <element signature="e#9652#10205#0" expanded="false" />
-            <element signature="e#10234#10638#0" expanded="false" />
-            <element signature="e#12037#12594#0" expanded="false" />
-            <element signature="e#12623#13027#0" expanded="false" />
+            <marker date="1501083179871" expanded="true" signature="1095:2214" placeholder="{&quot;name&quot;: '端口数量'...}" />
+            <marker date="1501083179871" expanded="true" signature="1279:1371" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083179871" expanded="true" signature="1388:1712" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="1410:1636" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083179871" expanded="true" signature="1466:1552" placeholder="{&quot;color&quot;: '#FFF'...}" />
+            <marker date="1501083179871" expanded="true" signature="1660:1702" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083179871" expanded="true" signature="1733:1875" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="1755:1798" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083179871" expanded="true" signature="1822:1865" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083179871" expanded="true" signature="1896:2208" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="1917:2044" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="1959:2030" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="2068:2198" placeholder="{&quot;shadowBlur&quot;: 10...}" />
+            <marker date="1501083179871" expanded="true" signature="2232:3290" placeholder="{&quot;name&quot;: '带宽'...}" />
+            <marker date="1501083179871" expanded="true" signature="2418:2743" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="2440:2666" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083179871" expanded="true" signature="2532:2618" placeholder="{&quot;color&quot;: '#FFF'...}" />
+            <marker date="1501083179871" expanded="true" signature="2690:2733" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083179871" expanded="true" signature="2764:2839" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="2786:2829" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083179871" expanded="true" signature="2860:3172" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="2881:3008" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="2923:2994" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="3032:3162" placeholder="{&quot;shadowBlur&quot;: 10...}" />
+            <marker date="1501083179871" expanded="true" signature="3191:3283" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083179871" expanded="true" signature="3308:3987" placeholder="{&quot;name&quot;: '流量'...}" />
+            <marker date="1501083179871" expanded="true" signature="3366:3645" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="3388:3635" placeholder="{&quot;show&quot;: true...}" />
+            <marker date="1501083179871" expanded="true" signature="3546:3621" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="3664:3749" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083179871" expanded="true" signature="3769:3927" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="3790:3917" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="3832:3903" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4011:4225" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4072:4196" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4097:4185" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4245:5469" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4471:5441" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4496:5430" placeholder="{&quot;type&quot;: 'map'...}" />
+            <marker date="1501083179871" expanded="true" signature="4693:4801" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4830:5341" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="4860:5084" placeholder="{&quot;areaColor&quot;: '#1d2b46'...}" />
+            <marker date="1501083179871" expanded="true" signature="5116:5323" placeholder="{&quot;areaColor&quot;: '#ff9e40'...}" />
+            <marker date="1501083179871" expanded="true" signature="5511:7678" placeholder="{&quot;backgroundColor&quot;: '#1d2b46'...}" />
+            <marker date="1501083179871" expanded="true" signature="5563:5670" placeholder="{&quot;text&quot;: '全网地图流量/Gbps'...}" />
+            <marker date="1501083179871" expanded="true" signature="5727:6046" placeholder="{&quot;min&quot;: 0...}" />
+            <marker date="1501083179871" expanded="true" signature="5904:5965" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="5989:6036" placeholder="{&quot;color&quot;: '#5971a3'...}" />
+            <marker date="1501083179871" expanded="true" signature="6064:6300" placeholder="{&quot;orient&quot;: 'horizontal'...}" />
+            <marker date="1501083179871" expanded="true" signature="6318:7647" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083179871" expanded="true" signature="6448:6493" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083179871" expanded="true" signature="6531:7637" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="7698:13844" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="7714:7761" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="7735:7751" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="7779:13542" placeholder="{...}" />
+            <marker date="1501083179871" expanded="false" signature="7819:8863" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="7930:8847" placeholder="{&quot;calculable&quot;: true...}" />
+            <marker date="1501083179871" expanded="true" signature="7960:8094" placeholder="{&quot;left&quot;: 'center'...}" />
+            <marker date="1501083179871" expanded="true" signature="8125:8394" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083179871" expanded="true" signature="8303:8372" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083179871" expanded="true" signature="8424:8754" placeholder="{&quot;orient&quot;: 'horizontal'...}" />
+            <marker date="1501083179871" expanded="false" signature="8901:10358" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="9012:10342" placeholder="{&quot;calculable&quot;: true...}" />
+            <marker date="1501083179871" expanded="true" signature="9042:9176" placeholder="{&quot;left&quot;: 'center'...}" />
+            <marker date="1501083179871" expanded="true" signature="9207:9476" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083179871" expanded="true" signature="9385:9454" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083179871" expanded="true" signature="9580:10008" placeholder="[...]" />
+            <marker date="1501083179871" expanded="true" signature="9606:9986" placeholder="{&quot;type&quot;: 'category'...}" />
+            <marker date="1501083179871" expanded="true" signature="9801:9876" placeholder="{&quot;show&quot;: false...}" />
+            <marker date="1501083179871" expanded="true" signature="10037:10323" placeholder="[...]" />
+            <marker date="1501083179871" expanded="true" signature="10063:10301" placeholder="{&quot;type&quot;: 'value'...}" />
+            <marker date="1501083179871" expanded="true" signature="10383:10663" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="10588:10647" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="10690:13532" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="10770:10986" placeholder="[...]" />
+            <marker date="1501083179871" expanded="true" signature="10792:10968" placeholder="{&quot;name&quot;: `${name}`...}" />
+            <marker date="1501083179871" expanded="true" signature="11017:13390" placeholder="{&quot;barWidth&quot;: '60%'...}" />
+            <marker date="1501083179871" expanded="true" signature="11046:11350" placeholder="{&quot;text&quot;: `${name}流量数据`...}" />
+            <marker date="1501083179871" expanded="true" signature="11167:11328" placeholder="{&quot;color&quot;: '#feffff'...}" />
+            <marker date="1501083179871" expanded="true" signature="11381:11963" placeholder="{&quot;trigger&quot;: 'item'...}" />
+            <marker date="1501083179871" expanded="true" signature="11559:11628" placeholder="{&quot;color&quot;: '#333'...}" />
+            <marker date="1501083179871" expanded="true" signature="11672:11941" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="11993:12139" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="12167:12344" placeholder="{&quot;left&quot;: '3%'...}" />
+            <marker date="1501083179871" expanded="true" signature="12376:12620" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="12409:12598" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="12463:12572" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="12686:12984" placeholder="{&quot;type&quot;: 'value'...}" />
+            <marker date="1501083179871" expanded="true" signature="12843:12927" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="13013:13333" placeholder="{&quot;type&quot;: 'category'...}" />
+            <marker date="1501083179871" expanded="true" signature="13192:13276" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="13561:13838" placeholder="{...}" />
+            <marker date="1501083179871" expanded="true" signature="13601:13826" placeholder="{...}" />
           </folding>
         </state>
       </provider>

@@ -241,6 +241,7 @@
                 color: '#333'
             },
             formatter: function(obj){
+                console.log(series)
                 let data = demo.map1.map4[obj.dataIndex];
                 return `<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px">
                             全网流量地图

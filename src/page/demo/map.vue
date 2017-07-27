@@ -1,34 +1,50 @@
 <template>
-    <div id="demo-map-container">
-        <h1>
-            <span class="select left">
-                <Select v-model="defaultSelect.value" @on-change="checkPage">
-                    <Option v-for="item in mapList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                </Select>
-            </span>
-            内容流量网络全网资源管理平台
-            <b>2017-08-01 18:00</b>
-        </h1>
-        <div class="demo-map-item">
-            <router-view></router-view>
+    <div class="demo-map-wrapper">
+        <div id="demo-map-container">
+            <h1>
+                <span class="select left">
+                    <Select v-model="defaultSelect.value" @on-change="checkPage">
+                        <Option v-for="item in mapList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    </Select>
+                </span>
+                内容流量网络全网资源管理平台
+                <b class="now">{{resetDate}}</b>
+            </h1>
+            <div class="demo-map-item">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
 <style lang="less">
+.demo-map-wrapper{
+    width: 100%;
+    height: 100%;
+    background:#1d2b46;
+}
 #demo-map-container{
     background: #1d2b46;
     width: 1600px;
     height: 1200px;
     margin: 0 auto;
+    overflow: hidden;
     padding: 0 20px 20px 20px;
     h1{
-        font-size: 24px;
+        font-size: 26px;
         height: 60px;
         line-height: 60px;
-        font-weight: normal;
         color: #FFF;
         position: relative;
         text-align: center;
+        .now{
+            color: #feffff;
+            float: right;
+            font-size: 20px;
+            font-weight: normal;
+            height: 20px;
+            width: 200px;
+            line-height: 80px;
+        }
         .select{
             position: absolute;
             left: 0;
@@ -134,7 +150,7 @@
                         value: 'map1'
                     },
                     {
-                        label: '互联网流量分析',
+                        label: '互联网公司流量分析',
                         value: 'map2'
                     },
                     {
@@ -157,13 +173,31 @@
                 defaultSelect:{
                     label:'全网流量分析',
                     value: 'map1'
-                }
+                },
+                resetDate:''
             }
         },
         methods:{
             checkPage(value){
+                window.localStorage.setItem('page',JSON.stringify(value));
                 this.$router.push('/demo/'+value);
             }
+        },
+        mounted(){
+            setInterval(()=>{
+                const D = new Date();
+                let YY = D.getFullYear();
+                let MM = (D.getMonth()+1)<10?'0'+(D.getMonth()+1):(D.getMonth()+1);
+                let DD = D.getDate()<10?'0'+D.getDate():D.getDate();
+                let HH = D.getHours()<10?'0'+D.getHours():D.getHours();
+                let MI = D.getMinutes()<10?'0'+D.getMinutes():D.getMinutes();
+                let SS = D.getSeconds()<10?'0'+D.getSeconds():D.getSeconds();
+                let string = YY+ '-' + MM + '-'+ DD +'  ' + HH + ':' + MI + ':' + SS;
+                this.resetDate = string;
+            },1000);
+           /* setInterval(()=>{
+                window.location.reload();
+            },5000)*/
         }
     }
 

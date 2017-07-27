@@ -1,13 +1,13 @@
 <template>
-    <div id="map5">
+    <div id="map6">
 
     </div>
 </template>
 <style lang="less">
-#map5{
+#map6{
     width: 1560px;
-    height: 1080px;
-    background: url(../../assets/imgs/map5.jpg) no-repeat;
+    height: 1090px;
+    background: url(../../assets/imgs/map6.jpg) no-repeat;
     background-size: contain;
 }
 </style>

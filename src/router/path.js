@@ -50,3 +50,4 @@ export const DEMO_MAP_2 = require('../page/demo/map2.vue');
 export const DEMO_MAP_3 = require('../page/demo/map3.vue');
 export const DEMO_MAP_4 = require('../page/demo/map4.vue');
 export const DEMO_MAP_5 = require('../page/demo/map5.vue');
+export const DEMO_MAP_6 = require('../page/demo/map6.vue');

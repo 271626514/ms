@@ -49,6 +49,11 @@ export default new Router({
                     path: 'map5',
                     meta: { browse: true },
                     component: path.DEMO_MAP_5,
+                },
+                {
+                    path: 'map6',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_6,
                 }
             ]
         },

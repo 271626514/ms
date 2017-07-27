@@ -5,7 +5,7 @@
             <div class="item" id="map1-map2"></div>
             <div class="item" id="map1-map3"></div>
         </div>
-        <div class="map-container clearfix border h585">
+        <div class="map-container clearfix border" style="height: 615px">
             <div class="item" id="map1-map4"></div>
             <div class="item" id="map1-map5"></div>
         </div>
@@ -57,7 +57,7 @@
                     fontSize: 20
                 },
                 position: 'inside',
-                formatter:'{c}个'
+                formatter:'{c}'
             },
             emphasis: {
                 show: true
@@ -99,7 +99,7 @@
                     color:'#FFF',
                     fontSize: 20
                 },
-                formatter:'{c}T'
+                formatter:'{c}'
             },
             emphasis: {
                 show: true,
@@ -157,17 +157,26 @@
     let data = (type)=>{
         let array = [];
         demo.map1.map4.map((item)=>{
-            array.push({
-                name: item.name,
-                value: item.value[type]
-            })
+            if(item.name=='广东'){
+                array.push({
+                    name: item.name,
+                    value: item.value[type],
+                    selected:true
+                })
+            }else{
+                array.push({
+                    name: item.name,
+                    value: item.value[type]
+                })
+            }
+
         })
         return array;
     }
 
     let ser = ()=>{
         let array = [];
-        let labelArray = [{name:'统建CDN',item:'CDN'},{name:'IDC',item:'IDC'},{name:'省建Cache',item:'PCache'},{name:'统建Cache',item:'Cache'},{name:'',item:''}]
+        let labelArray = [{name:'CDN',item:'CDN'},{name:'IDC',item:'IDC'},{name:'Cache',item:'PCache'},{name:'OTT',item:'Cache'},{name:'',item:''}]
         for(let i=0;i<labelArray.length;i++){
             array.push({
                 name: labelArray[i].name,
@@ -231,7 +240,7 @@
             itemWidth,
             itemHeight,
             textStyle:labelStyle.textStyle,
-            data:['统建CDN','IDC','省建Cache','统建Cache'],
+            data:['CDN','IDC','Cache','OTT'],
         },
         tooltip:{
             trigger: 'item',
@@ -246,10 +255,10 @@
                             全网流量地图
                         </div>
                         省份：${data.name}<br/>
-                        <b class="echart-circle" style="background: ${Object.values(color)[0]}"></b>统建CDN：${data.value.CDN}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[0]}"></b>CDN：${data.value.CDN}GBPS<br />
                         <b class="echart-circle" style="background: ${Object.values(color)[1]}"></b>IDC：${data.value.IDC}GBPS<br />
-                        <b class="echart-circle" style="background: ${Object.values(color)[2]}"></b>统建Cache：${data.value.Cache}GBPS<br />
-                        <b class="echart-circle" style="background: ${Object.values(color)[3]}"></b>省建Cache：${data.value.PCache}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[2]}"></b>Cache：${data.value.Cache}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[3]}"></b>OTT：${data.value.PCache}GBPS<br />
                         <b class="echart-circle" style="background: #0063dd"></b>总计流量：${(data.value.CDN+data.value.IDC+data.value.Cache+data.value.PCache).toFixed(2)}GBPS<br />
                         `
             }
@@ -338,10 +347,10 @@
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption(option);
                 this.chart.on('click',function(data){
-                    that.setData(data);
+                    that.drawTbra(data);
                 });
             },
-            setData(data){
+            drawTbra(data){
                 let {name,dataIndex} = data;
                 let seriesData = [
                     {
@@ -373,7 +382,7 @@
                         }
                     },
                     legend: {
-                        data: ['统建CDN','IDC','省建Cache','统建Cache'],
+                        data: ['CDN','IDC','Cache','OTT'],
                         textStyle:labelStyle.textStyle,
                     },
                     grid: {
@@ -395,13 +404,14 @@
                         boundaryGap: [0, 0.01],
                         axisLine,
                         splitLine:{
-                            lineStyle:axisLine.lineStyle
+                            lineStyle:axisLine.lineStyle,
+                            show:false,
                         },
                         axisLabel
                     },
                     yAxis: {
                         type: 'category',
-                        data: ['统建CDN','IDC','省建Cache','统建Cache'],
+                        data: ['CDN','IDC','Cache','OTT'],
                         axisLine,
                         splitLine:{
                             lineStyle:axisLine.lineStyle
@@ -420,6 +430,10 @@
                 this.drawrose('map1-map2',map2,'带宽/TB');
                 this.drawbar('map1-map3',map3,'流量/TB');
                 this.drawmap('map1-map4');
+                this.drawTbra({
+                    name:'广东',
+                    dataIndex: 4
+                })
             });
         }
     }

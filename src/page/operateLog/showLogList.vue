@@ -41,7 +41,10 @@
                 <Input v-model="log.user" style="width: 350px"></Input>
             </div>
             <div class="search-ctrl">
-                <Button type="primary" class="btn-search ml-20 mt-10" @click="getLogData">立即检索</Button>
+                <Button type="primary" class="btn-search ml-20 mt-10" @click="getLogData" :loading="loading">
+                    <span v-if="!loading">立即检索</span>
+                    <span v-else>检索中</span>
+                </Button>
                 <a class="text-blue" @click="reset">清空</a>
             </div>
         </div>
@@ -99,18 +102,20 @@
                     pageNum: 1,
                     pageSize: 15
                 },
+                loading:false,
             }
         },
         methods:{
             getLogData(e,pageSize=15,pageNum=1){
+                this.loading = true;
                 let data = 'operateLog/showLogList?pageSize=15&pageNum=1&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate;
                 this.$http.get(data).then((res)=>{
                     this.allRecordNumber = res.data.allRecordNumber;
                     this.page.totalList = res.data.totalPages;
-                    this.page.pageNum = res.data.pageNum;
                     this.data = res.data.OperateLogList;
+                    this.loading = false;
                 }).catch((res)=>{
-                    console.log('error');
+                    this.loading = false;
                 })
             },
             selectLog(value){

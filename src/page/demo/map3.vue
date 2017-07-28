@@ -2,7 +2,9 @@
     <div id="map">
         <div class="main_container">
             <div class="top_show">
-                <div id="chart1"></div>
+                <div id="chart1">
+                    <div class="title">国际客户接入</div>
+                </div>
                 <div class="top_rightShow">
                     <div class="chart2">
                         <div id="chart2-1"></div>
@@ -36,6 +38,14 @@
             border: 2px solid #2c3e65;
             border-right:none;
             border-bottom:none;
+            .title{
+                width: 640px;
+                text-align: center;
+                font-size:24px;
+                color: white;
+                margin-top:20px;
+                cursor:default ;
+            }
         }
         .top_rightShow{
             float: left;
@@ -147,7 +157,7 @@
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title: {
-                        text: '宽带流量',
+                        text: '带宽流量',
                         x:'center',
                         y:20,
                         textStyle,
@@ -185,7 +195,7 @@
                     },
                     series: [
                         {
-                            name: '宽带',
+                            name: '带宽',
                             type: 'bar',
                             data: [250,40,848,357],
                             itemStyle: {
@@ -294,7 +304,7 @@
                     legend: {
                         left:'45%',
                         bottom:'20',
-                        data: ['宽带','流量'],
+                        data: ['带宽','流量'],
                         itemWidth:15,
                         itemHeight:15,
                         textStyle:{
@@ -346,7 +356,7 @@
                         }
                     }],
                     series: [{
-                        name:'宽带',
+                        name:'带宽',
                         type: 'bar',
                         stack: 'chart',
                         z: 3,
@@ -425,17 +435,15 @@
                         y:20,
                         textStyle
                     },
-                    brush: {
-                        toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
-                        xAxisIndex: 0
-                    },
                     toolbox: {
                         feature: {
+                            saveAsImage: {},
+                            dataView: {},
                             magicType: {
-                                type: ['stack', 'tiled']
+                                type: ['stack', 'tiled','line','bar']
                             },
-                            dataView: {}
-                        }
+                            restore: {show: true}
+                        },
                     },
                     tooltip: {
                         trigger: 'axis',
@@ -475,7 +483,11 @@
                         {
                             name: '付费直连',
                             type: 'line',
-                            areaStyle: {normal: {}},
+                            areaStyle: {
+                                normal: {
+                                    color:'#D5CB68'
+                                }
+                            },
                             data: ffzl,
                             smooth:true,
                             itemStyle: {

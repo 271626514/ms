@@ -179,8 +179,8 @@
         },
         methods:{
             checkPage(value){
-                window.localStorage.setItem('page',JSON.stringify(value));
                 this.$router.push('/demo/'+value);
+                window.localStorage.setItem('page',value);
             }
         },
         mounted(){
@@ -195,9 +195,10 @@
                 let string = YY+ '-' + MM + '-'+ DD +'  ' + HH + ':' + MI + ':' + SS;
                 this.resetDate = string;
             },1000);
-           /* setInterval(()=>{
+            setInterval(()=>{
                 window.location.reload();
-            },5000)*/
+            },10000);
+            this.defaultSelect.value = window.localStorage.getItem('page') || 'map1'
         }
     }
 

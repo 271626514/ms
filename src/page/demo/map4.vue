@@ -16,7 +16,7 @@
                 <ul>
                     <li v-for="(item,index) in mapData" class="map-icon" @click="changeMap(index)" :class="['map-icon-'+index,{'active':index==mapindex}]"></li>
                 </ul>
-                <div id="right_content" :style="{width:'750px',height:'700px'}"></div>
+                <div id="right_content" :style="{width:'750px',height:'694px'}"></div>
             </li>
         </ul>
     </div>

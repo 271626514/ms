@@ -249,7 +249,7 @@
         });
         return array;
     };
-    //按照公司名称获取map数据
+    //按照公司名称获取省份数据
     let getMapData = name =>{
         let array = [];
         provinceData.map(i=>{
@@ -257,6 +257,17 @@
         });
         return array;
     };
+    //按照公司名称获取map数据
+    let getAreaData = name =>{
+        let array = [];
+        provinceData.map(i=>{
+            array.push({
+                name: i.name,
+                value: i[name]
+            })
+        });
+        return array;
+    }
 /*    let data1 = ()=>{
         let array = [];
         for(let i=0;i<31;i++){
@@ -600,8 +611,8 @@
                     ]
                 });
             },
-            drawmap(id,title){
-                let data1 = ()=>{
+            drawmap(id,title,data){
+            /*    let data1 = ()=>{
                     let array = [];
                     for(let i=0;i<31;i++){
                         array.push(parseInt(Math.random()*100));
@@ -617,7 +628,7 @@
                         });
                     }
                     return array;
-                }
+                }*/
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     backgroundColor: '#1d2b46',
@@ -643,8 +654,8 @@
                         }
                     },
                     visualMap: {
-                        min: 0,
-                        max: 100,
+                        min: 0.1,
+                        max: 0.5,
                         right: '5%',
                         top: 'center',
                         text: ['高','低'],
@@ -690,7 +701,7 @@
                             }
                         },
                         roam: true,
-                        data: data3()
+                        data: data
                     },
                 })
             },
@@ -700,7 +711,7 @@
                 let title = this.data[index].name;
                 this.drawarea('map2-map5',getTimeData(title),title);
                 this.drawpro('map2-map4',getMapData(title),title);
-                this.drawmap('map2-map6',title);
+                this.drawmap('map2-map6',title,getAreaData(title));
             }
         },
         mounted(){
@@ -708,7 +719,7 @@
             this.drawbar('map2-map3',map2,'ICP流量TOP10');
             this.drawpro('map2-map4',getMapData('腾讯'),'腾讯');
             this.drawarea('map2-map5',getTimeData('腾讯'),'腾讯');
-            this.drawmap('map2-map6','腾讯');
+            this.drawmap('map2-map6','腾讯',getAreaData('腾讯'));
         }
     }
 </script>

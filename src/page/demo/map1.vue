@@ -124,7 +124,7 @@
         },
         tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c}T ({d}%)"
+            formatter: "{a} <br/>{b} : {c}Tbps ({d}%)"
         },
     }
     const map3 = {
@@ -142,7 +142,7 @@
         },
         tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c}T"
+            formatter: "{a} <br/>{b} : {c}Tbps"
         },
         itemStyle:{
             normal:{
@@ -184,6 +184,7 @@
                 mapType: 'china',
                 selectedMode : 'single',
                 zoom:1.4,
+                roam: false,
                 label: {
                     normal: { show: false},
                     emphasis: { show: false}
@@ -202,7 +203,6 @@
                         opacity: '0.8'
                     }
                 },
-                roam: true,
                 data:data(labelArray[i].item)
             })
         }
@@ -255,11 +255,11 @@
                             全网流量地图
                         </div>
                         省份：${data.name}<br/>
-                        <b class="echart-circle" style="background: ${Object.values(color)[0]}"></b>CDN：${data.value.CDN}GBPS<br />
-                        <b class="echart-circle" style="background: ${Object.values(color)[1]}"></b>IDC：${data.value.IDC}GBPS<br />
-                        <b class="echart-circle" style="background: ${Object.values(color)[2]}"></b>Cache：${data.value.Cache}GBPS<br />
-                        <b class="echart-circle" style="background: ${Object.values(color)[3]}"></b>OTT：${data.value.PCache}GBPS<br />
-                        <b class="echart-circle" style="background: #0063dd"></b>总计流量：${(data.value.CDN+data.value.IDC+data.value.Cache+data.value.PCache).toFixed(2)}GBPS<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[0]}"></b>CDN：${data.value.CDN}Gbps<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[1]}"></b>IDC：${data.value.IDC}Gbps<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[2]}"></b>Cache：${data.value.Cache}Gbps<br />
+                        <b class="echart-circle" style="background: ${Object.values(color)[3]}"></b>OTT：${data.value.PCache}Gbps<br />
+                        <b class="echart-circle" style="background: #0063dd"></b>总计流量：${(data.value.CDN+data.value.IDC+data.value.Cache+data.value.PCache).toFixed(2)}Gbps<br />
                         `
             }
         },
@@ -378,7 +378,7 @@
                         },
                         formatter:(item)=>{
                             return `<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px">${name}流量数据</div>
-                                    ${item.name}：${item.value}GBPS<br/>`
+                                    ${item.name}：${item.value}Gbps<br/>`
                         }
                     },
                     legend: {
@@ -427,8 +427,8 @@
         mounted(){
             this.$nextTick(function() {
                 this.drawrose('map1-map1',map1,'端口');
-                this.drawrose('map1-map2',map2,'带宽/TB');
-                this.drawbar('map1-map3',map3,'流量/TB');
+                this.drawrose('map1-map2',map2,'带宽/Tbps');
+                this.drawbar('map1-map3',map3,'流量/Tbps');
                 this.drawmap('map1-map4');
                 this.drawTbra({
                     name:'广东',

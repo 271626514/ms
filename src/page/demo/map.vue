@@ -195,9 +195,9 @@
                 let string = YY+ '-' + MM + '-'+ DD +'  ' + HH + ':' + MI + ':' + SS;
                 this.resetDate = string;
             },1000);
-            setInterval(()=>{
+            /*setInterval(()=>{
                 window.location.reload();
-            },10000);
+            },10000);*/
             this.defaultSelect.value = window.localStorage.getItem('page') || 'map1'
         }
     }

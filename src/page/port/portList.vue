@@ -65,7 +65,7 @@
             <Table width="auto" stripe border :columns="columns" @on-selection-change="con" :data="portData" style="margin-top: 10px"></Table>
             <div class="table-set">
                 <Button type="ghost" :disabled="BtnDisabled"><a :href="downloadsec">下载所选</a></Button>
-                <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px">批量删除</Button>
+                <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
             <div class="page" v-if="portData">
@@ -161,6 +161,11 @@
                 }).catch(res=>{
                     this.loading = false;
                 })
+            },
+            //@click="removeall"
+            removeall(){
+                this.dialog.removeAll = true;
+                this.removeData = this.selection;
             },
             onChange(pageNum){         //分页查询
                 this.searchSubmit(null,15,pageNum);

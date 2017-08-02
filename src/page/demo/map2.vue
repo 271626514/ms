@@ -268,31 +268,6 @@
         });
         return array;
     }
-/*    let data1 = ()=>{
-        let array = [];
-        for(let i=0;i<31;i++){
-            array.push(parseInt(Math.random()*100));
-        }
-        return array;
-    };
-    let data2 = ()=>{
-        let array = [];
-        for(let i=0;i<24;i++){
-            array.push(parseInt(Math.random()*100));
-        }
-        return array;
-    }
-    let provinceData = data1();*/
-    /*let data3 = ()=>{
-            let array = [];
-            for(let i=0;i<31;i++){
-                array.push({
-                    name: column[i],
-                    value: provinceData[i]
-                });
-            }
-            return array;
-    }*/
     let option = (title)=>{
         return {
             name: `${title}`,
@@ -424,7 +399,7 @@
                                 color:'#FFF'
                             },
                             formatter: function(data){
-                                return `${data.name}\n${data.data}T`
+                                return `${data.name}\n${data.data}`
                             }
                         },
                         emphasis:{
@@ -434,7 +409,7 @@
                                 color:'#FFF'
                             },
                             formatter: function(data){
-                                return `${data.name}\n${data.data}T`
+                                return `${data.name}\n${data.data}`
                             }
                         }
                     },
@@ -534,7 +509,7 @@
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title:{
-                        text:`${title}分时流量/Tbps`,
+                        text:`分时流量/Tbps`,
                         textStyle,
                         top:20,
                         left:'center'
@@ -612,23 +587,6 @@
                 });
             },
             drawmap(id,title,data){
-            /*    let data1 = ()=>{
-                    let array = [];
-                    for(let i=0;i<31;i++){
-                        array.push(parseInt(Math.random()*100));
-                    }
-                    return array;
-                };
-                let data3 = ()=>{
-                    let array = [];
-                    for(let i=0;i<31;i++){
-                        array.push({
-                            name: column[i],
-                            value: data1()[i]
-                        });
-                    }
-                    return array;
-                }*/
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     backgroundColor: '#1d2b46',
@@ -680,6 +638,7 @@
                         type: 'map',
                         map: 'china',
                         zoom: 1.6,
+                        roam: false,
                         top: '25%',
                         right: 0,
                         label: {
@@ -700,7 +659,6 @@
                                 opacity: '0.8'
                             }
                         },
-                        roam: true,
                         data: data
                     },
                 })

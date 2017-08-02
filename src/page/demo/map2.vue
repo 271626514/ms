@@ -210,7 +210,7 @@
                     fontSize: '24',
                     fontWeight: 'normal',
                 },
-                formatter: "{c}Tbps"
+                formatter: "{c}T"
             },
             emphasis: {
                 show: true,
@@ -368,7 +368,8 @@
                             data: ['腾讯','爱奇艺','阿里巴巴','优酷土豆网','百度','易视腾','芒果TV','搜狐','新浪','金山网络'],
                             axisLine,
                             axisLabel: {
-                                show:false,
+                                show:true,
+                                interval:0,
                                 textStyle: {
                                     color: '#c0c6c4'
                                 }
@@ -378,6 +379,9 @@
                     yAxis : [
                         {
                             show:true,
+                            name: 'Tbps',
+                            nameLocation: 'middle',
+                            nameGap: '25',
                             type:'value',
                             axisLine,
                             axisLabel: {
@@ -456,7 +460,11 @@
                                 interval:0,
                                 textStyle:{
                                     color: '#c0c6c4',
-                                    fontSize: 2
+                                    fontSize: 8
+                                },
+                                formatter:(val,index)=>{
+                                    let arr = [...val].join('\n');
+                                    return `${arr}`;
                                 }
                             }
                         }
@@ -549,7 +557,7 @@
                                 interval:0,
                                 textStyle:{
                                     color: '#c0c6c4',
-                                    fontSize: 6
+                                    fontSize: 8
                                 },
                             },
                             axisLine,
@@ -586,7 +594,7 @@
                     ]
                 });
             },
-            drawmap(id,title,data){
+            drawmap(id,title,data,max){
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     backgroundColor: '#1d2b46',
@@ -612,9 +620,10 @@
                         }
                     },
                     visualMap: {
-                        min: 0.1,
-                        max: 0.5,
+                        min: 0,
+                        max: max,
                         right: '5%',
+                        precision:3,
                         top: 'center',
                         text: ['高','低'],
                         calculable: false,
@@ -667,9 +676,11 @@
                 //切换
                 this.mapindex = index;
                 let title = this.data[index].name;
+                let max = 0.5;
+                console.log(getTimeData(title))
                 this.drawarea('map2-map5',getTimeData(title),title);
                 this.drawpro('map2-map4',getMapData(title),title);
-                this.drawmap('map2-map6',title,getAreaData(title));
+                this.drawmap('map2-map6',title,getAreaData(title),max);
             }
         },
         mounted(){
@@ -677,7 +688,7 @@
             this.drawbar('map2-map3',map2,'ICP流量TOP10');
             this.drawpro('map2-map4',getMapData('腾讯'),'腾讯');
             this.drawarea('map2-map5',getTimeData('腾讯'),'腾讯');
-            this.drawmap('map2-map6','腾讯',getAreaData('腾讯'));
+            this.drawmap('map2-map6','腾讯',getAreaData('腾讯'),0.45);
         }
     }
 </script>

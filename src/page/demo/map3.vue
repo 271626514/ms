@@ -127,7 +127,7 @@
         for(let i of data){
             for(let j=0;j<i.length;j++){
                 if(name==i[j].name){
-                    array.push(i[j].trafficins)
+                    array.push(i[j].trafficins.toFixed(2))
                 }
             }
         }
@@ -157,7 +157,7 @@
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title: {
-                        text: '带宽流量',
+                        text: '带宽流量/Gbps',
                         x:'center',
                         y:20,
                         textStyle,
@@ -186,7 +186,9 @@
                     },
                     yAxis: {
                         type: 'value',
-                        max:'900',
+                        name: 'Gbps',
+                        nameLocation: 'middle',
+                        nameGap:30,
                         splitLine:{
                             show:false
                         },
@@ -218,7 +220,7 @@
                                         show: true,//是否展示
                                         position: 'top',
                                     },
-                                    color:'#6ce296'
+                                    color:'#F4D64A'
                                 }
                             },
                         }
@@ -235,7 +237,12 @@
                         textStyle
                     },
                     tooltip : {
-                        formatter: "{a} <br/>{b} : {c}%",
+                        formatter: "付费率 <br/>{c}%",
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#333'
+                        }
                     },
                     series: [
                         {
@@ -282,7 +289,7 @@
                         },
                     },
                     title: [{
-                        text: 'Top 10客户',
+                        text: 'Top 10客户/Gbps',
                         x: '50%',
                         y:'10',
                         textAlign: 'center',
@@ -430,7 +437,7 @@
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title: {
-                        text: '一周流量分析',
+                        text: '一周流量分析/Gbps',
                         x:'45%',
                         y:20,
                         textStyle
@@ -447,6 +454,11 @@
                     },
                     tooltip: {
                         trigger: 'axis',
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#333'
+                        },
                         axisPointer: {
                             type: 'cross',
                             label: {
@@ -472,11 +484,21 @@
                     ],
                     yAxis: [
                         {
-                            show:false,
+                            show:true,
                             type: 'value',
+                            name: 'Gbps',
+                            nameLocation: 'middle',
+                            nameGap:30,
                             splitLine: {
                                 show: false
                             },
+                            axisLine:{
+                                show:false,
+                                lineStyle:{
+                                    color:'#30436d'
+                                }
+                            },
+                            axisLine
                         }
                     ],
                     series: [

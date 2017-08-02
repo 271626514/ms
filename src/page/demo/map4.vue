@@ -2,7 +2,7 @@
     <div id="map">
         <!--<h1>内容流量全网资源平台</h1>-->
         <ul class="header_show">
-            <div class="main_title">实时拥塞</div>
+            <div class="main_title"><!--实时拥塞--></div>
             <li id="circle1" :style="{width:'520px',height:'340px'}"></li>
             <li id="circle2" :style="{width:'520px',height:'340px'}"></li>
             <li id="circle3" :style="{width:'520px',height:'340px'}"></li>
@@ -139,6 +139,7 @@
     const jamLinkRole = {
         legendData:['腾讯','爱奇艺','百度','阿里巴巴','搜狐','360','优酷土豆网'],
         jamBandwidthG:[610,300,90,70,40,20,10],
+        all: 114,
         jamPercent:[6.40,5.42,9.47,1.82,9.30,6.25,0.40],
         jamSolve:["腾讯", "爱奇艺", "阿里巴巴", "优酷土豆网","百度", "360", "芒果TV","搜狐","汽车之家","PPTV"],
     };
@@ -470,18 +471,18 @@
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title:{
-                        text:'拥塞链路',
+                        text:`拥塞链路 \n ${jamLinkRole.all}`,
                         x: 'center',
-                        y: 'center',
-                        itemGap: 20,
-                        textStyle,
+                        y: '50%',
+                        itemGap: 50,
+                        textStyle
                     },
                     gird:{
                         top:'20%'
                     },
                     tooltip : {
                         show: true,
-                        formatter: "{b} : {c} ({d}%)",
+                        formatter: "{b} : {c}",
                         backgroundColor:'rgba(255,255,255,0.9)',
                         padding:10,
                         textStyle:{
@@ -642,7 +643,7 @@
                     legend: {
                         x: document.getElementById("circle2").offsetWidth/3*2,
                         y:20,
-                        data: ['拥塞带宽(单位G)'],
+                        data: ['拥塞带宽(单位Gbps)'],
                         itemWidth:18,
                         itemHeight:18,
                         textStyle:{
@@ -684,7 +685,7 @@
                     },
                     series: [
                         {
-                            name:'拥塞带宽(单位G)',
+                            name:'拥塞带宽(单位Gbps)',
                             type:'line',
                             data:jamLinkRole.jamBandwidthG,
                             symbol:'diamond',

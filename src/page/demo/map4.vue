@@ -333,7 +333,7 @@
                     ]},
                     {name:'易视腾科技', value:[
                         {name: '安徽',value: 0 },
-                        {name: '北京',value: 0 },
+                        {name: '北京',value: 6 },
                         {name: '福建',value: 0 },
                         {name: '甘肃',value: 0 },
                         {name: '广东',value: 0 },
@@ -352,13 +352,13 @@
                         {name: '山东',value: 0 },
                         {name: '山西',value: 0 },
                         {name: '陕西',value: 0 },
-                        {name: '上海',value: 0 },
+                        {name: '上海',value: 2.5 },
                         {name: '四川',value: 0 },
                         {name: '天津',value: 0 },
                         {name: '西藏',value: 0 },
                         {name: '新疆',value: 0 },
                         {name: '云南',value: 0 },
-                        {name: '浙江',value: 0 },
+                        {name: '浙江',value: 4 },
                         {name: '重庆',value: 0 },
                         {name: '贵州',value: 0 },
                         {name: '内蒙古',value: 0 },
@@ -929,7 +929,7 @@
                     },
                     visualMap: {
                         min: 0,
-                        max: 5,
+                        max: 17,
                         left: '5%',
                         bottom:'10%',
                         text: ['高','低'],           // 文本，默认为数值文本
@@ -975,6 +975,13 @@
             },
             changeMap(index){
                 this.mapindex = index;
+                let maxNum = [];
+                Object.values(this.mapData[index].value).map(i=>{
+                    maxNum.push(i.value)
+                });
+                maxNum.sort((a,b)=>{
+                    return a-b
+                });
                 this.chart = echarts.init(document.getElementById('right_content'));
                 this.chart.setOption({
                     title:{
@@ -999,7 +1006,7 @@
                     },
                     visualMap: {
                         min: 0,
-                        max: 5,
+                        max: maxNum[maxNum.length-1],
                         left: '5%',
                         bottom:'10%',
                         text: ['高','低'],

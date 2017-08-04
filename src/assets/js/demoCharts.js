@@ -489,7 +489,7 @@ export const axisLabel = {
     textStyle:{
         color: '#c0c6c4',
         fontSize: 14
-    }
+    },
 }
 
 export const timeData = [
@@ -1273,9 +1273,6 @@ export const map3data =
             "creattime":null
         }
     ],
-
-
-
         "day4":[
             {
                 "id":null,

@@ -236,8 +236,12 @@
     let timeColumn = ()=>{
         let array = [];
         for(let i of timeData){
-            let str = i.name.replace(':00','时');
+            let str = '昨日' + i.name.replace(':00','时');
             array.push(str)
+        }
+        for(let i of timeData){
+            let str = '今日' + i.name.replace(':00','时');
+            array.push(str);
         }
         return array;
     }
@@ -246,6 +250,9 @@
         let array = [];
         timeData.map(i=>{
             array.push(i[name])
+        });
+        timeData.map(i=>{
+            array.push(i[name]);
         });
         return array;
     };
@@ -267,7 +274,8 @@
             })
         });
         return array;
-    }
+    };
+
     let option = (title)=>{
         return {
             name: `${title}`,
@@ -307,7 +315,7 @@
             }
         },
         methods:{
-            init(){     //初始化假数据
+            init(){     //初始化假数据    暂时没用
                 let data = [];
                 seller.map((item)=>{
                     data.push({
@@ -316,7 +324,7 @@
                 });
                 return data;
             },
-            drawrose(id,series,title) {
+            drawrose(id,series,title) {     //带宽环形图
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title : {
@@ -343,7 +351,7 @@
                     series:  series
                 });
             },
-            drawbar(id,series,title){
+            drawbar(id,series,title){       //ICP柱状图
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title : {
@@ -433,7 +441,7 @@
                     ]
                 });
             },
-            drawpro(id,data1,title) {
+            drawpro(id,data1,title) {       //分省流量柱状图
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title:{
@@ -474,10 +482,10 @@
                             show:true,
                             axisLabel,axisLine,
                             type: 'value',
+                            max: '100%',
                             splitLine:{
                                 show:false
                             },
-
                         }
                     ],
                     legend:{
@@ -513,7 +521,7 @@
                     ]
                 });
             },
-            drawarea(id,data,title){
+            drawarea(id,data,title){        //分时流量折线图
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title:{
@@ -554,7 +562,7 @@
                             show:true,
                             axisLabel: {
                                 show:true,
-                                interval:0,
+                                interval:2,
                                 textStyle:{
                                     color: '#c0c6c4',
                                     fontSize: 8
@@ -589,6 +597,7 @@
                             smooth:true,
                             showSymbol:true,
                             symbol: 'circle',
+                            symbolSize: 10,
                             data: data
                         }
                     ]
@@ -676,11 +685,14 @@
                 //切换
                 this.mapindex = index;
                 let title = this.data[index].name;
-                let max = 0.5;
-                console.log(getTimeData(title))
+                let areaData = getMapData(title);
+                let maxNum = areaData.sort((a,b)=>{
+                    return a-b;
+                });
+                console.log(areaData);
                 this.drawarea('map2-map5',getTimeData(title),title);
                 this.drawpro('map2-map4',getMapData(title),title);
-                this.drawmap('map2-map6',title,getAreaData(title),max);
+                this.drawmap('map2-map6',title,getAreaData(title),maxNum[30]);
             }
         },
         mounted(){

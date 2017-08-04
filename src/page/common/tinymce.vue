@@ -1,8 +1,6 @@
 <template>
     <div>
-        <h1>TinyMCE Quick Start Guide</h1>
         <textarea id="mytextarea"></textarea>
-
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -28,4 +26,4 @@ export default {
 }
 </script>
 <style type="text/css">
-</style>
+    </style>

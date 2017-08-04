@@ -32,8 +32,12 @@ export const ROLES_EDIT = require('../page/user/rolesEdit.vue')
 export const ROLES_DETAIL = require('../page/user/rolesDetail.vue')
 export const ADMIN_HISTORY_DATA = require('../page/export/adminHistoryData.vue')
 export const CUSTOM_QUERY_LIST = require('../page/export/customQueryList.vue')
+export const DATA_PUBLISH = require('../page/export/dataPublish.vue')
+export const DATA_ADD = require('../page/export/dataAdd.vue')
+export const DATA_EDIT = require('../page/export/dataEdit.vue')
+export const DATA_DETAIL = require('../page/export/dataDetail.vue')
+export const DATA_DELETE = require('../page/export/dataDelete.vue')
 export const SHOW_LOG_LIST = require('../page/operateLog/showLogList.vue')
-export const PUBLIC_DATA = require('../page/export/publicData.vue')
 
 //业务数据展现
 export const MAP_LIST = require('../page/map/mapList.vue');

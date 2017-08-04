@@ -90,7 +90,8 @@
 <script type="text/ecmascript-6">
 
     import echarts from 'echarts'
-    import {axisLine,axisLabel,textStyle,map3data} from '../../assets/js/demoCharts'
+    import {axisLine,axisLabel,textStyle,map3data,timeData} from '../../assets/js/demoCharts'
+    const braColor = ['#D5CB68','#5b9fe2','#6c5095','#c55475'];
     const builderJson = {
         "all": 180,
         "charts": {
@@ -120,6 +121,18 @@
         },
         "ie": 9743
     };
+    let timeColumn = ()=>{
+        let array = [];
+        for(let i of timeData){
+            let str = '昨日' + i.name.replace(':00','时');
+            array.push(str)
+        }
+        for(let i of timeData){
+            let str = '今日' + i.name.replace(':00','时');
+            array.push(str);
+        }
+        return array;
+    }
     let weekend = Object.keys(map3data.qsfx);
     let data = Object.values(map3data.qsfx);
     let tag = (name)=>{
@@ -133,17 +146,49 @@
         }
         return array;
     }
+    //48小时数据
+    let tagMore = name =>{
+        let array = [];
+        for(let k=0;k<7;k++){
+            for(let i of data){
+                for(let j=0;j<i.length;j++){
+                    if(name==i[j].name){
+                        array.push(i[j].trafficins.toFixed(2))
+                    }
+                }
+            }
+        }
+        array.length = 48;
+        return array;
+    }
     let ffzl = tag('付费直连');
     let ffct = tag('付费穿透');
     let mfzl = tag('免费直连');
     let sfkh = tag('收费客户');
-
-    let tagA = ()=>{
-        let a = map3data.qsfx;
-        let t = '付费直连';
-        let name = [];
-        return name;
-    };
+    let series = () =>{
+        let array = [];
+        for(let i=0;i<4;i++){
+            array.push(
+                    {
+                        name: data[0][i].name,
+                        type: 'line',
+                        areaStyle: {
+                            normal: {
+                                color:braColor[i]
+                            }
+                        },
+                        data: tagMore(data[0][i].name),
+                        smooth:true,
+                        itemStyle: {
+                            normal: {
+                                color:braColor[i]
+                            }
+                        },
+                    }
+            )
+        }
+        return array;
+    }
     export default{
         data() {
             return {
@@ -433,7 +478,7 @@
                     }, ]
                 })
             },
-            drawLine(id){
+            /*drawLine(id){
                 this.chart = echarts.init(document.getElementById(id));
                 this.chart.setOption({
                     title: {
@@ -555,6 +600,85 @@
                             },
                         },
                     ]
+                })
+            },*/
+            drawLine(id){       //实时流量分析
+                this.chart = echarts.init(document.getElementById(id));
+                this.chart.setOption({
+                    title: {
+                        text: '实时流量分析/Gbps',
+                        x:'45%',
+                        y:20,
+                        textStyle
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {},
+                            dataView: {},
+                            magicType: {
+                                type: ['stack', 'tiled','line']
+                            },
+                            restore: {show: true}
+                        },
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor:'rgba(255,255,255,0.9)',
+                        padding:10,
+                        textStyle:{
+                            color: '#333'
+                        },
+                        axisPointer: {
+                            type: 'cross',
+                            label: {
+                                backgroundColor: '#6a7985'
+                            }
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '10%',
+                    },
+                    xAxis: [
+                        {
+                            show:true,
+                            type: 'category',
+                            boundaryGap: false,
+                            data: timeColumn(),
+                            axisLabel: {
+                                show:true,
+                                interval:2,
+                                textStyle:{
+                                    color: '#c0c6c4',
+                                    fontSize: 8
+                                },
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            show:true,
+                            type: 'value',
+                            name: 'Gbps',
+                            nameLocation: 'middle',
+                            nameGap:30,
+                            splitLine: {
+                                show: false
+                            },
+                            axisLine:{
+                                show:false,
+                                lineStyle:{
+                                    color:'#30436d'
+                                }
+                            },
+                            axisLine
+                        }
+                    ],
+                    series: series()
                 })
             }
         },

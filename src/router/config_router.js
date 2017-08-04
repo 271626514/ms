@@ -202,9 +202,29 @@ export default new Router({
                     meta: {name: '自定义查询'}
                 },
                 {
-                    path: 'publicData',
-                    component: path.PUBLIC_DATA,
-                    meta: {name: '数据发布'}
+                    path:'dataPublish',
+                    component:path.DATA_PUBLISH,
+                    meta:{name:'数据发布'},
+                },
+                {
+                    path:'add',
+                    component:path.DATA_ADD,
+                    meta:{name:'新建报表'}
+                },
+                {
+                    path:'edit',
+                    component:path.DATA_EDIT,
+                    meta:{name:'数据修改'}
+                },
+                {
+                    path:'detail',
+                    component:path.DATA_DETAIL,
+                    meta:{name:'数据查看'}
+                },
+                {
+                    path:'delete',
+                    component:path.DATA_DELETE,
+                    meta:{name:'数据删除'}
                 }
             ]
         },
@@ -216,8 +236,8 @@ export default new Router({
                 {
                     path: '',
                     redirect: ()=>{
-                        return 'showLogList'
-                    }
+                    return 'showLogList'
+                }
                 },
                 {
                     path: 'showLogList',

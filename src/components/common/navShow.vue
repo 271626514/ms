@@ -203,6 +203,16 @@ export default{
                             "parent": false,
                             "parentId": "4",
                             "resouce": "/customQueryList"
+                        },
+                        {
+                            "checked": false,
+                            "children": [],
+                            "depth": "",
+                            "id": 10,
+                            "name": "数据发布",
+                            "parent": false,
+                            "parentId": "4",
+                            "resouce": "/dataPublish"
                         }
                     ],
                     "depth": "",

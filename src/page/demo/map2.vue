@@ -122,9 +122,9 @@
             border-top:0;
             li{
                 display: inline-block;
-                margin-left: 25px;
-                width: 140px;
-                height: 140px;
+                margin-left: 20px;
+                width: 130px;
+                height: 130px;
                 cursor:pointer;
                 &:hover,&.active{
                     border:2px solid #52a5f7;
@@ -151,7 +151,7 @@
                 background-size:contain;
             }
             .map-icon-5{
-                background: url(../../assets/imgs/map-icon-5.png) no-repeat;
+                background: url(../../assets/imgs/map-icon-10.png) no-repeat;
                 background-size:contain;
             }
             .map-icon-6{
@@ -159,10 +159,14 @@
                 background-size:contain;
             }
             .map-icon-7{
-                background: url(../../assets/imgs/map-icon-7.png) no-repeat;
+                background: url(../../assets/imgs/map-icon-11.png) no-repeat;
                 background-size:contain;
             }
             .map-icon-8{
+                background: url(../../assets/imgs/map-icon-7.png) no-repeat;
+                background-size:contain;
+            }
+            .map-icon-9{
                 background: url(../../assets/imgs/map-icon-8.png) no-repeat;
                 background-size:contain;
             }
@@ -257,7 +261,7 @@
         return array;
     };
     //按照公司名称获取省份数据
-    let getMapData = name =>{
+    let getMapData = (name) =>{
         let array = [];
         provinceData.map(i=>{
             array.push(i[name])

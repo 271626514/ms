@@ -40,7 +40,8 @@
 </style>
 <script type="text/ecmascript-6">
     import {demo,column,textStyle,labelStyle,seriesLabelStyle,axisLabel,axisLine} from '../../assets/js/demoCharts'
-    import echarts from 'echarts'
+    import echarts from 'echarts/lib/echarts';
+
     const map5 = {
         map1:{
             name: '手机点击本网率',

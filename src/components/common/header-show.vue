@@ -3,7 +3,7 @@
         <div class="container clearfix" style="width: 1200px">
             <div class="pull-left logo-info">
                 <a href="/"><img src="../../assets/imgs/logo.png"/></a>
-                <span>全网流量资源管理平台</span>
+                <span>内容网络流量管理系统</span>
             </div>
         </div>
     </div>

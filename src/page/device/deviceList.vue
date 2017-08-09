@@ -29,7 +29,7 @@
                     </Select>
                 </div>
                 <div class="search-label ml-20">
-                    类型：
+                    设备类型：
                 </div>
                 <div class="search-item">
                     <Select v-model="device.type" :label-in-value="true" @on-change="v=>{ setOption(v,'type')}" style="width:138px;">
@@ -44,14 +44,14 @@
                         <Option v-for="item in SMNPList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
                 </div>
-                <div class="search-label ml-20">
+                <!--<div class="search-label ml-20">
                     端口：
                 </div>
                 <div class="search-item">
                     <Select v-model="device.snmpPort" :label-in-value="true" @on-change="selectPort" style="width:88px;">
                         <Option v-for="item in portList" :value="item.value" :key="item">{{ item.label }}</Option>
                     </Select>
-                </div>
+                </div>-->
             </div>
             <div class="item">
                 <span class="datelabel">设备IP检索</span>
@@ -74,6 +74,7 @@
             <div class="table-set">
                 <Button type="ghost" :disabled="BtnDisabled"><a :href="downloadsec">下载所选</a></Button>
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
+            <!--    <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="editAll">批量修改</Button>-->
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
             <div class="page" v-if="deviceData">
@@ -132,6 +133,24 @@
         data() {
             return {
                 deviceData: [],                     //列表数据
+            /*    deviceData:[
+                    {
+                        id: 331,
+                        province: '浙江',
+                        name: 'NXYC-PB-CMNET-RT01',
+                        ipAddr: '218.203.128.1',
+                        room: '生产中心三楼数据机房',
+                        type: '省网设备',
+                    },
+                    {
+                        id: 334,
+                        province: '浙江',
+                        name: 'NXYC-PB-CMNET-RT01',
+                        ipAddr: '218.203.128.1',
+                        room: '生产中心三楼数据机房',
+                        type: 3,
+                    }
+                ],*/
                 operatUser: this.$store.getters.getusername,
                 roleId:this.$store.getters.getuserRoleId,
                 selectionProvence: [],
@@ -225,6 +244,10 @@
                     this.modal.content = `请检查网络，稍后再试`
                 })
             },
+            editAll(){      //批量修改
+                this.$store.dispatch('editdevicelist',this.selection);
+                this.$router.push('/device/deviceEdit');
+            },
             onChange(pageNum){         //分页查询
                 this.searchSubmit(null,15,pageNum);
                 this.page.pageNum = pageNum;
@@ -269,8 +292,8 @@
             },
             reset(){        //清空检索条件
                 this.device.ipAddr = "";
-                this.device.beginTime = this.defaultDate
-                this.device.endTime = this.defaultDate
+                this.device.beginTime = '2017-01-01';
+                this.device.endTime = this.getDate();
                 this.device.province = '全国';
                 this.device.type = '全部';
                 this.device.snmpVersionView = '全部';

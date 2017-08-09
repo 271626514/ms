@@ -3,7 +3,7 @@
         <div class="container clearfix" :style="{width:autowidth}">
             <div class="pull-left logo-info">
                 <img src="../../assets/imgs/logo.png" />
-                <span>全网流量资源管理平台</span>
+                <span>内容网络流量管理系统</span>
             </div>
             <div class="pull-right user-info">
                 <span>{{username}} 你好</span>

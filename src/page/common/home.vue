@@ -3,7 +3,7 @@
         <header>
             <div class="pull-left logo-info">
                 <a @click="$router.push('/home')"><img src="../../assets/imgs/logo_home.png" id="logoToHome"></a>
-                <span>全网流量资源管理平台</span>
+                <span>内容网络流量管理系统</span>
                 <div class="pull-right">
                     <a>在线文档</a>
                     <a>关于我们</a>

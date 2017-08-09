@@ -153,7 +153,6 @@
         mounted(){
             this.$http.get('/export/dataPublish').then((res)=>{
                 this.dataMap = res.data.dataPublish;
-                console.log('succ');
             }).catch(res=>{
                 console.log('获取数据发布列表失败'+res)
             })

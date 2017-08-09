@@ -7,11 +7,11 @@
             <div class="item">
                 <div class="search-label">上传时间：</div>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :value="log.startDate" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
                 </div>
                 <div class="line"></div>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="defaultDate" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :value="log.finDate" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
                 </div>
                 <div class="search-label ml-20">
                     类型：
@@ -53,8 +53,7 @@
             <a class="search-download" :src="download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
-            <Table width="auto" stripe style="margin-top: 10px;" border :columns="columns" :data="data"></Table>
-
+            <Table width="auto" stripe border :columns="columns" :data="data" style="margin-top: 10px;"></Table>
             <div class="page" v-if="data">
                 <Page :total="page.totalList" :page-size="15" @on-change="onChange"></Page>
             </div>
@@ -73,6 +72,7 @@
         border-left:1px solid #ededed;
     }
 }
+
 </style>
 <script type="text/ecmascript-6">
     import {loglisttables,showDataSelection,dateOptions} from '../../assets/js/data'
@@ -88,13 +88,12 @@
                 sourceList: showDataSelection.sourceList,
                 resultList: showDataSelection.resultList,
                 options: dateOptions.options,
-                defaultDate: this.getDate(),
                 log:{
                     user:'',
                     logType: 'all',
                     source: 'all',
                     result: 'all',
-                    startDate: this.getDate(),
+                    startDate: '2017-01-01',
                     finDate: this.getDate()
                 },
                 page:{
@@ -106,9 +105,9 @@
             }
         },
         methods:{
-            getLogData(e,pageSize=15,pageNum=1){
+            getLogData(e,pageSize=15,pageNum = this.page.pageNum){
                 this.loading = true;
-                let data = 'operateLog/showLogList?pageSize=15&pageNum=1&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate;
+                let data = 'operateLog/showLogList?pageSize=15&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate+'&pageNum'+pageNum;
                 this.$http.get(data).then((res)=>{
                     this.allRecordNumber = res.data.allRecordNumber;
                     this.page.totalList = res.data.totalPages;
@@ -132,8 +131,8 @@
                 this.log.logType = 'all';
                 this.log.source = 'all';
                 this.log.result = 'all';
-                this.log.startDate = this.defaultDate;
-                this.log.finDate = this.defaultDate;
+                this.log.startDate = "2017-01-01";
+                this.log.finDate = this.getDate();
             },
             setStart(date) {
                 this.log.startDate = date;

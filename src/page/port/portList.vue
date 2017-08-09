@@ -246,7 +246,7 @@
             },
             reset(){                //初始化
                 this.port.ipAddr = '';
-                this.port.beginTime = this.getDate();
+                this.port.beginTime = '2017-01-01';
                 this.port.endTime = this.getDate();
                 this.port.province = '全国';
                 this.port.portType = '全部';

@@ -23,37 +23,37 @@ export const showDataSelection = {
             label: '全部'
         },
         {
-            value: 1,
+            value: '省网设备',
             label: '省网设备'
         },
         {
-            value: 2,
-            label: '城网设备'
+            value: '城域网设备',
+            label: '城域网设备'
         },
         {
-            value: 3,
-            label: 'IDC核心设备'
+            value: 'IDC设备',
+            label: 'IDC设备'
         },
         {
-            value: 4,
-            label: 'IDC汇聚设备'
+            value: '国际设备',
+            label: '国际设备'
         },
         {
-            value: 5,
-            label: 'IDC接入设备'
+            value: '骨干网设备',
+            label: '骨干网设备'
         },
-        {
-            value: 6,
+        /*{
+            value: 'Cache/CDN设备',
             label: 'Cache/CDN设备'
         },
         {
-            value: 7,
+            value: 'PB设备-省网核心',
             label: 'PB设备-省网核心'
         },
         {
-            value: 8,
+            value: 'PC设备-省网汇入',
             label: 'PC设备-省网汇入'
-        }
+        }*/
     ],
     SMNPList: [
         {
@@ -66,11 +66,11 @@ export const showDataSelection = {
         },
         {
             value: 2,
-            label: 'V2C'
+            label: 'v2c'
         },
         {
             value: 3,
-            label: 'V3'
+            label: 'v3'
         }
     ],
     portList: [
@@ -86,20 +86,20 @@ export const showDataSelection = {
         },
         {
             label: '上联',
-            value: 1
+            value: '上联'
         },
         {
             label: '下联',
-            value: 2
+            value: '下联'
         },
         {
             label: '级联',
-            value: 3
+            value: '级联'
         },
-        {
+       /* {
             label: '其他',
-            value: 4
-        }
+            value: '其他'
+        }*/
     ],
     serviceList: [
         {
@@ -107,11 +107,11 @@ export const showDataSelection = {
             value: '全部'
         },
         {
-            label: '集团出口',
+            label: '省网上联',
             value: 2
         },
         {
-            label: '他省直连',
+            label: '省际直连',
             value: 3
         },
         {
@@ -123,7 +123,7 @@ export const showDataSelection = {
             value: 5
         },
         {
-            label: '统建CDN-IDC',
+            label: 'ICP直连',
             value: 6
         },
         {
@@ -131,11 +131,11 @@ export const showDataSelection = {
             value: 7
         },
         {
-            label: '统建CDN-地市',
+            label: '省建Cache',
             value: 8
         },
         {
-            label: '省建Cache',
+            label: '省建CDN',
             value: 9
         },
         {
@@ -143,12 +143,28 @@ export const showDataSelection = {
             value: 10
         },
         {
-            label: '手机用户',
+            label: '固网用户',
             value: 11
         },
         {
-            label: '固网用户',
+            label: '手机用户',
             value: 12
+        },
+        {
+            label: '付费穿透',
+            value: 13
+        },
+        {
+            label: '付费对等直连',
+            value: 14
+        },
+        {
+            label: '收费客户',
+            value: 15
+        },
+        {
+            label: '免费对等直连',
+            value: 16
         }
     ],
     logTypeList: [
@@ -263,10 +279,28 @@ export const devicetables = {
             width: 200,
             render:(fc,obj)=>{
                 let text = '';
-                if(obj.row.type==null){
-                    text = '';
+                if(obj.row.type==''||obj.row.type=='null'){
+                    text = 'NULL';
+                }else{
+                    text = obj.row.type;
                 }
                 return text;
+            }
+        },
+        {
+            title: '设备状态',
+            key: 'status',
+            width: 200,
+            render:(fc, obj)=>{
+                let text = '';
+                if(obj.row.status=='0'||obj.row.status=='1'){
+                    text = '导入未采集'
+                }else if(obj.row.status=='3'){
+                    text = '导入已采集'
+                }else if(obj.row.status=='4'||obj.row.status=='5'){
+                    text = '已删除'
+                }
+                return `${text}`;
             }
         },
         {
@@ -274,7 +308,16 @@ export const devicetables = {
             key: 'snmpVersion',
             width: 140,
             render:(fc,obj)=>{
-                const text = obj.row.snmpVersion ? '有':'无';
+                let text = '';
+                if(obj.row.snmpVersion==1){
+                    text = 'V1'
+                }else if(obj.row.snmpVersion == 2){
+                    text = 'V2C'
+                }else if(obj.row.snmpVersion == 3){
+                    text = 'V3'
+                }else{
+                    text = 'NULL'
+                }
                 return `${text}`;
             }
         },
@@ -317,15 +360,6 @@ export const devicetables = {
             title: 'SNMPv3私有密钥',
             key: 'snmpv3Privpassphrase',
             width: 200
-        },
-        {
-            title: '设备状态',
-            key: 'status',
-            width: 200,
-            render:(fc, obj)=>{
-                const text = obj.row.status ? '导入已采集':'导入未采集';
-                return `${text}`;
-            }
         },
         {
             title: '备注',
@@ -382,6 +416,31 @@ export const porttables = {
             title: '端口类型',
             key: 'type',
             width: 200,
+            render:(fc,obj)=>{
+                let text = '';
+                if(obj.row.type==''||obj.row.type=='null'){
+                    text = 'NULL';
+                }else{
+                    text = obj.row.type;
+                }
+                return text;
+            }
+        },
+        {
+            title: '端口状态',
+            key: 'status',
+            width: 200,
+            render:(fc, obj)=>{
+                let text = '';
+                if(obj.row.status=='0'||obj.row.status=='1'){
+                    text = '导入未采集'
+                }else if(obj.row.status=='3'){
+                    text = '导入已采集'
+                }else if(obj.row.status=='4'||obj.row.status=='5'){
+                    text = '已删除'
+                }
+                return `${text}`;
+            }
         },
         {
             title: '业务大类',
@@ -397,15 +456,6 @@ export const porttables = {
             title: '对端设备',
             key: 'peerDevice',
             width: 200
-        },
-        {
-            title: '端口状态',
-            key: 'status',
-            width: 200,
-            render (fc,obj) {
-                const text = obj.row.deviceState == 0 ? '导入未采集':'导入已采集';
-                return `${text}`;
-            }
         },
         {
             title: '上传时间',
@@ -653,7 +703,7 @@ export const portCheckTables = {
         },
         {
             title: '对端设备',
-            key: 'snmpRaid',
+            key: 'pearDevice',
             width: 200
         },
         {
@@ -681,6 +731,116 @@ export const removeData = {  //设备批量删除
         {
             title: '类型',
             key: 'deviceType'
+        }
+    ]
+}
+export const edittables = {
+    device: [
+        {
+            title: 'ID',
+            key: 'id',
+            width:100
+        },
+        {
+            title: '省份',
+            key: 'province',
+            width: 75
+        },
+        {
+            title: '设备名称',
+            key: 'name',
+            width: 185
+        },
+        {
+            title: '设备IP',
+            key: 'ipAddr',
+            width: 180
+        },
+        {
+            title: '所属机房',
+            key: 'room',
+            width: 280
+        },
+        {
+            title: '设备类型',
+            key: 'type',
+            width: 200,
+            render:(fc,obj)=>{
+                let text = '';
+                if(obj.row.type==null){
+                    text = '';
+                }else{
+                    text = obj.row.type;
+                }
+                return text;
+            }
+        },
+        {
+            title: 'SNMP版本',
+            key: 'snmpVersion',
+            width: 140,
+            render:(fc,obj)=>{
+                const text = obj.row.snmpVersion ? '有':'无';
+                return `${text}`;
+            }
+        },
+        {
+            title: 'SNMP端口',
+            key: 'snmpPort',
+            width: 140,
+        },
+        {
+            title: 'SNMP团体字',
+            key: 'snmpCommunity',
+            width: 200
+        },
+        {
+            title: 'SNMPv3安全名称',
+            key: 'snmpv3Securityname',
+            width: 200
+        },
+        {
+            title: 'SNMPv3安全级别',
+            key: 'snmpv3Securitylevel',
+            width: 200,
+        },
+        {
+            title: 'SNMPv3认证协议',
+            key: 'snmpv3Authprotocol',
+            width: 200
+        },
+        {
+            title: 'SNMPv3认证口令',
+            key: 'snmpv3Authpassphrase',
+            width: 200
+        },
+        {
+            title: 'SNMPv3加密协议',
+            key: 'snmpv3Privprotocol',
+            width: 200
+        },
+        {
+            title: 'SNMPv3私有密钥',
+            key: 'snmpv3Privpassphrase',
+            width: 200
+        }
+    ],
+    deviceData:[
+        {
+            id: 331,
+            province: '浙江',
+            name: 'NXYC-PB-CMNET-RT01',
+            ipAddr: '218.203.128.1',
+            room: '生产中心三楼数据机房',
+            type: '省网设备',
+        },
+        {
+            id: 334,
+            province: '浙江',
+            name: 'NXYC-PB-CMNET-RT01',
+            ipAddr: '218.203.128.1',
+            room: '生产中心三楼数据机房',
+            type: 3,
         }
     ]
 }

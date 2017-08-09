@@ -292,6 +292,11 @@ export default new Router({
                 {
                     path: 'deviceConcat',
                     component: path.DEVICE_CONCAT
+                },
+                {
+                    path: 'deviceEdit',
+                    meta: {name: '设备信息编辑'},
+                    component: path.DEVICE_EDIT
                 }
             ]
         },

@@ -9,7 +9,9 @@ import getters from './getters'
 export default {
     state: {
         users_id: "",
-        roles_id: ""
+        roles_id: "",
+        device_list: [],
+        port_list: [],
     },
     actions: actions,
     mutations: mutations,

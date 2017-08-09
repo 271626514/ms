@@ -19,5 +19,11 @@ export default{
     [types.REMOVE_USER_ROLE] (state){
         window.localStorage.removeItem('userrole');
         state.roles_id= "";
-    }
+    },
+    [types.DEVICE_LIST] (state,val){
+        state.device_list = val;
+    },
+    [types.PORT_LIST] (state,val){
+        state.port_list = val;
+    },
 }

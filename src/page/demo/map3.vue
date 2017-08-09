@@ -32,7 +32,7 @@
             float: left;
             width: 40%;
             height: 100%;
-            background: url("../../assets/imgs/00002.svg") no-repeat center;
+            background: url("../../assets/imgs/yuntu.svg") no-repeat center;
             background-size: 85% 85%;
             background-position-y: 15%;
             border: 2px solid #2c3e65;

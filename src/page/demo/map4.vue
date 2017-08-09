@@ -77,8 +77,8 @@
                 li{
                     display: inline-block;
                     margin-left: 25px;
-                    width: 65px;
-                    height: 65px;
+                    width: 58px;
+                    height: 58px;
                     margin-top:10px;
                     cursor:pointer;
                     &:hover,&.active{
@@ -116,7 +116,7 @@
         background-size:contain;
     }
     .map-icon-5{
-        background: url(../../assets/imgs/map-icon-5.png) no-repeat;
+        background: url(../../assets/imgs/map-icon-10.png) no-repeat;
         background-size:contain;
     }
     .map-icon-6{
@@ -124,11 +124,15 @@
         background-size:contain;
     }
     .map-icon-7{
-        background: url(../../assets/imgs/map-icon-7.png) no-repeat;
+        background: url(../../assets/imgs/map-icon-11.png) no-repeat;
         background-size:contain;
     }
     .map-icon-8{
         background: url(../../assets/imgs/map-icon-8.png) no-repeat;
+        background-size:contain;
+    }
+    .map-icon-9{
+        background: url(../../assets/imgs/map-icon-7.png) no-repeat;
         background-size:contain;
     }
 </style>
@@ -331,7 +335,7 @@
                         {name: '内蒙古',value: 0 },
                         {name: '青海',value: 0 },
                     ]},
-                    {name:'易视腾科技', value:[
+                    {name:'乐视网', value:[
                         {name: '安徽',value: 0 },
                         {name: '北京',value: 6 },
                         {name: '福建',value: 0 },
@@ -392,6 +396,39 @@
                         {name: '新疆',value: 0 },
                         {name: '云南',value: 0 },
                         {name: '浙江',value: 0 },
+                        {name: '重庆',value: 0 },
+                        {name: '贵州',value: 0 },
+                        {name: '内蒙古',value: 0 },
+                        {name: '青海',value: 0 },
+                    ]},
+                    {name:'金山科技', value:[
+                        {name: '安徽',value: 0 },
+                        {name: '北京',value: 6 },
+                        {name: '福建',value: 0 },
+                        {name: '甘肃',value: 0 },
+                        {name: '广东',value: 0 },
+                        {name: '广西',value: 0 },
+                        {name: '海南',value: 0 },
+                        {name: '河北',value: 0 },
+                        {name: '河南',value: 0 },
+                        {name: '黑龙江',value: 0 },
+                        {name: '湖北',value: 0 },
+                        {name: '湖南',value:0 },
+                        {name: '吉林',value: 0 },
+                        {name: '江苏',value: 0 },
+                        {name: '江西',value: 0 },
+                        {name: '辽宁',value: 0 },
+                        {name: '宁夏',value: 0 },
+                        {name: '山东',value: 0 },
+                        {name: '山西',value: 0 },
+                        {name: '陕西',value: 0 },
+                        {name: '上海',value: 2.5 },
+                        {name: '四川',value: 0 },
+                        {name: '天津',value: 0 },
+                        {name: '西藏',value: 0 },
+                        {name: '新疆',value: 0 },
+                        {name: '云南',value: 0 },
+                        {name: '浙江',value: 4 },
                         {name: '重庆',value: 0 },
                         {name: '贵州',value: 0 },
                         {name: '内蒙古',value: 0 },

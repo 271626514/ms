@@ -15,5 +15,11 @@ export default{
     },
     removeuserrole({commit}){
         commit(types.REMOVE_USER_ROLE);
+    },
+    editdevicelist({commit},val){
+        commit(types.DEVICE_LIST,val);
+    },
+    editportlist({commit},val){
+        commit(types.PORT_LIST,val)
     }
 }

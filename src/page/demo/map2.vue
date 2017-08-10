@@ -177,7 +177,7 @@
 <script type="text/ecmascript-6">
     import echarts from 'echarts'
     import china from 'echarts/map/js/china'
-    import {seller,column,demo,textStyle,labelStyle,seriesLabelStyle,itemHeight,itemWidth,axisLabel,axisLine,timeData,provinceData} from '../../assets/js/demoCharts'
+    import {seller,column,demo,textStyle,labelStyle,seriesLabelStyle,itemHeight,itemWidth,axisLabel,axisLine,timeData,timeValue,provinceData} from '../../assets/js/demoCharts'
     const placeHolderStyle = {
         normal : {
             color: 'rgba(0,0,0,0)',
@@ -250,16 +250,16 @@
         return array;
     }
     //按照公司名称获取time数据
-    let getTimeData = (name) =>{
-        let array = [];
-        timeData.map(i=>{
-            array.push(i[name])
-        });
-        timeData.map(i=>{
-            array.push(i[name]);
-        });
-        return array;
-    };
+//    let getTimeData = (name) =>{
+//        let array = [];
+//        timeData.map(i=>{
+//            array.push(i[name])
+//        });
+//        timeData.map(i=>{
+//            array.push(i[name]);
+//        });
+//        return array;
+//    };
     //按照公司名称获取省份数据
     let getMapData = (name) =>{
         let array = [];
@@ -315,7 +315,8 @@
             return {
                 data:demo.map2.map4,
                 mapindex: 0,
-                flag:true
+                flag:true,
+                dataArray:[],
             }
         },
         methods:{
@@ -687,23 +688,51 @@
             },
             check(index){
                 //切换
+
                 this.mapindex = index;
                 let title = this.data[index].name;
+                let obj = {
+                    '腾讯':'tengxun',
+                    '爱奇艺':'aiqiy',
+                    '阿里巴巴':'alibaba',
+                    '优酷土豆网':'youkutudou',
+                    '百度':'baidu',
+                    '乐视网':'leshi',
+                    '芒果TV':'mangguo',
+                    '搜狐':'souhu',
+                    '新浪':'xinlang',
+                    '金山网络':'jinshan',
+                };
+                console.log(obj[title]);
                 let areaData = getMapData(title);
                 let maxNum = areaData.sort((a,b)=>{
                     return a-b;
                 });
-                console.log(areaData);
-                this.drawarea('map2-map5',getTimeData(title),title);
+                this.drawarea('map2-map5',this.getTimeData(obj[title]),title);
                 this.drawpro('map2-map4',getMapData(title),title);
                 this.drawmap('map2-map6',title,getAreaData(title),maxNum[30]);
+            },
+            getTimeData(name){
+                let array = [];
+                this.dataArray.today.map(i=>{
+                    array.push(i[name]);
+                })
+                this.dataArray.yesterday.map(i=>{
+                    array.push(i[name]);
+                })
+                return array;
             }
         },
         mounted(){
             this.drawrose('map2-map2',map1,'带宽');
             this.drawbar('map2-map3',map2,'ICP流量TOP10');
             this.drawpro('map2-map4',getMapData('腾讯'),'腾讯');
-            this.drawarea('map2-map5',getTimeData('腾讯'),'腾讯');
+            //现请求数据再绘制地图的异步
+            this.$http.get('data/showeverytime').then(res=>{
+                this.dataArray = res.data;
+            }).then(res=>{
+                this.drawarea('map2-map5',this.getTimeData('tengxun'),'腾讯');
+            })
             this.drawmap('map2-map6','腾讯',getAreaData('腾讯'),0.45);
         }
     }

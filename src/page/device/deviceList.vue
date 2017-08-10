@@ -11,11 +11,11 @@
             <div class="item">
                 <span class="datelabel">上传时间</span>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="device.beginTime" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :clearable="false" :value="device.beginTime" :options="options" @on-change="setStart" placeholder="选择起始日期" style="width: 155px"></Date-picker>
                 </div>
                 <div class="line"></div>
                 <div class="search-item">
-                    <Date-picker type="date" placement="bottom-end" :value="device.endTime" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
+                    <Date-picker type="date" placement="bottom-end" :clearable="false" :value="device.endTime" :options="options" @on-change="setFin" placeholder="选择结束日期" style="width: 155px"></Date-picker>
                 </div>
             </div>
             <div class="item">
@@ -74,7 +74,7 @@
             <div class="table-set">
                 <Button type="ghost" :disabled="BtnDisabled"><a :href="downloadsec">下载所选</a></Button>
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
-            <!--    <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="editAll">批量修改</Button>-->
+                <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="editAll">批量修改</Button>
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
             <div class="page" v-if="deviceData">
@@ -132,8 +132,8 @@
     export default{
         data() {
             return {
-                deviceData: [],                     //列表数据
-            /*    deviceData:[
+            //    deviceData: [],                     //列表数据
+                deviceData:[
                     {
                         id: 331,
                         province: '浙江',
@@ -150,7 +150,7 @@
                         room: '生产中心三楼数据机房',
                         type: 3,
                     }
-                ],*/
+                ],
                 operatUser: this.$store.getters.getusername,
                 roleId:this.$store.getters.getuserRoleId,
                 selectionProvence: [],

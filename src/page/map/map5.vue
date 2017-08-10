@@ -164,7 +164,6 @@
                         {
                             type: 'value',
                             name: '流量,Gbps',
-                            max: 800,
                             nameLocation: 'middle',
                             nameGap:30
                         }

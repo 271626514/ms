@@ -296,7 +296,17 @@ export default new Router({
                 {
                     path: 'deviceEdit',
                     meta: {name: '设备信息编辑'},
-                    component: path.DEVICE_EDIT
+                    component: path.DEVICE_EDIT,
+                    beforeEnter: (to, from, next) => {
+                        if(!store.state.page.device_list.length){
+                            next({
+                                path: '/device',
+                            });
+                        }else{
+                            next();
+                        }
+                    }
+
                 }
             ]
         },

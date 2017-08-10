@@ -79,18 +79,6 @@
                 window.location.reload();
             },
         },
-        props: ['title','content','dialog','url','cancel'],
-       /* props: {
-            title:'String',
-            content:'String',
-            dialog:'Number',
-            url:'String',
-            color:{
-                type: 'String',
-                default:function(){
-                    return '#ff5021'
-                }
-            }
-        },*/
+        props: ['title','content','dialog','url','cancel']
     }
 </script>

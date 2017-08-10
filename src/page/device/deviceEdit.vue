@@ -1,10 +1,10 @@
 <template>
     <div class="edit">
-        <h2>
-            操作须知：
-            <span class="">用户：{{username}}</span>
-            <span>时间：{{now}}</span>
-        </h2>
+        <h2>编辑设备信息</h2>
+        <h3>
+            <span>用户：<i>{{username}}</i></span>
+            <span>时间：<i>{{now}}</i></span>
+        </h3>
         <p>1.当前仅支持对标识为可编辑的字段进行编辑，如需变更标识为不可编辑的字段，请直接联系管理员</p>
         <p>2.请按照端口管理要求进行信息的修改，不符合规则的修改将无法生效</p>
         <ul>
@@ -65,6 +65,23 @@
     </div>
 </template>
 <style lang="less">
+.edit{
+    h2{
+        padding-bottom: 10px;
+        font-size: 18px;
+        color: #666;
+        border-bottom: 2px solid #eceff9;
+    }
+    h3{
+        padding: 15px 0;
+        font-size: 14px;
+        font-weight: normal;
+        color:#333;
+        i{
+            color: #666;
+        }
+    }
+}
 .editTable{
     padding-bottom: 5px;
     width:100%;

@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="search-result">
-            <p class="search-content">已查找到<span>{{allRecordNumber}}</span>条数据</p>
+            <p class="search-content">已查找到<span>{{page.totalList}}</span>条数据</p>
             <a class="search-download" :src="download">下载检索结果文件</a>
         </div>
         <div class="tableContent">
@@ -81,7 +81,6 @@
         data(){
             return {
                 columns: loglisttables.columns,
-                allRecordNumber:'',
                 data: [],
                 download:'',
                 logTypeList:showDataSelection.logTypeList,
@@ -107,10 +106,9 @@
         methods:{
             getLogData(e,pageSize=15,pageNum = this.page.pageNum){
                 this.loading = true;
-                let data = 'operateLog/showLogList?pageSize=15&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate+'&pageNum'+pageNum;
+                let data = 'operateLog/showLogList?pageSize=15&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate+'&pageNum='+pageNum;
                 this.$http.get(data).then((res)=>{
-                    this.allRecordNumber = res.data.allRecordNumber;
-                    this.page.totalList = res.data.totalPages;
+                    this.page.totalList = res.data.allRecordNumber;
                     this.data = res.data.OperateLogList;
                     this.loading = false;
                 }).catch((res)=>{

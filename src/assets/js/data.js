@@ -730,7 +730,7 @@ export const removeData = {  //设备批量删除
         },
         {
             title: '类型',
-            key: 'deviceType'
+            key: 'type'
         }
     ]
 }

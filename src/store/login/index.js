@@ -11,7 +11,8 @@ export default {
         user_name: "",
         user_permission: "",
         logStatus: false,
-        user_role_navlist:{}
+        user_role_navlist:{},
+        pathtorefresh:''
     },
     actions: actions,
     mutations: mutations,

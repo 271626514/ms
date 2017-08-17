@@ -15,5 +15,8 @@ export default{
     },
     removeuserrolelist({commit}){
         commit(types.REMOVE_USER_ROLE_NAVLIST);
+    },
+    pathToRefresh({commit},val){
+        commit(types.PATH_TO_REFRESH,val);
     }
 }

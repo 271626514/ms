@@ -199,7 +199,6 @@
                                 },
                                 formatter: '{value}%'
                             }
-
                         }
                     ],
                     /*legend:{

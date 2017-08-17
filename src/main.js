@@ -13,6 +13,9 @@ Vue.config.productionTip = false
 
 router.beforeEach((to,from,next) => {
     let loginStatus = JSON.parse(window.localStorage.getItem('user')) || null;
+    // this.$store.dispatch(to);
+    let real_path = to.path.split('/')[1];
+    store.dispatch('pathToRefresh',real_path);
     if(!to.meta.browse){
         if(loginStatus){
             next();

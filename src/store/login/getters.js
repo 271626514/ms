@@ -17,5 +17,9 @@ export default{
     getuserrolenavlist: function(state){
         let _temp = state.user_role_navlist || JSON.parse(localStorage.getItem('userrolenavlist'))
         return _temp;
+    },
+    getpathtorefresh:function(state){
+        let path = state.pathtorefresh || JSON.parse(localStorage.getItem('pathtorefresh'));
+        return path;
     }
 }

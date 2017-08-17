@@ -92,7 +92,7 @@
                     logType: 'all',
                     source: 'all',
                     result: 'all',
-                    startDate: '2017-01-01',
+                    startDate: '2010-01-01',
                     finDate: this.getDate()
                 },
                 page:{
@@ -108,9 +108,11 @@
                 this.loading = true;
                 let data = 'operateLog/showLogList?pageSize=15&userName='+this.log.user+'&beginTime='+this.log.startDate+'&endTime='+this.log.finDate+'&pageNum='+pageNum;
                 this.$http.get(data).then((res)=>{
+                    console.log(res);
                     this.page.totalList = res.data.allRecordNumber;
                     this.data = res.data.OperateLogList;
                     this.loading = false;
+                    this.download = '/operateLog/exportLogList';
                 }).catch((res)=>{
                     this.loading = false;
                 })
@@ -129,7 +131,7 @@
                 this.log.logType = 'all';
                 this.log.source = 'all';
                 this.log.result = 'all';
-                this.log.startDate = "2017-01-01";
+                this.log.startDate = "2010-01-01";
                 this.log.finDate = this.getDate();
             },
             setStart(date) {

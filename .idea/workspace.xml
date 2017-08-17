@@ -1,19 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/page/demo/map8.vue" line="205" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="40a0f825-47df-45d8-95f3-406fdc7ae5e0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/liuliang-icon-9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/richang-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/shishi-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/skins/lightgray/fonts/tinymce.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/skins/lightgray/fonts/tinymce.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/socket/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/socket/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/rollNum.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/demo/map7.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/demo/map8.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/page/port/portEdit.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/skins/lightgray/content.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/skins/lightgray/skin.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/tinymce.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/const.less" afterPath="$PROJECT_DIR$/src/assets/css/const.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/ivew.less" afterPath="$PROJECT_DIR$/src/assets/css/ivew.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/js/data.js" afterPath="$PROJECT_DIR$/src/assets/js/data.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/js/demoCharts.js" afterPath="$PROJECT_DIR$/src/assets/js/demoCharts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/modal.vue" afterPath="$PROJECT_DIR$/src/components/common/modal.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/navShow.vue" afterPath="$PROJECT_DIR$/src/components/common/navShow.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/demo/map.vue" afterPath="$PROJECT_DIR$/src/page/demo/map.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/demo/map2.vue" afterPath="$PROJECT_DIR$/src/page/demo/map2.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/demo/map5.vue" afterPath="$PROJECT_DIR$/src/page/demo/map5.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/device/deviceEdit.vue" afterPath="$PROJECT_DIR$/src/page/device/deviceEdit.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/device/deviceList.vue" afterPath="$PROJECT_DIR$/src/page/device/deviceList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/map/map2.vue" afterPath="$PROJECT_DIR$/src/page/map/map2.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/map/map5.vue" afterPath="$PROJECT_DIR$/src/page/map/map5.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/export/dataPublish.vue" afterPath="$PROJECT_DIR$/src/page/export/dataPublish.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/operateLog/showLogList.vue" afterPath="$PROJECT_DIR$/src/page/operateLog/showLogList.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/page/port/portList.vue" afterPath="$PROJECT_DIR$/src/page/port/portList.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/config_router.js" afterPath="$PROJECT_DIR$/src/router/config_router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/path.js" afterPath="$PROJECT_DIR$/src/router/path.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/login/action.js" afterPath="$PROJECT_DIR$/src/store/login/action.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/login/getters.js" afterPath="$PROJECT_DIR$/src/store/login/getters.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/login/index.js" afterPath="$PROJECT_DIR$/src/store/login/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/login/mutations.js" afterPath="$PROJECT_DIR$/src/store/login/mutations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/mutation-types.js" afterPath="$PROJECT_DIR$/src/store/mutation-types.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/page/action.js" afterPath="$PROJECT_DIR$/src/store/page/action.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/page/mutations.js" afterPath="$PROJECT_DIR$/src/store/page/mutations.js" />
     </list>
     <ignored path="assets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,94 +73,81 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="deviceEdit.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/page/device/deviceEdit.vue">
+      <file leaf-file-name="map8.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/page/demo/map8.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8327402">
-              <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+            <state vertical-scroll-proportion="-9.846154">
+              <caret line="315" column="19" selection-start-line="315" selection-start-column="19" selection-end-line="315" selection-end-column="19" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#Input#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#Input#0;n#td#4;n#tr#1;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#Select#0;n#td#5;n#tr#1;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#Button#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#Button#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/js/data.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="437" column="34" selection-start-line="437" selection-start-column="34" selection-end-line="437" selection-end-column="34" />
-              <folding>
-                <element signature="e#115#341#0" expanded="false" />
-                <element signature="e#363#1075#0" expanded="false" />
-                <element signature="e#1091#1369#0" expanded="false" />
-                <element signature="e#1385#1461#0" expanded="false" />
-                <element signature="e#1476#1836#0" expanded="false" />
-                <element signature="e#1855#2987#0" expanded="false" />
-                <element signature="e#3006#3308#0" expanded="false" />
-                <element signature="e#3326#3557#0" expanded="false" />
-                <element signature="e#3575#3874#0" expanded="false" />
-                <element signature="e#4339#7468#0" expanded="false" />
-                <element signature="e#9630#11298#0" expanded="false" />
-                <element signature="e#11326#13413#0" expanded="false" />
-                <element signature="e#17955#19682#0" expanded="false" />
-                <element signature="e#19714#22189#0" expanded="false" />
-                <element signature="e#22223#22823#0" expanded="false" />
-                <element signature="e#22237#22821#0" expanded="false" />
-                <element signature="e#22857#23648#0" expanded="false" />
-                <element signature="e#23678#24381#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="portList.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/page/port/portList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.384615">
-              <caret line="106" column="39" selection-start-line="106" selection-start-column="39" selection-end-line="106" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mutations.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/store/page/mutations.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modal.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/common/modal.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-31.307692">
-              <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#Modal#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#Button#0;n#div#1;n#Modal#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#Button#1;n#div#1;n#Modal#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deviceList.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/page/device/deviceList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.0">
-              <caret line="162" column="44" selection-start-line="162" selection-start-column="44" selection-end-line="162" selection-end-column="44" />
-              <folding>
-                <element signature="n#style#0;n#Button#2;n#div#0;n#div#3;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#!!top" expanded="false" />
+                <element signature="e#1475#1682#0" expanded="false" />
+                <element signature="e#8156#8904#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/socket/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rollNum.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/common/rollNum.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.1538463">
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demoCharts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/js/demoCharts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="552" column="18" selection-start-line="552" selection-start-column="12" selection-end-line="552" selection-end-column="18" />
+              <folding>
+                <element signature="e#266#7775#0" expanded="false" />
+                <element signature="e#7902#11907#0" expanded="false" />
+                <element signature="e#8124#8486#0" expanded="false" />
+                <element signature="e#8500#8864#0" expanded="false" />
+                <element signature="e#8878#9243#0" expanded="false" />
+                <element signature="e#9257#9623#0" expanded="false" />
+                <element signature="e#9637#10000#0" expanded="false" />
+                <element signature="e#10014#10378#0" expanded="false" />
+                <element signature="e#10392#10757#0" expanded="false" />
+                <element signature="e#10771#11136#0" expanded="false" />
+                <element signature="e#11150#11513#0" expanded="false" />
+                <element signature="e#11527#11890#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="map1.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/page/demo/map1.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.769231">
+              <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
+              <folding>
+                <element signature="n#style#0;n#!!top" expanded="false" />
+                <element signature="e#6571#7856#0" expanded="false" />
+                <marker date="1502854091455" expanded="false" signature="6880:6981" placeholder="..." />
+                <marker date="1502854091455" expanded="true" signature="6982:7048" placeholder="..." />
+                <marker date="1502854091455" expanded="false" signature="7151:7163" placeholder="..." />
+                <marker date="1502854091455" expanded="false" signature="7283:7295" placeholder="..." />
+                <marker date="1502854091455" expanded="false" signature="7415:7427" placeholder="..." />
+                <marker date="1502854091455" expanded="false" signature="7551:7563" placeholder="..." />
+                <marker date="1502854091455" expanded="false" signature="7686:7705" placeholder="..." />
+                <marker date="1502854091455" expanded="true" signature="11933:12034" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -133,6 +159,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Vue File" />
       </list>
     </option>
@@ -153,10 +180,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/page/map/map3.vue" />
-        <option value="$PROJECT_DIR$/src/page/common/resetPwd.vue" />
         <option value="$PROJECT_DIR$/src/page/operateLog/showLogList.vue" />
-        <option value="$PROJECT_DIR$/src/page/device/deviceImport.vue" />
         <option value="$PROJECT_DIR$/src/page/port/portImport.vue" />
         <option value="$PROJECT_DIR$/src/page/user/usersShow.vue" />
         <option value="$PROJECT_DIR$/src/page/user/rolesShow.vue" />
@@ -164,27 +188,18 @@
         <option value="$PROJECT_DIR$/src/page/export/customQueryList.vue" />
         <option value="$PROJECT_DIR$/src/page/export/publicData.vue" />
         <option value="$PROJECT_DIR$/src/page/map/map4.vue" />
-        <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/src/page/common/login.vue" />
         <option value="$PROJECT_DIR$/src/page/map/map1.vue" />
-        <option value="$PROJECT_DIR$/src/assets/css/const.less" />
         <option value="$PROJECT_DIR$/src/assets/js/chartsData.js" />
         <option value="$PROJECT_DIR$/src/page/demo/map6.vue" />
-        <option value="$PROJECT_DIR$/src/page/demo/map1.vue" />
         <option value="$PROJECT_DIR$/src/page/demo/map4.vue" />
         <option value="$PROJECT_DIR$/src/page/demo/map3.vue" />
-        <option value="$PROJECT_DIR$/src/page/demo/map2.vue" />
-        <option value="$PROJECT_DIR$/src/assets/js/demoCharts.js" />
         <option value="$PROJECT_DIR$/src/page/export/dataPublish.vue" />
         <option value="$PROJECT_DIR$/src/page/export/dataAdd.vue" />
-        <option value="$PROJECT_DIR$/src/page/demo/map5.vue" />
         <option value="$PROJECT_DIR$/src/page/common/home.vue" />
         <option value="$PROJECT_DIR$/src/components/common/header.vue" />
         <option value="$PROJECT_DIR$/src/components/common/header-show.vue" />
-        <option value="$PROJECT_DIR$/src/router/path.js" />
-        <option value="$PROJECT_DIR$/src/page/demo/map.vue" />
         <option value="$PROJECT_DIR$/src/components/common/foot.vue" />
-        <option value="$PROJECT_DIR$/src/page/port/portList.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/layout.less" />
         <option value="$PROJECT_DIR$/src/store/page/index.js" />
         <option value="$PROJECT_DIR$/src/store/mutation-types.js" />
@@ -192,11 +207,30 @@
         <option value="$PROJECT_DIR$/src/store/page/action.js" />
         <option value="$PROJECT_DIR$/src/page/map/map5.vue" />
         <option value="$PROJECT_DIR$/src/page/map/map2.vue" />
+        <option value="$PROJECT_DIR$/src/assets/css/const.less" />
+        <option value="$PROJECT_DIR$/src/page/device/deviceImport.vue" />
         <option value="$PROJECT_DIR$/src/components/common/modal.vue" />
-        <option value="$PROJECT_DIR$/src/page/device/deviceList.vue" />
-        <option value="$PROJECT_DIR$/src/router/config_router.js" />
-        <option value="$PROJECT_DIR$/src/assets/js/data.js" />
+        <option value="$PROJECT_DIR$/src/assets/css/ivew.less" />
         <option value="$PROJECT_DIR$/src/page/device/deviceEdit.vue" />
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/components/common/navShow.vue" />
+        <option value="$PROJECT_DIR$/dist/index.html" />
+        <option value="$PROJECT_DIR$/static/tinymce.min.js" />
+        <option value="$PROJECT_DIR$/src/page/port/portList.vue" />
+        <option value="$PROJECT_DIR$/src/page/device/deviceList.vue" />
+        <option value="$PROJECT_DIR$/src/assets/js/data.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/static/111.css" />
+        <option value="$PROJECT_DIR$/static/222.css" />
+        <option value="$PROJECT_DIR$/src/page/demo/map.vue" />
+        <option value="$PROJECT_DIR$/src/router/path.js" />
+        <option value="$PROJECT_DIR$/src/router/config_router.js" />
+        <option value="$PROJECT_DIR$/src/page/demo/map5.vue" />
+        <option value="$PROJECT_DIR$/src/page/demo/map2.vue" />
+        <option value="$PROJECT_DIR$/src/page/demo/map1.vue" />
+        <option value="$PROJECT_DIR$/src/components/common/rollNum.vue" />
+        <option value="$PROJECT_DIR$/src/assets/js/demoCharts.js" />
+        <option value="$PROJECT_DIR$/src/page/demo/map8.vue" />
       </list>
     </option>
   </component>
@@ -244,8 +278,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -274,65 +308,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="port" />
+              <option name="myItemId" value="socket" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,7 +317,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="K:/demo/webpack-demo" />
+    <property name="last_opened_file_path" value="K:/demo/socket" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
@@ -349,11 +325,16 @@
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="K:\work\demoms\src\main\webapp\assets\socket" />
       <recent name="K:\work\demoms\src\main\webapp\assets\src\assets\imgs" />
       <recent name="K:\work\demoms\src\main\webapp\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="K:\work\demoms\src\main\webapp\assets\static\skins\lightgray" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.demoCharts.js">
@@ -578,7 +559,13 @@
       <option name="project" value="LOCAL" />
       <updated>1502273082492</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Default">
+      <created>1502351299390</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1502351299390</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -597,12 +584,12 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17246835" sideWeight="0.49105915" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TTT" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21885522" sideWeight="0.50527424" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30527496" sideWeight="0.50738394" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16244726" sideWeight="0.5089409" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21324354" sideWeight="0.4978903" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30527496" sideWeight="0.49472573" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22446689" sideWeight="0.49261603" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16244726" sideWeight="0.5089409" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -642,119 +629,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/page/map/map3.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.029605264">
-          <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map6.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.923077">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/imgs/00002.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6580311">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map4.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7512953">
-          <caret line="163" column="20" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map3.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.538462">
-          <caret line="638" column="35" selection-start-line="638" selection-start-column="35" selection-end-line="638" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/export/dataDelete.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8704663">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/js/tinyMceReload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3272727">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/common/tinymce.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5284974">
-          <caret line="17" column="85" selection-start-line="17" selection-start-column="85" selection-end-line="17" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/common/resetPwdExpire.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.025906736">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map1.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.021582734">
-          <caret line="273" column="17" selection-start-line="273" selection-start-column="17" selection-end-line="273" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/js/demoCharts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43953487">
-          <caret line="505" column="25" selection-start-line="505" selection-start-column="25" selection-end-line="505" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map2.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41007194">
-          <caret line="487" column="30" selection-start-line="487" selection-start-column="30" selection-end-line="487" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/export/dataDetail.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11510792">
-          <caret line="26" column="107" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/login/mutations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3272727">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/login/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/login/getters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -766,28 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5355372">
           <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map5.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#!!top" expanded="false" />
-            <element signature="e#2069#4691#0" expanded="false" />
-            <element signature="e#4415#4609#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -816,17 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49295774">
           <caret line="112" column="27" selection-start-line="112" selection-start-column="27" selection-end-line="112" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/demo/map.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3082942">
-          <caret line="185" column="18" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -834,9 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1500445340127" expanded="true" signature="3501:3512" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -844,7 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30985916">
           <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41784036">
           <caret line="143" column="28" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,17 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5070422">
           <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
-          <folding>
-            <element signature="n#style#0;n#Table#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/const.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42097026">
-          <caret line="89" column="12" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,7 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.7746478">
           <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,7 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29774436">
           <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,7 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,7 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.384615">
           <caret line="192" column="47" selection-start-line="192" selection-start-column="47" selection-end-line="192" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,51 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5836299">
           <caret line="189" column="30" selection-start-line="189" selection-start-column="30" selection-end-line="189" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/config_router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.010204">
-          <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
-          <folding>
-            <element signature="e#213#362#0" expanded="false" />
-            <element signature="e#372#1662#0" expanded="false" />
-            <element signature="e#1672#1820#0" expanded="false" />
-            <element signature="e#1830#1906#0" expanded="false" />
-            <element signature="e#1916#2066#0" expanded="false" />
-            <element signature="e#2076#2226#0" expanded="false" />
-            <element signature="e#2236#2386#0" expanded="false" />
-            <element signature="e#2396#2546#0" expanded="false" />
-            <element signature="e#2556#2706#0" expanded="false" />
-            <element signature="e#2716#2823#0" expanded="false" />
-            <element signature="e#2833#2942#0" expanded="false" />
-            <element signature="e#2952#3073#0" expanded="false" />
-            <element signature="e#3083#3205#0" expanded="false" />
-            <element signature="e#3215#3331#0" expanded="false" />
-            <element signature="e#3341#3469#0" expanded="false" />
-            <element signature="e#3479#5121#0" expanded="false" />
-            <element signature="e#5131#6611#0" expanded="false" />
-            <element signature="e#6621#7108#0" expanded="false" />
-            <element signature="e#7118#7728#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64285713">
-          <caret line="21" column="14" selection-start-line="19" selection-start-column="12" selection-end-line="21" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/path.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.030612245">
-          <caret line="19" column="67" selection-start-line="19" selection-start-column="67" selection-end-line="19" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -990,7 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.64285713">
           <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -998,19 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/modal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-31.307692">
-          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#Modal#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#0;n#div#1;n#Modal#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#1;n#div#1;n#Modal#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1018,76 +780,282 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30612245">
           <caret line="12" column="19" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="19" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/ivew.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03202847">
+          <caret line="144" column="20" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/const.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03202847">
+          <caret line="95" column="12" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/page/mutations.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5510204">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/tinymce.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.94545454">
+          <caret line="62" column="12126" selection-start-line="62" selection-start-column="12126" selection-end-line="62" selection-end-column="12126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29302326">
+          <caret line="14" column="78" selection-start-line="14" selection-start-column="78" selection-end-line="14" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/navShow.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47482014">
+          <caret line="146" column="6" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/skins/lightgray/content.min.css">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding />
+          <caret line="0" column="3022" selection-start-line="0" selection-start-column="3022" selection-end-line="0" selection-end-column="3022" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/skins/lightgray/skin.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="43" selection-start-line="0" selection-start-column="43" selection-end-line="0" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/page/device/deviceList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.0">
-          <caret line="162" column="44" selection-start-line="162" selection-start-column="44" selection-end-line="162" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#Button#2;n#div#0;n#div#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#!!top" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.9432177">
+          <caret line="134" column="16" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7381703">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/page/port/portList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.384615">
-          <caret line="106" column="39" selection-start-line="106" selection-start-column="39" selection-end-line="106" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.028391168">
+          <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/device/deviceImport.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06309148">
+          <caret line="351" column="31" selection-start-line="351" selection-start-column="31" selection-end-line="351" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/path.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/config_router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="43" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+          <folding>
+            <element signature="e#213#362#0" expanded="false" />
+            <element signature="e#1998#2146#0" expanded="false" />
+            <element signature="e#2156#2232#0" expanded="false" />
+            <element signature="e#2242#2392#0" expanded="false" />
+            <element signature="e#2402#2552#0" expanded="false" />
+            <element signature="e#2562#2712#0" expanded="false" />
+            <element signature="e#2722#2872#0" expanded="false" />
+            <element signature="e#2882#3032#0" expanded="false" />
+            <element signature="e#3042#3149#0" expanded="false" />
+            <element signature="e#3159#3268#0" expanded="false" />
+            <element signature="e#3278#3399#0" expanded="false" />
+            <element signature="e#3409#3531#0" expanded="false" />
+            <element signature="e#3541#3657#0" expanded="false" />
+            <element signature="e#3667#3795#0" expanded="false" />
+            <element signature="e#3805#5447#0" expanded="false" />
+            <element signature="e#5457#6937#0" expanded="false" />
+            <element signature="e#6947#7434#0" expanded="false" />
+            <element signature="e#7444#8054#0" expanded="false" />
+            <element signature="e#8064#9375#0" expanded="false" />
+            <element signature="e#9385#10667#0" expanded="false" />
+            <element signature="e#10677#10748#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0283911">
+          <caret line="145" column="20" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/device/deviceEdit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5047319">
+          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/js/chartsData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.769697">
+          <caret line="631" column="8" selection-start-line="631" selection-start-column="8" selection-end-line="631" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map7.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/modal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1870503">
+          <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map5.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64748204">
+          <caret line="192" column="30" selection-start-line="192" selection-start-column="30" selection-end-line="192" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map2.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49280575">
+          <caret line="415" column="22" selection-start-line="415" selection-start-column="22" selection-end-line="415" selection-end-column="22" />
+          <folding>
+            <element signature="e#6852#7060#0" expanded="false" />
+            <element signature="e#7080#8261#0" expanded="false" />
+            <element signature="e#8373#8679#0" expanded="false" />
+            <element signature="e#9400#10221#0" expanded="false" />
+            <element signature="e#13110#13758#0" expanded="false" />
+            <element signature="e#15262#18183#0" expanded="false" />
+            <element signature="e#18220#21157#0" expanded="false" />
+            <element signature="e#21197#24094#0" expanded="false" />
+            <element signature="e#25110#25403#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map3.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.086207">
+          <caret line="209" column="30" selection-start-line="209" selection-start-column="30" selection-end-line="209" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map1.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.769231">
+          <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#!!top" expanded="false" />
+            <element signature="e#6571#7856#0" expanded="false" />
+            <marker date="1502854091455" expanded="false" signature="6880:6981" placeholder="..." />
+            <marker date="1502854091455" expanded="true" signature="6982:7048" placeholder="..." />
+            <marker date="1502854091455" expanded="false" signature="7151:7163" placeholder="..." />
+            <marker date="1502854091455" expanded="false" signature="7283:7295" placeholder="..." />
+            <marker date="1502854091455" expanded="false" signature="7415:7427" placeholder="..." />
+            <marker date="1502854091455" expanded="false" signature="7551:7563" placeholder="..." />
+            <marker date="1502854091455" expanded="false" signature="7686:7705" placeholder="..." />
+            <marker date="1502854091455" expanded="true" signature="11933:12034" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/js/data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="437" column="34" selection-start-line="437" selection-start-column="34" selection-end-line="437" selection-end-column="34" />
+          <caret line="774" column="22" selection-start-line="774" selection-start-column="22" selection-end-line="774" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/port/portImport.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.028391168">
+          <caret line="180" column="44" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/rollNum.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1538463">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/js/demoCharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="552" column="18" selection-start-line="552" selection-start-column="12" selection-end-line="552" selection-end-column="18" />
           <folding>
-            <element signature="e#115#341#0" expanded="false" />
-            <element signature="e#363#1075#0" expanded="false" />
-            <element signature="e#1091#1369#0" expanded="false" />
-            <element signature="e#1385#1461#0" expanded="false" />
-            <element signature="e#1476#1836#0" expanded="false" />
-            <element signature="e#1855#2987#0" expanded="false" />
-            <element signature="e#3006#3308#0" expanded="false" />
-            <element signature="e#3326#3557#0" expanded="false" />
-            <element signature="e#3575#3874#0" expanded="false" />
-            <element signature="e#4339#7468#0" expanded="false" />
-            <element signature="e#9630#11298#0" expanded="false" />
-            <element signature="e#11326#13413#0" expanded="false" />
-            <element signature="e#17955#19682#0" expanded="false" />
-            <element signature="e#19714#22189#0" expanded="false" />
-            <element signature="e#22223#22823#0" expanded="false" />
-            <element signature="e#22237#22821#0" expanded="false" />
-            <element signature="e#22857#23648#0" expanded="false" />
-            <element signature="e#23678#24381#0" expanded="false" />
+            <element signature="e#266#7775#0" expanded="false" />
+            <element signature="e#7902#11907#0" expanded="false" />
+            <element signature="e#8124#8486#0" expanded="false" />
+            <element signature="e#8500#8864#0" expanded="false" />
+            <element signature="e#8878#9243#0" expanded="false" />
+            <element signature="e#9257#9623#0" expanded="false" />
+            <element signature="e#9637#10000#0" expanded="false" />
+            <element signature="e#10014#10378#0" expanded="false" />
+            <element signature="e#10392#10757#0" expanded="false" />
+            <element signature="e#10771#11136#0" expanded="false" />
+            <element signature="e#11150#11513#0" expanded="false" />
+            <element signature="e#11527#11890#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/device/deviceEdit.vue">
+    <entry file="file://$PROJECT_DIR$/src/page/demo/map8.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8327402">
-          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+        <state vertical-scroll-proportion="-9.846154">
+          <caret line="315" column="19" selection-start-line="315" selection-start-column="19" selection-end-line="315" selection-end-column="19" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#Input#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Input#0;n#td#4;n#tr#1;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Select#0;n#td#5;n#tr#1;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#!!top" expanded="false" />
+            <element signature="e#1475#1682#0" expanded="false" />
+            <element signature="e#8156#8904#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/socket/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

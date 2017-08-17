@@ -465,7 +465,111 @@ export const demo = {
                 ]
             }
         ],
-    }
+    },
+    map7:[
+        {
+            title: 'OTT',
+            richang: 1093,
+            shishi: 43.3,
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '腾讯视频',
+            richang: 14.8,
+            shishi: 17.3,
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '咪咕视频',
+            richang: 15.8,
+            shishi: 13.3,
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '凤凰视频',
+            richang: 15.8,
+            shishi: 13.3,
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '咪咕音乐',
+            richang: 15.8,
+            shishi: 13.3,
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '和地图',
+            richang: 15.8,
+            shishi: 13.3,
+            danwei: 'Mbps',
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '移动MM',
+            richang: 15.8,
+            shishi: 13.3,
+            danwei: 'Mbps',
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '139邮箱',
+            richang: 15.8,
+            shishi: 13.3,
+            danwei: 'Mbps',
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+        {
+            title: '缓存流量',
+            richang: 15.8,
+            shishi: 13.3,
+            mapData: [
+                {
+                    title: '安徽',
+                    value: 334
+                }
+            ]
+        },
+    ]
 };
 export const colorD = '#1d2b46'
 export const color = ['#f4d45b','#61b1ec','#615297','#ec6182']

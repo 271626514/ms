@@ -147,7 +147,13 @@ export default{
     },
     mounted(){
         this.$http.get('/main').then((res)=>{
-            this.navList = res.data.children
+            this.navList = res.data.children;
+            for(let i =0;i<this.navList.length;i++){
+                let res = this.navList[i].resouce.substring(1,this.navList[i].resouce.length)
+                if(res==this.$store.getters.getpathtorefresh){
+                    this.state = i;
+                }
+            }
         }).catch(res=>{
             this.navList =  [
                 {
@@ -242,9 +248,37 @@ export default{
                     "parent": true,
                     "parentId": "0",
                     "resouce": "/operateLog"
+                },
+                {
+                    "checked": false,
+                    "children": [
+                        {
+                            "checked": false,
+                            "children": [],
+                            "depth": "",
+                            "id": 9,
+                            "name": "设备列表",
+                            "parent": false,
+                            "parentId": "7",
+                            "resouce": "/deviceList"
+                        }
+                    ],
+                    "depth": "",
+                    "id": 8,
+                    "name": "设备管理",
+                    "parent": true,
+                    "parentId": "0",
+                    "resouce": "/device"
                 }
             ];
-        })
+            for(let i =0;i<this.navList.length;i++){
+                let res = this.navList[i].resouce.substring(1,this.navList[i].resouce.length)
+                if(res==this.$store.getters.getpathtorefresh){
+                   this.state = i;
+                }
+            }
+        });
+
     }
 }
 </script>

@@ -54,6 +54,16 @@ export default new Router({
                     path: 'map6',
                     meta: { browse: true },
                     component: path.DEMO_MAP_6,
+                },
+                {
+                    path: 'map7',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_7,
+                },
+                {
+                    path: 'map8',
+                    meta: { browse: true },
+                    component: path.DEMO_MAP_8,
                 }
             ]
         },
@@ -330,6 +340,20 @@ export default new Router({
                     path: 'portImport',
                     component: path.PORT_IMPORT,
                     meta: {name: '端口导入'}
+                },
+                {
+                    path: 'portEdit',
+                    component: path.PORT_EDIT,
+                    meta: {name: '端口'},
+                    beforeEnter: (to, from, next) => {
+                        if(!store.state.page.port_list.length){
+                            next({
+                                path: '/port',
+                            });
+                        }else{
+                            next();
+                        }
+                    }
                 },
                 {
                     path: 'portConcat',

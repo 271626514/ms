@@ -21,6 +21,7 @@ export const DEVICE_EDIT = require('../page/device/deviceEdit.vue')
 export const PORT_LIST = require('../page/port/portList.vue')
 export const PORT_IMPORT = require('../page/port/portImport.vue')
 export const PORT_CONCAT = require('../page/port/portConcat.vue')
+export const PORT_EDIT = require('../page/port/portEdit.vue')
 
 //权限系统
 export const USERS_SHOW = require('../page/user/usersShow.vue')
@@ -56,3 +57,5 @@ export const DEMO_MAP_3 = require('../page/demo/map3.vue');
 export const DEMO_MAP_4 = require('../page/demo/map4.vue');
 export const DEMO_MAP_5 = require('../page/demo/map5.vue');
 export const DEMO_MAP_6 = require('../page/demo/map6.vue');
+export const DEMO_MAP_7 = require('../page/demo/map7.vue');
+export const DEMO_MAP_8 = require('../page/demo/map8.vue');

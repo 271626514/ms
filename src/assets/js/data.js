@@ -17,6 +17,99 @@ export const showDataSelection = {
             label: '数据总览'
         }
     ],
+    dataPublishClassify:[{
+       value:'全国数据',
+        label:'全国数据'
+    },
+        {
+            value:'流量分析',
+            label:'流量分析'
+        },
+        {
+            value:'链路分析',
+            label:'链路分析'
+        },
+        {
+            value:'拥塞监控',
+            label:'拥塞监控'
+        },
+    ],
+    portTypelist:[
+        {
+            value: '上联',
+            label: '上联'
+        },
+        {
+            value: '下联',
+            label: '下联'
+        },
+        {
+            value: '级联',
+            label: '级联'
+        },
+    ],
+    portTypelist2:[
+        {
+            value: '省网上联',
+            label: '省网上联'
+        },
+        {
+            value: '省际直联',
+            label: '省际直联'
+        },
+        {
+            value: '三方出口',
+            label: '三方出口'
+        },
+        {
+            value: 'IDC',
+            label: 'IDC'
+        },
+        {
+            value: 'ICP直连',
+            label: 'ICP直连'
+        },
+        {
+            value: '统建CDN',
+            label: '统建CDN'
+        },
+        {
+            value: '省建Cache',
+            label: '省建Cache'
+        },
+        {
+            value: '省建CDN',
+            label: '省建CDN'
+        },
+        {
+            value: '第三方CDN',
+            label: '第三方CDN'
+        },
+        {
+            value: '固网用户',
+            label: '固网用户'
+        },
+        {
+            value: '手机用户',
+            label: '手机用户'
+        },
+        {
+            value: '付费穿透',
+            label: '付费穿透'
+        },
+        {
+            value: '付费对等直连',
+            label: '付费对等直连'
+        },
+        {
+            value: '收费客户',
+            label: '收费客户'
+        },
+        {
+            value: '免费对等直连',
+            label: '免费对等直连'
+        },
+    ],
     deviceTypeList: [
         {
             value: '全部',
@@ -108,63 +201,63 @@ export const showDataSelection = {
         },
         {
             label: '省网上联',
-            value: 2
+            value: 7387
         },
         {
             label: '省际直连',
-            value: 3
+            value: 7862
         },
         {
             label: '三方出口',
-            value: 4
+            value: 424
         },
         {
             label: 'IDC',
-            value: 5
+            value: 69
         },
         {
             label: 'ICP直连',
-            value: 6
+            value: 2153
         },
         {
-            label: '统建CDN-省网',
-            value: 7
+            label: '统建CDN',
+            value: 943
         },
         {
             label: '省建Cache',
-            value: 8
+            value: 7347
         },
         {
             label: '省建CDN',
-            value: 9
+            value: 14799
         },
         {
             label: '第三方CDN',
-            value: 10
+            value: 309
         },
         {
             label: '固网用户',
-            value: 11
+            value: 5581
         },
         {
             label: '手机用户',
-            value: 12
+            value: 5576
         },
         {
             label: '付费穿透',
-            value: 13
+            value: 31927
         },
         {
             label: '付费对等直连',
-            value: 14
+            value: 32037
         },
         {
             label: '收费客户',
-            value: 15
+            value: 32172
         },
         {
             label: '免费对等直连',
-            value: 16
+            value: 32022
         }
     ],
     logTypeList: [
@@ -310,11 +403,11 @@ export const devicetables = {
             render:(fc,obj)=>{
                 let text = '';
                 if(obj.row.snmpVersion==1){
-                    text = 'V1'
+                    text = 'v1'
                 }else if(obj.row.snmpVersion == 2){
-                    text = 'V2C'
+                    text = 'v2c'
                 }else if(obj.row.snmpVersion == 3){
-                    text = 'V3'
+                    text = 'v3'
                 }else{
                     text = 'NULL'
                 }
@@ -368,7 +461,7 @@ export const devicetables = {
         },
         {
             title: '上传时间',
-            key: 'createTimeView',
+            key: 'lastmodifiedTimeView',
             width: 200
         }
     ]
@@ -389,7 +482,7 @@ export const porttables = {
         {
             title: '设备ID',
             key: 'deviceid',
-            width:100
+            width:180
         },
         {
             align: 'center',
@@ -459,7 +552,7 @@ export const porttables = {
         },
         {
             title: '上传时间',
-            key: 'createTimeView',
+            key: 'lastmodifiedTimeView',
             align: 'center',
             width: 200
         }
@@ -587,12 +680,12 @@ export const snmp3tables = {
         },
         {
             title: '所属机房',
-            key: 'labs',
+            key: 'room',
             width: 250
         },
         {
             title: '设备类型',
-            key: 'deviceType',
+            key: 'type',
             width: 200,
         },
         {
@@ -727,6 +820,25 @@ export const removeData = {  //设备批量删除
         {
             title: '设备IP',
             key: 'ipAddr'
+        },
+        {
+            title: '类型',
+            key: 'type'
+        }
+    ],
+    portColumns:[
+        {
+            title: '省份',
+            key: 'province',
+            width: 75
+        },
+        {
+            title: '设备名称',
+            key: 'name'
+        },
+        {
+            title: '设备IP',
+            key: 'devicesIp'
         },
         {
             title: '类型',

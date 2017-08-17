@@ -24,4 +24,8 @@ export default{
         window.localStorage.removeItem('userrolenavlist');
         state.user_role_navlist={};
     },
+    [types.PATH_TO_REFRESH](state,val){
+        window.localStorage.setItem('pathtorefresh',val);
+        state.pathtorefresh = val;
+    }
 }

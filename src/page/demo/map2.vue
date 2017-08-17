@@ -4,11 +4,15 @@
             <div class="item border" id="map2-map1">
                 <h2>采集CP/个</h2>
                 <div class="num-map">
-                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
-                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
-                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
-                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <rollNum :num="liuliangnum"></rollNum>
                 </div>
+                <!--<div class="num-map">
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                    <div class="num-con" ><ul :class="{move:flag}"><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li><li>0</li><li v-for="index in 9">{{index}}</li></ul></div>
+                </div>-->
+
             </div>
             <div class="item border" id="map2-map2"></div>
             <div class="item border" id="map2-map3"></div>
@@ -40,6 +44,7 @@
                 font-family: "微软雅黑", sans-serif;
             }
         }
+
         .num-map{
             width: 240px;
             margin: 70px auto;
@@ -177,6 +182,7 @@
 <script type="text/ecmascript-6">
     import echarts from 'echarts'
     import china from 'echarts/map/js/china'
+    import rollNum from '../../components/common/rollNum.vue'
     import {seller,column,demo,textStyle,labelStyle,seriesLabelStyle,itemHeight,itemWidth,axisLabel,axisLine,timeData,timeValue,provinceData} from '../../assets/js/demoCharts'
     const placeHolderStyle = {
         normal : {
@@ -317,6 +323,7 @@
                 mapindex: 0,
                 flag:true,
                 dataArray:[],
+                liuliangnum: ''
             }
         },
         methods:{
@@ -688,7 +695,6 @@
             },
             check(index){
                 //切换
-
                 this.mapindex = index;
                 let title = this.data[index].name;
                 let obj = {
@@ -724,6 +730,7 @@
             }
         },
         mounted(){
+            this.liuliangnum = '0101'
             this.drawrose('map2-map2',map1,'带宽');
             this.drawbar('map2-map3',map2,'ICP流量TOP10');
             this.drawpro('map2-map4',getMapData('腾讯'),'腾讯');
@@ -734,6 +741,9 @@
                 this.drawarea('map2-map5',this.getTimeData('tengxun'),'腾讯');
             })
             this.drawmap('map2-map6','腾讯',getAreaData('腾讯'),0.45);
-        }
+        },
+        components:{
+            rollNum
+        },
     }
 </script>

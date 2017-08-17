@@ -20,6 +20,9 @@ export default{
         window.localStorage.removeItem('userrole');
         state.roles_id= "";
     },
+    [types.PORT_LIST](state,val){
+        state.port_list = val;
+    },
     [types.DEVICE_LIST] (state,val){
         state.device_list = val;
     },

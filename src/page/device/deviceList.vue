@@ -74,11 +74,11 @@
             <div class="table-set">
                 <Button type="ghost" :disabled="BtnDisabled"><a :href="downloadsec">下载所选</a></Button>
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
-                <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="editAll">批量修改</Button>
+                <!--<Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="editAll">批量修改</Button>-->
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
             <div class="page" v-if="deviceData">
-                <Page :total="page.totalList" :page-size="15" @on-change="onChange"></Page>
+                <Page :total="page.totalList" :page-size="15" @on-change="onChange" :current="page.pageNum"></Page>
             </div>
         </div>
         <!--批量删除-->
@@ -132,8 +132,8 @@
     export default{
         data() {
             return {
-            //    deviceData: [],                     //列表数据
-                deviceData:[
+                deviceData: [],                     //列表数据
+               /* deviceData:[
                     {
                         id: 331,
                         province: '浙江',
@@ -150,7 +150,7 @@
                         room: '生产中心三楼数据机房',
                         type: 3,
                     }
-                ],
+                ],*/
                 operatUser: this.$store.getters.getusername,
                 roleId:this.$store.getters.getuserRoleId,
                 selectionProvence: [],
@@ -169,7 +169,7 @@
                 },
                 device: {               //上传数据
                     ipAddr: '',
-                    beginTime: '2017-01-01',
+                    beginTime: '2010-01-01',
                     endTime: this.getDate(),
                     province: '全国',
                     type: '全部',
@@ -204,9 +204,10 @@
                 str+= '&pageSize='+ pageSize + '&pageNum='+ pageNum;
                 return str;
             },
-            searchSubmit(e,pageSize=15,pageNum = this.page.pageNum) {        //立即检索
+            searchSubmit(e,pageSize=15,pageNum = 1) {        //立即检索
                 this.loading = true;
                 let data = this.dataFormat(pageSize,pageNum);
+                this.page.pageNum = 1;
                 this.$http.post('/cdnManage/devicesList',data,config).then(res=>{
                     this.deviceData = res.data.list;
                     this.page.totalList = res.data.totalCount;
@@ -249,7 +250,15 @@
                 this.$router.push('/device/deviceEdit');
             },
             onChange(pageNum){         //分页查询
-                this.searchSubmit(null,15,pageNum);
+                let data = this.dataFormat(15,pageNum);
+                this.$http.post('/cdnManage/devicesList',data,config).then(res=>{
+                    this.deviceData = res.data.list;
+                    this.page.totalList = res.data.totalCount;
+                    this.loading = false;
+                    this.downloadhref= '/cdnManage/exportDevicesList?totlePage='+this.page.totalList+data;
+                }).catch(res=>{
+                    this.loading = false;
+                })
                 this.page.pageNum = pageNum;
             },
             setStart(date) {
@@ -292,7 +301,7 @@
             },
             reset(){        //清空检索条件
                 this.device.ipAddr = "";
-                this.device.beginTime = '2017-01-01';
+                this.device.beginTime = '2010-01-01';
                 this.device.endTime = this.getDate();
                 this.device.province = '全国';
                 this.device.type = '全部';

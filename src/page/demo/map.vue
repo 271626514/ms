@@ -146,6 +146,14 @@
             return {
                 mapList:[
                     {
+                        label:'内容网络建设情况',
+                        value: 'map7'
+                    },
+                    {
+                        label: '内容网络流量情况',
+                        value: 'map8'
+                    },
+                    {
                         label:'全网流量分析',
                         value: 'map1'
                     },

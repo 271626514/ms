@@ -66,10 +66,11 @@
             <div class="table-set">
                 <Button type="ghost" :disabled="BtnDisabled"><a :href="downloadsec">下载所选</a></Button>
                 <Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="removeall">批量删除</Button>
+                <!--<Button type="ghost" :disabled="BtnDisabled" style="margin-left: 10px" @click="editAll">批量修改</Button>-->
                 <span v-if="selection.length" class="result-info ml-20">已选中 {{selection.length}} 条记录</span>
             </div>
             <div class="page" v-if="portData">
-                <Page :total="page.totalList" :page-size="15" @on-change="onChange"></Page>
+                <Page :total="page.totalList" :page-size="15" @on-change="onChange" :current="page.pageNum"></Page>
             </div>
         </div>
         <Modal v-model="dialog.removeAll" :mask-closable="false" title="批量删除" class="removeAll" width="640">
@@ -103,12 +104,33 @@
                 selectionProvence: [],
                 portTypeList: showDataSelection.portType,
                 serviceList: showDataSelection.serviceList,
-                portData: [],
+               /* portData: [{
+                    devicesName:'NXYC-PB-CMNET-RT01',
+                    deviceid:'217.203.128.1',
+                    id:'1',
+                    province:'宁夏',
+                    devicesIp:'218.203.128.1',
+                    name:'GigabitEthernet2/6/0/0',
+                    service2View:'无',
+                    peerDevice:'NULL'
+                },
+                {
+                    devicesName:'NXYC-PB-CMNET-RT02',
+                    deviceid:'217.203.128.1',
+                    id:'2',
+                    province:'宁夏',
+                    devicesIp:'218.203.128.2',
+                    IP:'218.203.128.2',
+                    name:'Vlan70',
+                    service2View:'爱奇艺',
+                    peerDevice:'NULL'
+                },],*/
+                portData:[],
                 columns: porttables.columns,
                 operatUser: this.$store.getters.getusername,
                 roleId:this.$store.getters.getuserRoleId,
                 removeData:[],
-                removeColumns:removeData.columns,   //批量删除字段
+                removeColumns:removeData.portColumns,   //批量删除字段
                 options: {
                     disabledDate (date) {
                         return date && date.valueOf() > Date.now();
@@ -116,7 +138,7 @@
                 },
                 port: {
                     ipAddr: '',
-                    beginTime:'2017-01-01',
+                    beginTime:'2010-01-01',
                     endTime: this.getDate(),
                     province: '全国',
                     type: '全部',
@@ -153,6 +175,7 @@
             searchSubmit(e,pageSize=15,pageNum=1) {        //立即检索
                 this.loading = true;
                 let data = this.dataFormat(pageSize,pageNum);
+                this.page.pageNum = 1;
                 this.$http.post('/cdnManage/portsList',data,config).then(res=>{
                     this.portData = res.data.list;
                     this.page.totalList = res.data.totalCount;
@@ -167,8 +190,20 @@
                 this.dialog.removeAll = true;
                 this.removeData = this.selection;
             },
+            editAll(){
+                this.$store.dispatch('editportlist',this.selection);
+                this.$router.push('/port/portEdit');
+            },
             onChange(pageNum){         //分页查询
-                this.searchSubmit(null,15,pageNum);
+                let data = this.dataFormat(15,pageNum);
+                this.$http.post('/cdnManage/portsList',data,config).then(res=>{
+                    this.portData = res.data.list;
+                    this.page.totalList = res.data.totalCount;
+                    this.loading = false;
+                    this.downloadhref= '/cdnManage/exportPortsList?totlePage='+this.page.totalList+data;
+                }).catch(res=>{
+                    this.loading = false;
+                })
                 this.page.pageNum = pageNum;
             },
             remove_con(){       //批量删除同步后台
@@ -179,7 +214,8 @@
                         id: item.id,
                         province: item.province,
                         name:item.name,
-                        ipAddr:item.ipAddr
+                        devicesName: item.devicesName,
+                        devicesIp: item.devicesIp,
                     })
                 }
 
@@ -246,7 +282,7 @@
             },
             reset(){                //初始化
                 this.port.ipAddr = '';
-                this.port.beginTime = '2017-01-01';
+                this.port.beginTime = '2010-01-01';
                 this.port.endTime = this.getDate();
                 this.port.province = '全国';
                 this.port.portType = '全部';
@@ -267,7 +303,8 @@
                     }
                 }
                 return roleList;
-            }
+            },
+
         },
         mounted(){
             //拉取用户的权限列表
